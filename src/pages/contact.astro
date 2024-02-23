@@ -1,0 +1,167 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact Us">
+  <main>
+    <div class="container">
+      <div class="row mt-5 mb-4">
+        <div class="col">
+          <h1>Contact Us</h1>
+          <p class="lead mb-4 mt-1">Getting in touch is so easy.</p>
+          <p>
+            We always look forward to hearing from you and being able to assist
+            where we can.
+          </p>
+        </div>
+      </div>
+
+      <div class="row pb-lg-2">
+        <div class="col-lg-7 col-md-7">
+          <div class="card p-3">
+            <h4 class="text-color-dark mb-1 pb-3">Instant message</h4>
+
+            <form id="contact-form" method="post" action="submit-form">
+              <div class="form-group">
+                <label for="form-name">Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  value=""
+                  data-msg-required="Please enter your name."
+                  maxlength="30"
+                  class="form-control"
+                  name="name"
+                  id="name"
+                  required=""
+                />
+              </div>
+              <div class="form-group">
+                <label for="form-email">Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  class="form-control"
+                  id="form-email"
+                  placeholder="Enter your email address"
+                  required=""
+                />
+                <small id="emailHelp" class="form-text text-muted"
+                  >We'll never share your email with anyone else.</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="form-phone">Phone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  class="form-control"
+                  id="form-phone"
+                  placeholder="Enter your phone number"
+                  required=""
+                />
+              </div>
+              <div class="form-group">
+                <label for="form-message">Message</label>
+                <textarea
+                  class="form-control"
+                  name="message"
+                  id="form-message"
+                  rows="3"
+                  placeholder="Enter your message to us - e.g - I would like to discuss some concerns about our fire doors"
+                ></textarea>
+              </div>
+              <input
+                type="text"
+                class="d-none"
+                name="site_location"
+                id="site_location"
+                value=""
+              />
+              <input
+                type="hidden"
+                name="recaptcha_value"
+                id="recaptcha_value"
+                value=""
+              />
+
+              <button
+                type="submit"
+                id="submit-form"
+                class="btn btn-sm btn-primary mt-2">Submit Form</button
+              >
+            </form>
+
+            <div
+              id="contact-error-alert"
+              class="alert alert-danger mt-2 mb-0"
+              role="alert"
+              style="display: none;"
+            >
+              Something went wrong when submitting the form!
+            </div>
+
+            <div
+              id="contact-success-alert"
+              class="alert alert-primary mt-2 mb-0"
+              role="alert"
+              style="display: none;"
+            >
+              Form Submitted Successfully!
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-lg-offset-1">
+          <div class="card p-3">
+            <h4 class="text-color-dark mb-1 pb-2">Office</h4>
+
+            <ul class="list list-icons mt-3 mb-3">
+              <p class="text-4 mb-0"></p><li style="list-style: none;">
+                <i class="bi bi-buildings"></i> Rose Cottage<br />1 Post Office
+                Row<br />Bilton-in-Ainsty<br />York<br />YO26 7NW
+              </li>
+              <p></p>
+              <p class="text-4 mb-0"></p><li style="list-style: none;">
+                <i class="bi bi-telephone"></i>
+                <a href="tel:07544 030486" style="text-decoration: none"
+                  >07544 030486</a
+                >
+              </li>
+              <p></p>
+              <p class="text-4 mb-0"></p><li style="list-style: none;">
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:mail@example.com">robert@coulsy.co.uk</a>
+              </li>
+              <p></p>
+            </ul>
+          </div>
+          <div class="card p-3 mt-4">
+            <h4 class="text-color-dark mb-1 pb-2">Company details</h4>
+            <p class="small">Rest assured by knowing who we are.</p>
+
+            <ul class="list list-icons mt-3 mb-3">
+              <p class="text-4 mb-0"></p><li style="list-style: none;">
+                <i class="bi bi-card-checklist"></i> Registered Company : Coulsy
+                Ltd
+              </li>
+              <p></p>
+              <p class="text-4 mb-0"></p><li style="list-style: none;">
+                <i class="bi bi-card-checklist"></i> Company number : 8575688
+              </li>
+              <p></p>
+              <p class="text-4 mb-0"></p><li style="list-style: none;">
+                <i class="bi bi-card-checklist"></i> Commenced trading : July 2013
+              </li>
+              <p></p>
+              <p class="text-4 mb-0"></p><li style="list-style: none;">
+                <i class="bi bi-card-checklist"></i> VAT : upon request
+              </li>
+              <p></p>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

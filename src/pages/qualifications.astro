@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import benchPlaneImage from "../assets/images/bench-plane-frog_adobe_express.svg";
+import cityBImage from "../assets/images/citb.png";
+import cscsGoldImage from "../assets/images/cscs_gold.png";
+import cityAndGuildsImage from "../assets/images/cityandguilds_logo.png";
+import Image from "astro/components/Image.astro";
+---
+
+<Layout title="Our Qualifications">
+  <main>
+    <div class="container">
+      <div class="row mt-5 mb-4">
+        <div class="col">
+          <h1>Our Qualifications</h1>
+        </div>
+      </div>
+
+      <div class="row justify-content-around mb-5 mt-5">
+        <div class="col-lg-5">
+          <div>
+            <h3>
+              R<small class="text-muted"
+                >est assured that we are fully qualified</small
+              >
+            </h3>
+            <p class="lead"></p>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="mt-1">City and Guilds</h5>
+                <ul class="list-project-details">
+                  <li class="list-group-item">
+                    <i class="bi bi-clipboard2-check"></i> Trained carpenters &amp;
+                    joiners
+                  </li>
+                  <li class="list-group-item">
+                    <i class="bi bi-clipboard2-check"></i> City &amp; Guilds ”Distinction
+                    Grades”
+                  </li>
+                  <li class="list-group-item">
+                    <i class="bi bi-clipboard2-check"></i> Advanced City &amp; Guilds
+                    ”Distinction Grades”
+                  </li>
+                </ul>
+                <hr />
+
+                <h5 class="mt-1">(CSCS) certified</h5>
+                <p>
+                  (CSCS) Construction Skills Certification Scheme is used to
+                  measure the different levels of qualifications between
+                  contractors.
+                </p>
+                <p>
+                  We have passed the construction skill health and safety test
+                  to obtain <span style="color:#f39c12">gold</span> card status.
+                </p>
+
+                <hr />
+                <h5 class="mt-1">Additional</h5>
+                <ul>
+                  <li class="list-group-item">
+                    <i class="bi bi-clipboard2-check"></i> Level 3 Award in Fire
+                    Door Safety (6581)
+                  </li>
+                  <li class="list-group-item">
+                    <i class="bi bi-clipboard2-check"></i> Reach &amp; Boom hydraulic
+                    lifts
+                  </li>
+                  <li class="list-group-item">
+                    <i class="bi bi-clipboard2-check"></i> Asbestos Awareness IATP
+                  </li>
+                  <li class="list-group-item">
+                    <i class="bi bi-clipboard2-check"></i> COSHH
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <Image
+            src={benchPlaneImage}
+            width="386"
+            height="256"
+            class="object-fit img-fluid mx-auto d-block mb-4"
+            alt="Bench Plane"
+          />
+        </div>
+      </div>
+      <hr />
+      <div class="row mb-5 mt-5 bt">
+        <div class="col-md-4">
+          <Image
+            src={cityBImage}
+            width="362"
+            height="139"
+            class="object-fit img-fluid mx-auto d-block"
+            alt="Citb Logo"
+          />
+        </div>
+        <div class="col-md-4">
+          <Image
+            src={cscsGoldImage}
+            width="416"
+            height="261"
+            class="object-fit img-fluid mx-auto d-block"
+            alt="CSCS Gold Logo"
+          />
+        </div>
+        <div class="col-md-4">
+          <Image
+            src={cityAndGuildsImage}
+            width="416"
+            height="258"
+            class="object-fit img-fluid mx-auto d-block"
+            alt="City and Guilds Logo"
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

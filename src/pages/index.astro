@@ -1,81 +1,53 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Carousel from "../components/Carousel.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="about">Our Services</a>
-			<div class="dropdown-menu" aria-labelledby="download">
-				<a class="dropdown-item" href="fire-door-services">Fire Door Services</a>
-				<a class="dropdown-item" href="fire-door-inspectors">Fire Door Inspectors</a>
-				<a class="dropdown-item" href="fire-door-installers">Fire Door Installers</a>
-				<a class="dropdown-item" href="fire-door-maintenance">Fire Door Maintenance</a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="property-maintenance">Property Maintenance</a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item disabled" href="">Resources</a>
-			</div>
-		</li>
-	</main>
-</Layout>
+  <main class="container mx-auto mt-16">
+    <div class="row">
+      <div class="col-md-8 col-lg-8">
+        <div class="row">
+          <Carousel />
+        </div>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
+        <div class="row">
+          <div class="container" id="">
+            <h1 class="fs-3">Welcome to COULSY &nbsp;Fire Door Services</h1>
+            <h3 class="pb-2 border-bottom mt-4">
+              Our <small class="text-muted"
+                ><i class="bi bi-clipboard2-check"></i>
+                Services</small
+              >
+            </h3>
+            <div class="row g-4 py-3 row-cols-2 row-cols-lg-2">
+              <div class="feature col">
+                <ul>
+                  <li>Fire door maintenance and repairs</li>
+                  <li>Surveys, assessments and checks</li>
+                  <li>
+                    6 monthly inspections to RRO (Regulatory Reform Order)
+                  </li>
+                </ul>
+              </div>
+              <div class="feature col">
+                <ul>
+                  <li>Supply and installation and fitting</li>
+                  <li>Fire door inspections</li>
+                  <li>Fire door risk assesments</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <div class="row flex-column pb-lg-2">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

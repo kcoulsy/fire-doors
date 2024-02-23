@@ -1,0 +1,61 @@
+---
+import type { GetStaticPaths, GetStaticPathsResult } from "astro";
+import { LOCATIONS } from "../constants/locations";
+import MainPage from "../components/MainPage.astro";
+
+export const getStaticPaths = (() => {
+  const paths: GetStaticPathsResult = [];
+
+  LOCATIONS.forEach((location) => {
+    paths.push({
+      params: {
+        location,
+        type: "fire-door-services",
+      },
+    });
+  });
+
+  LOCATIONS.forEach((location) => {
+    paths.push({
+      params: {
+        location,
+        type: "fire-door-inspectors",
+      },
+    });
+  });
+
+  LOCATIONS.forEach((location) => {
+    paths.push({
+      params: {
+        location,
+        type: "fire-door-installers",
+      },
+    });
+  });
+
+  LOCATIONS.forEach((location) => {
+    paths.push({
+      params: {
+        location,
+        type: "fire-door-maintenance",
+      },
+    });
+  });
+
+  LOCATIONS.forEach((location) => {
+    paths.push({
+      params: {
+        location,
+        type: "property-maintenance",
+      },
+    });
+  });
+
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { location, type } = Astro.params;
+console.log(Astro.params);
+---
+
+<MainPage location={location} type={type} />

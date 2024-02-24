@@ -155,16 +155,19 @@ import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
   // @ts-ignore
   import Glider from "glider-js";
   console.log(Glider);
-  new Glider(document.querySelector('.glider'), {
-    slidesToShow: 1,
-    scrollLock: true,
-    resizeLock: true,
-    rewind:true,
-    draggable: true,
-    arrows: {
-      prev: '.carousel-control-prev',
-      next: '.carousel-control-next'
-    },
-    dots: '.indicators'
-  });
+  const el = document.querySelector('.glider');
+  if (el) {
+    new Glider(el as HTMLElement, {
+      slidesToShow: 1,
+      scrollLock: true,
+      resizeLock: true,
+      rewind:true,
+      draggable: true,
+      arrows: {
+        prev: '.carousel-control-prev',
+        next: '.carousel-control-next'
+      },
+      dots: '.indicators'
+    });
+  }
 </script>

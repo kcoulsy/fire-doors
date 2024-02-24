@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 
 const { location, type } = Astro.params;
 
-function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 const typeFormated = type

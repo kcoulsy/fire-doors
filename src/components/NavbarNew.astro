@@ -1,0 +1,95 @@
+---
+import Dropdown from "./NavDropdown.astro";
+import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+
+const menuitems = [
+  {
+    title: "Our Services",
+    path: "#",
+    children: [
+      { title: "Fire Door Services", path: "/fire-door-services" },
+      { title: "Fire Door Installers", path: "/fire-door-installers" },
+      { title: "Fire Door Inspectors", path: "/fire-door-inspectors" },
+      { title: "Fire Door Maintenance", path: "/fire-door-maintenance" },
+      { title: "Property Maintenance", path: "/property-maintenance" },
+    ],
+  },
+  {
+    title: "About",
+    path: "#",
+    children: [
+      { title: "About", path: "/about" },
+      { title: "Our Compliance", path: "/compliance" },
+      { title: "Our Qualificaitons", path: "/qualifications" },
+      { title: "Our Sustainability", path: "/sustainability" },
+    ],
+  },
+  {
+    title: "Contact",
+    path: "/contact",
+  },
+];
+---
+  <header class="flex flex-col lg:flex-row justify-between items-center bg-[#2C3E50] text-white">
+    <Astronav>
+      <div class="container mx-auto flex lg:max-h-16 h-16 items-center">
+      <div class="flex w-full lg:w-auto items-center justify-between">
+        <a href="/" class="text-lg text-white"
+          >COULSY Fire Doors
+        </a>
+        <div class="block lg:hidden">
+          <MenuIcon class="w-4 h-4 text-gray-800" />
+        </div>
+      </div>
+      <MenuItems class="hidden w-full lg:w-auto items-center lg:flex lg:mt-0">
+        <ul class="flex flex-col lg:flex-row lg:gap-3 mb-0 lg:h-10 max-h-40">
+          {
+            menuitems.map((item, index) => (
+              <>
+                {item.children && (
+                  <Dropdown
+                    title={item.title}
+                    children={item.children}
+                    lastItem={index === menuitems.length - 1}
+                  />
+                )}
+
+                {!item.children && (
+                  <li>
+                    <a
+                      href={item.path}
+                      class="flex lg:px-3 py-2 items-center text-white hover:text-gray-600">
+                      {item.title}
+                    </a>
+                  </li>
+                )}
+              </>
+            ))
+          }
+        </ul>
+      </MenuItems>
+      <ul class="hidden lg:flex items-center gap-2 p-0 m-0 justify-end flex-grow">
+        <li class="nav-item">
+          <a target="_blank" rel="noopener" class="nav-link" href="#"
+            ><i class="bi bi-linkedin" style="font-size: 1.5rem;"></i></a
+          >
+        </li>
+        <li class="nav-item">
+          <a target="_blank" rel="noopener" class="nav-link" href="#"
+            ><i class="bi bi-facebook" style="font-size: 1.5rem;"></i></a
+          >
+        </li>
+        <li class="nav-item">
+          <a target="_blank" rel="noopener" class="nav-link" href="#"
+            ><i class="bi bi-twitter" style="font-size: 1.5rem;"></i></a
+          >
+        </li>
+        <li class="nav-item">
+          <a target="_blank" rel="noopener" class="nav-link" href="#"
+            ><i class="bi bi-instagram" style="font-size: 1.5rem;"></i></a
+          >
+        </li>
+      </ul>
+    </div>
+    </Astronav>
+  </header>

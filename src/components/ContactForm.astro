@@ -24,8 +24,9 @@
     data-netlify="true"
     netlify-honeypot="location"
     data-netlify-recaptcha="true"
+    class="flex flex-col gap-2"
   >
-    <div class="form-group">
+    <div class="space-y-1">
       <label for="form-name">Name</label>
       <input
         type="text"
@@ -39,7 +40,7 @@
         required=""
       />
     </div>
-    <div class="form-group">
+    <div class="space-y-1">
       <label for="form-email">Email address</label>
       <input
         type="text"
@@ -53,7 +54,7 @@
         >We'll never share your email with anyone else.</small
       >
     </div>
-    <div class="form-group">
+    <div class="space-y-1">
       <label for="form-phone">Phone</label>
       <input
         type="text"
@@ -64,7 +65,7 @@
         required=""
       />
     </div>
-    <div class="form-group">
+    <div class="space-y-1">
       <label for="form-message">Message</label>
       <textarea
         class="form-control"
@@ -84,16 +85,19 @@
     <input type="hidden" name="location" id="location" value="" />
     <!-- <input type="hidden" name="recaptcha_value" id="recaptcha_value" value="" /> -->
 
-    <div data-netlify-recaptcha="true"></div>
+    <div data-netlify-recaptcha="true" class="mt-2"></div>
 
-    <button type="submit" id="submit-form" class="btn btn-sm btn-primary mt-2"
+    <button
+      type="submit"
+      id="submit-form"
+      class="mt-2 bg-brand text-white rounded-sm p-2 text-lg"
       >Submit Form</button
     >
   </form>
 
   <div
     id="contact-error-alert"
-    class="alert alert-danger mt-2 mb-0"
+    class="p-4 bg-red-700 text-white mt-2 mb-0"
     role="alert"
     style="display: none;"
   >
@@ -102,7 +106,7 @@
 
   <div
     id="contact-success-alert"
-    class="alert alert-primary mt-2 mb-0"
+    class="p-4 bg-brand text-white mt-2 mb-0"
     role="alert"
     style="display: none;"
   >

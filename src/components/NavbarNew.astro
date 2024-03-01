@@ -30,13 +30,14 @@ const menuitems = [
   },
 ];
 ---
-  <header class="flex flex-col lg:flex-row justify-between items-center bg-[#2C3E50] text-white">
-    <Astronav>
-      <div class="container mx-auto flex lg:max-h-16 h-16 items-center">
+
+<header
+  class="flex flex-col lg:flex-row justify-between items-center bg-brand text-white"
+>
+  <Astronav>
+    <div class="container mx-auto flex lg:max-h-16 h-16 items-center">
       <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="text-lg text-white"
-          >COULSY Fire Doors
-        </a>
+        <a href="/" class="text-lg text-white">COULSY Fire Doors</a>
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />
         </div>
@@ -58,7 +59,8 @@ const menuitems = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-white hover:text-gray-600">
+                      class="flex lg:px-3 py-2 items-center text-white hover:text-gray-600"
+                    >
                       {item.title}
                     </a>
                   </li>
@@ -68,7 +70,9 @@ const menuitems = [
           }
         </ul>
       </MenuItems>
-      <ul class="hidden lg:flex items-center gap-2 p-0 m-0 justify-end flex-grow">
+      <ul
+        class="hidden lg:flex items-center gap-2 p-0 m-0 justify-end flex-grow"
+      >
         <li class="nav-item">
           <a target="_blank" rel="noopener" class="nav-link" href="#"
             ><i class="bi bi-linkedin" style="font-size: 1.5rem;"></i></a
@@ -91,5 +95,5 @@ const menuitems = [
         </li>
       </ul>
     </div>
-    </Astronav>
-  </header>
+  </Astronav>
+</header>

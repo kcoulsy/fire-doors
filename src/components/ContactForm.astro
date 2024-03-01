@@ -14,10 +14,11 @@
   <hr />
   <p class="lead">
     Instant message<br /><small class="text-muted"
-      >Leave a few details to discover how we can help.</small>
+      >Leave a few details to discover how we can help.</small
+    >
   </p>
 
-  <form id="contact-form" method="post" action="submit-form">
+  <form id="contact-form" method="post" data-netlify="true">
     <div class="form-group">
       <label for="form-name">Name</label>
       <input
@@ -98,3 +99,47 @@
     Form Submitted Successfully!
   </div>
 </div>
+
+
+<script>
+  const successAlert = document.getElementById("contact-success-alert")
+  const errorAlert = document.getElementById("contact-error-alert")
+  const handleSubmit = (event: SubmitEvent => {
+  event.preventDefault();
+
+  const myForm = event.target;
+  if (!myForm) {
+    return;
+  }
+  const formData = new FormData(myForm as HTMLFormElement);
+  
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData as any).toString(),
+  })
+    .then(function () {
+      if (successAlert) {
+        successAlert.style.display = "block";
+      }
+      if (errorAlert) {
+        errorAlert.style.display = "none";
+      }
+      return console.log("Form successfully submitted");
+    })
+    .catch(function (error) {
+      if (errorAlert) {
+        errorAlert.style.display = "block";
+      }
+      if (successAlert) {
+        successAlert.style.display = "none";
+      }
+      return console.log("Form Error");
+  });
+};
+
+document
+  .querySelector("form")
+  ?.addEventListener("submit", handleSubmit);
+
+</script>

@@ -15,27 +15,29 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
 ---
 
 <Layout title="">
-  <main class="container mx-auto mt-16">
-    <div class="row">
-      <div class="col-md-8 col-lg-8">
-        <div class="row">
+  <main
+    class="container mx-auto sm:px-4 mx-auto sm:px-4 mx-auto sm:px-4 mx-auto mt-16"
+  >
+    <div class="flex flex-wrap">
+      <div class="md:w-2/3 pr-4 pl-4 lg:w-2/3 pr-4 pl-4">
+        <div class="flex flex-wrap">
           <Carousel />
         </div>
 
-        <div class="row">
-          <div class="container" id="">
+        <div class="flex flex-wrap">
+          <div class="container mx-auto sm:px-4 mx-auto sm:px-4" id="">
             <h1 class="fs-3 mt-4">
               Welcome to {locationFormated}
               {typeFormated}
             </h1>
-            <h3 class="pb-2 border-bottom mt-4">
-              Our <small class="text-muted"
+            <h3 class="pb-2 border-b mt-4">
+              Our <small class="text-gray-700"
                 ><i class="bi bi-clipboard2-check"></i>
                 Services</small
               >
             </h3>
-            <div class="row g-4 py-3 row-cols-2 row-cols-lg-2">
-              <div class="feature col">
+            <div class="flex flex-wrap g-4 py-3 row-cols-2 row-cols-lg-2">
+              <div class="feature relative flex-grow max-w-full flex-1 px-4">
                 <ul>
                   <li>Fire door maintenance and repairs</li>
                   <li>Surveys, assessments and checks</li>
@@ -44,7 +46,7 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
                   </li>
                 </ul>
               </div>
-              <div class="feature col">
+              <div class="feature relative flex-grow max-w-full flex-1 px-4">
                 <ul>
                   <li>Supply and installation and fitting</li>
                   <li>Fire door inspections</li>
@@ -56,18 +58,18 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
         </div>
       </div>
 
-      <div class="col-lg-4 col-md-4">
-        <div class="row flex-column pb-lg-2">
+      <div class="lg:w-1/3 pr-4 pl-4 md:w-1/3 pr-4 pl-4">
+        <div class="flex flex-wrap flex-col lg:pb-2">
           <ContactForm />
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="container" id="">
-        <h3 class="pb-2 border-bottom mt-4">
+    <div class="flex flex-wrap">
+      <div class="container mx-auto sm:px-4 mx-auto sm:px-4" id="">
+        <h3 class="pb-2 border-b mt-4">
           Who are we? {
             location ? (
-              <small class="text-muted">
+              <small class="text-gray-700">
                 We are {capitalizeFirstLetter(location)} Fire Door Specialists
               </small>
             ) : (
@@ -75,8 +77,8 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
             )
           }
         </h3>
-        <div class="row g-4 py-3 row-cols-1 row-cols-lg-1">
-          <div class="feature col">
+        <div class="flex flex-wrap g-4 py-3 row-cols-1 row-cols-lg-1">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <p>
               We inspect, repair, maintain, supply and install fire doors and
               frames.
@@ -89,14 +91,14 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
           </div>
         </div>
       </div>
-      <div class="container" id="">
-        <h3 class="pb-2 border-bottom mt-4">
-          Why fire doors? <small class="text-muted"
+      <div class="container mx-auto sm:px-4 mx-auto sm:px-4" id="">
+        <h3 class="pb-2 border-b mt-4">
+          Why fire doors? <small class="text-gray-700"
             ><i class="bi bi-activity"></i> Protection</small
           >
         </h3>
-        <div class="row g-4 py-3 row-cols-1 row-cols-lg-1">
-          <div class="feature col">
+        <div class="flex flex-wrap g-4 py-3 row-cols-1 row-cols-lg-1">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <p>
               Buildings are compartmented to delay the spread of fire and smoke
               from one area to another. The compartments are usually linked by
@@ -110,7 +112,7 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
             <p>
               Most fire deaths are not caused by burns, but by smoke inhalation,
               which can lead to the inability to exit the building.<span
-                class="text-danger"
+                class="text-red-600"
               >
                 Smoke can overcome victims very quickly!</span
               >
@@ -123,14 +125,14 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
           </div>
         </div>
       </div>
-      <div class="container" id="">
-        <h3 class="pb-2 border-bottom mt-4">
-          Fire door <small class="text-muted"
+      <div class="container mx-auto sm:px-4 mx-auto sm:px-4" id="">
+        <h3 class="pb-2 border-b mt-4">
+          Fire door <small class="text-gray-700"
             ><i class="bi bi-clipboard-x"></i> Common Failures</small
           >
         </h3>
-        <div class="row g-4 py-3 row-cols-2 row-cols-lg-2">
-          <div class="feature col">
+        <div class="flex flex-wrap g-4 py-3 row-cols-2 row-cols-lg-2">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <ul>
               <li>Doors are incorrectly fitted or damaged</li>
               <li>Wrong gap tollerances</li>
@@ -138,7 +140,7 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
               <li>Faulty or badly fitted door closers</li>
             </ul>
           </div>
-          <div class="feature col">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <ul>
               <li>Doors incorrectly fitted or damaged</li>
               <li>
@@ -160,7 +162,7 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
 
         <!-- Modal -->
         <div
-          class="modal fade"
+          class="modal opacity-0"
           id="exampleModal"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -201,7 +203,7 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
               <div class="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700"
                   data-bs-dismiss="modal">Close</button
                 >
               </div>
@@ -209,10 +211,10 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
           </div>
         </div>
       </div>
-      <div class="container" id="">
-        <h3 class="pb-2 border-bottom mt-4">Our sevices</h3>
-        <div class="row g-4 py-3 row-cols-1 row-cols-lg-5">
-          <div class="feature col">
+      <div class="container mx-auto sm:px-4 mx-auto sm:px-4" id="">
+        <h3 class="pb-2 border-b mt-4">Our sevices</h3>
+        <div class="flex flex-wrap g-4 py-3 row-cols-1 row-cols-lg-5">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <h4 class="fs-5">
               <i
                 class="bi bi-door-open"
@@ -223,11 +225,11 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
               The correct inspection of your fire door and its frame are
               cruicial to its performance.
             </p>
-            <div class="d-flex justify-content-between">
+            <div class="flex justify-between">
               <a href="fire-door-services" class="">Further information...</a>
               <a
                 href="areas-covered-fire-door-services"
-                class="small"
+                class="text-xs"
                 style="text-decoration: none; color: lightgray;"
                 >Areas covered</a
               >
@@ -235,7 +237,7 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
             <hr />
           </div>
 
-          <div class="feature col">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <h4 class="fs-5">
               <i
                 class="bi bi-door-open"
@@ -246,18 +248,18 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
               The correct inspection of your fire door and its frame are
               cruicial to its performance.
             </p>
-            <div class="d-flex justify-content-between">
+            <div class="flex justify-between">
               <a href="fire-door-inspectors" class="">Further information...</a>
               <a
                 href="areas-covered-fire-door-inspectors"
-                class="small"
+                class="text-xs"
                 style="text-decoration: none; color: lightgray;"
                 >Areas covered</a
               >
             </div>
             <hr />
           </div>
-          <div class="feature col">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <h4 class="fs-5">
               <i class="bi bi-tools" style="font-size: 2rem; color: #05bd9b;"
               ></i>
@@ -268,18 +270,18 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
               fundamental to their overall performance.<br />It will ensure the
               fire door will remain reliable to its fire integrity rating.
             </p>
-            <div class="d-flex justify-content-between">
+            <div class="flex justify-between">
               <a href="fire-door-installers" class="">Further information...</a>
               <a
                 href="areas-covered-fire-door-installers"
-                class="small"
+                class="text-xs"
                 style="text-decoration: none; color: lightgray;"
                 >Areas covered</a
               >
             </div>
             <hr />
           </div>
-          <div class="feature col">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <h4 class="fs-5">
               <i
                 class="bi bi-door-closed"
@@ -290,19 +292,19 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
               We provide our clients with a proactive approach to fire door
               maintenance and complience.
             </p>
-            <div class="d-flex justify-content-between">
+            <div class="flex justify-between">
               <a href="fire-door-maintenance" class="">Further information...</a
               >
               <a
                 href="areas-covered-fire-door-maintenance"
-                class="small"
+                class="text-xs"
                 style="text-decoration: none; color: lightgray;"
                 >Areas covered</a
               >
             </div>
             <hr />
           </div>
-          <div class="feature col">
+          <div class="feature relative flex-grow max-w-full flex-1 px-4">
             <h4 class="fs-5">
               <i
                 class="bi bi-buildings"
@@ -310,11 +312,11 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
               <a href="property-maintenance" class="">Property Maintenance</a>
             </h4>
             <p>Reactive and proactive property maintenance.</p>
-            <div class="d-flex justify-content-between">
+            <div class="flex justify-between">
               <a href="property-maintenance" class="">Further information...</a>
               <a
                 href="areas-covered-property-maintenance"
-                class="small"
+                class="text-xs"
                 style="text-decoration: none; color: lightgray;"
                 >Areas covered</a
               >

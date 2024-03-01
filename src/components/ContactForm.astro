@@ -34,7 +34,7 @@
         value=""
         data-msg-required="Please enter your name."
         maxlength="30"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         name="name"
         id="name"
         required=""
@@ -45,7 +45,7 @@
       <input
         type="text"
         name="email"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         id="form-email"
         placeholder="Enter your email"
         required=""
@@ -59,7 +59,7 @@
       <input
         type="text"
         name="phone"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         id="form-phone"
         placeholder="Enter your phone number"
         required=""
@@ -68,7 +68,7 @@
     <div class="space-y-1">
       <label for="form-message">Message</label>
       <textarea
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         name="message"
         id="form-message"
         rows="3"
@@ -82,8 +82,7 @@
       value=""
     />
 
-    <input type="hidden" name="location" id="location" value="" />
-    <!-- <input type="hidden" name="recaptcha_value" id="recaptcha_value" value="" /> -->
+    <input type="hidden" name="location" id="location" />
 
     <div data-netlify-recaptcha="true" class="mt-2"></div>
 

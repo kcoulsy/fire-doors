@@ -18,7 +18,13 @@
     >
   </p>
 
-  <form id="contact-form" method="post" data-netlify="true">
+  <form
+    id="contact-form"
+    method="post"
+    data-netlify="true"
+    netlify-honeypot="location"
+    data-netlify-recaptcha="true"
+  >
     <div class="form-group">
       <label for="form-name">Name</label>
       <input
@@ -74,7 +80,11 @@
       id="site_location"
       value=""
     />
-    <input type="hidden" name="recaptcha_value" id="recaptcha_value" value="" />
+
+    <input type="hidden" name="location" id="location" value="" />
+    <!-- <input type="hidden" name="recaptcha_value" id="recaptcha_value" value="" /> -->
+
+    <div data-netlify-recaptcha="true"></div>
 
     <button type="submit" id="submit-form" class="btn btn-sm btn-primary mt-2"
       >Submit Form</button
@@ -100,46 +110,42 @@
   </div>
 </div>
 
-
 <script>
-  const successAlert = document.getElementById("contact-success-alert")
-  const errorAlert = document.getElementById("contact-error-alert")
-  const handleSubmit = (event: SubmitEvent => {
-  event.preventDefault();
+  const successAlert = document.getElementById("contact-success-alert");
+  const errorAlert = document.getElementById("contact-error-alert");
+  const handleSubmit = (event: SubmitEvent) => {
+    event.preventDefault();
 
-  const myForm = event.target;
-  if (!myForm) {
-    return;
-  }
-  const formData = new FormData(myForm as HTMLFormElement);
-  
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData as any).toString(),
-  })
-    .then(function () {
-      if (successAlert) {
-        successAlert.style.display = "block";
-      }
-      if (errorAlert) {
-        errorAlert.style.display = "none";
-      }
-      return console.log("Form successfully submitted");
+    const myForm = event.target;
+    if (!myForm) {
+      return;
+    }
+    const formData = new FormData(myForm as HTMLFormElement);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString(),
     })
-    .catch(function (error) {
-      if (errorAlert) {
-        errorAlert.style.display = "block";
-      }
-      if (successAlert) {
-        successAlert.style.display = "none";
-      }
-      return console.log("Form Error");
-  });
-};
+      .then(function () {
+        if (successAlert) {
+          successAlert.style.display = "block";
+        }
+        if (errorAlert) {
+          errorAlert.style.display = "none";
+        }
+        return console.log("Form successfully submitted");
+      })
+      .catch(function (error) {
+        if (errorAlert) {
+          errorAlert.style.display = "block";
+        }
+        if (successAlert) {
+          successAlert.style.display = "none";
+        }
+        return console.log("Form Error", error);
+      });
+  };
 
-document
-  .querySelector("form")
-  ?.addEventListener("submit", handleSubmit);
-
+  document.querySelector("form")?.addEventListener("submit", handleSubmit);
 </script>

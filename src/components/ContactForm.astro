@@ -2,9 +2,11 @@
 
 ---
 
-<div class="card p-3">
-  <h4 class="mb-2">Rapid response</h4>
-  <h3 class="fs-5 mb-1">
+<div
+  class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 p-6"
+>
+  <h4 class="text-3xl">Rapid response</h4>
+  <h3 class="text-3xl font-bold mb-1">
     Call or text : Robert <a
       href="tel:07544 030486"
       style="text-decoration: none; color: #ff1d1d; font-weight: bold; letter-spacing: 1px;"
@@ -12,8 +14,8 @@
     >
   </h3>
   <hr />
-  <p class="lead">
-    Instant message<br /><small class="text-muted"
+  <p class="text-xl font-light">
+    Instant message<br /><small class="text-gray-700"
       >Leave a few details to discover how we can help.</small
     >
   </p>
@@ -50,7 +52,7 @@
         placeholder="Enter your email"
         required=""
       />
-      <small id="emailHelp" class="form-text text-muted"
+      <small id="emailHelp" class="block mt-1 text-gray-700"
         >We'll never share your email with anyone else.</small
       >
     </div>
@@ -76,7 +78,7 @@
     </div>
     <input
       type="text"
-      class="d-none"
+      class="hidden"
       name="site_location"
       id="site_location"
       value=""
@@ -96,7 +98,7 @@
 
   <div
     id="contact-error-alert"
-    class="p-4 bg-red-700 text-white mt-2 mb-0"
+    class="p-6 bg-red-700 text-white mt-2 mb-0"
     role="alert"
     style="display: none;"
   >
@@ -105,7 +107,7 @@
 
   <div
     id="contact-success-alert"
-    class="p-4 bg-brand text-white mt-2 mb-0"
+    class="p-6 bg-brand text-white mt-2 mb-0"
     role="alert"
     style="display: none;"
   >

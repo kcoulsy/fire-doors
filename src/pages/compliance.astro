@@ -6,23 +6,26 @@ import Image from "astro/components/Image.astro";
 
 <Layout title="Compliance">
   <main>
-    <div class="container">
-      <div class="row mt-5 mb-4">
-        <div class="col">
+    <div class="container mx-auto sm:px-4">
+      <div class="flex flex-wrap mt-5 mb-4">
+        <div class="relative flex-grow max-w-full flex-1 px-4">
           <h1>Our Compliance</h1>
         </div>
       </div>
 
-      <div class="row justify-content-around mb-5 mt-5">
-        <div class="col-lg-5">
+      <div class="flex flex-wrap justify-around mb-5 mt-5">
+        <div class="lg:w-2/5 pr-4 pl-4">
           <div>
             <h3>
-              O<small class="text-muted"
+              O<small class="text-gray-700"
                 >ur compliance as a company is fully committed to health and
-                safety and take our duty of care seriously</small>
+                safety and take our duty of care seriously</small
+              >
             </h3>
 
-            <p class="lead mt-4" id="compliance_insurance">Insurance</p>
+            <p class="text-xl font-light mt-4" id="compliance_insurance">
+              Insurance
+            </p>
             <p>
               <i class="bi bi-clipboard2-check"></i> Public liability <a
                 href="#">&nbsp;<i class="bi bi-download"></i></a
@@ -36,7 +39,7 @@ import Image from "astro/components/Image.astro";
               Fully insured and offer £5,000,000 employers liability and
               £10,000,000 public liability Insurance.
             </p>
-            <p class="lead mt-4">Regulations</p>
+            <p class="text-xl font-light mt-4">Regulations</p>
             <p>
               Fire safety regulations England 2022<br />
               Construction (Design and Management) Regulations 2015<br />
@@ -45,7 +48,7 @@ import Image from "astro/components/Image.astro";
               Control of Substances Hazardous to Health Regulations (COSHH) 2002
             </p>
 
-            <p class="lead mt-4">Policies</p>
+            <p class="text-xl font-light mt-4">Policies</p>
             <p>Risk assesments<br />Method statements<br />Equality</p>
             <p>
               The health and safety of our clients, operatives and the public is
@@ -66,12 +69,12 @@ import Image from "astro/components/Image.astro";
           </div>
         </div>
 
-        <div class="col-lg-5">
+        <div class="lg:w-2/5 pr-4 pl-4">
           <Image
             src={complianceImage}
             width="526"
             height="405"
-            class="object-fit img-fluid mx-auto d-block mb-4"
+            class="object-fit max-w-full h-auto mx-auto block mb-4"
             alt="Compliance Image"
           />
         </div>

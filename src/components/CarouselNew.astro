@@ -7,8 +7,9 @@ import doorHanging from "../assets/images/door-hanging-1.jpeg";
 import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
 ---
 
-<div id="myCarousel" class="relative overflow-hidden">
-  <div
+<div id="myCarousel" class="relative overflow-hidden w-full">
+  <div class="bg-gray-800 h-40"></div>
+  <!-- <div
     class="indicators absolute bottom-2 mx-auto z-10 left-1/2 -translate-x-1/2"
   >
     <button
@@ -162,7 +163,7 @@ import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
   >
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
-  </button>
+  </button> -->
 </div>
 <script>
   // @ts-ignore
@@ -181,6 +182,17 @@ import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
         next: ".carousel-control-next",
       },
       dots: ".indicators",
+      responsive: [
+        {
+          breakpoint: 0,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            itemWidth: 150,
+            duration: 0.25,
+          },
+        },
+      ],
     });
   }
 </script>

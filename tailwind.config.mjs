@@ -6,6 +6,9 @@ export default {
       colors: {
         brand: "#2C3E50",
       },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],

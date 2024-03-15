@@ -5,7 +5,7 @@ const posthogKey = import.meta.env.VITE_POSTHOG_KEY;
 <div
   id="cookie-banner"
   data-posthog-key={posthogKey}
-  class="opacity-0 transition-opacity delay-150 duration-300 fixed bottom-4 left-4 right-4 p-4 bg-white z-10 shadow-2xl"
+  class="hidden opacity-0 transition-opacity delay-150 duration-300 fixed bottom-4 left-4 right-4 p-4 bg-white z-10 shadow-2xl"
 >
   <h2 class="text-2xl font-bold">Cookie Policy</h2>
   <p class="mt-1 text-sm text-neutral-600">
@@ -43,6 +43,7 @@ const posthogKey = import.meta.env.VITE_POSTHOG_KEY;
     const cookieConsent = localStorage.getItem(CONSENT_KEY);
 
     if (!cookieConsent) {
+      document.querySelector("#cookie-banner")?.classList.remove("hidden");
       document.querySelector("#cookie-banner")?.classList.remove("opacity-0");
       document.querySelector("#cookie-banner")?.classList.add("opacity-100");
     }

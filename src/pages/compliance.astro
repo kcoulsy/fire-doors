@@ -4,81 +4,72 @@ import complianceImage from "../assets/images/compliance.jpeg";
 import Image from "astro/components/Image.astro";
 ---
 
-<Layout title="Compliance">
-  <main>
-    <div class="container mx-auto sm:px-4">
-      <div class="flex flex-wrap mt-5 mb-4">
-        <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h1>Our Compliance</h1>
+<Layout title="About Us">
+  <div class="w-full container mx-auto px-8 py-12">
+    <h1 class="text-3xl font-bold tracking-tight pb-4">
+      Compliance &amp; Safety
+    </h1>
+    <div class="grid md:grid-cols-2 items-start gap-8">
+      <div class="space-y-4 order-last md:order-first">
+        <div class="space-y-4 text-gray-600 prose">
+          <p>
+            Our company is fully committed to health and safety and takes our
+            duty of care seriously. We have comprehensive insurance coverage,
+            including:
+          </p><ul class="list-disc list-inside space-y-2">
+            <li>Public liability insurance</li><li>
+              Employers liability insurance
+            </li>
+          </ul><p>
+            We are fully insured with £5,000,000 employers liability and
+            £10,000,000 public liability insurance.
+          </p><p>We adhere to the following regulations:</p><ul
+            class="list-disc list-inside space-y-2"
+          >
+            <li>Fire safety regulations England 2022</li><li>
+              Construction (Design and Management) Regulations 2015
+            </li><li>Health &amp; Safety at Work Act 1974</li><li>
+              Management of Health &amp; Safety at Work Regulations 1999
+            </li><li>
+              Control of Substances Hazardous to Health Regulations (COSHH) 2002
+            </li>
+          </ul><p>Our policies include:</p><ul
+            class="list-disc list-inside space-y-2"
+          >
+            <li>Risk assessments</li><li>Method statements</li><li>Equality</li>
+          </ul><p>
+            The health and safety of our clients, operatives, and the public is
+            our top priority, and we strictly follow all guidelines and
+            regulations.
+          </p><p>
+            As our client, you can have peace of mind knowing that we have met
+            all the necessary health and safety standards for working in both
+            the public and private sectors.
+          </p>
+          <p>
+            We are happy to provide our pre tender risk assessments, method
+            statements and any other specific documentation that maybe required.
+            Our site operatives receive full health and safety competency
+            training.
+          </p>
+          <p>
+            We can provide more information and answer any questions you may
+            have. Please feel free to <a
+              href="/contact"
+              class="font-semibold text-blue-700 hover:underline">contact us</a
+            >.
+          </p>
         </div>
       </div>
-
-      <div class="flex flex-wrap justify-around mb-5 mt-5">
-        <div class="lg:w-2/5 pr-4 pl-4">
-          <div>
-            <h3>
-              O<small class="text-gray-700"
-                >ur compliance as a company is fully committed to health and
-                safety and take our duty of care seriously</small
-              >
-            </h3>
-
-            <p class="text-xl font-light mt-4" id="compliance_insurance">
-              Insurance
-            </p>
-            <p>
-              <i class="bi bi-clipboard2-check"></i> Public liability <a
-                href="#">&nbsp;<i class="bi bi-download"></i></a
-              >
-              <br />
-              <i class="bi bi-clipboard2-check"></i> Employers liability <a
-                href="#">&nbsp;<i class="bi bi-download"></i></a
-              >
-            </p>
-            <p>
-              Fully insured and offer £5,000,000 employers liability and
-              £10,000,000 public liability Insurance.
-            </p>
-            <p class="text-xl font-light mt-4">Regulations</p>
-            <p>
-              Fire safety regulations England 2022<br />
-              Construction (Design and Management) Regulations 2015<br />
-              Health &amp; Safety at Work Act 1974<br />
-              Management of Health &amp; Safety at Work Regulations 1999<br />
-              Control of Substances Hazardous to Health Regulations (COSHH) 2002
-            </p>
-
-            <p class="text-xl font-light mt-4">Policies</p>
-            <p>Risk assesments<br />Method statements<br />Equality</p>
-            <p>
-              The health and safety of our clients, operatives and the public is
-              our paramount concern and a strong emphasis is seriously followed.
-            </p>
-            <p>
-              As our client, you can rest assured that we have met all the
-              necessary health and safety standards to work within the law for
-              the public and private sectors.
-            </p><p>
-              We are happy to provide our pre tender risk assessments, method
-              statements and any other specific documentation that maybe
-              required.
-            </p>
-            Our site operatives receive full health and safety competency training.<p
-            >
-            </p>
-          </div>
-        </div>
-
-        <div class="lg:w-2/5 pr-4 pl-4">
-          <Image
-            src={complianceImage}
-            width="526"
-            height="405"
-            class="object-fit max-w-full h-auto mx-auto block mb-4"
-            alt="Compliance Image"
-          />
-        </div>
+      <div class="flex items-start">
+        <Image
+          src={complianceImage}
+          width="526"
+          height="405"
+          class="object-fit max-w-full h-auto mx-auto block mb-4"
+          alt="Compliance Image"
+        />
       </div>
     </div>
-  </main>
+  </div>
 </Layout>

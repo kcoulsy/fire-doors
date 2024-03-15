@@ -4,67 +4,63 @@ import sustainabilityLogo from "../assets/images/sustainability_logo.svg";
 import Image from "astro/components/Image.astro";
 ---
 
-<Layout title="Sustainability">
-  <main>
-    <div class="container mx-auto sm:px-4">
-      <div class="flex flex-wrap mt-5 mb-4">
-        <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h1>Our Sustainability</h1>
+<Layout title="About Us">
+  <div class="w-full container mx-auto px-8 py-12">
+    <h1 class="text-3xl font-bold tracking-tight pb-4">
+      Compliance &amp; Safety
+    </h1>
+    <div class="grid md:grid-cols-2 items-start gap-8">
+      <div class="space-y-4">
+        <div class="space-y-4 text-gray-600 prose">
+          <h2 class="font-semibold text-lg">
+            Environmental and pollution prevention
+          </h2>
+          <p>
+            The director recognises day to day operations of the business will
+            impact on the environment, however, we will strive to minimise the
+            potentially harmful effects of any such activity wherever and
+            whenever practicable. Initiatives that reduce the carbon footprint
+            of the business.
+          </p>
+          <h2 class="font-semibold text-lg">
+            Legislative and regulatory compliance
+          </h2>
+          <p>
+            Environmental regulations, laws and codes of practice will be
+            regarded as setting the minimum standards of environmental
+            performance. Where there is not law for a specific task, we will
+            take initiative for the most environmentally process to complete its
+            tasks and record them accordingly.
+          </p>
+          <h2 class="font-semibold text-lg">Communincation to our staff</h2>
+          <p>
+            Our employee involvement in environmental matters is encouraged and
+            will be promoted through training, communications and a constant
+            reappraisal of working methods and techniques.
+          </p>
+          <h2 class="font-semibold text-lg">Social</h2>
+          <p>
+            We actively have initiatives promoting the wellbeing, health and
+            safety of communities, customers, our clients and employees.
+          </p>
+          <p>
+            We can provide more information and answer any questions you may
+            have. Please feel free to <a
+              href="/contact"
+              class="font-semibold text-blue-700 hover:underline">contact us</a
+            >.
+          </p>
         </div>
       </div>
-
-      <div class="flex flex-wrap justify-around mb-5 mt-5">
-        <div class="lg:w-2/5 pr-4 pl-4">
-          <div>
-            <p class="text-xl font-light mt-4">
-              Environmental and pollution prevention
-            </p>
-            <p>
-              The director recognises day to day operations of the business will
-              impact on the environment, however, we will strive to minimise the
-              potentially harmful effects of any such activity wherever and
-              whenever practicable.<br />Initiatives that reduce the carbon
-              footprint of the business.
-            </p>
-
-            <p class="text-xl font-light mt-4">
-              Legislative and regulatory compliance
-            </p>
-            <p>
-              Environmental regulations, laws and codes of practice will be
-              regarded as setting the minimum standards of environmental
-              performance. Where there is not law for a specific task, we will
-              take initiative for the most environmentally process to complete
-              its tasks and record them accordingly.
-            </p>
-
-            <p class="text-xl font-light mt-4">Communincation to our staff</p>
-            <p>
-              Our employee involvement in environmental matters is encouraged
-              and will be promoted through training, communications and a
-              constant reappraisal of working methods and techniques.
-            </p>
-
-            <p class="text-xl font-light mt-4">Social</p>
-            <p>
-              We actively have initiatives promoting the wellbeing, health and
-              safety of communities, customers, our clients and employees.
-            </p>
-
-            <!-- <p class="text-xl font-light mt-4"><a href="#" target="" >Our Environmental policy download</a></p> -->
-          </div>
-        </div>
-
-        <div class="lg:w-2/5 pr-4 pl-4">
-          <Image
-            src={sustainabilityLogo}
-            width="526"
-            height="489"
-            class="object-fit max-w-full h-auto mx-auto block mb-4"
-            alt="Sustainability Image"
-          />
-        </div>
+      <div class="flex items-start">
+        <Image
+          src={sustainabilityLogo}
+          width="526"
+          height="489"
+          class="object-fit max-w-full h-auto mx-auto block mb-4"
+          alt="Sustainability Image"
+        />
       </div>
     </div>
-  </main>
+  </div>
 </Layout>

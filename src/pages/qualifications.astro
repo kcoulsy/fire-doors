@@ -1,138 +1,81 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import benchPlaneImage from "../assets/images/bench-plane-frog_adobe_express.svg";
+import Image from "astro/components/Image.astro";
 import cityBImage from "../assets/images/citb.png";
 import cscsGoldImage from "../assets/images/cscs_gold.png";
 import cityAndGuildsImage from "../assets/images/cityandguilds_logo.png";
-import Image from "astro/components/Image.astro";
 ---
 
 <Layout title="Our Qualifications">
-  <main>
-    <div class="container mx-auto sm:px-4">
-      <div class="flex flex-wrap mt-5 mb-4">
-        <div class="relative flex-grow max-w-full flex-1 px-4">
-          <h1>Our Qualifications</h1>
+  <div class="w-full container mx-auto px-8 py-12">
+    <h1 class="text-3xl font-bold tracking-tight pb-4">Our Qualifications</h1>
+    <div class="grid md:grid-cols-2 items-start gap-8">
+      <div class="space-y-4">
+        <div class="space-y-4 text-gray-600 prose">
+          <p>
+            At our core, expertise is not just a promise; it's our foundation.
+            Here's why you can trust us:
+          </p>
+          <h2 class="font-semibold text-lg">City &amp; Guilds</h2>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Trained carpenters & joiners</li>
+            <li>City & Guilds ”Distinction Grades”</li>
+            <li>Advanced City & Guilds ”Distinction Grades”</li>
+          </ul>
+          <h2 class="font-semibold text-lg">CSCS Certified</h2>
+          <p>
+            (CSCS) Construction Skills Certification Scheme is used to measure
+            the different levels of qualifications between contractors. We have
+            passed the construction skill health and safety test to obtain <span
+              class="text-yellow-600 font-semibold">gold</span
+            >
+            card status.
+          </p>
+
+          <h2 class="font-semibold text-lg">Additional Qualifications</h2>
+
+          <ul class="list-disc list-inside space-y-2">
+            <li>Level 3 Award in Fire Door Safety (6581)</li>
+            <li>Reach & Boom hydraulic lifts</li>
+            <li>Asbestos Awareness IATP</li>
+            <li>COSHH</li>
+          </ul>
+          <p>
+            When you choose us, you're choosing a team that's not only qualified
+            but dedicated to excellence in every aspect of our work.
+          </p>
+          <p>
+            We can provide more information and answer any questions you may
+            have. Please feel free to <a
+              href="/contact"
+              class="font-semibold text-blue-700 hover:underline">contact us</a
+            >.
+          </p>
         </div>
       </div>
-
-      <div class="flex flex-wrap justify-around mb-5 mt-5">
-        <div class="lg:w-2/5 pr-4 pl-4">
-          <div>
-            <h3>
-              R<small class="text-gray-700"
-                >est assured that we are fully qualified</small
-              >
-            </h3>
-            <p class="text-xl font-light"></p>
-
-            <div class="flex flex-wrap">
-              <div class="lg:w-full pr-4 pl-4">
-                <h5 class="mt-1">City and Guilds</h5>
-                <ul class="list-project-details">
-                  <li
-                    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline"
-                  >
-                    <i class="bi bi-clipboard2-check"></i> Trained carpenters &amp;
-                    joiners
-                  </li>
-                  <li
-                    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline"
-                  >
-                    <i class="bi bi-clipboard2-check"></i> City &amp; Guilds ”Distinction
-                    Grades”
-                  </li>
-                  <li
-                    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline"
-                  >
-                    <i class="bi bi-clipboard2-check"></i> Advanced City &amp; Guilds
-                    ”Distinction Grades”
-                  </li>
-                </ul>
-                <hr />
-
-                <h5 class="mt-1">(CSCS) certified</h5>
-                <p>
-                  (CSCS) Construction Skills Certification Scheme is used to
-                  measure the different levels of qualifications between
-                  contractors.
-                </p>
-                <p>
-                  We have passed the construction skill health and safety test
-                  to obtain <span style="color:#f39c12">gold</span> card status.
-                </p>
-
-                <hr />
-                <h5 class="mt-1">Additional</h5>
-                <ul>
-                  <li
-                    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline"
-                  >
-                    <i class="bi bi-clipboard2-check"></i> Level 3 Award in Fire
-                    Door Safety (6581)
-                  </li>
-                  <li
-                    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline"
-                  >
-                    <i class="bi bi-clipboard2-check"></i> Reach &amp; Boom hydraulic
-                    lifts
-                  </li>
-                  <li
-                    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline"
-                  >
-                    <i class="bi bi-clipboard2-check"></i> Asbestos Awareness IATP
-                  </li>
-                  <li
-                    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline"
-                  >
-                    <i class="bi bi-clipboard2-check"></i> COSHH
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:w-2/5 pr-4 pl-4">
-          <Image
-            src={benchPlaneImage}
-            width="386"
-            height="256"
-            class="object-fit max-w-full h-auto mx-auto block mb-4"
-            alt="Bench Plane"
-          />
-        </div>
-      </div>
-      <hr />
-      <div class="flex flex-wrap mb-5 mt-5 bt">
-        <div class="md:w-1/3 pr-4 pl-4">
-          <Image
-            src={cityBImage}
-            width="362"
-            height="139"
-            class="object-fit max-w-full h-auto mx-auto block"
-            alt="Citb Logo"
-          />
-        </div>
-        <div class="md:w-1/3 pr-4 pl-4">
-          <Image
-            src={cscsGoldImage}
-            width="416"
-            height="261"
-            class="object-fit max-w-full h-auto mx-auto block"
-            alt="CSCS Gold Logo"
-          />
-        </div>
-        <div class="md:w-1/3 pr-4 pl-4">
-          <Image
-            src={cityAndGuildsImage}
-            width="416"
-            height="258"
-            class="object-fit max-w-full h-auto mx-auto block"
-            alt="City and Guilds Logo"
-          />
-        </div>
+      <div class="flex items-start flex-col space-y-4">
+        <Image
+          src={cityBImage}
+          width="362"
+          height="139"
+          class="object-fit max-w-full h-auto mx-auto block"
+          alt="Citb Logo"
+        />
+        <Image
+          src={cscsGoldImage}
+          width="416"
+          height="261"
+          class="object-fit max-w-full h-auto mx-auto block"
+          alt="CSCS Gold Logo"
+        />
+        <Image
+          src={cityAndGuildsImage}
+          width="416"
+          height="258"
+          class="object-fit max-w-full h-auto mx-auto block"
+          alt="City and Guilds Logo"
+        />
       </div>
     </div>
-  </main>
+  </div>
 </Layout>

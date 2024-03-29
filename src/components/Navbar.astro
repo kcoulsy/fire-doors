@@ -1,4 +1,8 @@
 ---
+import FacebookIcon from "../icons/FacebookIcon.astro";
+import InstagramIcon from "../icons/InstagramIcon.astro";
+import LinkedInIcon from "../icons/LinkedInIcon.astro";
+import TwitterIcon from "../icons/TwitterIcon.astro";
 import Dropdown from "./Dropdown.astro";
 
 const menuitems = [
@@ -72,24 +76,24 @@ const menuitems = [
     </nav>
     <ul class="hidden lg:flex items-center gap-4 p-0 m-0 justify-end flex-grow">
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#"
-          ><i class="bi bi-linkedin" style="font-size: 1.5rem;"></i></a
-        >
+        <a target="_blank" rel="noopener" class="nav-link" href="#">
+          <LinkedInIcon className="h-8 w-8 fill-white" />
+        </a>
       </li>
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#"
-          ><i class="bi bi-facebook" style="font-size: 1.5rem;"></i></a
-        >
+        <a target="_blank" rel="noopener" class="nav-link" href="#">
+          <FacebookIcon className="h-8 w-8 fill-white" />
+        </a>
       </li>
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#"
-          ><i class="bi bi-twitter" style="font-size: 1.5rem;"></i></a
-        >
+        <a target="_blank" rel="noopener" class="nav-link" href="#">
+          <TwitterIcon className="h-8 w-8 fill-white" />
+        </a>
       </li>
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#"
-          ><i class="bi bi-instagram" style="font-size: 1.5rem;"></i></a
-        >
+        <a target="_blank" rel="noopener" class="nav-link" href="#">
+          <InstagramIcon className="h-8 w-8 fill-white" />
+        </a>
       </li>
     </ul>
   </div>

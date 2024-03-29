@@ -58,6 +58,7 @@ const { items, label } = Astro.props;
           list.classList.add("hidden");
         });
 
+        // @ts-ignore
         ev.currentTarget.nextElementSibling?.classList.toggle("hidden");
       });
     });

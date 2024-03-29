@@ -57,7 +57,11 @@ const menuitems = [
         {
           menuitems.map((item, index) => (
             <>
-              {item.items && <Dropdown label={item.label} items={item.items} />}
+              {item.items && (
+                <li>
+                  <Dropdown label={item.label} items={item.items} />
+                </li>
+              )}
 
               {!item.items && (
                 <li>
@@ -76,22 +80,46 @@ const menuitems = [
     </nav>
     <ul class="hidden lg:flex items-center gap-4 p-0 m-0 justify-end flex-grow">
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#">
+        <a
+          target="_blank"
+          rel="noopener"
+          class="nav-link"
+          href="#"
+          aria-label="LinkedIn icon link"
+        >
           <LinkedInIcon className="h-8 w-8 fill-white" />
         </a>
       </li>
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#">
+        <a
+          target="_blank"
+          rel="noopener"
+          class="nav-link"
+          href="#"
+          aria-label="Facebook icon link"
+        >
           <FacebookIcon className="h-8 w-8 fill-white" />
         </a>
       </li>
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#">
+        <a
+          target="_blank"
+          rel="noopener"
+          class="nav-link"
+          href="#"
+          aria-label="Twitter icon link"
+        >
           <TwitterIcon className="h-8 w-8 fill-white" />
         </a>
       </li>
       <li class="nav-item">
-        <a target="_blank" rel="noopener" class="nav-link" href="#">
+        <a
+          target="_blank"
+          rel="noopener"
+          class="nav-link"
+          href="#"
+          aria-label="Instagram icon link"
+        >
           <InstagramIcon className="h-8 w-8 fill-white" />
         </a>
       </li>

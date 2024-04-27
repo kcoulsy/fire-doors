@@ -12,7 +12,7 @@ import AboutList from "../components/AboutList.astro";
     <div class="w-full py-12 lg:py-24">
       <div class="container px-4">
         <div class="flex flex-col items-center space-y-8">
-          <h1 class="text-3xl font-bold tracking-tight">About our business</h1>
+          <h1 class="text-3xl font-bold tracking-tight">About Cously</h1>
           <h2 class="text-center font-bold tracking-tight">Delivering to your needs and requiremnents</h2>
           <p class="text-center text-gray-500 dark:text-gray-400">
             Providing the highest level of expertise and service
@@ -22,10 +22,10 @@ import AboutList from "../components/AboutList.astro";
       <div
         class="px-4 mt-8 grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 items-start"
       >
-        <div class="flex h-full flex-col space-y-4 items-center shadow-2xl p-8">
-          <h2 class="text-xl font-semibold tracking-tight">Fully Qualified</h2>
+      <div class="flex h-full flex-col items-center space-y-4 shadow-2xl p-8">
+        <h2 class="text-xl font-semibold tracking-tight">Fully Qualified</h2>
           <p class="text-sm text-gray-500 dark:text-gray-400">
-            Our team are highly qualified to meet the demands of your project.
+            Our team are highly qualified to meet the demands of your project
           </p>
           <Image
             src={benchPlaneImage}
@@ -46,15 +46,16 @@ import AboutList from "../components/AboutList.astro";
           />
             <a
               href="/qualifications"
-              class="mt-4 bg-brand text-white rounded-sm text-lg p-4"
             >
-            Learn more
+            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Learn more
+            </button>
             </a>
         </div>
         <div class="flex h-full flex-col items-center space-y-4 shadow-2xl p-8">
           <h2 class="text-xl font-semibold tracking-tight">Highly Compliant</h2>
           <p class="text-sm text-gray-500 dark:text-gray-400">
-            We adhere to the highest standards of compliance and ethics.
+            We adhere to the highest standards of compliance and ethics
           </p>
           <Image
             src={complianceImage}
@@ -74,8 +75,10 @@ import AboutList from "../components/AboutList.astro";
               },
             ]}
           />
-          <a class="text-base font-semibold" href="/compliance">
-            Learn more
+          <a href="/compliance">
+            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Learn more
+            </button>
           </a>
         </div>
         <div
@@ -83,14 +86,14 @@ import AboutList from "../components/AboutList.astro";
         >
           <h2 class="text-xl font-semibold tracking-tight">Sustainability</h2>
           <p class="text-sm text-gray-500 dark:text-gray-400">
-            Making a difference
+            Making a difference<br><br>
           </p>
           <Image 
             src={sustainabilityImage}
             width="416"
             height="261"
-            class="object-fit max-w-full h-[300px] mx-auto block"
-            alt="CSCS Gold Logo"
+            class="object-fit h-[300px]"
+            alt="Sustainability image for coulsy"
           />
           <AboutList
           items={[
@@ -100,9 +103,10 @@ import AboutList from "../components/AboutList.astro";
             { text: "Social" },
           ]}
         />
-          <a class="text-base font-semibold" href="/sustainability">
-            Learn more
-          </a>
+          <a href="/sustainability">
+            <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Learn more
+            </button>          </a>
         </div>
       </div>
     </div>

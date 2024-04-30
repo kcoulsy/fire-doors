@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
-import CITBImage from "./src/assets/images/citb.png";
+import CITBImage from "../assets/images/citb.png";
 import cscsGoldImage from "../assets/images/cscs_gold.png";
 import cityAndGuildsImage from "../assets/images/cityandguilds_logo.png";
 const currentPath = Astro.url.pathname;
@@ -82,26 +82,20 @@ const currentPath = Astro.url.pathname;
         <Image
           src={CITBImage}
           width="350"
-          height=""
           class="object-fit max-w-full h-auto mx-auto block"
           alt="Citb Logo"
-          href="#"
         />
         <Image
           src={cscsGoldImage}
           width="350"
-          height=""
           class="object-fit max-w-full h-auto mx-auto block"
           alt="CSCS Gold Logo"
-          href="#"
         />
         <Image
           src={cityAndGuildsImage}
           width="350"
-          height=""
           class="object-fit max-w-full h-auto mx-auto block"
           alt="City and Guilds Logo"
-          href="#"
         />
       </div>
     </div>

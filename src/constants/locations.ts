@@ -53,4 +53,6 @@ export const LOCATIONS = [
   "wolverhampton",
   "worcester",
   "york",
+  "wetherby",
+  "harrogate",
 ];

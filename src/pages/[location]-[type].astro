@@ -2,6 +2,7 @@
 import type { GetStaticPaths, GetStaticPathsResult } from "astro";
 import { LOCATIONS } from "../constants/locations";
 import MainPage from "../components/MainPage.astro";
+import MainServicesPage from "../components/MainServicesPage.astro";
 
 export const getStaticPaths = (() => {
   const paths: GetStaticPathsResult = [];
@@ -58,4 +59,7 @@ const { location, type } = Astro.params;
 console.log(Astro.params);
 ---
 
-<MainPage location={location} type={type} />
+
+
+{ type === 'fire-door-services' && <MainServicesPage location={location} type={type} /> }
+{ !type && <MainPage location={location} type={type} /> }

@@ -1,5 +1,11 @@
 ---
 import CheckedBox from "../icons/CheckedBox.astro";
+const { location } = Astro.params;
+
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 ---
 
 <!--
@@ -15,11 +21,11 @@ import CheckedBox from "../icons/CheckedBox.astro";
       <div
         class="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right"
       >
-        <h3 class="text-3xl font-bold sm:text-4xl">What we can offer</h3>
+        <h3 class="text-3xl font-bold sm:text-4xl">What we can offer {location ? `in ${capitalizeFirstLetter(location)}` : null }</h3>
 
         <p class="mt-4 text-gray-600">
           We offer a range of services to ensure your fire doors are compliant
-          and safe.
+          and safe { location ? `in ${capitalizeFirstLetter(location)}` : null }.
         </p>
 
         <!-- <div

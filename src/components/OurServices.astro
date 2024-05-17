@@ -4,6 +4,11 @@ import BuildingMaintenanceIcon from "../icons/BuildingMaintenanceIcon.astro";
 import DoorOpenIcon from "../icons/DoorOpenIcon.astro";
 import TeamIcon from "../icons/TeamIcon.astro";
 import InspectorIcon from "../icons/InspectorIcon.astro";
+const { location } = Astro.params;
+
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 ---
 
 <section class="w-full py-12 md:py-24 container mx-auto">
@@ -17,7 +22,7 @@ import InspectorIcon from "../icons/InspectorIcon.astro";
       <p
         class="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed xl:text-base/relaxed"
       >
-        Our essential key fire door services
+        Our essential key fire door services { location ? ` in ${capitalizeFirstLetter(location)}` : null } 
       </p>
     </div>
     <div

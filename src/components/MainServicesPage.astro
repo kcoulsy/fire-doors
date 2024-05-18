@@ -9,6 +9,7 @@ import WhyFireDoors from "./WhyFireDoors.astro";
 import CommonFaults from "./CommonFaults.astro";
 import MainServices from "./MainServices.astro";
 import FireStats from "./FireStats.astro";
+import NearbyAreas from "./NearbyAreas.astro";
 
 const { location, type } = Astro.params;
 
@@ -64,5 +65,6 @@ const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
     <CommonFaults />
     <FireStats />
     <OurServices />
+    <NearbyAreas location={location} />
   </main>
 </Layout>

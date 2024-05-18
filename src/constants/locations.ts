@@ -54,3 +54,19 @@ export const LOCATIONS = [
   "yorkshire",
   "lancashire",
 ];
+
+export const NEARBY_LOCATIONS: Record<string, string[]> = {
+  default: [
+    "leeds",
+    "manchester",
+    "york",
+    "bath",
+    "birmingham",
+    "bradford",
+    "brighton-and-hove",
+    "bristol",
+    "cambridge",
+    "canterbury",
+  ],
+  leeds: ["bradford", "wakefield", "york"],
+};

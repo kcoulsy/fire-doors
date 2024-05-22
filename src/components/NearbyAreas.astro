@@ -4,6 +4,8 @@ import { capitalizeFirstLetter }  from "../utils/capitalizeFirstLetter";
 
 interface Props {
   location?: string;
+
+  
 }
 
 const { location } = Astro.props;
@@ -28,8 +30,8 @@ if (location && NEARBY_LOCATIONS[location]) {
         <p
           class="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
         >
-          Explore the areas we serve and learn more about the services we offer
-          in each location.
+        Discover the other areas we serve { location ? `near ${capitalizeFirstLetter(location)}` : null } and learn more about the fire door services we provide in each location.
+
         </p>
       </div>
     </div>

@@ -58,6 +58,8 @@ export const NEARBY_LOCATIONS: Record<string, string[]> = {
     "sheffield",
     "bradford",
     "huddersfield",
+    "yorkshire",
+    "lancashire",
   ],
   leeds: [
     "york",

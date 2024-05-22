@@ -13,7 +13,6 @@ export const LOCATIONS = [
   "sunderland",
   "wakefield",
   "worcester",
-  "york",
   "wetherby",
   "harrogate",
   "yorkshire",
@@ -27,7 +26,20 @@ export const LOCATIONS = [
   "ilkley",
   "otley",
   "skipton",
-  "wetherby",
+
+
+  "york",
+    "Selby",
+    "Malton",
+    "Tadcaster", 
+    "Pocklington",
+    "Elvington",
+    "Welburn",
+    "Stamford-Bridge",
+    "Towton",
+    "wetherby",
+
+
 ];
 
 export const NEARBY_LOCATIONS: Record<string, string[]> = {
@@ -60,16 +72,18 @@ export const NEARBY_LOCATIONS: Record<string, string[]> = {
     "skipton",
     "wetherby",
   ],
-  york: [
-    "leeds",
-    "harrogate",
-    "horsforth",
-    "bingley",
-    "shipley",
-    "ilkley",
-    "otley",
-    "skipton",
-    "wetherby",
-  ],
+    
+    york: [
+      "Selby",
+      "Malton",
+      "Tadcaster", 
+      "Pocklington",
+      "Elvington",
+      "Welburn",
+      "Stamford-Bridge",
+      "Towton",
+      "wetherby",
+      "leeds",
+    ],
 
 };

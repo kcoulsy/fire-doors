@@ -1,161 +1,286 @@
 ---
+import Image from "astro/components/Image.astro";
 
+import coulsyLogo from "../assets/images/coulsy-logo-sm.png";
 ---
 
-<footer class="bg-gray-100 py-12">
-  <div class="container mx-auto px-4">
+<div class="flex items-end w-full bg-white">
+  <footer class="w-full text-gray-700 bg-gray-100 body-font">
     <div
-      class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-start mx-auto text-sm text-gray-600"
+      class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap"
     >
-      <div class="px-8">
-        <div class="font-semibold mb-2">Services</div>
-        <nav aria-label="Products">
-          <ul class="">
-            <li>
+      <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
+        <a
+          class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start"
+        >
+          <Image
+            src={coulsyLogo}
+            width="100"
+            height="100"
+            class="object-fit"
+            alt="Coulsy Carpentry and joinery"
+            loading="eager"
+          />
+        </a>
+
+        <p class="mt-2 text-sm text-gray-500">Joinery</p>
+        <div class="mt-4">
+          <span
+            class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start"
+          >
+            <a class="text-gray-500 cursor-pointer hover:text-gray-700">
+              <svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                ></path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
+              <svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+                >
+                </path>
+              </svg>
+            </a>
+            <a class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+                ></path>
+              </svg>
+            </a>
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.linkedin.com/company/coulsy-limited/?viewAsMember=true"
+              aria-label="LinkedIn icon link"
+              class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700"
+            >
+              <svg
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="0"
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="none"
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                >
+                </path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle>
+              </svg>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div
+        class="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-20 md:mt-0 md:text-left"
+      >
+        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+          <h2
+            class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
+          >
+            Services
+          </h2>
+          <nav class="mb-10 list-none">
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/fire-door-services">Fire Door Services</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/fire-door-installers">Fire Door Installers</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/fire-door-inspectors">Fire Door Inspectors</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/fire-door-maintenance">Fire Door Maintenance</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="https://coulsyjoinery.co.uk/"
                 target="_blank">Coulsy Carpentry and Joinery</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="https://coulsycontractsolutions.co.uk/"
                 target="_blank">Property Maintenance at Coulsy Ltd</a
               >
             </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="px-8">
-        <div class="font-semibold mb-2">Locations</div><nav
-          aria-label="Locations"
-        >
+          </nav>
+        </div>
+        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+          <h2
+            class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
+          >
+            Locations
+          </h2>
           <ul>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/leeds-fire-door-services">Leeds</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/york-fire-door-services">York</a
               >
             </li>
 
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/manchester-fire-door-services">Manchester</a
               >
             </li>
 
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/ripon-fire-door-services">Ripon</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/harrogate-fire-door-services">Harrogate</a
               >
             </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/yorkshire-fire-door-services">Yorkshire</a
               >
             </li>
 
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
                 href="/lancashire-fire-door-services">Lancashire</a
               >
             </li>
           </ul>
-        </nav>
-      </div>
-      <div class="px-8">
-        <div class="font-semibold mb-2">About us</div>
-        <nav aria-label="About us">
-          <ul>
-            <li>
-              <a class="hover:text-gray-900 hover:underline" href="/contact"
-                >Contact</a
-              >
-            </li>
-            <li>
-              <a class="hover:text-gray-900 hover:underline" href="/about"
-                >About</a
-              >
-            </li>
-            <li>
+        </div>
+        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+          <h2
+            class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
+          >
+            Information
+          </h2>
+          <nav class="mb-10 list-none">
+            <ul>
+              <li class="mt-3">
+                <a
+                  class="text-gray-500 cursor-pointer hover:text-gray-900"
+                  href="/contact">Contact</a
+                >
+              </li>
+              <li class="mt-3">
+                <a
+                  class="text-gray-500 cursor-pointer hover:text-gray-900"
+                  href="/about">About</a
+                >
+              </li>
+              <li class="mt-3">
+                <a
+                  class="text-gray-500 cursor-pointer hover:text-gray-900"
+                  href="/qualifications">Qualifications</a
+                >
+              </li>
+              <li class="mt-3">
+                <a
+                  class="text-gray-500 cursor-pointer hover:text-gray-900"
+                  href="/compliance">Compliance</a
+                >
+              </li>
+              <li class="mt-3">
+                <a
+                  class="text-gray-500 cursor-pointer hover:text-gray-900"
+                  href="/sustainability">Sustainability</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="w-full px-4 lg:w-1/4 md:w-1/2">
+          <h2
+            class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
+          >
+            Contact
+          </h2>
+          <nav class="mb-10 list-none">
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
-                href="/qualifications">Our Qualifications</a
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
+                href="/contact">Send a Message</a
               >
             </li>
-            <li>
-              <a class="hover:text-gray-900 hover:underline" href="/compliance"
-                >Our Compliance</a
-              >
-            </li>
-            <li>
+            <li class="mt-3">
               <a
-                class="hover:text-gray-900 hover:underline"
-                href="/sustainability">Our Sustainability</a
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
+                href="/contact">Request an Inspection</a
               >
             </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="px-8 md:col-span-2 lg:col-span-1">
-        <div class="space-y-1">
-          <p>Copyright © 2013 - 2024</p>
-          <p class="pt-4">
-            <a
-              class="hover:text-gray-900 hover:underline"
-              href="http://coulsy.co.uk/">Coulsy Ltd</a
-            >
-          </p>
-          <p>
-            <a
-              class="hover:text-gray-900 hover:underline"
-              href="tel:07544 030486">07544 030486</a
-            >
-          </p>
+            <li class="mt-3">
+              <a
+                class="text-gray-500 cursor-pointer hover:text-gray-900"
+                href="tel:07544 030486">07544 030486</a
+              >
+            </li>
+          </nav>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+
+    <div class="bg-gray-300">
+      <div class="container px-5 py-4 mx-auto">
+        <p class="text-sm text-gray-700 capitalize xl:text-center">
+          © 2024 All rights reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>

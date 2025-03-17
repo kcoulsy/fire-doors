@@ -1,30 +1,13 @@
 export const LOCATIONS = [
-  "doncaster",
-  "durham",
-  "lincoln",
-  "liverpool",
-  "manchester",
-  "preston",
-  "salford",
-  "sheffield",
 
-  "wakefield",
-  "castleford",
-  "pontefract",
 
   "garforth",
   "rothwell",
 
   "yorkshire",
-  "lancashire",
 
   "leeds",
-    "bradford",
     "harrogate",
-    "horsforth",
-    "bingley",
-    "shipley",
-    "ilkley",
     "otley",
     "skipton",
     "knaresborough",
@@ -44,40 +27,37 @@ export const LOCATIONS = [
     "thirsk",
     "masham",
     "boroughbridge",
+
+    "harrogate",
+      "ripley",
+      "knaresborough",
+      "spofforth",
+      "follifoot",
+      "pannal",
+      "beckwithshaw",
+      "darely",
+      "starbeck",
+
+
+      
 ];
 
 export const NEARBY_LOCATIONS: Record<string, string[]> = {
   default: [
     "leeds",
-    "manchester",
     "york",
-    "bradford",
     "yorkshire",
-    "lancashire",
   ],
   leeds: [
-    "bradford",
     "harrogate",
     "knaresborough",
     "garforth",
     "rothwell",
     "horsforth",
-    "ilkley",
     "otley",
     "wetherby",
   ],
-  bradford: [
-    "leeds",
-    "harrogate",
-    "horsforth",
-    "bingley",
-    "shipley",
-    "ilkley",
-    "otley",
-    "skipton",
-    "huddersfield",
 
-  ],
     york: [
       "selby",
       "malton",
@@ -96,4 +76,16 @@ export const NEARBY_LOCATIONS: Record<string, string[]> = {
       "boroughbridge",
       "york",
       ],
+      harrogate: [
+        "ripley",
+        "knaresborough",
+        "spofforth",
+        "follifoot",
+        "pannal",
+        "beckwithshaw",
+        "darely",
+        "starbeck",
+        "wetherby",
+
+        ],
 };

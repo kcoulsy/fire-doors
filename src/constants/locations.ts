@@ -44,9 +44,8 @@ export const LOCATIONS = [
 
 export const NEARBY_LOCATIONS: Record<string, string[]> = {
   default: [
-    "leeds",
-    "york",
-    "yorkshire",
+    "york","harrogate","wetherby","leeds","yorkshire",
+  
   ],
   leeds: [
     "harrogate",

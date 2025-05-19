@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://your-domain.com', // <-- Replace with your actual site URL
+  site: 'https://coulsyfiredoors.co.uk', // <-- Replace with your actual site URL
   integrations: [
     tailwind(),
     sitemap(),

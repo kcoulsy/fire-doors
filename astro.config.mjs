@@ -1,9 +1,12 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-
-// import purgecss from "astro-purgecss";
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  site: 'https://your-domain.com', // <-- Replace with your actual site URL
+  integrations: [
+    tailwind(),
+    sitemap(),
+  ],
 });

@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.5",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.4.3",
+    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/tailwind": "^6.0.2",
     "posthog-js": "^1.115.0",
     "purgecss": "^5.0.0",
     "sass": "^1.71.1",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
-    "@types/glider-js": "^1.7.11"
+    "@types/glider-js": "^1.7.11",
+    "astro": "^5.7.13"
   }
 }

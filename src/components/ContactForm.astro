@@ -4,6 +4,8 @@ interface Props {
   subtitle?: string;
   showPhone?: boolean;
   className?: string;
+  location?: string;
+  serviceType?: string;
 }
 
 const {
@@ -11,6 +13,8 @@ const {
   subtitle = "Ready to ensure your fire safety compliance? Get in touch for a professional inspection and quote.",
   showPhone = true,
   className = "",
+  location,
+  serviceType,
 } = Astro.props;
 ---
 
@@ -32,6 +36,14 @@ const {
   >
     <!-- Hidden form name for Netlify -->
     <input type="hidden" name="form-name" value="contact" />
+
+    <!-- Hidden location and service type fields -->
+    {location && <input type="hidden" name="location" value={location} />}
+    {
+      serviceType && (
+        <input type="hidden" name="service-type" value={serviceType} />
+      )
+    }
 
     <!-- Honeypot field -->
     <div class="hidden">

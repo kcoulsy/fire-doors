@@ -4,6 +4,8 @@ interface Props {
   subtitle?: string;
   showPhone?: boolean;
   className?: string;
+  location?: string;
+  serviceType?: string;
 }
 
 const {
@@ -11,6 +13,8 @@ const {
   subtitle = "Ready to ensure your fire safety compliance? Get in touch for a professional inspection and quote.",
   showPhone = true,
   className = "",
+  location,
+  serviceType,
 } = Astro.props;
 ---
 
@@ -207,6 +211,23 @@ const {
       setTimeout(() => {
         errorMessage.classList.add("hidden");
       }, 8000);
+    }
+
+    // Add location information to form submission
+    const form = document.getElementById("modern-contact-form");
+    const messageField = document.getElementById("message") as HTMLTextAreaElement;
+    
+    if (form && messageField) {
+      form.addEventListener("submit", function(e) {
+        const location = "${location || ''}";
+        const serviceType = "${serviceType || ''}";
+        
+        if (location && serviceType) {
+          const currentMessage = messageField.value;
+          const locationInfo = `\n\n---\nInquiry from: ${location} (${serviceType})`;
+          messageField.value = currentMessage + locationInfo;
+        }
+      });
     }
   });
 </script>

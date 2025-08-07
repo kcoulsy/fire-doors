@@ -5,7 +5,12 @@ import Breadcrumb from "../components/Breadcrumb.astro";
 import NearbyAreas from "./NearbyAreas.astro";
 import { getFormattedPageData } from "../utils/pageMeta";
 
-const { location } = Astro.params;
+interface Props {
+  location?: string;
+  type?: string;
+}
+
+const { location, type } = Astro.props;
 
 const {
   formattedServiceName,
@@ -15,7 +20,7 @@ const {
   serviceSchema,
   faqSchema,
   defaultDescription,
-} = getFormattedPageData(Astro);
+} = getFormattedPageData(location, type);
 
 const description = `Professional fire door maintenance and repair services ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"}, including regular servicing, compliance checks, and emergency repairs. Qualified since 1989 with 35+ years experience.`;
 const finalDescription = description || defaultDescription;

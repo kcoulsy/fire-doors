@@ -1,18 +1,16 @@
 ---
-import { NEARBY_LOCATIONS } from "../constants/locations";
 import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
+import { getNearbyLocations } from "../utils/getNearbyLocations";
 
 interface Props {
   location?: string;
+  serviceType?: string;
 }
 
-const { location } = Astro.props;
+const { location, serviceType = "fire-door-services" } = Astro.props;
 
-let nearbyLocations: string[] = NEARBY_LOCATIONS.default;
-
-if (location && NEARBY_LOCATIONS[location]) {
-  nearbyLocations = NEARBY_LOCATIONS[location];
-}
+// Get nearby locations with service-specific radius limits (15-20 miles for mobile-friendly searches)
+const nearbyLocations = getNearbyLocations(location, serviceType);
 ---
 
 <section class="w-full py-12 md:py-24 lg:py-30">
@@ -27,9 +25,10 @@ if (location && NEARBY_LOCATIONS[location]) {
         <p
           class="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
         >
-          Discover the other areas we serve {
-            location ? `near ${capitalizeFirstLetter(location)}` : null
-          } and learn more about the services we provide in each location.
+          I provide fire door services for clients
+          {location ? ` near ${capitalizeFirstLetter(location)}` : ""}, whether
+          you're in a village, town or city. Let me know where you're based —
+          I'll do my best to help.
         </p>
       </div>
     </div>
@@ -38,16 +37,22 @@ if (location && NEARBY_LOCATIONS[location]) {
       class="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-8 text-center"
     >
       {
-        nearbyLocations.map((loc) => (
-          <a
-            class="group grid h-auto w-full items-center gap-1 rounded-md p-4 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50-800-50-800-50"
-            href={`/${loc}-fire-door-services`}
-          >
-            <div class="text-sm font-medium leading-none">
-              {capitalizeFirstLetter(loc)}
-            </div>
-          </a>
-        ))
+        nearbyLocations && nearbyLocations.length > 0 ? (
+          nearbyLocations.map(({ slug }) => (
+            <a
+              class="group rounded-lg bg-white p-3 shadow-sm border border-gray-200 transition hover:shadow-md hover:bg-blue-50"
+              href={`/${slug}-${serviceType}`}
+            >
+              <div class="text-base font-medium text-gray-800 group-hover:text-blue-700">
+                {capitalizeFirstLetter(slug)}
+              </div>
+            </a>
+          ))
+        ) : (
+          <div class="col-span-full text-gray-500">
+            <p>Loading nearby areas...</p>
+          </div>
+        )
       }
     </div>
   </div>

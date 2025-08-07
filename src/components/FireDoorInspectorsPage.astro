@@ -1,0 +1,619 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import NearbyAreas from "./NearbyAreas.astro";
+import { getFormattedPageData } from "../utils/pageMeta";
+
+const { location } = Astro.params;
+
+const {
+  formattedServiceName,
+  locationInText,
+  cleanLocationName,
+  businessSchema,
+  serviceSchema,
+  faqSchema,
+  defaultDescription,
+} = getFormattedPageData(Astro);
+
+const description = `Professional fire door inspection services ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"}, including compliance checks, safety assessments, and detailed reports. Qualified since 1989 with 35+ years experience.`;
+const finalDescription = description || defaultDescription;
+---
+
+<Layout
+  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Inspections`}
+  description={finalDescription}
+  classes="mt-8 mb-16"
+  location={location}
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(businessSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  />
+  <!-- Breadcrumb -->
+  <section class="bg-gray-50 py-4">
+    <div class="container mx-auto px-4">
+      <Breadcrumb
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Fire Door Inspectors", href: "/fire-door-inspectors" },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-50 to-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6">
+          Fire Door Inspection Services
+          {cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          Professional fire door inspection services to ensure your fire doors
+          meet all regulatory requirements. Our qualified inspectors provide
+          comprehensive assessments and detailed compliance reports.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand-light transition-colors duration-200"
+          >
+            Book Inspection
+            <svg
+              class="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Professional Inspections Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Why Professional Fire Door Inspections Matter
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Regulatory Compliance
+            </h3>
+            <p class="text-gray-600">
+              The Regulatory Reform (Fire Safety) Order 2005 requires regular
+              fire door inspections. Professional inspections ensure compliance
+              and avoid legal penalties.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Safety Assurance
+            </h3>
+            <p class="text-gray-600">
+              Qualified inspectors identify potential safety issues before they
+              become problems, ensuring fire doors function correctly during
+              emergencies.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Detailed Reporting
+            </h3>
+            <p class="text-gray-600">
+              Comprehensive inspection reports provide clear documentation of
+              compliance status and recommendations for any necessary repairs or
+              improvements.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Expert Knowledge
+            </h3>
+            <p class="text-gray-600">
+              Qualified inspectors understand current regulations, standards,
+              and best practices to provide accurate assessments and
+              recommendations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inspection Services Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Fire Door Inspection Services
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Initial Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Initial Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Comprehensive baseline inspections to assess current fire door
+              condition and compliance status.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Complete door assessment</li>
+              <li>• Frame and hardware evaluation</li>
+              <li>• Compliance verification</li>
+              <li>• Detailed condition report</li>
+            </ul>
+          </div>
+
+          <!-- Regular Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Regular Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Scheduled 6-monthly inspections to monitor fire door condition and
+              maintain compliance.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• 6-monthly inspection schedule</li>
+              <li>• Wear and tear assessment</li>
+              <li>• Performance testing</li>
+              <li>• Compliance documentation</li>
+            </ul>
+          </div>
+
+          <!-- Compliance Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Compliance Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Specialized inspections focused on regulatory compliance and
+              certification requirements.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• RRO 2005 compliance</li>
+              <li>• Building Regulations check</li>
+              <li>• Certification verification</li>
+              <li>• Regulatory reporting</li>
+            </ul>
+          </div>
+
+          <!-- Pre-Purchase Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-orange-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Pre-Purchase Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Detailed inspections for property purchases to identify fire
+              safety issues and compliance status.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Property purchase assessment</li>
+              <li>• Fire safety evaluation</li>
+              <li>• Cost estimation</li>
+              <li>• Compliance recommendations</li>
+            </ul>
+          </div>
+
+          <!-- Emergency Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Emergency Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Urgent inspections for safety concerns or regulatory enforcement
+              actions.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• 24/7 emergency callouts</li>
+              <li>• Safety issue assessment</li>
+              <li>• Immediate recommendations</li>
+              <li>• Priority service</li>
+            </ul>
+          </div>
+
+          <!-- Certification Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Certification Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Specialized inspections for fire door certification and compliance
+              documentation.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Certification verification</li>
+              <li>• Standards compliance</li>
+              <li>• Documentation preparation</li>
+              <li>• Regulatory submission</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inspection Process Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Inspection Process
+        </h2>
+
+        <div class="space-y-8">
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              1
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Pre-Inspection Planning
+              </h3>
+              <p class="text-gray-600">
+                Review of building plans, previous inspection reports, and
+                identification of all fire doors requiring inspection.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              2
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Comprehensive Assessment
+              </h3>
+              <p class="text-gray-600">
+                Detailed inspection of each fire door including door leaf,
+                frame, hardware, seals, and surrounding area.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              3
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Compliance Verification
+              </h3>
+              <p class="text-gray-600">
+                Verification against current regulations, standards, and
+                building-specific requirements.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              4
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Detailed Reporting
+              </h3>
+              <p class="text-gray-600">
+                Comprehensive report with findings, compliance status,
+                recommendations, and photographic evidence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualifications Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Qualifications & Experience
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Professional Qualifications
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                FireQual Fire Door Inspector
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                CSCS Gold Card Holder
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                35+ Years Experience
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Fully Insured
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Standards & Regulations
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Building Regulations Approved Document B
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                RRO 2005 Compliance
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                BS 9999:2017 Standards
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                BS 8214:2016 Fire Door Assemblies
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Areas Section -->
+  <section class="relative z-10 mx-auto">
+    <NearbyAreas location={location} serviceType="fire-door-inspectors" />
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Book Your Fire Door Inspection
+        </h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Layout>

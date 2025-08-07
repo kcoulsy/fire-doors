@@ -1,378 +1,358 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import benchPlaneImage from "../assets/images/bench-plane-frog_adobe_express.svg";
 import complianceImage from "../assets/images/compliance.jpeg";
 import sustainabilityImage from "../assets/images/sustainability_logo.svg";
-import RobDebTeamImage from "../assets/images/team/Rob-and-Debbie-on-site.jpg";
-import DebbieProfileImage from "../assets/images/team/debbie-profile-image.jpg";
-import RobertProfileImage from "../assets/images/team/robert-profile-image.jpg";
+import robertProfileImage from "../assets/images/team/robert-profile-image.jpg";
+import teamOnSiteImage from "../assets/images/team/Rob-and-Debbie-on-site.jpg";
+import Reviews from "../components/Reviews.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+
+// Modern SEO optimization with personal voice preserved
+const seoData = {
+  title:
+    "About Coulsy Fire Door Services - Robert Coulson | Fire Safety Expert Since 1989",
+  description:
+    "Meet Robert Coulson of Coulsy Fire Door Services. Fire safety specialist in Yorkshire with 35+ years experience since 1989. Qualified fire door inspector, installer and maintenance expert.",
+  keywords:
+    "Robert Coulson fire doors, Coulsy Fire Door Services about, fire door inspector Yorkshire, qualified fire safety 1989",
+  canonical: "https://coulsyfiredoors.co.uk/about",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Coulsy Fire Door Services",
+    description: "Fire safety specialist with 35+ years experience since 1989",
+    url: "https://coulsyfiredoors.co.uk/about",
+    mainEntity: {
+      "@type": "Organization",
+      name: "Coulsy Fire Door Services",
+      founder: {
+        "@type": "Person",
+        name: "Robert Coulson",
+        jobTitle: "Fire Door Specialist",
+        description:
+          "Qualified since 1989 with 35+ years of fire safety experience",
+        url: "https://www.linkedin.com/in/robert-coulson-20a60915/",
+      },
+      employee: [
+        {
+          "@type": "Person",
+          name: "Robert Coulson",
+          jobTitle: "Fire Door Specialist & Owner",
+          description: "Qualified since 1989 with 35+ years experience",
+        },
+      ],
+      foundingDate: "1989",
+      description:
+        "Fire door inspection, installation and maintenance specialist based in Yorkshire",
+    },
+  },
+};
 ---
 
-<Layout title="About Us">
-  <div class="w-full container mx-auto px-8 py-12">
-    <div class="flex justify-left">
-      <nav class="text-sm sm:text-base pb-6">
-        <ol class="list-none p-0 inline-flex space-x-2">
-          <li class="flex items-center">
-            <svg
-              onclick="window.location.href='/';"
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 576 512"
-              class="cursor-pointer hover:fill-blue-500 transition-colors duration-300 mr-2"
-              fill="#4b5563"
-              ><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
-              ></path></svg
-            >
-            <span class="mx-2">/</span>
-          </li>
+<Layout title={seoData.title} description={seoData.description}>
+  <main class="mx-auto md:mt-16 relative z-10">
+    <section class="w-full container mx-auto px-4 sm:px-6 py-8">
+      <Breadcrumb crumbs={[{ label: "About", current: true }]} />
 
-          <li class="flex items-center">
-            <span class="text-yellow-600 font-semibold">About</span>
-          </li>
-        </ol>
-      </nav>
-    </div>
+      <!-- Header Section -->
+      <div class="text-center mb-16">
+        <h1
+          class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6 text-balance"
+        >
+          About Us
+        </h1>
+        <p
+          class="text-xl text-brand-600 max-w-4xl mx-auto text-balance leading-relaxed"
+        >
+          I'm Robert, and I run Coulsy Fire Door Services — a specialist fire
+          safety business based in Yorkshire. I've been working in joinery and
+          fire safety since the late '80s, and I've built my expertise in fire
+          door compliance through decades of hands-on experience. We've built
+          our reputation by focusing on safety and compliance, not cutting
+          corners.
+        </p>
+      </div>
 
-    <h1 class="text-3xl font-bold tracking-tight pb-4">About</h1>
-
-    <p class="text-md font-light mb-4 mt-1">
-      Coulsy Joinery is a family-owned carpentry and joinery business, founded
-      and operated by myself, Robert, a professional joiner with over three
-      decades of experience. Since qualifying with distinction in 1988, I’ve
-      dedicated myself to mastering my craft, and I now specialise in the repair
-      and maintenance of fire doors. This extensive background allows me to
-      bring exceptional skill and attention to detail to every fire door
-      project, ensuring that they meet the highest safety and quality standards.
-    </p>
-    <p class="text-md font-light mb-4 mt-1">
-      We provide top-tier carpentry services, including fire door repairs,
-      inspections, and compliance work, in addition to small build works,
-      alterations, and building maintenance.
-    </p>
-
-    <p class="text-md font-light mb-4 mt-1">
-      Working alongside me is my wife, Debbie, whose dedication is vital to our
-      success. Together, we lead a trusted team of skilled professionals who
-      share our commitment to quality, customer satisfaction, and safety. Our
-      hands-on approach ensures that each fire door repair project is completed
-      with precision, tailoring our services to meet specific client
-      requirements and ensuring compliance with fire safety regulations.
-    </p>
-
-    <p class="text-md font-light mb-4 mt-1">Robert.</p>
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <h2
-      style="color: Gray"
-      class="text-2xl font-bold tracking-tight text-green-900 sm:text-3xl mb-4 mt-4"
-    >
-      Lead Team
-    </h2>
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div
-        class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
-      >
-        <div class="space-y-2">
-          <!-- <div
-          class="group flex flex-col gap-1 rounded-lg p-5 text-gray"
-          tabindex="1"
-        > -->
+      <!-- Main Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-12 lg:gap-16">
+        <!-- Text Content -->
+        <div class="space-y-8">
+          <!-- Introduction -->
           <div
-            class="group relative m-0 flex rounded-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg"
+            class="bg-brand-50 border border-brand-200 rounded-xl p-8 shadow-sm"
           >
-            <div
-              class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70"
-            >
-              <Image
-                src={RobDebTeamImage}
-                alt="Team for coulsy joinery"
-                loading="eager"
-                width="1000"
-                height="667"
-                class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div
-              style="background-color: Gray; width:70%;"
-              class="p-3 rounded-xl opacity-60 absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110 group-hover:opacity-100"
-            >
-              <h1 class="text-lg font-bold text-white">Team</h1>
-              <h2 class="text-m font-light text-gray-200">Husband and Wife</h2>
-            </div>
+            <h2 class="text-2xl font-semibold text-brand-900 mb-4">
+              Our Story
+            </h2>
+            <p class="text-brand-700 leading-relaxed">
+              I started in joinery in 1989, and over the years, I've seen how
+              fire safety regulations have evolved and become more stringent.
+              This experience has given me a deep understanding of what it takes
+              to ensure fire doors are not just compliant, but truly effective
+              in protecting lives and property.
+            </p>
           </div>
-          <!-- <p class="pl-5 text-gray-400 hover:text-gray-500">
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/robert-coulson-20a60915/"
-            >
-              <span class="sr-only">LinkedIn</span>
-              <svg
-                style="display: inline;"
-                class="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                  clip-rule="evenodd"></path>
-              </svg>&nbsp;<span style="font-size: .8em; font-style: italic;"
-                >connect with Robert</span
-              >
-            </a>
-          </p> -->
 
+          <!-- Experience Section -->
           <div
-            class="invisible h-auto max-h-0 p-5 items-center opacity-0 transition-all group-focus:visible group-focus:max-h-screen group-focus:opacity-100 group-focus:duration-1000"
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
           >
-            <p
-              style="font-size: .9em;"
-              v-html="This is all about Robert and Debbie"
-            >
+            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
+              35+ Years of Experience
+            </h2>
+            <p class="text-brand-600 leading-relaxed mb-4">
+              With over three decades in the trade, I've worked on everything
+              from small residential projects to large commercial buildings.
+              This breadth of experience means I understand the unique
+              challenges that different types of buildings present when it comes
+              to fire safety.
+            </p>
+            <p class="text-brand-600 leading-relaxed">
+              Every fire door inspection, installation, or maintenance job is
+              approached with the same level of care and attention to detail —
+              because when it comes to fire safety, there's no room for
+              shortcuts.
+            </p>
+          </div>
+
+          <!-- Approach Section -->
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+          >
+            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
+              Our Approach
+            </h2>
+            <p class="text-brand-600 leading-relaxed">
+              We're not a big company, and we don't pretend to be. It's my
+              experience and hands-on approach that allows us to go that one
+              step further — making sure things are done properly, with care and
+              attention that's often missing from larger outfits.
+            </p>
+          </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="flex items-start justify-center">
+          <div
+            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+          >
+            <Image
+              src={complianceImage}
+              width={526}
+              height={405}
+              class="object-cover rounded-lg max-w-full h-auto"
+              alt="Robert Coulson - Fire door specialist with 35+ years experience in fire safety and compliance"
+              loading="eager"
+              decoding="async"
+              format="webp"
+              quality={80}
+            />
+            <p class="text-sm text-brand-600 text-center mt-4">
+              Robert Coulson - Fire Door Specialist
             </p>
           </div>
         </div>
       </div>
 
-      <div
-        class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
-      >
-        <div class="space-y-2">
-          <!-- <div
-            class="group flex flex-col gap-1 rounded-lg p-5 text-gray"
-            tabindex="1"
-          > -->
+      <!-- Lead Team Section -->
+      <div class="mb-16">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center"
+        >
+          Our Team
+        </h2>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto">
+          <!-- Robert Card -->
           <div
-            class="group relative m-0 flex rounded-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg"
+            class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
           >
-            <div
-              class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70"
-            >
+            <div class="relative overflow-hidden">
               <Image
-                src={RobertProfileImage}
-                alt="Team for coulsy joinery"
+                src={robertProfileImage}
+                alt="Robert Coulson - Fire Door Specialist"
                 loading="eager"
-                width="1000"
-                height="667"
-                class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                width={400}
+                height={300}
+                class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                decoding="async"
+                format="webp"
+                quality={80}
               />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+              >
+                <h3 class="text-xl font-bold text-white">Robert</h3>
+                <p class="text-sm text-gray-200">
+                  Fire Door Specialist & Owner
+                </p>
+              </div>
             </div>
-            <div
-              style="background-color: Gray; width:70%;"
-              class="p-3 rounded-xl opacity-60 absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110 group-hover:opacity-100"
-            >
-              <h1 class="text-lg font-bold text-white">Robert</h1>
-              <h2 class="text-m font-light text-gray-200">
-                Joiner and Director
-              </h2>
+            <div class="p-4">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/robert-coulson-20a60915/"
+                class="inline-flex items-center text-brand-600 hover:text-brand-700 transition-colors duration-200"
+              >
+                <svg
+                  class="h-5 w-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M16.338 16.338h33.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h3.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1h3.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h35.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                  ></path>
+                </svg>
+                <span class="text-sm font-medium">Connect with Robert</span>
+              </a>
             </div>
           </div>
-          <p class="pl-5 text-gray-400 hover:text-gray-500">
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/robert-coulson-20a60915/"
-            >
-              <span class="sr-only">LinkedIn</span>
-              <svg
-                style="display: inline;"
-                class="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                  clip-rule="evenodd"></path>
-              </svg>&nbsp;<span style="font-size: .8em; font-style: italic;"
-                >connect with Robert</span
-              >
-            </a>
-          </p>
 
+          <!-- Team Card -->
           <div
-            class="invisible h-auto max-h-0 p-5 items-center opacity-0 transition-all group-focus:visible group-focus:max-h-screen group-focus:opacity-100 group-focus:duration-1000"
+            class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
           >
-            <p style="font-size: .9em;" v-html="This is all about Robert"></p>
+            <div class="relative overflow-hidden">
+              <Image
+                src={teamOnSiteImage}
+                alt="Robert and team working on fire door installation"
+                loading="eager"
+                width={400}
+                height={300}
+                class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+              >
+                <h3 class="text-xl font-bold text-white">Our Team</h3>
+                <p class="text-sm text-gray-200">Trusted Fire Safety Experts</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
-      >
-        <div class="space-y-2">
-          <!-- <div
-          class="group flex flex-col gap-1 rounded-lg p-5 text-gray"
-          tabindex="1"
-        > -->
+
+      <hr class="h-px my-16 bg-brand-200 border-0" />
+
+      <!-- Trust Section -->
+      <div class="mb-16">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center"
+        >
+          Trust & Compliance
+        </h2>
+
+        <div
+          class="max-w-4xl mx-auto space-y-6 text-brand-600 leading-relaxed mb-12"
+        >
+          <p>
+            At Coulsy Fire Door Services, we recognise the critical importance
+            of fire safety compliance and regulations.
+          </p>
+          <p>
+            These guidelines exist to protect lives and property, ensuring the
+            highest standards of fire safety are maintained. We are committed to
+            going the extra mile, not only in delivering quality fire door
+            services but also in building a safer future for everyone.
+          </p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto">
           <div
-            class="group relative m-0 flex rounded-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg"
+            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100 text-center"
           >
             <div
-              class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70"
+              class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              <Image
-                src={DebbieProfileImage}
-                alt="Team for coulsy joinery"
-                loading="eager"
-                width="1000"
-                height="667"
-                class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div
-              style="background-color: Gray; width:70%;"
-              class="p-3 rounded-xl opacity-60 absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110 group-hover:opacity-100"
-            >
-              <h1 class="text-lg font-bold text-white">Debbie</h1>
-              <h2 class="text-m font-light text-gray-200">Assistant</h2>
-            </div>
-          </div>
-          <p class="pl-5 text-gray-400 hover:text-gray-500">
-            <a target="_blank" href="#">
-              <span class="sr-only">Facebook</span>
               <svg
-                style="display: inline;"
-                class="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 320 512"
-                aria-hidden="true"
+                class="w-8 h-8 text-brand-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
                 <path
-                  d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-2">Qualified</h3>
+            <p class="text-brand-600">
+              Fully qualified fire door specialist with 35+ years experience
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100 text-center"
+          >
+            <div
+              class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-brand-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                 ></path>
-              </svg>&nbsp;<span style="font-size: .8em; font-style: italic;"
-                >connect with Debbie</span
-              >
-            </a>
-          </p>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-2">Insured</h3>
+            <p class="text-brand-600">
+              Fully insured with £10M public liability coverage
+            </p>
+          </div>
 
           <div
-            class="invisible h-auto max-h-0 p-5 items-center opacity-0 transition-all group-focus:visible group-focus:max-h-screen group-focus:opacity-100 group-focus:duration-1000"
+            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100 text-center"
           >
-            <p style="font-size: .9em;" v-html="This is all about Debbie"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <h2
-      style="color: Gray"
-      class="text-2xl font-bold tracking-tight text-green-900 sm:text-3xl mb-4 mt-4"
-    >
-      Trust
-    </h2>
-
-    <p class="text-md font-light mb-4 mt-1">
-      At Coulsy Joinery, we recognise the importance of adhering to rules and
-      regulations.
-    </p>
-    <p class="text-md font-light mb-4 mt-1">
-      These guidelines exist to protect you, us, and the wider community,
-      ensuring high standards are upheld. We are committed to going the extra
-      mile, not only in delivering quality craftsmanship but also in building a
-      sustainable future.
-    </p>
-    <p class="text-md font-light mb-4 mt-1">
-      Our team is fully qualified, insured, and compliant with all industry
-      requirements. We are constantly learning and actively incorporating new
-      methods to protect the environment and promote sustainability in
-      everything we do.
-    </p>
-
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      <div
-        class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
-      >
-        <div class="relative overflow-hidden rounded-xl">
-          <Image
-            src={benchPlaneImage}
-            alt="woodworking bench plane"
-            loading="eager"
-            width="1000"
-            height="667"
-            class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
-          />
-          <div class="mt-6 relative">
-            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-              Fully Qualified
-            </h3>
-            <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              Our team are highly qualified to meet the demands of your
-              project...
-            </p>
-            <a
-              href="/qualifications"
-              class="inline-block text-yellow-600 font-semibold hover:underline"
-              >View our Qualifications and Insurances
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
-      >
-        <div class="relative overflow-hidden rounded-xl">
-          <Image
-            src={complianceImage}
-            alt="compliance"
-            loading="eager"
-            width="1000"
-            height="667"
-            class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
-          />
-          <div class="mt-6 relative">
-            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-              Highly Compliant
-            </h3>
-            <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              We adhere to the highest standards of compliance and ethics...
-            </p>
-            <a
-              class="inline-block text-yellow-600 font-semibold hover:underline"
-              href="/compliance"
+            <div
+              class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4"
             >
-              View our Compliance and Safety
-            </a>
+              <svg
+                class="w-8 h-8 text-brand-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-2">Compliant</h3>
+            <p class="text-brand-600">
+              Full compliance with all fire safety regulations
+            </p>
           </div>
         </div>
       </div>
 
-      <div
-        class="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10"
-      >
-        <div class="relative overflow-hidden rounded-xl">
-          <Image
-            src={sustainabilityImage}
-            alt="sustainability"
-            loading="eager"
-            width="1000"
-            height="667"
-            class="h-64 w-full object-cover object-top transition duration-500 group-hover:scale-105"
-          />
-          <div class="mt-6 relative">
-            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
-              Sustainability
-            </h3>
-            <p class="mt-6 mb-8 text-gray-600 dark:text-gray-300">
-              Making a difference...
-              <br />
-              <br />
-            </p>
-            <a
-              class="inline-block text-yellow-600 font-semibold hover:underline"
-              href="/sustainability"
-            >
-              View our Sustainability Efforts
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <!-- Reviews Section -->
+      <section class="mt-24">
+        <Reviews />
+      </section>
+    </section>
+  </main>
 </Layout>
+
+<!-- Modern Structured Data -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(seoData.structuredData)}
+/>

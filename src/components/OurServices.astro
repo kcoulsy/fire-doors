@@ -1,6 +1,5 @@
 ---
 import ScheduledMaintenanceIcon from "../icons/ScheduledMaintenanceIcon.astro";
-import BuildingMaintenanceIcon from "../icons/BuildingMaintenanceIcon.astro";
 import DoorOpenIcon from "../icons/DoorOpenIcon.astro";
 import TeamIcon from "../icons/TeamIcon.astro";
 import InspectorIcon from "../icons/InspectorIcon.astro";
@@ -11,124 +10,247 @@ function capitalizeFirstLetter(string: string) {
 }
 ---
 
-<section class="w-full py-12 md:py-24 container mx-auto">
-  <div
-    class="container grid items-center justify-center gap-4 px-4 text-center md:gap-10 md:px-6"
-  >
-    <div class="space-y-3">
-      <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-        Our Services
-      </h2>
-      <p
-        class="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed xl:text-base/relaxed"
+<section class="w-full py-16 md:py-24 bg-gray-50">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <h2
+        class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-brand mb-6"
       >
-        Our essential key fire door services { location ? ` in ${capitalizeFirstLetter(location)}` : null } 
+        Our Fire Door Services
+      </h2>
+      <p class="mx-auto max-w-3xl text-gray-600 text-lg leading-relaxed">
+        Comprehensive fire door solutions {
+          location ? ` in ${capitalizeFirstLetter(location)}` : null
+        } to ensure your building's safety and compliance. From inspection to installation
+        and maintenance, we've got you covered.
       </p>
     </div>
-    <div
-      class="grid w-full grid-cols-1 items-start justify-start gap-10 md:grid-cols-5 md:items-center md:justify-center md:gap-6"
-    >
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Fire Door Services -->
       <div
-        class="flex flex-col h-full items-center justify-center space-y-2 md:row-start-1 md:space-y-4"
+        class="group bg-white rounded-xl border border-gray-200 p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
       >
-        <div>
-          <DoorOpenIcon className="h-6 w-6" />
-        </div>
-        <a href="/fire-door-services" class="hover:underline">
-          <h3 class="text-lg font-semibold">Fire Door Services</h3>
-        </a>
-        <p class="text-sm text-gray-500 md:text-base/relaxed flex-1">
-          The correct inspection of your fire door and its frame are cruicial to
-          its performance.
-          <a
-            href="/fire-door-services"
-            class="text-gray-700 font-semibold hover:underline block mt-4"
+        <div class="flex flex-col h-full">
+          <div
+            class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-xl mb-6 group-hover:bg-blue-200 transition-colors"
           >
-            Find out more
-          </a>
-        </p>
+            <DoorOpenIcon className="h-8 w-8 text-blue-600" />
+          </div>
+
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-brand transition-colors"
+          >
+            Fire Door Services
+          </h3>
+
+          <p class="text-gray-600 mb-6 flex-1 leading-relaxed">
+            Complete fire door solutions including assessment, specification,
+            and project management. We ensure your fire doors meet all
+            regulatory requirements and perform effectively.
+          </p>
+
+          <div class="mt-auto">
+            <a
+              href="/fire-door-services"
+              class="inline-flex items-center text-brand font-semibold hover:text-brand-light transition-colors group/link"
+            >
+              Learn more
+              <svg
+                class="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
+
+      <!-- Fire Door Inspectors -->
       <div
-        class="flex flex-col h-full items-center justify-center space-y-2 md:space-y-4"
+        class="group bg-white rounded-xl border border-gray-200 p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
       >
-        <div>
-          <InspectorIcon className="h-6 w-6" />
-        </div>
-        <a href="/fire-door-inspectors" class="hover:underline">
-          <h3 class="text-lg font-semibold">Fire Door Inspectors</h3>
-        </a>
-        <p class="text-sm text-gray-500 md:text-base/relaxed flex-1">
-          The correct inspection of your fire door and its frame are cruicial to
-          its performance.
-          <a
-            href="/fire-door-inspectors"
-            class="text-gray-700 font-semibold hover:underline block mt-4"
+        <div class="flex flex-col h-full">
+          <div
+            class="flex items-center justify-center w-16 h-16 bg-green-100 rounded-xl mb-6 group-hover:bg-green-200 transition-colors"
           >
-            Find out more
-          </a>
-        </p>
+            <InspectorIcon className="h-8 w-8 text-green-600" />
+          </div>
+
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-brand transition-colors"
+          >
+            Fire Door Inspections
+          </h3>
+
+          <p class="text-gray-600 mb-6 flex-1 leading-relaxed">
+            Qualified fire door inspections to identify compliance issues and
+            safety risks. Our detailed reports help you maintain fire safety
+            standards and meet legal obligations.
+          </p>
+
+          <div class="mt-auto">
+            <a
+              href="/fire-door-inspectors"
+              class="inline-flex items-center text-brand font-semibold hover:text-brand-light transition-colors group/link"
+            >
+              Learn more
+              <svg
+                class="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
+
+      <!-- Fire Door Installers -->
       <div
-        class="flex flex-col h-full items-center justify-center space-y-2 md:space-y-4"
+        class="group bg-white rounded-xl border border-gray-200 p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
       >
-        <div>
-          <TeamIcon className="h-6 w-6" />
-        </div>
-        <a href="/fire-door-installers" class="hover:underline">
-          <h3 class="text-lg font-semibold">Fire Door Installers</h3>
-        </a>
-        <p class="text-sm text-gray-500 md:text-base/relaxed flex-1">
-          The correct installation of fire door assemblies and doorsets is
-          fundamental to their overall performance. It will ensure the fire door
-          will remain reliable to its fire integrity rating.
-          <a
-            href="/fire-door-installers"
-            class="text-gray-700 font-semibold hover:underline block mt-4"
+        <div class="flex flex-col h-full">
+          <div
+            class="flex items-center justify-center w-16 h-16 bg-purple-100 rounded-xl mb-6 group-hover:bg-purple-200 transition-colors"
           >
-            Find out more
-          </a>
-        </p>
+            <TeamIcon className="h-8 w-8 text-purple-600" />
+          </div>
+
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-brand transition-colors"
+          >
+            Fire Door Installation
+          </h3>
+
+          <p class="text-gray-600 mb-6 flex-1 leading-relaxed">
+            Professional installation of fire door assemblies and doorsets by
+            qualified technicians. We ensure proper fitting for optimal fire
+            resistance and performance.
+          </p>
+
+          <div class="mt-auto">
+            <a
+              href="/fire-door-installers"
+              class="inline-flex items-center text-brand font-semibold hover:text-brand-light transition-colors group/link"
+            >
+              Learn more
+              <svg
+                class="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
+
+      <!-- Fire Door Maintenance -->
       <div
-        class="flex flex-col h-full items-center justify-center space-y-2 md:space-y-4"
+        class="group bg-white rounded-xl border border-gray-200 p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
       >
-        <div>
-          <ScheduledMaintenanceIcon className="h-6 w-6" />
-        </div>
-        <a href="/fire-door-maintenance" class="hover:underline">
-          <h3 class="text-lg font-semibold">Fire Door Maintenance</h3>
-        </a>
-        <p class="text-sm text-gray-500 md:text-base/relaxed flex-1">
-          We provide our clients with a proactive approach to fire door
-          maintenance and complience.
-          <a
-            href="/fire-door-maintenance"
-            class="text-gray-700 font-semibold hover:underline block mt-4"
+        <div class="flex flex-col h-full">
+          <div
+            class="flex items-center justify-center w-16 h-16 bg-orange-100 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors"
           >
-            Find out more
-          </a>
-        </p>
+            <ScheduledMaintenanceIcon className="h-8 w-8 text-orange-600" />
+          </div>
+
+          <h3
+            class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-brand transition-colors"
+          >
+            Fire Door Maintenance
+          </h3>
+
+          <p class="text-gray-600 mb-6 flex-1 leading-relaxed">
+            Proactive maintenance programs to keep your fire doors in optimal
+            condition. Regular servicing ensures continued compliance and
+            reliability.
+          </p>
+
+          <div class="mt-auto">
+            <a
+              href="/fire-door-maintenance"
+              class="inline-flex items-center text-brand font-semibold hover:text-brand-light transition-colors group/link"
+            >
+              Learn more
+              <svg
+                class="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- Call to action section -->
+    <div class="mt-16 text-center">
       <div
-        class="flex flex-col h-full items-center justify-center space-y-2 md:space-y-4"
+        class="bg-white rounded-xl border border-gray-200 p-8 shadow-sm max-w-4xl mx-auto"
       >
-        <div>
-          <BuildingMaintenanceIcon className="h-6 w-6" />
-        </div>
-        <a href="/property-maintenance" class="hover:underline">
-          <h3 class="text-lg font-semibold">Property Maintenance</h3>
-        </a>
-        <p class="text-sm text-gray-500 md:text-base/relaxed flex-1">
-          Reactive and proactive property maintenance through our other division.
-          <a
-            href="https://coulsycontractsolutions.co.uk/" target="_blank"
-            class="text-gray-700 font-semibold hover:underline block mt-4"
-          >
-            Find out more<br>
-            
-          </a>
-          (opens a new tab)
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+          Need Expert Fire Door Services?
+        </h3>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+          Whether you need an inspection, installation, or ongoing maintenance,
+          our qualified team is ready to help ensure your fire safety
+          compliance.
         </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium rounded-lg hover:bg-brand-light transition-colors duration-200"
+          >
+            Get a Quote
+            <svg
+              class="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/about"
+            class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            Learn About Us
+          </a>
+        </div>
       </div>
     </div>
   </div>

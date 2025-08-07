@@ -10,10 +10,11 @@ interface Props {
 const { items, label } = Astro.props;
 ---
 
-<div class="relative inline-block">
+<div class="relative group">
   <button
-    class="dropdown-button flex items-center gap-1 w-full lg:w-auto lg:px-3 py-2 text-white hover:text-gray-200"
-    id={`${label}-dropdown-button`}
+    class="flex items-center gap-1 px-2 py-2 text-[#c0c0c0] hover:text-white transition-colors duration-200"
+    aria-expanded="false"
+    aria-haspopup="true"
   >
     <span>{label}</span>
     <svg
@@ -22,7 +23,8 @@ const { items, label } = Astro.props;
       viewBox="0 0 24 24"
       stroke-width="3"
       stroke="currentColor"
-      class="w-3 h-3 mt-0.5 group-open:rotate-180"
+      class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+      aria-hidden="true"
     >
       <path
         stroke-linecap="round"
@@ -31,36 +33,22 @@ const { items, label } = Astro.props;
     </svg>
   </button>
   <ul
-    class="dropdown-list origin-top-left absolute left-0 mt-2 w-fit z-20 space-y-2 rounded-sm shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 text-base focus:outline-none hidden"
+    class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 py-2 transform origin-top scale-y-0 transition-transform duration-200 ease-in-out group-hover:scale-y-100 z-50"
+    role="menu"
+    aria-orientation="vertical"
   >
     {
       items.map((item) => (
-        <li
-          class:list={[
-            "text-black hover:bg-gray-200",
-            "w-full min-w-48 z-10 px-3",
-            "last-child:lg:right-0 last-child:origin-top-right",
-            "lg:left-0 origin-top-left",
-          ]}
-        >
-          <a href={item.link} class="block">
+        <li role="none">
+          <a
+            href={item.link}
+            class="block px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+            role="menuitem"
+          >
             {item.label}
           </a>
         </li>
       ))
     }
   </ul>
-  <script>
-    [...document.querySelectorAll(".dropdown-button")]?.forEach((button) => {
-      button.addEventListener("click", (ev) => {
-        // close all dropdowns first
-        [...document.querySelectorAll(".dropdown-list")]?.forEach((list) => {
-          list.classList.add("hidden");
-        });
-
-        // @ts-ignore
-        ev.currentTarget.nextElementSibling?.classList.toggle("hidden");
-      });
-    });
-  </script>
 </div>

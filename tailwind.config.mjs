@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: "#2C3E50",
-        "brand-light": "#43617f",
-        "brand-lighter": "#5a7f9f",
+        brand: "#1e2a38",
+        "brand-light": "#1e3a8a",
+        "brand-lighter": "#3b82f6",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],

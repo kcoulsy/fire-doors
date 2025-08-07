@@ -1,132 +1,404 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
+import Breadcrumb from "../components/Breadcrumb.astro";
 import CITBImage from "../assets/images/citb.png";
 import cscsGoldImage from "../assets/images/cscs_gold.png";
 import cityAndGuildsImage from "../assets/images/cityandguilds_logo.png";
-const currentPath = Astro.url.pathname;
+
+// Modern SEO optimization with personal voice preserved
+const seoData = {
+  title:
+    "Fire Door Qualifications & Certifications - Robert Coulson | 35+ Years Experience Since 1989",
+  description:
+    "Robert Coulson's fire door qualifications include FireQual Fire Door Inspection, NVQ Level 7, City & Guilds Distinction, CSCS Gold Card. 35+ years experience since 1989. Fully qualified fire door specialist.",
+  keywords:
+    "Robert Coulson fire door qualifications, fire door inspector qualified, FireQual certification, CSCS Gold Card, City & Guilds joinery, fire door specialist Yorkshire",
+  canonical: "https://coulsyfiredoors.co.uk/qualifications",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Fire Door Qualifications & Certifications",
+    description:
+      "Robert Coulson's professional fire door qualifications and certifications",
+    url: "https://coulsyfiredoors.co.uk/qualifications",
+    mainEntity: {
+      "@type": "Person",
+      name: "Robert Coulson",
+      jobTitle: "Fire Door Specialist",
+      description:
+        "Qualified since 1989 with 35+ years of fire door experience",
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "FireQual Fire Door Inspection",
+          recognizedBy: "FireQual",
+          validIn: "United Kingdom",
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "NVQ Level 7 in Construction Senior Management",
+          recognizedBy: "Construction Industry Training Board",
+          validIn: "United Kingdom",
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "Advanced City & Guilds in Carpentry & Joinery",
+          recognizedBy: "City & Guilds",
+          validIn: "United Kingdom",
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "CSCS Gold Card",
+          recognizedBy: "Construction Skills Certification Scheme",
+          validIn: "United Kingdom",
+        },
+      ],
+    },
+  },
+};
 ---
 
-<Layout title="Our Qualifications">
-  <div class="w-full container mx-auto px-8 py-12">
-    <div class="flex justify-left">
-      <nav class="text-sm sm:text-base pb-6">
-        <ol class="list-none p-0 inline-flex space-x-2">
-          <li class="flex items-center">
-            <svg
-              onclick="window.location.href='/';"
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 576 512"
-              class="cursor-pointer hover:fill-blue-500 transition-colors duration-300 mr-2"
-              fill="#4b5563"
-              ><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
-              ></path></svg
-            >
-            <span class="mx-2">/</span>
-          </li>
-          <li class="flex items-center">
-            <a
-              href="/about"
-              class="text-gray-600 hover:text-blue-500 transition-colors duration-300"
-              >About</a
-            >
-            <span class="mx-2">/</span>
-          </li>
-          <li class="flex items-center">
-            <a
-              href=""
-              class={currentPath === "/qualifications"
-                ? "text-yellow-600 font-semibold"
-                : ""}
-            >
-              <span class="">Qualifications</span>
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </div>
+<Layout title={seoData.title} description={seoData.description}>
+  <main class="mx-auto md:mt-16 relative z-10">
+    <section class="w-full container mx-auto px-4 sm:px-6 py-8">
+      <Breadcrumb
+        crumbs={[
+          { href: "/about", label: "About" },
+          { label: "Qualifications", current: true },
+        ]}
+      />
 
-    <h1 class="text-3xl font-bold tracking-tight pb-4">Our Qualifications</h1>
-    <div class="grid md:grid-cols-2 items-start gap-8">
-      <div class="space-y-4">
-        <div class="space-y-4 text-gray-600 prose">
-          <p>
-            At our core, expertise is not just a promise; it's our foundation.
-            Here's why you can trust us:
-          </p>
-          <h2 class="font-semibold text-lg">City &amp; Guilds</h2>
-          <ul class="list-disc list-inside space-y-2">
-            <li>Fully Trained Carpenters & Joiners</li>
-            <li>City & Guilds ”Distinction Grades”</li>
-            <li>Advanced City & Guilds ”Distinction Grades”</li>
-          </ul>
-          <h2 class="font-semibold text-lg">CSCS Certified</h2>
-          <p>
-            (CSCS) Construction Skills Certification Scheme is used to measure
-            the different levels of qualifications between contractors. We have
-            passed the construction skill health and safety test to obtain <span
-              class="text-yellow-600 font-semibold">gold</span
-            >
-            card status.
-          </p>
-
-          <h2 class="font-semibold text-lg">Additional Qualifications</h2>
-
-          <ul class="list-disc list-inside space-y-2">
-            <li>CITB Directors role for health and safety</li>
-            <li>CITB Temporary works and general awareness</li>
-            <li>
-              CITB Fire safety awareness in construction and the built
-              environment
-            </li>
-            <li>Face Fit tested</li>
-            <li>Asbestos Awereness (Cat A) Trained</li>
-            <li>Reach & Boom hydraulic lifts</li>
-            <li>COSHH</li>
-          </ul>
-
-          <h2 class="font-semibold text-lg">RAMS</h2>
-          <p>Risk assessments and Method statements available upon request.</p>
-          <ul class="list-disc list-inside space-y-2">
-            <li>Risk Assessments</li>
-            <li>Method Statements</li>
-          </ul>
-          <p>
-            When you choose us, you're choosing a team that's not only qualified
-            but dedicated to excellence in every aspect of our work.
-          </p>
-          <p>
-            We can provide more information and answer any questions you may
-            have. Please feel free to <a
-              href="/contact"
-              class="font-semibold text-blue-700 hover:underline">contact us</a
-            >.
+      <!-- Header Section -->
+      <div class="text-center mb-16">
+        <h1
+          class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6 text-balance"
+        >
+          Our Fire Door Qualifications
+        </h1>
+        <h2 class="text-2xl lg:text-3xl font-semibold text-brand-700 mb-8">
+          Experienced, Qualified, and Fire Safety Certified
+        </h2>
+        <div
+          class="bg-brand-50 border border-brand-200 rounded-xl p-8 shadow-sm max-w-4xl mx-auto"
+        >
+          <p class="text-brand-700 text-lg leading-relaxed">
+            With decades of hands-on experience and specialized fire door
+            training, my qualifications ensure every fire door inspection,
+            installation, and maintenance job is done properly, safely, and to
+            the highest fire safety standards.
           </p>
         </div>
       </div>
-      <div class="flex items-start flex-col space-y-4">
-        <Image
-          src={CITBImage}
-          width="350"
-          class="object-fit max-w-full h-auto mx-auto block"
-          alt="Citb Logo"
-        />
-        <Image
-          src={cscsGoldImage}
-          width="350"
-          class="object-fit max-w-full h-auto mx-auto block"
-          alt="CSCS Gold Logo"
-        />
-        <Image
-          src={cityAndGuildsImage}
-          width="350"
-          class="object-fit max-w-full h-auto mx-auto block"
-          alt="City and Guilds Logo"
-        />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-12">
+        <!-- Qualifications Content -->
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-2xl font-semibold text-brand-900 mb-6">
+              My Fire Door Qualifications
+            </h3>
+            <div class="space-y-6">
+              <div
+                class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+              >
+                <h4 class="font-semibold text-brand-900 mb-2">
+                  FireQual Fire Door Inspection (2024)
+                </h4>
+                <p class="text-brand-600">
+                  Specialized training in fire door inspection, maintenance, and
+                  compliance. Qualified to carry out professional fire door
+                  inspections and provide detailed reports.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+              >
+                <h4 class="font-semibold text-brand-900 mb-2">
+                  NVQ Level 7 in Construction Senior Management (2025)
+                </h4>
+                <p class="text-brand-600">
+                  The highest vocational qualification in construction
+                  management, demonstrating advanced leadership and project
+                  delivery skills for complex fire safety projects.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+              >
+                <h4 class="font-semibold text-brand-900 mb-2">
+                  Advanced City & Guilds in Carpentry & Joinery – Distinction
+                  (1990)
+                </h4>
+                <p class="text-brand-600">
+                  Recognises expert craftsmanship and technical knowledge in
+                  joinery, essential for proper fire door installation and
+                  maintenance.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+              >
+                <h4 class="font-semibold text-brand-900 mb-2">
+                  City & Guilds Craft in Carpentry & Joinery – Distinction
+                  (1987–1989)
+                </h4>
+                <p class="text-brand-600">
+                  Provides a strong foundation in practical skills and
+                  woodworking excellence, the basis for all fire door work.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+              >
+                <h4 class="font-semibold text-brand-900 mb-2">
+                  CSCS Gold Card Certified – Health & Safety tested
+                </h4>
+                <p class="text-brand-600">
+                  Proof of advanced skills and a strong commitment to site
+                  safety, essential for working in occupied buildings and
+                  sensitive environments.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold text-brand-900 mb-6">
+              Fire Safety Training & Certifications
+            </h3>
+            <p class="text-brand-600 mb-4">
+              Ongoing fire safety training ensures we stay up to date with the
+              latest fire door standards and regulations:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <ul class="space-y-2 text-brand-600">
+                <li class="flex items-center">
+                  <svg
+                    class="w-4 h-4 text-brand-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  FireQual Fire Door Inspection
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-4 h-4 text-brand-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  CITB Fire Safety in Construction
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-4 h-4 text-brand-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  CITB Director's Role for Health & Safety
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-4 h-4 text-brand-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  CITB Temporary Works & General Awareness
+                </li>
+              </ul>
+              <ul class="space-y-2 text-brand-600">
+                <li class="flex items-center">
+                  <svg
+                    class="w-4 h-4 text-brand-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  Face Fit Tested
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-4 h-4 text-brand-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  Asbestos Awareness (Cat A)
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-4 h-4 text-brand-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  COSHH Awareness
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div
+              class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+            >
+              <h3 class="text-xl font-semibold text-brand-900 mb-4">
+                Fire Door Insurance
+              </h3>
+              <p class="text-brand-600">
+                Fully insured for all fire door work — including public
+                liability and employer's liability cover. This gives you
+                complete peace of mind, knowing that your building and our team
+                are protected during fire door inspections, installations, and
+                maintenance.
+              </p>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+            >
+              <h3 class="text-xl font-semibold text-brand-900 mb-4">
+                Fire Door Risk Assessments and Method Statements (RAMS)
+              </h3>
+              <p class="text-brand-600 mb-4">
+                Prepared and available on request for every fire door project.
+              </p>
+              <p class="text-brand-600">
+                These are especially relevant for our commercial customers,
+                making sure all fire door work is carried out safely and in line
+                with fire safety regulations from start to finish.
+              </p>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+            >
+              <h3 class="text-xl font-semibold text-brand-900 mb-4">
+                Fire Door Competency
+              </h3>
+              <p class="text-brand-600">
+                When you work with us, you're not just hiring a contractor —
+                you're getting a fire door specialist who's fully qualified,
+                personally committed, and chosen because they understand the
+                critical importance of fire safety. Every fire door inspection
+                and installation is carried out by someone I trust completely.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-brand-50 rounded-xl p-6 border border-brand-200">
+            <p class="text-brand-700">
+              If you'd like to know more or see our fire door qualifications and
+              certificates, just
+              <a
+                href="/contact"
+                class="font-semibold text-brand-600 hover:text-brand-700 underline"
+              >
+                get in touch
+              </a>. We're always happy to provide proof of our fire door
+              qualifications and insurance for your peace of mind.
+            </p>
+          </div>
+        </div>
+
+        <!-- Certifications Images -->
+        <div class="flex flex-col items-center space-y-8">
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100 text-center"
+          >
+            <Image
+              src={CITBImage}
+              width={200}
+              height={200}
+              class="object-contain max-w-full h-auto mx-auto mb-4"
+              alt="CITB – Construction Industry Training Board Logo"
+              loading="eager"
+              decoding="async"
+              format="webp"
+              quality={80}
+            />
+            <p class="text-sm text-brand-600">
+              Construction Industry Training Board
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100 text-center"
+          >
+            <Image
+              src={cscsGoldImage}
+              width={200}
+              height={200}
+              class="object-contain max-w-full h-auto mx-auto mb-4"
+              alt="CSCS Gold Card Certification Logo"
+              loading="eager"
+              decoding="async"
+              format="webp"
+              quality={80}
+            />
+            <p class="text-sm text-brand-600">CSCS Gold Card Certification</p>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100 text-center"
+          >
+            <Image
+              src={cityAndGuildsImage}
+              width={200}
+              height={200}
+              class="object-contain max-w-full h-auto mx-auto mb-4"
+              alt="City & Guilds Accreditation Logo"
+              loading="eager"
+              decoding="async"
+              format="webp"
+              quality={80}
+            />
+            <p class="text-sm text-brand-600">City & Guilds Accreditation</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </Layout>
+
+<!-- Modern Structured Data -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(seoData.structuredData)}
+/>

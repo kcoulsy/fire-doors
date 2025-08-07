@@ -1,0 +1,526 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import NearbyAreas from "./NearbyAreas.astro";
+import { getFormattedPageData } from "../utils/pageMeta";
+
+const { location } = Astro.params;
+
+const {
+  formattedServiceName,
+  locationInText,
+  cleanLocationName,
+  businessSchema,
+  serviceSchema,
+  faqSchema,
+  defaultDescription,
+} = getFormattedPageData(Astro);
+
+const description = `Professional fire door maintenance and repair services ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"}, including regular servicing, compliance checks, and emergency repairs. Qualified since 1989 with 35+ years experience.`;
+const finalDescription = description || defaultDescription;
+---
+
+<Layout
+  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Maintenance & Repairs`}
+  description={finalDescription}
+  classes="mt-8 mb-16"
+  location={location}
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(businessSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  />
+  <!-- Breadcrumb -->
+  <section class="bg-gray-50 py-4">
+    <div class="container mx-auto px-4">
+      <Breadcrumb
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Fire Door Maintenance", href: "/fire-door-maintenance" },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-50 to-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6">
+          Fire Door Maintenance Services
+          {cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          Professional fire door maintenance and repair services {
+            cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"
+          } to ensure your fire doors remain compliant, functional, and safe. Regular
+          servicing prevents costly failures and maintains fire safety standards
+          {
+            cleanLocationName
+              ? `for businesses and properties in ${cleanLocationName}`
+              : "throughout the region"
+          }.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand-light transition-colors duration-200"
+          >
+            Get Maintenance Quote
+            <svg
+              class="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Fire Door Maintenance Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Why Regular Fire Door Maintenance is Essential {
+            cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"
+          }
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Compliance Requirements
+            </h3>
+            <p class="text-gray-600">
+              The Regulatory Reform (Fire Safety) Order 2005 requires regular
+              fire door maintenance {
+                cleanLocationName
+                  ? `for all commercial properties in ${cleanLocationName}`
+                  : "across Yorkshire"
+              }. Non-compliance can result in legal action and puts occupants at
+              risk.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Safety Assurance
+            </h3>
+            <p class="text-gray-600">
+              Regular maintenance ensures fire doors function correctly during
+              emergencies, providing crucial protection for building occupants
+              and escape routes {
+                cleanLocationName
+                  ? `in ${cleanLocationName} properties`
+                  : "throughout Yorkshire"
+              }.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Cost Prevention
+            </h3>
+            <p class="text-gray-600">
+              Preventative maintenance is far more cost-effective than emergency
+              repairs or replacement of failed fire doors {
+                cleanLocationName
+                  ? `for ${cleanLocationName} businesses`
+                  : "across the region"
+              }.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Insurance Requirements
+            </h3>
+            <p class="text-gray-600">
+              Many insurance policies require regular fire door maintenance
+              {
+                cleanLocationName
+                  ? `for properties in ${cleanLocationName}`
+                  : "throughout Yorkshire"
+              }. Failure to maintain can invalidate your coverage.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maintenance Services Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Fire Door Maintenance Services {
+            cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"
+          }
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Regular Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Regular Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Comprehensive 6-monthly inspections {
+                cleanLocationName
+                  ? `for ${cleanLocationName} properties`
+                  : "across Yorkshire"
+              } to identify wear, damage, and compliance issues before they become
+              problems.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Door and frame condition assessment</li>
+              <li>• Hardware functionality checks</li>
+              <li>• Seal integrity verification</li>
+              <li>• Compliance documentation</li>
+            </ul>
+          </div>
+
+          <!-- Repairs & Replacements -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Repairs & Replacements
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Prompt repair and replacement of damaged components {
+                cleanLocationName
+                  ? `for ${cleanLocationName} businesses`
+                  : "throughout the region"
+              } to restore fire door functionality and compliance.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Door closer repairs</li>
+              <li>• Seal replacement</li>
+              <li>• Hardware repairs</li>
+              <li>• Emergency callouts</li>
+            </ul>
+          </div>
+
+          <!-- Preventative Maintenance -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Preventative Maintenance
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Proactive maintenance programs {
+                cleanLocationName
+                  ? `for ${cleanLocationName} properties`
+                  : "across Yorkshire"
+              } to extend fire door lifespan and prevent costly failures.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Lubrication of moving parts</li>
+              <li>• Adjustment of door closers</li>
+              <li>• Cleaning and inspection</li>
+              <li>• Performance testing</li>
+            </ul>
+          </div>
+
+          <!-- Emergency Services -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Emergency Services
+            </h3>
+            <p class="text-gray-600 mb-4">
+              24/7 emergency callout service {
+                cleanLocationName
+                  ? `in ${cleanLocationName}`
+                  : "across Yorkshire"
+              } for urgent fire door repairs that affect building safety.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• 24/7 emergency callouts</li>
+              <li>• Rapid response times</li>
+              <li>• Temporary safety measures</li>
+              <li>• Priority service</li>
+            </ul>
+          </div>
+
+          <!-- Maintenance Contracts -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-orange-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Maintenance Contracts
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Flexible maintenance contracts {
+                cleanLocationName
+                  ? `for ${cleanLocationName} businesses`
+                  : "across Yorkshire"
+              } tailored to your building's needs and compliance requirements.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Scheduled maintenance visits</li>
+              <li>• Priority service</li>
+              <li>• Compliance reporting</li>
+              <li>• Cost-effective pricing</li>
+            </ul>
+          </div>
+
+          <!-- Compliance Reporting -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Compliance Reporting
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Detailed reports documenting maintenance activities and compliance
+              status for regulatory authorities.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Detailed inspection reports</li>
+              <li>• Compliance certificates</li>
+              <li>• Digital record keeping</li>
+              <li>• Regulatory documentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Maintenance Process Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Maintenance Process
+        </h2>
+
+        <div class="space-y-8">
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              1
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Initial Assessment
+              </h3>
+              <p class="text-gray-600">
+                Comprehensive evaluation of your fire doors to identify current
+                condition, compliance status, and maintenance requirements.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              2
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Maintenance Plan
+              </h3>
+              <p class="text-gray-600">
+                Development of a tailored maintenance schedule based on your
+                building type, usage, and compliance requirements.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              3
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Regular Servicing
+              </h3>
+              <p class="text-gray-600">
+                Scheduled maintenance visits including inspection, cleaning,
+                adjustment, and minor repairs as needed.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              4
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Reporting & Documentation
+              </h3>
+              <p class="text-gray-600">
+                Detailed reports of all maintenance activities, compliance
+                status, and recommendations for ongoing fire safety.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Areas Section -->
+  <section class="relative z-10 mx-auto">
+    <NearbyAreas location={location} serviceType="fire-door-maintenance" />
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Get Your Fire Door Maintenance Quote
+        </h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Layout>

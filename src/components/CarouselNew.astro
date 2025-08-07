@@ -1,5 +1,5 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 
 import fireDoorKeepShut from "../assets/images/fire_door_keep_shut.jpeg";
 import doorCloserOpen from "../assets/images/door-closer-open.jpeg";
@@ -38,14 +38,18 @@ import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
       class="active"
       aria-current="true"></button>
   </div>
-  <div class="glider rounded-3 shadow-lg">
+  
     <div class="relative">
       <Image
         src={fireDoorKeepShut}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
+        width={856}
+        height={512}
+        class="object-cover aspect-video w-full h-full"
+        alt="Fire door inspection services - professional fire safety compliance"
+        loading="eager"
+        decoding="async"
+        format="webp"
+        quality={80}
       />
       <div class="absolute w-full">
         <div
@@ -68,10 +72,14 @@ import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
     <div class="relative">
       <Image
         src={doorCloserOpen}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
+        width={856}
+        height={512}
+        class="object-cover aspect-video w-full h-full"
+        alt="Fire door maintenance and repair services"
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={80}
       />
 
       <div class="absolute w-full">
@@ -95,10 +103,14 @@ import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
     <div class="relative">
       <Image
         src={doorHanging}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
+        width={856}
+        height={512}
+        class="object-cover aspect-video w-full h-full"
+        alt="Professional fire door installation services"
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={80}
       />
       <div class="absolute w-full">
         <div
@@ -121,10 +133,14 @@ import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
     <div class="relative">
       <Image
         src={buildingMaintenance}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
+        width={856}
+        height={512}
+        class="object-cover aspect-video w-full h-full"
+        alt="Building maintenance and property services"
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={80}
       />
       <div class="absolute w-full">
         <div

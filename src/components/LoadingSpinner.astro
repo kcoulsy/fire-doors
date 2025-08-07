@@ -1,0 +1,62 @@
+---
+interface Props {
+  size?: "sm" | "md" | "lg";
+  color?: "white" | "brand" | "gray";
+  text?: string;
+  fullscreen?: boolean;
+}
+
+const {
+  size = "md",
+  color = "brand",
+  text = "Loading...",
+  fullscreen = false,
+} = Astro.props;
+
+const sizeClasses = {
+  sm: "w-4 h-4",
+  md: "w-8 h-8",
+  lg: "w-12 h-12",
+};
+
+const colorClasses = {
+  white: "border-white/30 border-t-white",
+  brand: "border-brand-300 border-t-brand-600",
+  gray: "border-gray-300 border-t-gray-600",
+};
+---
+
+<div
+  class={`loading-container ${fullscreen ? "fixed inset-0 bg-white/90 backdrop-blur-sm z-50 flex items-center justify-center" : "flex items-center justify-center"}`}
+  role="status"
+  aria-live="polite"
+  aria-label={text}
+>
+  <div class="flex flex-col items-center space-y-4">
+    <div
+      class={`loading-spinner ${sizeClasses[size]} border-4 rounded-full animate-spin ${colorClasses[color]}`}
+      aria-hidden="true"
+    >
+    </div>
+    {text && <p class="text-sm text-gray-600 animate-pulse">{text}</p>}
+  </div>
+</div>
+
+<style>
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading-container {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>

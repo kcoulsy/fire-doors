@@ -6,80 +6,220 @@ const { location } = Astro.params;
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 ---
 
-<!--
-  Heads up! 👋
+<section class="bg-white py-16 md:py-24">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold sm:text-4xl md:text-5xl text-brand mb-6">
+        Our Fire Door Services
+      </h2>
+      <p class="mx-auto max-w-3xl text-gray-600 text-lg leading-relaxed">
+        We offer a comprehensive range of fire door services and solutions to
+        ensure your fire doors are compliant and safe {
+          location ? `in ${capitalizeFirstLetter(location)}` : null
+        }. From inspections to installation and maintenance, we've got you
+        covered.
+      </p>
+    </div>
 
-  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
--->
-<section>
-  <div
-    class="max-w-screen-xl mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
-  >
-    <div class="flex flex-col lg:items-center lg:gap-x-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <!-- Fire door maintenance and repairs -->
       <div
-        class="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right"
+        class="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
       >
-        <h3 class="text-3xl font-bold sm:text-4xl">Our Fire Door Services</h3>
-
-        <p class="mt-4 text-gray-600">
-          We offer a full range of fire door services and solutions to ensure your fire doors are compliant
-          and safe { location ? `in ${capitalizeFirstLetter(location)}` : null }.
-        </p>
-
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors"
+            >
+              <CheckedBox className="h-6 w-6 text-blue-600" />
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors"
+            >
+              Fire Door Maintenance & Repairs
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Proactive maintenance and timely repairs to keep your fire doors
+              in optimal condition and compliant with regulations.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 col-span-2">
-        <div
-          class="flex flex-col items-center justify-center rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-        >
-          <CheckedBox className="h-6 w-6" />
 
-          <h3 class="mt-2 font-semibold">Fire door maintenance and repairs</h3>
+      <!-- Surveys, assessments and checks -->
+      <div
+        class="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      >
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors"
+            >
+              <CheckedBox className="h-6 w-6 text-green-600" />
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors"
+            >
+              Surveys, Assessments & Checks
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Comprehensive surveys and assessments to identify fire safety
+              issues and ensure compliance with building regulations.
+            </p>
+          </div>
         </div>
-        <div
-          class="flex flex-col items-center justify-center rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-        >
-          <CheckedBox className="h-6 w-6" />
+      </div>
 
-          <h3 class="mt-2 font-bold">Surveys, assessments and checks</h3>
+      <!-- 6 monthly inspections -->
+      <div
+        class="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      >
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors"
+            >
+              <CheckedBox className="h-6 w-6 text-purple-600" />
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors"
+            >
+              6-Monthly RRO Inspections
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Regular inspections to Regulatory Reform Order (RRO) standards to
+              maintain fire safety compliance and documentation.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div
-          class="flex flex-col items-center justify-center rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-        >
-          <CheckedBox className="h-6 w-6" />
-
-          <h3 class="mt-2 font-bold">
-            6 monthly inspections to RRO (Regulatory Reform Order)
-          </h3>
+      <!-- Supply and installation -->
+      <div
+        class="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      >
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors"
+            >
+              <CheckedBox className="h-6 w-6 text-orange-600" />
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors"
+            >
+              Fire Door Supply & Installation
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Complete supply and professional installation of fire doors and
+              doorsets to meet your specific requirements.
+            </p>
+          </div>
         </div>
-        <div
-          class="flex flex-col items-center justify-center rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-        >
-          <CheckedBox className="h-6 w-6" />
+      </div>
 
-          <h3 class="mt-2 font-bold">Supply and installation of fire doors and sets</h3>
+      <!-- Fire door inspections -->
+      <div
+        class="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      >
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 transition-colors"
+            >
+              <CheckedBox className="h-6 w-6 text-red-600" />
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors"
+            >
+              Fire Door Inspections
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Qualified fire door inspections to identify compliance issues and
+              ensure your fire safety systems are effective.
+            </p>
+          </div>
         </div>
-        <div
-          class="flex flex-col items-center justify-center rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-        >
-          <CheckedBox className="h-6 w-6" />
+      </div>
 
-          <h3 class="mt-2 font-bold">Fire door inspections</h3>
+      <!-- Fire door risk assessments -->
+      <div
+        class="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+      >
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0">
+            <div
+              class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center group-hover:bg-indigo-200 transition-colors"
+            >
+              <CheckedBox className="h-6 w-6 text-indigo-600" />
+            </div>
+          </div>
+          <div class="flex-1">
+            <h3
+              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors"
+            >
+              Fire Door Risk Assessments
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Detailed risk assessments to identify potential fire safety
+              hazards and recommend appropriate mitigation measures.
+            </p>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div
-          class="flex flex-col items-center justify-center rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-        >
-          <CheckedBox className="h-6 w-6" />
-
-          <h3 class="mt-2 font-bold">Fire door risk assesments</h3>
+    <!-- Call to action -->
+    <div class="mt-16 text-center">
+      <div
+        class="bg-gray-50 rounded-xl border border-gray-200 p-8 max-w-4xl mx-auto"
+      >
+        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+          Ready to Ensure Your Fire Safety Compliance?
+        </h3>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+          Our qualified team is ready to help you maintain the highest standards
+          of fire safety. Get in touch for a professional assessment.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium rounded-lg hover:bg-brand-light transition-colors duration-200"
+          >
+            Get Your Quote
+            <svg
+              class="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/fire-door-services"
+            class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            View All Services
+          </a>
         </div>
       </div>
     </div>
   </div>
-
-
 </section>

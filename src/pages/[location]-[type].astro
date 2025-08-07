@@ -1,53 +1,46 @@
 ---
 import type { GetStaticPaths, GetStaticPathsResult } from "astro";
 import { LOCATIONS } from "../constants/locations";
-import MainPage from "../components/MainPage.astro";
-import MainServicesPage from "../components/MainServicesPage.astro";
+import FireDoorServicesPage from "../components/FireDoorServicesPage.astro";
+import FireDoorMaintenancePage from "../components/FireDoorMaintenancePage.astro";
+import FireDoorInspectorsPage from "../components/FireDoorInspectorsPage.astro";
+import FireDoorInstallersPage from "../components/FireDoorInstallersPage.astro";
 
 export const getStaticPaths = (() => {
   const paths: GetStaticPathsResult = [];
 
-  LOCATIONS.forEach((location) => {
+  LOCATIONS.forEach(({ slug }) => {
     paths.push({
       params: {
-        location,
+        location: slug,
         type: "fire-door-services",
       },
     });
   });
 
-  LOCATIONS.forEach((location) => {
+  LOCATIONS.forEach(({ slug }) => {
     paths.push({
       params: {
-        location,
+        location: slug,
         type: "fire-door-inspectors",
       },
     });
   });
 
-  LOCATIONS.forEach((location) => {
+  LOCATIONS.forEach(({ slug }) => {
     paths.push({
       params: {
-        location,
+        location: slug,
         type: "fire-door-installers",
       },
     });
   });
 
-  LOCATIONS.forEach((location) => {
+  LOCATIONS.forEach(({ slug }) => {
     paths.push({
       params: {
-        location,
+        location: slug,
         type: "fire-door-maintenance",
-      },
-    });
-  });
-
-  LOCATIONS.forEach((location) => {
-    paths.push({
-      params: {
-        location,
-        type: "property-maintenance",
       },
     });
   });
@@ -56,10 +49,9 @@ export const getStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 const { location, type } = Astro.params;
-console.log(Astro.params);
 ---
 
-
-
-{ type === 'fire-door-services' && <MainServicesPage location={location} type={type} /> }
-{ !type && <MainPage location={location} type={type} /> }
+{type === "fire-door-services" && <FireDoorServicesPage />}
+{type === "fire-door-maintenance" && <FireDoorMaintenancePage />}
+{type === "fire-door-inspectors" && <FireDoorInspectorsPage />}
+{type === "fire-door-installers" && <FireDoorInstallersPage />}

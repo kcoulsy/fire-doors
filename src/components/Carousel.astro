@@ -1,152 +1,443 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 
 import fireDoorKeepShut from "../assets/images/fire_door_keep_shut.jpeg";
 import doorCloserOpen from "../assets/images/door-closer-open.jpeg";
 import doorHanging from "../assets/images/door-hanging-1.jpeg";
-import buildingMaintenance from "../assets/images/building-maintenance.jpeg";
+
+interface Slide {
+  image: any;
+  text: string;
+  subtitle?: string;
+  cta?: {
+    text: string;
+    link: string;
+  };
+}
+
+const slides: Slide[] = [
+  {
+    image: fireDoorKeepShut,
+    text: "Fire Door Inspections",
+    subtitle: "Safety First - Professional Compliance",
+    cta: {
+      text: "Get Inspection",
+      link: "/fire-door-inspections",
+    },
+  },
+  {
+    image: doorCloserOpen,
+    text: "Fire Door Maintenance",
+    subtitle: "Repair & Service Solutions",
+    cta: {
+      text: "Get Quote",
+      link: "/fire-door-maintenance",
+    },
+  },
+  {
+    image: doorHanging,
+    text: "Fire Door Installation",
+    subtitle: "Qualified & Experienced",
+    cta: {
+      text: "Our Services",
+      link: "/fire-door-installation",
+    },
+  },
+];
 ---
 
-<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-bs-target="#myCarousel"
-      data-bs-slide-to="0"
-      class=""
-      aria-label="Slide 1"></button>
-    <button
-      type="button"
-      data-bs-target="#myCarousel"
-      data-bs-slide-to="1"
-      aria-label="Slide 2"
-      class=""></button>
-    <button
-      type="button"
-      data-bs-target="#myCarousel"
-      data-bs-slide-to="2"
-      aria-label="Slide 3"
-      class=""></button>
-    <button
-      type="button"
-      data-bs-target="#myCarousel"
-      data-bs-slide-to="3"
-      aria-label="Slide 4"
-      class="active"
-      aria-current="true"></button>
-  </div>
-  <div class="carousel-inner rounded-3 shadow-lg">
-    <div class="carousel-item active">
-      <Image
-        src={fireDoorKeepShut}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
-      />
-      <div class="container">
-        <div class="carousel-caption">
-          <h1 style="color:#2c3e50;">Fire Door Inspections</h1>
-          <h2 style="color:#2c3e50;">Safety First</h2>
-          <p style="color:#2c3e50;">
-            Here to assist to bring your fire doors up to regulation
-          </p>
-          <p>
-            <a class="btn btn-lg btn-primary" href="fire-door-inspections"
-              >Proceed to fire door inspections</a
-            >
-          </p>
+<div
+  class="relative overflow-hidden h-[80vh] -mt-[70px] lg:-mt-[80px]"
+  role="banner"
+  aria-label="Fire door services hero slider"
+>
+  <div id="hero-slides" class="relative h-full">
+    {
+      slides.map(({ image, text, subtitle, cta }, index) => (
+        <div
+          class="absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out flex items-center justify-center"
+          style={`z-index: ${index === 0 ? "10" : "0"}; opacity: ${index === 0 ? "1" : "0"};`}
+          data-index={index}
+          role="group"
+          aria-label={`Slide ${index + 1} of ${slides.length}`}
+          aria-hidden={index !== 0}
+        >
+          <Image
+            src={image}
+            alt={text}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
+            width={1920}
+            height={1080}
+            class="w-full h-full object-cover"
+            format="webp"
+            quality={80}
+          />
+          <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+            <div class="bg-black/50 backdrop-blur-sm p-6 rounded-xl max-w-4xl mx-4 shadow-2xl border border-white/10">
+              <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center px-4 text-white leading-tight mb-4">
+                {text}
+              </h2>
+              {subtitle && (
+                <p class="text-lg md:text-xl lg:text-2xl text-center px-4 text-white/90 mb-6">
+                  {subtitle}
+                </p>
+              )}
+              {cta && (
+                <div class="text-center">
+                  <a
+                    href={cta.link}
+                    class="inline-block bg-brand hover:bg-brand-light text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
+                  >
+                    {cta.text}
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <Image
-        src={doorCloserOpen}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
-      />
+      ))
+    }
+  </div>
 
-      <div class="container">
-        <div class="carousel-caption">
-          <h1 style="color:#2c3e50;">Fire Door Maintenance</h1>
-          <h2 style="color:#2c3e50;">Repair Service</h2>
-          <p style="color:#2c3e50;">
-            Let's see if we can fix your fire doors problems
-          </p>
-          <p>
-            <a class="btn btn-lg btn-primary" href="fire-door-maintenance"
-              >Proceed to fire door maintenance</a
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <Image
-        src={doorHanging}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
-      />
-      <div class="container">
-        <div class="carousel-caption text-end">
-          <h1 style="color:#2c3e50;">Fire Door Installation</h1>
-          <h2 style="color:#2c3e50;">Accredited Installers</h2>
-          <p style="color:#2c3e50;">
-            Here to install your fire doors to current regulations
-          </p>
-          <p>
-            <a class="btn btn-lg btn-primary" href="fire-door-installation"
-              >Proceed to fire door Installation</a
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <Image
-        src={buildingMaintenance}
-        width="856"
-        height="512"
-        class="object-fit aspect-video"
-        alt="COULSY Fire Door Services"
-      />
-      <div class="container">
-        <div class="carousel-caption text-end">
-          <h1 style="color:#2c3e50;">Property Maintenance</h1>
-          <h2 style="color:#2c3e50;">Buildings service and repairs</h2>
-          <p style="color:#2c3e50;">
-            As Qualified tradespeople we have the knowledge, expertise,
-            experience and commercial tools to do a professional bespoke service
-          </p>
-          <p>
-            <a class="btn btn-lg btn-primary" href="property-maintenance"
-              >Proceed to property maintenance</a
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#myCarousel"
-    data-bs-slide="prev"
+  <!-- Mobile Controls -->
+  <div
+    class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 lg:hidden z-20"
   >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+    <button
+      id="prevSlide"
+      class="bg-black/50 text-white w-12 h-12 rounded-full hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+      aria-label="Previous slide"
+      type="button"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button
+      id="nextSlide"
+      class="bg-black/50 text-white w-12 h-12 rounded-full hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+      aria-label="Next slide"
+      type="button"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Desktop Controls -->
+  <button
+    id="prevSlideDesktop"
+    class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white w-12 h-12 rounded-full hover:bg-black/80 z-20 hidden lg:flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+    aria-label="Previous slide"
+    type="button"
+  >
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"></path>
+    </svg>
   </button>
   <button
-    class="carousel-control-next"
+    id="nextSlideDesktop"
+    class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white w-12 h-12 rounded-full hover:bg-black/80 z-20 hidden lg:flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+    aria-label="Next slide"
     type="button"
-    data-bs-target="#myCarousel"
-    data-bs-slide="next"
   >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Slide Indicators -->
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex gap-2 z-20"
+  >
+    {
+      slides.map((_, index) => (
+        <button
+          class={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 ${
+            index === 0 ? "bg-white" : "bg-white/50 hover:bg-white/75"
+          }`}
+          data-slide={index}
+          aria-label={`Go to slide ${index + 1}`}
+          type="button"
+        />
+      ))
+    }
+  </div>
+
+  <!-- Pause/Play Button -->
+  <button
+    id="pausePlay"
+    class="absolute top-4 right-4 bg-black/50 text-white w-10 h-10 rounded-full hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/50 flex items-center justify-center transition-all duration-300 backdrop-blur-sm z-20"
+    aria-label="Pause slideshow"
+    type="button"
+  >
+    <svg
+      id="pauseIcon"
+      class="w-5 h-5"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"></path>
+    </svg>
+    <svg
+      id="playIcon"
+      class="w-5 h-5 hidden"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path d="M8 5v14l11-7z"></path>
+    </svg>
   </button>
 </div>
+
+<script is:inline>
+  // Enhanced hero slider with better accessibility and performance
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = Array.from(
+      document.querySelectorAll("#hero-slides > [data-index]")
+    );
+    const indicators = Array.from(document.querySelectorAll("[data-slide]"));
+    const prevButton = document.getElementById("prevSlide");
+    const nextButton = document.getElementById("nextSlide");
+    const prevButtonDesktop = document.getElementById("prevSlideDesktop");
+    const nextButtonDesktop = document.getElementById("nextSlideDesktop");
+    const pausePlayButton = document.getElementById("pausePlay");
+    const pauseIcon = document.getElementById("pauseIcon");
+    const playIcon = document.getElementById("playIcon");
+
+    let currentIndex = 0;
+    let interval;
+    let isPaused = false;
+    const slideInterval = 5000; // 5 seconds
+
+    function showSlide(index) {
+      // Update slides
+      slides.forEach((slide, i) => {
+        const isActive = i === index;
+        slide.style.opacity = isActive ? "1" : "0";
+        slide.style.zIndex = isActive ? "10" : "0";
+        slide.setAttribute("aria-hidden", !isActive);
+      });
+
+      // Update indicators
+      indicators.forEach((indicator, i) => {
+        if (i === index) {
+          indicator.classList.add("bg-white");
+          indicator.classList.remove("bg-white/50");
+        } else {
+          indicator.classList.remove("bg-white");
+          indicator.classList.add("bg-white/50");
+        }
+      });
+
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+
+    function prevSlide() {
+      const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(prevIndex);
+    }
+
+    function startSlideshow() {
+      if (!isPaused) {
+        interval = setInterval(nextSlide, slideInterval);
+      }
+    }
+
+    function stopSlideshow() {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    }
+
+    function togglePause() {
+      isPaused = !isPaused;
+
+      if (isPaused) {
+        stopSlideshow();
+        pauseIcon.classList.add("hidden");
+        playIcon.classList.remove("hidden");
+        pausePlayButton.setAttribute("aria-label", "Play slideshow");
+      } else {
+        startSlideshow();
+        pauseIcon.classList.remove("hidden");
+        playIcon.classList.add("hidden");
+        pausePlayButton.setAttribute("aria-label", "Pause slideshow");
+      }
+    }
+
+    // Event listeners
+    prevButton?.addEventListener("click", () => {
+      prevSlide();
+      stopSlideshow();
+      startSlideshow();
+    });
+
+    nextButton?.addEventListener("click", () => {
+      nextSlide();
+      stopSlideshow();
+      startSlideshow();
+    });
+
+    prevButtonDesktop?.addEventListener("click", () => {
+      prevSlide();
+      stopSlideshow();
+      startSlideshow();
+    });
+
+    nextButtonDesktop?.addEventListener("click", () => {
+      nextSlide();
+      stopSlideshow();
+      startSlideshow();
+    });
+
+    pausePlayButton?.addEventListener("click", togglePause);
+
+    // Indicator clicks
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => {
+        showSlide(index);
+        stopSlideshow();
+        startSlideshow();
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+        stopSlideshow();
+        startSlideshow();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+        stopSlideshow();
+        startSlideshow();
+      } else if (e.key === " ") {
+        e.preventDefault();
+        togglePause();
+      }
+    });
+
+    // Pause on hover (desktop only)
+    const sliderContainer = document.querySelector(".relative.overflow-hidden");
+    if (sliderContainer) {
+      sliderContainer.addEventListener("mouseenter", () => {
+        if (!isPaused) {
+          stopSlideshow();
+        }
+      });
+
+      sliderContainer.addEventListener("mouseleave", () => {
+        if (!isPaused) {
+          startSlideshow();
+        }
+      });
+    }
+
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left - next slide
+          nextSlide();
+        } else {
+          // Swipe right - previous slide
+          prevSlide();
+        }
+        stopSlideshow();
+        startSlideshow();
+      }
+    }
+
+    sliderContainer?.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    sliderContainer?.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    // Intersection Observer for performance
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startSlideshow();
+          } else {
+            stopSlideshow();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sliderContainer) {
+      observer.observe(sliderContainer);
+    }
+
+    // Initialize
+    startSlideshow();
+
+    // Cleanup on page unload
+    window.addEventListener("beforeunload", () => {
+      stopSlideshow();
+    });
+  });
+</script>

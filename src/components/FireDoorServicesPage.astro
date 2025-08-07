@@ -1,0 +1,621 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import NearbyAreas from "./NearbyAreas.astro";
+import { getFormattedPageData } from "../utils/pageMeta";
+
+const { location } = Astro.params;
+
+const {
+  formattedServiceName,
+  locationInText,
+  cleanLocationName,
+  businessSchema,
+  serviceSchema,
+  faqSchema,
+  defaultDescription,
+} = getFormattedPageData(Astro);
+
+const description = `Comprehensive fire door services ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"}, including installation, maintenance, inspections, and repairs. Qualified since 1989 with 35+ years experience in fire safety.`;
+const finalDescription = description || defaultDescription;
+---
+
+<Layout
+  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Solutions`}
+  description={finalDescription}
+  classes="mt-8 mb-16"
+  location={location}
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(businessSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  />
+  <!-- Breadcrumb -->
+  <section class="bg-gray-50 py-4">
+    <div class="container mx-auto px-4">
+      <Breadcrumb
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Fire Door Services", href: "/fire-door-services" },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-50 to-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6">
+          Comprehensive Fire Door Services
+          {location ? ` in ${cleanLocationName}` : " in Yorkshire"}
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          Professional fire door services covering inspection, installation,
+          maintenance, and compliance. From initial assessment to ongoing
+          support, we provide complete fire safety solutions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand-light transition-colors duration-200"
+          >
+            Get Services Quote
+            <svg
+              class="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our Services Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Why Choose Our Fire Door Services
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Complete Service Range
+            </h3>
+            <p class="text-gray-600">
+              From initial inspection to installation and ongoing maintenance,
+              we provide comprehensive fire door services to meet all your fire
+              safety requirements.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Expert Knowledge
+            </h3>
+            <p class="text-gray-600">
+              35+ years of experience in fire safety, with qualified expertise
+              in all aspects of fire door compliance and installation.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Regulatory Compliance
+            </h3>
+            <p class="text-gray-600">
+              All services comply with Building Regulations, RRO 2005, and
+              British Standards to ensure your fire safety systems meet legal
+              requirements.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Local Service
+            </h3>
+            <p class="text-gray-600">
+              Serving {cleanLocationName} and surrounding areas with prompt, reliable
+              service and local knowledge of building requirements and regulations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Fire Door Services Overview
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Fire Door Inspections -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Fire Door Inspections
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Comprehensive fire door inspections to assess compliance and
+              identify safety issues.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Initial inspections</li>
+              <li>• Regular 6-monthly checks</li>
+              <li>• Compliance verification</li>
+              <li>• Detailed reporting</li>
+            </ul>
+          </div>
+
+          <!-- Fire Door Installation -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Fire Door Installation
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Professional installation of fire doors and hardware to meet
+              regulatory standards.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• New build installation</li>
+              <li>• Retrofit projects</li>
+              <li>• Hardware fitting</li>
+              <li>• Certification</li>
+            </ul>
+          </div>
+
+          <!-- Fire Door Maintenance -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Fire Door Maintenance
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Ongoing maintenance and repair services to keep fire doors
+              compliant and functional.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Regular servicing</li>
+              <li>• Repairs & replacements</li>
+              <li>• Emergency callouts</li>
+              <li>• Maintenance contracts</li>
+            </ul>
+          </div>
+
+          <!-- Compliance Services -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-orange-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Compliance Services
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Expert guidance and services to ensure fire safety compliance and
+              certification.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Regulatory guidance</li>
+              <li>• Certification support</li>
+              <li>• Documentation</li>
+              <li>• Training advice</li>
+            </ul>
+          </div>
+
+          <!-- Emergency Services -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Emergency Services
+            </h3>
+            <p class="text-gray-600 mb-4">
+              24/7 emergency callout service for urgent fire door repairs and
+              safety issues.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• 24/7 emergency callouts</li>
+              <li>• Rapid response</li>
+              <li>• Safety assessments</li>
+              <li>• Temporary measures</li>
+            </ul>
+          </div>
+
+          <!-- Consultancy -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Consultancy
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Expert consultancy services for fire safety planning and project
+              management.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Project planning</li>
+              <li>• Specification advice</li>
+              <li>• Risk assessments</li>
+              <li>• Technical support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Process Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Service Process
+        </h2>
+
+        <div class="space-y-8">
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              1
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Initial Consultation
+              </h3>
+              <p class="text-gray-600">
+                We begin with a comprehensive consultation to understand your
+                fire safety requirements and assess your current fire door
+                situation.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              2
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Assessment & Planning
+              </h3>
+              <p class="text-gray-600">
+                Detailed assessment of your fire doors and development of a
+                comprehensive service plan tailored to your specific needs.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              3
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Service Delivery
+              </h3>
+              <p class="text-gray-600">
+                Professional delivery of the required services with attention to
+                detail and compliance with all relevant regulations and
+                standards.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              4
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Ongoing Support
+              </h3>
+              <p class="text-gray-600">
+                Continued support and maintenance to ensure your fire doors
+                remain compliant and functional for the long term.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualifications Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Qualifications & Experience
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Professional Qualifications
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                FireQual Fire Door Inspector
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                CSCS Gold Card Holder
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                35+ Years Experience
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Fully Insured
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Standards & Compliance
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Building Regulations Approved Document B
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                RRO 2005 Compliance
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                BS 9999:2017 Standards
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                BS 8214:2016 Fire Door Assemblies
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Areas Section -->
+  <section class="relative z-10 mx-auto">
+    <NearbyAreas location={location} serviceType="fire-door-services" />
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Get Your Fire Door Services Quote
+        </h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Layout>

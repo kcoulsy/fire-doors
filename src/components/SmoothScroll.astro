@@ -1,0 +1,200 @@
+---
+// Smooth scroll component for enhanced navigation
+---
+
+<!-- Scroll to Top Button -->
+<button
+  id="scroll-to-top"
+  class="fixed bottom-8 right-8 bg-brand hover:bg-brand-light text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-40 group"
+  aria-label="Scroll to top"
+>
+  <svg
+    class="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+</button>
+
+<script>
+  class SmoothScroll {
+    private scrollToTopButton: HTMLElement | null;
+
+    constructor() {
+      this.scrollToTopButton = document.getElementById(
+        "scroll-to-top"
+      ) as HTMLElement | null;
+      this.init();
+    }
+
+    init(): void {
+      this.setupScrollToTop();
+      this.setupSmoothScroll();
+      this.setupScrollIndicator();
+    }
+
+    setupScrollToTop(): void {
+      if (!this.scrollToTopButton) return;
+
+      // Show/hide button based on scroll position
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          this.scrollToTopButton!.classList.remove(
+            "opacity-0",
+            "pointer-events-none"
+          );
+          this.scrollToTopButton!.classList.add(
+            "opacity-100",
+            "pointer-events-auto"
+          );
+        } else {
+          this.scrollToTopButton!.classList.add(
+            "opacity-0",
+            "pointer-events-none"
+          );
+          this.scrollToTopButton!.classList.remove(
+            "opacity-100",
+            "pointer-events-auto"
+          );
+        }
+      });
+
+      // Smooth scroll to top
+      this.scrollToTopButton.addEventListener("click", (e: Event) => {
+        e.preventDefault();
+        this.smoothScrollTo(0);
+      });
+    }
+
+    setupSmoothScroll(): void {
+      // Handle internal links with smooth scrolling
+      document.addEventListener("click", (e: Event) => {
+        const target = e.target as HTMLElement;
+        const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
+        if (link) {
+          e.preventDefault();
+          const targetId = link.getAttribute("href")?.substring(1);
+          if (targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              const offsetTop = targetElement.offsetTop - 100; // Account for fixed header
+              this.smoothScrollTo(offsetTop);
+            }
+          }
+        }
+      });
+    }
+
+    setupScrollIndicator() {
+      // Create scroll progress indicator
+      const progressBar = document.createElement("div");
+      progressBar.className =
+        "fixed top-0 left-0 w-full h-1 bg-brand-light z-50 transform origin-left transition-transform duration-300";
+      progressBar.style.transform = "scaleX(0)";
+      document.body.appendChild(progressBar);
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+
+        progressBar.style.transform = `scaleX(${scrollPercent})`;
+      });
+    }
+
+    smoothScrollTo(targetY: number): void {
+      const startY = window.scrollY;
+      const distance = targetY - startY;
+      const duration = 800;
+      let startTime: number | null = null;
+
+      const animation = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+
+        // Easing function for smooth animation
+        const easeInOutCubic =
+          progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+        window.scrollTo(0, startY + distance * easeInOutCubic);
+
+        if (progress < 1) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      requestAnimationFrame(animation);
+    }
+  }
+
+  // Initialize smooth scroll functionality
+  document.addEventListener("DOMContentLoaded", () => {
+    new SmoothScroll();
+  });
+</script>
+
+<style>
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e2a38;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1e3a8a;
+  }
+
+  /* Smooth scrolling for the entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles for better accessibility */
+  *:focus {
+    outline: 2px solid #1e3a8a;
+    outline-offset: 2px;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute !important;
+    top: -40px !important;
+    left: 6px !important;
+    background: #1e2a38 !important;
+    color: white !important;
+    padding: 8px !important;
+    text-decoration: none !important;
+    border-radius: 4px !important;
+    z-index: 1000 !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .skip-link:focus {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    top: 6px !important;
+  }
+</style>

@@ -3,24 +3,34 @@ import "../styles.scss";
 
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import WebDevFooter from "../components/WebDevFooter.astro";
 import CookieBanner from "../components/CookieBanner.astro";
+import SmoothScroll from "../components/SmoothScroll.astro";
+import PerformanceMonitor from "../components/PerformanceMonitor.astro";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 interface Props {
   title: string;
   description?: string;
   classes?: string;
+  transparentHeader?: boolean;
+  location?: string;
 }
 
 const {
   title,
   classes,
-  description = "Coulsy Fire Door Services",
+  description = "Professional fire door services in Yorkshire including inspections, installation, maintenance and compliance. Qualified since 1989 with 35+ years experience.",
+  transparentHeader = false,
+  location,
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <slot name="head" />
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
@@ -28,21 +38,54 @@ const {
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta
+      property="og:image"
+      content="https://coulsyfiredoors.co.uk/og-image.jpg"
+    />
+    <meta property="og:site_name" content="Coulsy Fire Door Services" />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content="https://coulsyfiredoors.co.uk/og-image.jpg"
+    />
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Coulsy Fire Door Services" />
+    <meta name="theme-color" content="#1e2a38" />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Coulsy Fire Doors</title>
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
-  <body class="flex flex-col min-h-screen">
-    <Navbar />
-    <main class={`flex-1 ${classes}`}>
+  <body class="flex flex-col min-h-screen overflow-x-hidden">
+    <Navbar transparent={transparentHeader} />
+    <main id="main-content" class={`flex-1 ${classes}`}>
       <slot />
     </main>
     <Footer />
-    <!-- <CookieBanner /> -->
+    <WebDevFooter location={location} />
+    <SmoothScroll />
+    <PerformanceMonitor />
+    <CookieBanner />
     <style is:global></style>
-    <script
+    <!-- Temporarily disabled analytics for development -->
+    <!-- <script
       defer
       data-domain="coulsyfiredoors.co.uk"
-      src="https://analytics.coulsy.dev/js/script.js"></script>
+      src="https://analytics.coulsy.dev/js/script.js"></script> -->
   </body>
 </html>

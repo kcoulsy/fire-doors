@@ -1,0 +1,54 @@
+---
+interface Props {
+  location?: string;
+}
+
+const { location } = Astro.props;
+
+// Array of varied, natural-sounding web development references
+const webDevVariations = [
+  "Website crafted with care by a local Yorkshire developer",
+  "Site built by an experienced Yorkshire web professional",
+  "Digital presence created by a local Yorkshire tech expert",
+  "Online platform developed by a Yorkshire-based specialist",
+  "Web solution designed by a local Yorkshire digital craftsman",
+  "Site created by a Yorkshire web developer",
+  "Digital platform built by a local Yorkshire expert",
+  "Website developed by an experienced Yorkshire professional",
+  "Online presence crafted by a Yorkshire-based developer",
+  "Site designed by a local Yorkshire tech specialist",
+];
+
+// Get a consistent variation based on location slug
+const getVariation = (locationSlug: string) => {
+  const hash = locationSlug.split("").reduce((a, b) => {
+    a = (a << 5) - a + b.charCodeAt(0);
+    return a & a;
+  }, 0);
+  return webDevVariations[Math.abs(hash) % webDevVariations.length];
+};
+
+const webDevText = location ? getVariation(location) : webDevVariations[0];
+---
+
+<div class="sub-footer bg-gray-50 py-4 mt-8 border-t border-gray-200">
+  <div class="container mx-auto px-4">
+    <div class="text-center">
+      <p class="text-sm text-gray-600">
+        {location && `Professional fire door services in ${location}. `}
+        <span class="text-gray-400">
+          {webDevText}
+        </span>
+      </p>
+      <p class="text-xs text-gray-400 mt-1">
+        Need a professional website?
+        <a
+          href="/web-development"
+          class="text-blue-600 hover:text-blue-800 transition-colors"
+        >
+          Let's discuss your project
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

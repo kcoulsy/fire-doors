@@ -1,0 +1,619 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import NearbyAreas from "./NearbyAreas.astro";
+import { getFormattedPageData } from "../utils/pageMeta";
+
+const { location } = Astro.params;
+
+const {
+  formattedServiceName,
+  locationInText,
+  cleanLocationName,
+  businessSchema,
+  serviceSchema,
+  faqSchema,
+  defaultDescription,
+} = getFormattedPageData(Astro);
+
+const description = `Professional fire door installation services ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"}, including new installations, replacements, and upgrades. Qualified since 1989 with 35+ years experience.`;
+const finalDescription = description || defaultDescription;
+---
+
+<Layout
+  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Installation`}
+  description={finalDescription}
+  classes="mt-8 mb-16"
+  location={location}
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(businessSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  />
+  <!-- Breadcrumb -->
+  <section class="bg-gray-50 py-4">
+    <div class="container mx-auto px-4">
+      <Breadcrumb
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Fire Door Installers", href: "/fire-door-installers" },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-50 to-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6">
+          Fire Door Installation Services
+          {cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          Qualified fire door installation services to ensure your fire doors
+          are fitted correctly and meet all regulatory requirements. From supply
+          to installation and certification, we handle every aspect of your fire
+          door project.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand-light transition-colors duration-200"
+          >
+            Get Installation Quote
+            <svg
+              class="ml-2 w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Professional Installation Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Why Professional Fire Door Installation is Critical
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Safety & Compliance
+            </h3>
+            <p class="text-gray-600">
+              Incorrect installation can compromise fire door performance and
+              fail to meet Building Regulations and fire safety standards,
+              putting occupants at risk.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Performance Assurance
+            </h3>
+            <p class="text-gray-600">
+              Professional installation ensures fire doors function correctly
+              during emergencies, providing the intended fire resistance and
+              smoke protection.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Warranty Protection
+            </h3>
+            <p class="text-gray-600">
+              Manufacturer warranties often require professional installation.
+              DIY or unqualified installation can void warranty coverage.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Long-term Reliability
+            </h3>
+            <p class="text-gray-600">
+              Proper installation extends fire door lifespan and reduces
+              maintenance costs while ensuring continued compliance and safety.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Services Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Fire Door Installation Services
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Supply & Installation -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Supply & Installation
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Complete supply and professional installation of fire doors and
+              doorsets to meet your specifications.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Fire door supply</li>
+              <li>• Professional installation</li>
+              <li>• Hardware fitting</li>
+              <li>• Quality assurance</li>
+            </ul>
+          </div>
+
+          <!-- New Build Installation -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              New Build Installation
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Fire door installation for new buildings, ensuring compliance with
+              current building regulations.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• New construction projects</li>
+              <li>• Building regulations compliance</li>
+              <li>• Project coordination</li>
+              <li>• Completion certification</li>
+            </ul>
+          </div>
+
+          <!-- Retrofit Installation -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Retrofit Installation
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Upgrading existing doors to fire door standards or replacing
+              non-compliant fire doors.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Existing building upgrades</li>
+              <li>• Door replacement</li>
+              <li>• Frame modifications</li>
+              <li>• Minimal disruption</li>
+            </ul>
+          </div>
+
+          <!-- Specialist Installations -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-orange-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Specialist Installations
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Installation of specialist fire doors including acoustic,
+              security, and accessibility features.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Acoustic fire doors</li>
+              <li>• Security fire doors</li>
+              <li>• Accessibility features</li>
+              <li>• Custom specifications</li>
+            </ul>
+          </div>
+
+          <!-- Hardware Installation -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Hardware Installation
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Professional installation of fire-rated hardware including
+              closers, locks, and seals.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Door closers</li>
+              <li>• Fire-rated locks</li>
+              <li>• Intumescent seals</li>
+              <li>• Smoke seals</li>
+            </ul>
+          </div>
+
+          <!-- Certification & Testing -->
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Certification & Testing
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Post-installation testing and certification to ensure fire doors
+              meet all performance requirements.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Performance testing</li>
+              <li>• Compliance verification</li>
+              <li>• Certification documentation</li>
+              <li>• Handover reports</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Process Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Installation Process
+        </h2>
+
+        <div class="space-y-8">
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              1
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Site Survey & Planning
+              </h3>
+              <p class="text-gray-600">
+                Comprehensive site survey to assess requirements, measure
+                openings, and plan the installation process.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              2
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Specification & Supply
+              </h3>
+              <p class="text-gray-600">
+                Specification of appropriate fire doors and hardware, followed
+                by supply of certified products.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              3
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Professional Installation
+              </h3>
+              <p class="text-gray-600">
+                Qualified installation by experienced technicians following
+                manufacturer guidelines and regulations.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div
+              class="flex-shrink-0 w-8 h-8 bg-brand text-white rounded-full flex items-center justify-center font-bold"
+            >
+              4
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-brand-900 mb-2">
+                Testing & Certification
+              </h3>
+              <p class="text-gray-600">
+                Post-installation testing and certification to ensure fire doors
+                meet all performance requirements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualifications Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Our Qualifications & Experience
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Professional Qualifications
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                CSCS Gold Card Holder
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                FireQual Fire Door Inspector
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                35+ Years Experience
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Fully Insured
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-xl font-semibold text-brand-900 mb-4">
+              Standards & Compliance
+            </h3>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Building Regulations Approved Document B
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                BS 8214:2016 Fire Door Assemblies
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Manufacturer Guidelines
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Quality Assurance Procedures
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Areas Section -->
+  <section class="relative z-10 mx-auto">
+    <NearbyAreas location={location} serviceType="fire-door-installers" />
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Get Your Fire Door Installation Quote
+        </h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Layout>

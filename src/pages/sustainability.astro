@@ -1,105 +1,320 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import sustainabilityLogo from "../assets/images/sustainability_logo.svg";
-import Image from "astro/components/Image.astro";
-const currentPath = Astro.url.pathname;
+import { Image } from "astro:assets";
+import Breadcrumb from "../components/Breadcrumb.astro";
+
+// Modern SEO optimization with personal voice preserved
+const seoData = {
+  title:
+    "Fire Safety Sustainability & Environmental Practices - Coulsy Fire Door Services | Eco-Friendly Fire Doors Yorkshire",
+  description:
+    "Coulsy Fire Door Services' commitment to sustainable fire safety practices, waste reduction, and environmental responsibility. Eco-friendly fire door solutions in Yorkshire with minimal environmental impact.",
+  keywords:
+    "sustainable fire doors Yorkshire, eco-friendly fire safety, environmental fire door practices, green building fire safety, sustainable fire protection",
+  canonical: "https://coulsyfiredoors.co.uk/sustainability",
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Fire Safety Sustainability & Environmental Practices",
+    description:
+      "Coulsy Fire Door Services' commitment to sustainable and environmentally responsible fire safety practices",
+    url: "https://coulsyfiredoors.co.uk/sustainability",
+    mainEntity: {
+      "@type": "Organization",
+      name: "Coulsy Fire Door Services",
+      description:
+        "Fire door specialist committed to sustainable fire safety practices",
+      url: "https://coulsyfiredoors.co.uk",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "Yorkshire",
+        addressCountry: "UK",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Sustainable Fire Door Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Sustainable Fire Door Materials",
+              description:
+                "Use of eco-friendly and responsibly sourced fire door materials",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Fire Door Waste Reduction",
+              description:
+                "Minimizing waste through careful fire door planning and material reuse",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Environmental Fire Safety Compliance",
+              description:
+                "Meeting and exceeding environmental fire safety regulations",
+            },
+          },
+        ],
+      },
+    },
+  },
+};
 ---
 
-<Layout title="Our Sustainability">
-  <div class="w-full container mx-auto px-8 py-12">
-    <div class="flex justify-left">
-      <nav class="text-sm sm:text-base pb-6">
-        <ol class="list-none p-0 inline-flex space-x-2">
-          <li class="flex items-center">
-            <svg
-              onclick="window.location.href='/';"
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 576 512"
-              class="cursor-pointer hover:fill-blue-500 transition-colors duration-300 mr-2"
-              fill="#4b5563"
-              ><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
-              ></path></svg
-            >
-            <span class="mx-2">/</span>
-          </li>
-          <li class="flex items-center">
-            <a
-              href="/about"
-              class="text-gray-600 hover:text-blue-500 transition-colors duration-300"
-              >About</a
-            >
-            <span class="mx-2">/</span>
-          </li>
-          <li class="flex items-center">
-            <a
-              href="#"
-              class={currentPath === "/sustainability"
-                ? "text-yellow-600 font-semibold"
-                : ""}
-            >
-              <span class="">Sustainability</span>
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </div>
+<Layout title={seoData.title} description={seoData.description}>
+  <main class="mx-auto md:mt-16 relative z-10">
+    <section class="w-full container mx-auto px-4 sm:px-6 py-8">
+      <Breadcrumb
+        crumbs={[
+          { href: "/about", label: "About" },
+          { label: "Sustainability", current: true },
+        ]}
+      />
 
-    <h1 class="text-3xl font-bold tracking-tight pb-4">Sustainability</h1>
-    <div class="grid md:grid-cols-2 items-start gap-8">
-      <div class="space-y-4">
-        <div class="space-y-4 text-gray-600 prose">
-          <h2 class="font-semibold text-lg">
-            Environmental and pollution prevention
-          </h2>
-          <p>
-            The director recognises day to day operations of the business will
-            impact on the environment, however, we will strive to minimise the
-            potentially harmful effects of any such activity wherever and
-            whenever practicable. Initiatives that reduce the carbon footprint
-            of the business.
-          </p>
-          <h2 class="font-semibold text-lg">
-            Legislative and regulatory compliance
-          </h2>
-          <p>
-            Environmental regulations, laws and codes of practice will be
-            regarded as setting the minimum standards of environmental
-            performance. Where there is not law for a specific task, we will
-            take initiative for the most environmentally process to complete its
-            tasks and record them accordingly.
-          </p>
-          <h2 class="font-semibold text-lg">Communincation to our staff</h2>
-          <p>
-            Our employee involvement in environmental matters is encouraged and
-            will be promoted through training, communications and a constant
-            reappraisal of working methods and techniques.
-          </p>
-          <h2 class="font-semibold text-lg">Social</h2>
-          <p>
-            We actively have initiatives promoting the wellbeing, health and
-            safety of communities, customers, our clients and employees.
-          </p>
-          <p>
-            We can provide more information and answer any questions you may
-            have. Please feel free to <a
-              href="/contact"
-              class="font-semibold text-blue-700 hover:underline">contact us</a
-            >.
-          </p>
+      <!-- Header Section -->
+      <div class="text-center mb-16">
+        <h1
+          class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6 text-balance"
+        >
+          Fire Safety Sustainability
+        </h1>
+        <p
+          class="text-xl text-brand-600 max-w-4xl mx-auto text-balance leading-relaxed"
+        >
+          We understand that fire door work can have an impact on the
+          environment — and we don't take that lightly. That's why we aim to
+          reduce waste, reuse materials where possible, and make thoughtful
+          choices every day while maintaining the highest fire safety standards.
+        </p>
+      </div>
+
+      <!-- Main Content -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-12 lg:gap-16">
+        <!-- Text Content -->
+        <div class="space-y-8">
+          <!-- Approach Section -->
+          <div
+            class="bg-green-50 border border-green-200 rounded-xl p-8 shadow-sm"
+          >
+            <h2 class="text-2xl font-semibold text-green-900 mb-4">
+              Our Approach to Fire Safety Sustainability
+            </h2>
+            <p class="text-green-700 leading-relaxed">
+              Fire safety and environmental responsibility go hand in hand. We
+              believe that protecting lives through proper fire doors shouldn't
+              come at the expense of our environment. That's why we carefully
+              select materials, minimize waste, and implement sustainable
+              practices while ensuring every fire door meets the highest safety
+              standards.
+            </p>
+          </div>
+
+          <!-- Fire Door Materials Section -->
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+          >
+            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
+              Sustainable Fire Door Materials
+            </h2>
+            <p class="text-brand-600 leading-relaxed mb-4">
+              We prioritize responsibly sourced materials for our fire doors:
+            </p>
+            <ul class="space-y-2 text-brand-600">
+              <li class="flex items-start">
+                <svg
+                  class="w-5 h-5 text-brand-500 mr-3 mt-0.5 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>FSC-certified timber from sustainable sources</span>
+              </li>
+              <li class="flex items-start">
+                <svg
+                  class="w-5 h-5 text-brand-500 mr-3 mt-0.5 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>Recycled steel components where applicable</span>
+              </li>
+              <li class="flex items-start">
+                <svg
+                  class="w-5 h-5 text-brand-500 mr-3 mt-0.5 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>Low-VOC fire door seals and finishes</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Waste Reduction Section -->
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+          >
+            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
+              Fire Door Waste Reduction
+            </h2>
+            <p class="text-brand-600 leading-relaxed mb-4">
+              We minimize waste through careful planning and material reuse:
+            </p>
+            <ul class="space-y-2 text-brand-600">
+              <li class="flex items-start">
+                <svg
+                  class="w-5 h-5 text-brand-500 mr-3 mt-0.5 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>Precise measurements to minimize material waste</span>
+              </li>
+              <li class="flex items-start">
+                <svg
+                  class="w-5 h-5 text-brand-500 mr-3 mt-0.5 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>Recycling of old fire door components</span>
+              </li>
+              <li class="flex items-start">
+                <svg
+                  class="w-5 h-5 text-brand-500 mr-3 mt-0.5 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span>Responsible disposal of fire door materials</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Environmental Compliance Section -->
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+          >
+            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
+              Environmental Fire Safety Compliance
+            </h2>
+            <p class="text-brand-600 leading-relaxed">
+              We meet all environmental regulations that apply to fire door
+              work. But we don't just stop at the minimum. Where there isn't a
+              law or guideline in place, we use common sense and experience to
+              do what's right for the environment while maintaining fire safety
+              standards — and we keep a record of it.
+            </p>
+          </div>
+
+          <!-- Team Involvement Section -->
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+          >
+            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
+              Getting the Team Involved
+            </h2>
+            <p class="text-brand-600 leading-relaxed">
+              Everyone we work with is part of this. We make sure our team
+              understands the importance of working cleanly and efficiently —
+              and we back that up with training, site discussions, and regular
+              reviews of how we work while maintaining fire safety standards.
+            </p>
+          </div>
+
+          <!-- People Section -->
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+          >
+            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
+              Looking After People Too
+            </h2>
+            <p class="text-brand-600 leading-relaxed">
+              Sustainability isn't just about the environment — it's about
+              people too. We actively promote wellbeing, health, and safety for
+              our clients, team, and community through how we work and the
+              choices we make. Fire safety and environmental responsibility work
+              together to protect both people and planet.
+            </p>
+          </div>
+
+          <!-- Contact CTA -->
+          <div class="bg-brand-50 rounded-xl p-6 border border-brand-200">
+            <p class="text-brand-700">
+              If you'd like more detail about our sustainable fire door
+              practices or a written policy, just
+              <a
+                href="/contact"
+                class="font-semibold text-brand-600 hover:text-brand-700 underline"
+              >
+                get in touch
+              </a>. We're always happy to discuss our environmental practices
+              and how we can help with your sustainable fire safety needs.
+            </p>
+          </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="flex items-start justify-center">
+          <div
+            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+          >
+            <Image
+              src={sustainabilityLogo}
+              width={526}
+              height={489}
+              class="object-contain rounded-lg max-w-full h-auto"
+              alt="Sustainability logo representing Coulsy Fire Door Services' commitment to eco-friendly and environmentally responsible fire safety practices"
+              loading="eager"
+              decoding="async"
+              format="webp"
+              quality={80}
+            />
+            <p class="text-sm text-brand-600 text-center mt-4">
+              Our commitment to sustainable and environmentally responsible fire
+              safety practices
+            </p>
+          </div>
         </div>
       </div>
-      <div class="flex items-start">
-        <Image
-          src={sustainabilityLogo}
-          width="526"
-          height="489"
-          class="object-fit max-w-full h-auto mx-auto block mb-4"
-          alt="Sustainability Image"
-        />
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </Layout>
+
+<!-- Modern Structured Data -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(seoData.structuredData)}
+/>

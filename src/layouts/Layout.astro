@@ -82,10 +82,45 @@ const {
     <PerformanceMonitor />
     <CookieBanner />
     <style is:global></style>
-    <!-- Temporarily disabled analytics for development -->
-    <!-- <script
+    <!-- Analytics -->
+    <script
       defer
       data-domain="coulsyfiredoors.co.uk"
-      src="https://analytics.coulsy.dev/js/script.js"></script> -->
+      src="https://analytics.coulsy.dev/js/script.js"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      // @ts-ignore
+      window.dataLayer = window.dataLayer || [];
+      // @ts-ignore
+      function gtag(){dataLayer.push(arguments);}
+      // @ts-ignore
+      gtag('js', new Date());
+      // @ts-ignore
+      gtag('config', 'G-XXXXXXXXXX', {
+        page_title: document.title,
+        page_location: window.location.href,
+        custom_map: {
+          'custom_parameter_1': 'location',
+          'custom_parameter_2': 'service_type'
+        }
+      });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('Service Worker registered successfully:', registration.scope);
+            })
+            .catch((error) => {
+              console.log('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

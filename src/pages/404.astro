@@ -1,0 +1,156 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+---
+
+<Layout
+  title="Page Not Found - 404 Error"
+  description="The page you're looking for doesn't exist. Find professional fire door services in Yorkshire including installation, maintenance, and inspections."
+  classes="bg-gray-50"
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-50 to-white py-16 lg:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="mb-8">
+          <h1 class="text-6xl lg:text-8xl font-bold text-brand-900 mb-4">404</h1>
+          <h2 class="text-3xl lg:text-4xl font-semibold text-gray-800 mb-6">
+            Page Not Found
+          </h2>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Sorry, the page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <a
+            href="/fire-door-services"
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200"
+          >
+            <div class="text-brand text-2xl mb-2">🚪</div>
+            <h3 class="font-semibold text-gray-800 mb-2">Fire Door Services</h3>
+            <p class="text-sm text-gray-600">Installation, maintenance & inspections</p>
+          </a>
+
+          <a
+            href="/fire-door-inspectors"
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200"
+          >
+            <div class="text-brand text-2xl mb-2">🔍</div>
+            <h3 class="font-semibold text-gray-800 mb-2">Fire Door Inspectors</h3>
+            <p class="text-sm text-gray-600">Professional inspection services</p>
+          </a>
+
+          <a
+            href="/fire-door-installers"
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200"
+          >
+            <div class="text-brand text-2xl mb-2">🔧</div>
+            <h3 class="font-semibold text-gray-800 mb-2">Fire Door Installers</h3>
+            <p class="text-sm text-gray-600">Expert installation & fitting</p>
+          </a>
+
+          <a
+            href="/fire-door-maintenance"
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200"
+          >
+            <div class="text-brand text-2xl mb-2">🛠️</div>
+            <h3 class="font-semibold text-gray-800 mb-2">Fire Door Maintenance</h3>
+            <p class="text-sm text-gray-600">Repairs & ongoing support</p>
+          </a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand-light transition-colors duration-200"
+          >
+            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Go Home
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Contact Us
+          </a>
+        </div>
+
+        <!-- Search Suggestion -->
+        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+          <h3 class="font-semibold text-gray-800 mb-4">Looking for something specific?</h3>
+          <p class="text-gray-600 mb-4">
+            Try searching for fire door services in your area or browse our service pages above.
+          </p>
+          <div class="flex gap-2">
+            <input
+              type="text"
+              placeholder="Search for fire door services..."
+              class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent"
+              id="search-input"
+            />
+            <button
+              class="px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand-light transition-colors duration-200"
+              onclick="performSearch()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          Need Fire Door Services?
+        </h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // @ts-nocheck
+  function performSearch() {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      const searchTerm = searchInput.value.trim();
+      if (searchTerm) {
+        // Simple search logic - redirect to services page with search term
+        const searchUrl = `/fire-door-services?search=${encodeURIComponent(searchTerm)}`;
+        window.location.href = searchUrl;
+      }
+    }
+  }
+
+  // Allow Enter key to trigger search
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+  }
+
+  // Track 404 error for analytics
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'page_view', {
+      page_title: '404 - Page Not Found',
+      page_location: window.location.href,
+      custom_parameter_1: 'error_page'
+    });
+  }
+</script>

@@ -15,13 +15,13 @@ const { transparent = false } = Astro.props;
 
 const menuitems = [
   {
-    label: "Fire Door Services",
+    label: "Services",
     link: "/fire-door-services",
     items: [
-      { label: "Fire Door Services", link: "/fire-door-services" },
-      { label: "Fire Door Inspectors", link: "/fire-door-inspectors" },
-      { label: "Fire Door Installers", link: "/fire-door-installers" },
+      { label: "Fire Door Installation", link: "/fire-door-installers" },
       { label: "Fire Door Maintenance", link: "/fire-door-maintenance" },
+      { label: "Fire Door Inspections", link: "/fire-door-inspectors" },
+      { label: "All Services", link: "/fire-door-services" },
     ],
   },
   {
@@ -32,11 +32,8 @@ const menuitems = [
       { label: "Qualifications", link: "/qualifications" },
       { label: "Compliance", link: "/compliance" },
       { label: "Sustainability", link: "/sustainability" },
+      { label: "FAQ", link: "/faq" },
     ],
-  },
-  {
-    label: "Contact",
-    link: "/contact",
   },
 ];
 
@@ -96,7 +93,7 @@ const socialLinks = [
           )
         }
       </ul>
-      
+
       <!-- Search Bar -->
       <div class="ml-6 w-64">
         <SearchBar />

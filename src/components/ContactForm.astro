@@ -190,7 +190,7 @@ const {
   </div>
 </div>
 
-<script>
+<script define:vars={{ location, serviceType }}>
   // Simple script to show success/error messages based on URL parameters
   document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
@@ -215,18 +215,13 @@ const {
 
     // Add location information to form submission
     const form = document.getElementById("modern-contact-form");
-    const messageField = document.getElementById("message") as HTMLTextAreaElement;
+    const messageField = document.getElementById("message");
     
-    if (form && messageField) {
+    if (form && messageField && location && serviceType) {
       form.addEventListener("submit", function(e) {
-        const location = "${location || ''}";
-        const serviceType = "${serviceType || ''}";
-        
-        if (location && serviceType) {
-          const currentMessage = messageField.value;
-          const locationInfo = `\n\n---\nInquiry from: ${location} (${serviceType})`;
-          messageField.value = currentMessage + locationInfo;
-        }
+        const currentMessage = messageField.value || "";
+        const locationInfo = `\n\n---\nInquiry from: ${location} (${serviceType})`;
+        messageField.value = currentMessage + locationInfo;
       });
     }
   });

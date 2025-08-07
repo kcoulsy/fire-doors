@@ -11,9 +11,20 @@
       id="search-input"
       autocomplete="off"
     />
-    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-      <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+    <div
+      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+    >
+      <svg
+        class="h-5 w-5 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
       </svg>
     </div>
     <button
@@ -22,8 +33,17 @@
       id="clear-search"
       style="display: none;"
     >
-      <svg class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      <svg
+        class="h-5 w-5 text-gray-400 hover:text-gray-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
   </div>
@@ -54,10 +74,12 @@
     private searchData: any;
 
     constructor() {
-      this.searchInput = document.getElementById('search-input') as HTMLInputElement;
-      this.searchResults = document.getElementById('search-results');
-      this.clearButton = document.getElementById('clear-search');
-      this.resultsContent = document.getElementById('search-results-content');
+      this.searchInput = document.getElementById(
+        "search-input"
+      ) as HTMLInputElement;
+      this.searchResults = document.getElementById("search-results");
+      this.clearButton = document.getElementById("clear-search");
+      this.resultsContent = document.getElementById("search-results-content");
       this.searchTimeout = null;
       this.isSearching = false;
       this.searchData = {};
@@ -72,31 +94,31 @@
 
     setupEventListeners() {
       // Search input events
-      this.searchInput.addEventListener('input', (e) => {
+      this.searchInput.addEventListener("input", (e) => {
         this.handleSearchInput(e.target.value);
       });
 
-      this.searchInput.addEventListener('focus', () => {
+      this.searchInput.addEventListener("focus", () => {
         if (this.searchInput.value.trim()) {
           this.showResults();
         }
       });
 
       // Clear button
-      this.clearButton.addEventListener('click', () => {
+      this.clearButton.addEventListener("click", () => {
         this.clearSearch();
       });
 
       // Click outside to close
-      document.addEventListener('click', (e) => {
-        if (!e.target.closest('#search-container')) {
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest("#search-container")) {
           this.hideResults();
         }
       });
 
       // Keyboard navigation
-      this.searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
+      this.searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
           this.hideResults();
         }
       });
@@ -107,24 +129,55 @@
       // For now, we'll use a simple structure
       this.searchData = {
         services: [
-          { title: 'Fire Door Installation', url: '/fire-door-installers', type: 'service' },
-          { title: 'Fire Door Maintenance', url: '/fire-door-maintenance', type: 'service' },
-          { title: 'Fire Door Inspections', url: '/fire-door-inspectors', type: 'service' },
-          { title: 'Fire Door Services', url: '/fire-door-services', type: 'service' }
+          {
+            title: "Fire Door Installation",
+            url: "/fire-door-installers",
+            type: "service",
+          },
+          {
+            title: "Fire Door Maintenance",
+            url: "/fire-door-maintenance",
+            type: "service",
+          },
+          {
+            title: "Fire Door Inspections",
+            url: "/fire-door-inspectors",
+            type: "service",
+          },
+          {
+            title: "Fire Door Services",
+            url: "/fire-door-services",
+            type: "service",
+          },
         ],
         locations: [
-          'York', 'Leeds', 'Harrogate', 'Wetherby', 'Selby', 'Tadcaster', 'Pocklington',
-          'Ripon', 'Thirsk', 'Masham', 'Boroughbridge', 'Easingwold', 'Helmsley',
-          'Pickering', 'Sherburn-in-Elmet', 'Knaresborough', 'Otley', 'Horsforth'
-        ]
+          "York",
+          "Leeds",
+          "Harrogate",
+          "Wetherby",
+          "Selby",
+          "Tadcaster",
+          "Pocklington",
+          "Ripon",
+          "Thirsk",
+          "Masham",
+          "Boroughbridge",
+          "Easingwold",
+          "Helmsley",
+          "Pickering",
+          "Sherburn-in-Elmet",
+          "Knaresborough",
+          "Otley",
+          "Horsforth",
+        ],
       };
     }
 
     handleSearchInput(query) {
       const trimmedQuery = query.trim();
-      
+
       // Show/hide clear button
-      this.clearButton.style.display = trimmedQuery ? 'flex' : 'none';
+      this.clearButton.style.display = trimmedQuery ? "flex" : "none";
 
       // Clear previous timeout
       if (this.searchTimeout) {
@@ -144,7 +197,7 @@
 
     async performSearch(query) {
       if (this.isSearching) return;
-      
+
       this.isSearching = true;
       const results = this.searchLocal(query);
       this.displayResults(results, query);
@@ -156,23 +209,23 @@
       const results = [];
 
       // Search services
-      this.searchData.services.forEach(service => {
+      this.searchData.services.forEach((service) => {
         if (service.title.toLowerCase().includes(lowerQuery)) {
           results.push({
             ...service,
-            relevance: this.calculateRelevance(service.title, query)
+            relevance: this.calculateRelevance(service.title, query),
           });
         }
       });
 
       // Search locations
-      this.searchData.locations.forEach(location => {
+      this.searchData.locations.forEach((location) => {
         if (location.toLowerCase().includes(lowerQuery)) {
           results.push({
             title: `Fire Door Services in ${location}`,
-            url: `/${location.toLowerCase().replace(/\s+/g, '-')}-fire-door-services`,
-            type: 'location',
-            relevance: this.calculateRelevance(location, query)
+            url: `/${location.toLowerCase().replace(/\s+/g, "-")}-fire-door-services`,
+            type: "location",
+            relevance: this.calculateRelevance(location, query),
           });
         }
       });
@@ -184,33 +237,33 @@
     calculateRelevance(text, query) {
       const lowerText = text.toLowerCase();
       const lowerQuery = query.toLowerCase();
-      
+
       // Exact match gets highest score
       if (lowerText === lowerQuery) return 100;
-      
+
       // Starts with query gets high score
       if (lowerText.startsWith(lowerQuery)) return 90;
-      
+
       // Contains query gets medium score
       if (lowerText.includes(lowerQuery)) return 70;
-      
+
       // Partial word match gets lower score
-      const words = lowerQuery.split(' ');
-      const textWords = lowerText.split(' ');
+      const words = lowerQuery.split(" ");
+      const textWords = lowerText.split(" ");
       let wordMatches = 0;
-      
-      words.forEach(word => {
-        if (textWords.some(textWord => textWord.includes(word))) {
+
+      words.forEach((word) => {
+        if (textWords.some((textWord) => textWord.includes(word))) {
           wordMatches++;
         }
       });
-      
+
       return (wordMatches / words.length) * 50;
     }
 
     displayResults(results: any[], query: string) {
       if (!this.resultsContent) return;
-      
+
       if (results.length === 0) {
         this.resultsContent.innerHTML = `
           <div class="text-center py-8">
@@ -220,12 +273,14 @@
           </div>
         `;
       } else {
-        const resultsHtml = results.map((result: any) => `
+        const resultsHtml = results
+          .map(
+            (result: any) => `
           <a href="${result.url}" class="block p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200">
             <div class="flex items-center">
               <div class="flex-shrink-0 mr-3">
                 <div class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center">
-                  ${result.type === 'service' ? '🚪' : '📍'}
+                  ${result.type === "service" ? "🚪" : "📍"}
                 </div>
               </div>
               <div class="flex-1">
@@ -239,7 +294,9 @@
               </div>
             </div>
           </a>
-        `).join('');
+        `
+          )
+          .join("");
 
         this.resultsContent.innerHTML = resultsHtml;
       }
@@ -249,22 +306,22 @@
 
     showResults() {
       if (this.searchResults) {
-        this.searchResults.style.display = 'block';
+        this.searchResults.style.display = "block";
       }
     }
 
     hideResults() {
       if (this.searchResults) {
-        this.searchResults.style.display = 'none';
+        this.searchResults.style.display = "none";
       }
     }
 
     clearSearch() {
       if (this.searchInput) {
-        this.searchInput.value = '';
+        this.searchInput.value = "";
         this.hideResults();
         if (this.clearButton) {
-          this.clearButton.style.display = 'none';
+          this.clearButton.style.display = "none";
         }
         this.searchInput.focus();
       }
@@ -272,7 +329,7 @@
   }
 
   // Initialize search when DOM is loaded
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // @ts-ignore
     new SiteSearch();
   });

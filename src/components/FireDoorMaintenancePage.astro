@@ -17,13 +17,14 @@ const {
   locationInText,
   cleanLocationName,
   businessSchema,
+  localBusinessSchema,
   serviceSchema,
   faqSchema,
   defaultDescription,
+  enhancedDescription,
 } = getFormattedPageData(location, type);
 
-const description = `Professional fire door maintenance and repair services ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"}, including regular servicing, compliance checks, and emergency repairs. Qualified since 1989 with 35+ years experience.`;
-const finalDescription = description || defaultDescription;
+const finalDescription = enhancedDescription || defaultDescription;
 ---
 
 <Layout
@@ -36,6 +37,11 @@ const finalDescription = description || defaultDescription;
     slot="head"
     type="application/ld+json"
     set:html={JSON.stringify(businessSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(localBusinessSchema)}
   />
   <script
     slot="head"

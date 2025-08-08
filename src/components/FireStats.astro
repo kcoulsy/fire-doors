@@ -1,17 +1,17 @@
 ---
-// FireStats component with pure CSS animations and updated statistics
+// FireStats component with enhanced micro-interactions and scroll-triggered animations
 ---
 
 <section class="bg-white">
   <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
     <div class="mx-auto max-w-3xl text-center">
       <h2
-        class="text-3xl font-bold text-gray-900 sm:text-4xl animate-on-scroll"
+        class="text-3xl font-bold text-gray-900 sm:text-4xl fade-in-on-scroll"
       >
         Fire Safety Compliance is Critical
       </h2>
 
-      <p class="mt-4 text-gray-500 sm:text-xl animate-on-scroll-delay-1">
+      <p class="mt-4 text-gray-500 sm:text-xl fade-in-on-scroll delay-200">
         Recent UK fire statistics and regulatory requirements highlight the
         importance of proper fire door maintenance and compliance with Building
         Regulations Approved Document B and the Regulatory Reform (Fire Safety)
@@ -24,7 +24,7 @@
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:divide-x sm:divide-gray-100"
       >
         <div
-          class="flex flex-col px-4 py-8 text-center stat-card animate-on-scroll-delay-2"
+          class="flex flex-col px-4 py-8 text-center stat-card fade-in-on-scroll delay-300 hover:scale-105 transition-transform duration-300"
         >
           <dt class="order-last text-lg font-medium text-gray-500">
             Fire door failures found in inspections
@@ -39,7 +39,7 @@
         </div>
 
         <div
-          class="flex flex-col px-4 py-8 text-center stat-card animate-on-scroll-delay-3"
+          class="flex flex-col px-4 py-8 text-center stat-card fade-in-on-scroll delay-400 hover:scale-105 transition-transform duration-300"
         >
           <dt class="order-last text-lg font-medium text-gray-500">
             Workplace fires annually
@@ -54,7 +54,7 @@
         </div>
 
         <div
-          class="flex flex-col px-4 py-8 text-center stat-card animate-on-scroll-delay-4"
+          class="flex flex-col px-4 py-8 text-center stat-card fade-in-on-scroll delay-500 hover:scale-105 transition-transform duration-300"
         >
           <dt class="order-last text-lg font-medium text-gray-500">
             Average fire service response time
@@ -69,7 +69,7 @@
         </div>
 
         <div
-          class="flex flex-col px-4 py-8 text-center stat-card animate-on-scroll-delay-5"
+          class="flex flex-col px-4 py-8 text-center stat-card fade-in-on-scroll delay-600 hover:scale-105 transition-transform duration-300"
         >
           <dt class="order-last text-lg font-medium text-gray-500">
             Years of fire safety experience
@@ -119,46 +119,35 @@
 
 <style>
   /* Scroll-triggered animations */
-  .animate-on-scroll {
+  .fade-in-on-scroll {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out forwards;
     animation-play-state: paused;
   }
 
-  .animate-on-scroll-delay-1 {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
-    animation-play-state: paused;
+  .fade-in-on-scroll.in-view {
+    animation-play-state: running;
   }
 
-  .animate-on-scroll-delay-2 {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.4s forwards;
-    animation-play-state: paused;
+  .delay-200 {
+    animation-delay: 0.2s;
   }
 
-  .animate-on-scroll-delay-3 {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.6s forwards;
-    animation-play-state: paused;
+  .delay-300 {
+    animation-delay: 0.3s;
   }
 
-  .animate-on-scroll-delay-4 {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.8s forwards;
-    animation-play-state: paused;
+  .delay-400 {
+    animation-delay: 0.4s;
   }
 
-  .animate-on-scroll-delay-5 {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 1s forwards;
-    animation-play-state: paused;
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+
+  .delay-600 {
+    animation-delay: 0.6s;
   }
 
   @keyframes fadeInUp {
@@ -185,6 +174,10 @@
     transform: translateX(-50%);
     animation: progressBar 2s ease-out 1s forwards;
     animation-play-state: paused;
+  }
+
+  .counter-animation.in-view::after {
+    animation-play-state: running;
   }
 
   @keyframes progressBar {
@@ -241,65 +234,86 @@
 </style>
 
 <script>
-  // Simple intersection observer for Astro
-  function initAnimations() {
+  // @ts-nocheck
+  // Enhanced scroll-triggered animations and counter effects
+  document.addEventListener("DOMContentLoaded", function () {
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px",
     };
 
+    // Intersection Observer for scroll-triggered animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("in-view");
 
-          // Animate counters - look for counter-animation within the stat card
-          const counterAnimation = entry.target.querySelector(
-            ".counter-animation"
-          ) as HTMLElement;
-          if (counterAnimation) {
-            const counter = counterAnimation.querySelector(
-              ".counter"
-            ) as HTMLElement;
-            const target = parseInt(counterAnimation.dataset.target || "0");
-            if (counter && target) {
-              animateCounter(counter, target);
-            }
+          // Trigger counter animation if it's a counter element
+          if (entry.target.classList.contains("counter-animation")) {
+            animateCounter(entry.target);
           }
         }
       });
     }, observerOptions);
 
-    // Observe all animated elements
-    document
-      .querySelectorAll(
-        ".animate-on-scroll, .animate-on-scroll-delay-1, .animate-on-scroll-delay-2, .animate-on-scroll-delay-3, .animate-on-scroll-delay-4, .animate-on-scroll-delay-5"
-      )
-      .forEach((el) => {
-        observer.observe(el);
+    // Observe all fade-in elements
+    document.querySelectorAll(".fade-in-on-scroll").forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Counter animation function
+    function animateCounter(element) {
+      const counter = element.querySelector(".counter");
+      if (!counter) return;
+
+      // Check if counter has already been animated
+      if (counter.dataset.animated === "true") return;
+
+      const target = parseInt(element.dataset.target || "0");
+      const duration = 2000; // 2 seconds
+      const step = target / (duration / 16); // 60fps
+      let current = 0;
+
+      // Mark as animated to prevent re-animation
+      counter.dataset.animated = "true";
+
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        counter.textContent = Math.floor(current).toString();
+      }, 16);
+    }
+
+    // Trigger counters immediately if they're already visible
+    function triggerVisibleCounters() {
+      document.querySelectorAll(".counter-animation").forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isVisible) {
+          element.classList.add("in-view");
+          animateCounter(element);
+        }
       });
-  }
+    }
 
-  function animateCounter(element: HTMLElement, target: number) {
-    const duration = 2000;
-    const start = 0;
-    const increment = target / (duration / 16); // 60fps
-    let current = start;
+    // Trigger visible counters on page load
+    triggerVisibleCounters();
 
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      element.textContent = Math.floor(current).toLocaleString();
-    }, 16);
-  }
+    // Enhanced hover effects for stat cards
+    document.querySelectorAll(".stat-card").forEach((card) => {
+      card.addEventListener("mouseenter", () => {
+        card.style.transform = "scale(1.05) translateY(-5px)";
+        card.style.boxShadow = "0 20px 40px rgba(30, 42, 56, 0.15)";
+      });
 
-  // Initialize when DOM is ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initAnimations);
-  } else {
-    initAnimations();
-  }
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "scale(1) translateY(0)";
+        card.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+      });
+    });
+  });
 </script>

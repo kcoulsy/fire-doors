@@ -8,6 +8,8 @@ import WebDevFooter from "../components/WebDevFooter.astro";
 import SmoothScroll from "../components/SmoothScroll.astro";
 import PerformanceMonitor from "../components/PerformanceMonitor.astro";
 import ViewTransitions from "../components/ViewTransitions.astro";
+import PWAInstaller from "../components/PWAInstaller.astro";
+import PWAStatus from "../components/PWAStatus.astro";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -53,6 +55,21 @@ const {
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://plausible.io" />
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
 
     <!-- DNS Prefetch for external resources -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
@@ -218,6 +235,8 @@ const {
     <SmoothScroll />
     <PerformanceMonitor />
     <ViewTransitions />
+    <PWAInstaller />
+    <PWAStatus />
 
     <style is:global></style>
     <!-- Analytics -->

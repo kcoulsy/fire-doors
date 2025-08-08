@@ -46,10 +46,7 @@
     class="absolute w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-96 overflow-y-auto hidden z-50"
   >
     <!-- Loading State -->
-    <div
-      id="search-loading"
-      class="p-4 text-center text-gray-500 hidden"
-    >
+    <div id="search-loading" class="p-4 text-center text-gray-500 hidden">
       <div class="flex items-center justify-center space-x-2">
         <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-brand">
         </div>
@@ -58,18 +55,12 @@
     </div>
 
     <!-- Results Container -->
-    <div
-      id="search-results-content"
-      class="divide-y divide-gray-200"
-    >
+    <div id="search-results-content" class="divide-y divide-gray-200">
       <!-- Results will be populated here -->
     </div>
 
     <!-- No Results -->
-    <div
-      id="no-results"
-      class="p-4 text-center text-gray-500 hidden"
-    >
+    <div id="no-results" class="p-4 text-center text-gray-500 hidden">
       <p>No results found. Try different keywords or ask a question.</p>
     </div>
   </div>
@@ -384,7 +375,10 @@
 
   /* Base styles */
   #ai-search-input {
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   /* Placeholder colors */

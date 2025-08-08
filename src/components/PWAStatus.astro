@@ -1,0 +1,115 @@
+---
+// PWA Status Component - Shows online/offline status and sync information
+---
+
+<div id="pwa-status" class="fixed top-4 left-4 z-50">
+  <!-- Online Status -->
+  <div
+    id="online-status"
+    class="hidden bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg"
+  >
+    <div class="flex items-center space-x-2">
+      <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+      <span>Online</span>
+    </div>
+  </div>
+
+  <!-- Offline Status -->
+  <div
+    id="offline-status"
+    class="hidden bg-red-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg"
+  >
+    <div class="flex items-center space-x-2">
+      <div class="w-2 h-2 bg-white rounded-full"></div>
+      <span>Offline</span>
+    </div>
+  </div>
+
+  <!-- Sync Status -->
+  <div
+    id="sync-status"
+    class="hidden bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg"
+  >
+    <div class="flex items-center space-x-2">
+      <div
+        class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"
+      >
+      </div>
+      <span>Syncing...</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // @ts-nocheck
+  class PWAStatus {
+    constructor() {
+      this.onlineStatus = document.getElementById("online-status");
+      this.offlineStatus = document.getElementById("offline-status");
+      this.syncStatus = document.getElementById("sync-status");
+
+      this.init();
+    }
+
+    init() {
+      this.updateOnlineStatus();
+
+      // Listen for online/offline events
+      window.addEventListener("online", () => this.updateOnlineStatus());
+      window.addEventListener("offline", () => this.updateOnlineStatus());
+
+      // Listen for service worker events
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.addEventListener("message", (event) => {
+          if (event.data && event.data.type === "SYNC_STATUS") {
+            this.updateSyncStatus(event.data.status);
+          }
+        });
+      }
+    }
+
+    updateOnlineStatus() {
+      if (navigator.onLine) {
+        this.showOnline();
+      } else {
+        this.showOffline();
+      }
+    }
+
+    showOnline() {
+      this.hideAll();
+      this.onlineStatus?.classList.remove("hidden");
+
+      // Hide after 3 seconds
+      setTimeout(() => {
+        this.onlineStatus?.classList.add("hidden");
+      }, 3000);
+    }
+
+    showOffline() {
+      this.hideAll();
+      this.offlineStatus?.classList.remove("hidden");
+    }
+
+    updateSyncStatus(status) {
+      this.hideAll();
+
+      if (status === "syncing") {
+        this.syncStatus?.classList.remove("hidden");
+      } else if (status === "completed") {
+        this.showOnline();
+      }
+    }
+
+    hideAll() {
+      this.onlineStatus?.classList.add("hidden");
+      this.offlineStatus?.classList.add("hidden");
+      this.syncStatus?.classList.add("hidden");
+    }
+  }
+
+  // Initialize PWA Status
+  document.addEventListener("DOMContentLoaded", () => {
+    new PWAStatus();
+  });
+</script>

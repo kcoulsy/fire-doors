@@ -112,11 +112,13 @@ const {
     <!-- Submit Button -->
     <button
       type="submit"
-      class="w-full bg-[#1e2a38] hover:bg-[#1e3a8a] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+      id="submit-button"
+      class="w-full bg-[#1e2a38] hover:bg-[#1e3a8a] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transform"
     >
       <span class="flex items-center justify-center">
         <svg
-          class="w-5 h-5 mr-2"
+          id="send-icon"
+          class="w-5 h-5 mr-2 transition-transform duration-300"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -127,7 +129,8 @@ const {
             stroke-width="2"
             d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
         </svg>
-        Send Message
+        <span id="button-text">Send Message</span>
+        <div id="loading-spinner" class="hidden w-5 h-5 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
       </span>
     </button>
   </form>
@@ -191,25 +194,77 @@ const {
 </div>
 
 <script define:vars={{ location, serviceType }}>
-  // Simple script to show success/error messages based on URL parameters
+  // Enhanced contact form with micro-interactions
   document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const successMessage = document.getElementById("success-message");
     const errorMessage = document.getElementById("error-message");
+    const submitButton = document.getElementById("submit-button");
+    const sendIcon = document.getElementById("send-icon");
+    const buttonText = document.getElementById("button-text");
+    const loadingSpinner = document.getElementById("loading-spinner");
 
+    // Button micro-interactions
+    if (submitButton) {
+      // Hover effect - icon moves slightly
+      submitButton.addEventListener('mouseenter', function() {
+        if (sendIcon) {
+          sendIcon.style.transform = 'translateX(2px) rotate(12deg)';
+        }
+      });
+
+      submitButton.addEventListener('mouseleave', function() {
+        if (sendIcon) {
+          sendIcon.style.transform = 'translateX(0) rotate(0deg)';
+        }
+      });
+
+      // Click effect - button scales down
+      submitButton.addEventListener('mousedown', function() {
+        this.style.transform = 'scale(0.98)';
+      });
+
+      submitButton.addEventListener('mouseup', function() {
+        this.style.transform = 'scale(1.02)';
+      });
+
+      // Form submission loading state
+      const form = document.getElementById("modern-contact-form");
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          // Show loading state
+          if (submitButton && sendIcon && buttonText && loadingSpinner) {
+            submitButton.disabled = true;
+            sendIcon.classList.add('hidden');
+            buttonText.textContent = 'Sending...';
+            loadingSpinner.classList.remove('hidden');
+          }
+        });
+      }
+    }
+
+    // Success/Error message handling
     if (urlParams.get("success") === "true" && successMessage) {
       successMessage.classList.remove("hidden");
+      successMessage.style.animation = "slideInUp 0.5s ease-out";
       // Auto-hide after 8 seconds
       setTimeout(() => {
-        successMessage.classList.add("hidden");
+        successMessage.style.animation = "slideOutDown 0.5s ease-out";
+        setTimeout(() => {
+          successMessage.classList.add("hidden");
+        }, 500);
       }, 8000);
     }
 
     if (urlParams.get("error") === "true" && errorMessage) {
       errorMessage.classList.remove("hidden");
+      errorMessage.style.animation = "slideInUp 0.5s ease-out";
       // Auto-hide after 8 seconds
       setTimeout(() => {
-        errorMessage.classList.add("hidden");
+        errorMessage.style.animation = "slideOutDown 0.5s ease-out";
+        setTimeout(() => {
+          errorMessage.classList.add("hidden");
+        }, 500);
       }, 8000);
     }
 
@@ -226,3 +281,51 @@ const {
     }
   });
 </script>
+
+<style>
+  /* Button micro-interaction animations */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOutDown {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  /* Enhanced button hover effects */
+  #submit-button:hover {
+    box-shadow: 0 10px 25px rgba(30, 42, 56, 0.3);
+  }
+
+  #submit-button:active {
+    transform: scale(0.98);
+  }
+
+  /* Loading spinner animation */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

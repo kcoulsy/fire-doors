@@ -48,6 +48,43 @@
           "sizes": "192x192"
         }
       ]
+    },
+    {
+      "name": "Emergency Contact",
+      "short_name": "Emergency",
+      "description": "Emergency fire door services",
+      "url": "/contact?emergency=true",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Fire Door Inspections",
+      "short_name": "Inspections",
+      "description": "Book a fire door inspection",
+      "url": "/fire-door-inspectors",
+      "icons": [
+        {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    },
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ],
+  "prefer_related_applications": false
 }

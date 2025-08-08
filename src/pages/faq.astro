@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
+import FAQSchema from "../components/FAQSchema.astro";
 
 const faqData = [
   {
@@ -99,107 +100,94 @@ const faqData = [
       {
         question: "What happens if fire doors fail inspection?",
         answer:
-          "If fire doors fail inspection, we provide a detailed report of issues and can carry out necessary repairs to bring them up to compliance standards. We work with you to ensure all fire doors meet safety requirements.",
+          "If fire doors fail inspection, we provide a detailed report outlining the issues and recommend the necessary repairs or replacements. We can then carry out the required work to bring the doors up to compliance standards.",
       },
     ],
   },
   {
-    category: "Compliance & Regulations",
+    category: "Pricing and Quotes",
     questions: [
-      {
-        question: "What fire safety regulations apply to fire doors?",
-        answer:
-          "Fire doors must comply with Building Regulations Approved Document B, British Standards BS 476 and BS EN 1634, and the Regulatory Reform (Fire Safety) Order 2005. We ensure all our work meets current standards.",
-      },
-      {
-        question: "Are you certified to work on fire doors?",
-        answer:
-          "Yes, we are fully certified and qualified. Our team includes FireQual Fire Door Inspectors and we hold all necessary certifications to work on fire door installations and maintenance.",
-      },
-      {
-        question: "Do you provide compliance certificates?",
-        answer:
-          "Yes, we provide compliance certificates for all fire door installations and maintenance work, ensuring you have proper documentation for fire safety audits and insurance purposes.",
-      },
-      {
-        question: "What happens during a fire safety audit?",
-        answer:
-          "During a fire safety audit, we thoroughly inspect all fire doors, check documentation, verify compliance with current regulations, and provide a comprehensive report with any necessary recommendations.",
-      },
-    ],
-  },
-  {
-    category: "Booking & Payment",
-    questions: [
-      {
-        question: "How do I book a fire door service?",
-        answer:
-          "You can book our services by calling us on 07544 030486, emailing robert@coulsy.co.uk, or using our contact form. We'll arrange a convenient time for consultation and assessment.",
-      },
       {
         question: "Do you provide quotes?",
         answer:
-          "Yes, we provide detailed quotes for all fire door services. We'll visit your property to assess requirements and provide a comprehensive written quote.",
+          "Yes, we provide detailed quotes for all our services. We'll assess your requirements and provide a comprehensive quote including all necessary work, materials, and compliance certification.",
       },
       {
-        question: "What payment methods do you accept?",
+        question: "Are your quotes free?",
         answer:
-          "We accept cash, bank transfer, and credit cards. Payment terms can be discussed during the quote process, and we can arrange payment plans for larger projects.",
+          "We provide competitive quotes for all fire door services. Contact us to discuss your requirements and we'll provide a detailed quote tailored to your specific needs.",
       },
       {
         question: "Do you offer maintenance contracts?",
         answer:
-          "Yes, we offer maintenance contracts for regular fire door servicing. These provide peace of mind and ensure your fire doors remain compliant throughout the year.",
+          "Yes, we offer maintenance contracts for regular fire door servicing. This ensures your fire doors remain compliant and in optimal condition throughout the year.",
+      },
+      {
+        question: "What payment methods do you accept?",
+        answer:
+          "We accept cash and bank transfers. Payment terms are discussed during the quote process and are typically due upon completion of work.",
+      },
+    ],
+  },
+  {
+    category: "Emergency Services",
+    questions: [
+      {
+        question: "Do you provide emergency callout services?",
+        answer:
+          "Yes, we provide emergency callout services for urgent fire door repairs and safety issues. Contact us immediately if you have a fire door that's not functioning properly.",
+      },
+      {
+        question: "How quickly can you respond to emergencies?",
+        answer:
+          "We aim to respond to emergency callouts within 24 hours, and often much sooner depending on the nature of the emergency and your location.",
+      },
+      {
+        question: "What constitutes a fire door emergency?",
+        answer:
+          "Fire door emergencies include doors that won't close properly, damaged seals, broken hardware, or any issue that compromises the door's ability to function in a fire emergency.",
       },
     ],
   },
 ];
+
+// Flatten all questions for schema
+const allFaqs = faqData.flatMap((category) => category.questions);
+
+// SEO data
+const seoData = {
+  title:
+    "Fire Door FAQ - Common Questions About Fire Door Services | Coulsy Fire Doors",
+  description:
+    "Get answers to common questions about fire door installation, maintenance, inspections, and compliance. Expert fire door services in Yorkshire since 1989.",
+  keywords:
+    "fire door FAQ, fire door questions, fire door installation, fire door maintenance, fire door inspection, fire safety compliance, Yorkshire fire doors",
+};
 ---
 
 <Layout
-  title="Fire Door Services FAQ - Common Questions Answered"
-  description="Frequently asked questions about fire door services, installation, maintenance, inspections, and compliance. Get answers from qualified FireQual inspectors with 35+ years experience."
-  classes="bg-gray-50"
+  title={seoData.title}
+  description={seoData.description}
+  classes="mt-8 mb-16"
 >
+  <!-- FAQ Schema -->
+  <FAQSchema
+    faqs={allFaqs}
+    pageTitle="Fire Door FAQ"
+    pageDescription="Common questions about fire door services, installation, maintenance, and compliance"
+  />
+
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-brand-50 to-white py-16 lg:py-24">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6">
-          Frequently Asked Questions
-        </h1>
-        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-          Get answers to common questions about fire door services,
-          installation, maintenance, inspections, and compliance from qualified
-          FireQual inspectors.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#contact"
-            class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand-light transition-colors duration-200"
-          >
-            Contact Us
-            <svg
-              class="ml-2 w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"></path>
-            </svg>
-          </a>
-          <a
-            href="/fire-door-services"
-            class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200"
-          >
-            View Services
-          </a>
-        </div>
-      </div>
+  <section class="bg-gradient-to-br from-brand to-brand-dark text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Get answers to common questions about fire door services, installation,
+        maintenance, and compliance. Can't find what you're looking for? Contact
+        us directly.
+      </p>
     </div>
   </section>
 

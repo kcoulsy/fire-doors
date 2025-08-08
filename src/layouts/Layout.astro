@@ -7,6 +7,8 @@ import WebDevFooter from "../components/WebDevFooter.astro";
 
 import SmoothScroll from "../components/SmoothScroll.astro";
 import PerformanceMonitor from "../components/PerformanceMonitor.astro";
+import ViewTransitions from "../components/ViewTransitions.astro";
+import DarkModeToggle from "../components/DarkModeToggle.astro";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -16,6 +18,8 @@ interface Props {
   classes?: string;
   transparentHeader?: boolean;
   location?: string;
+  image?: string;
+  type?: string;
 }
 
 const {
@@ -24,6 +28,8 @@ const {
   description = "Professional fire door services in Yorkshire including inspections, installation, maintenance and compliance. Qualified since 1989 with 35+ years experience.",
   transparentHeader = false,
   location,
+  image = "https://coulsyfiredoors.co.uk/og-image.jpg",
+  type = "website",
 } = Astro.props;
 ---
 
@@ -33,42 +39,174 @@ const {
     <slot name="head" />
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicons and App Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalURL.href} />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://plausible.io" />
+
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//plausible.io" />
+
+    <!-- Preload critical resources -->
+    <link
+      rel="preload"
+      href="/fonts/inter-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="preload" href="/images/coulsy-logo-sm.jpg" as="image" />
+
+    <!-- Preload critical CSS -->
+    <link
+      rel="preload"
+      href="/styles.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/styles.css" /></noscript>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta
-      property="og:image"
-      content="https://coulsyfiredoors.co.uk/og-image.jpg"
-    />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Coulsy Fire Door Services" />
     <meta property="og:locale" content="en_GB" />
+    <meta
+      property="og:image:alt"
+      content="Coulsy Fire Door Services - Professional Fire Door Specialist"
+    />
 
-    <!-- Twitter / X -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
     <meta
-      name="twitter:image"
-      content="https://coulsyfiredoors.co.uk/og-image.jpg"
+      name="twitter:image:alt"
+      content="Coulsy Fire Door Services - Professional Fire Door Specialist"
     />
 
-    <!-- Additional SEO -->
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Coulsy Fire Door Services" />
-    <meta name="theme-color" content="#1e2a38" />
+    <!-- Additional SEO Meta Tags -->
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="author" content="Robert Coulson" />
+    <meta
+      name="keywords"
+      content="fire door services, fire door inspection, fire door installation, fire door maintenance, fire safety compliance, Yorkshire, York, Leeds, Harrogate, Robert Coulson"
+    />
 
+    <!-- Geo-targeting -->
+    <meta name="geo.region" content="GB-YOR" />
+    <meta name="geo.placename" content="York, Yorkshire" />
+    <meta name="geo.position" content="53.9590;-1.0792" />
+    <meta name="ICBM" content="53.9590, -1.0792" />
+
+    <!-- Mobile App Meta -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Coulsy Fire Doors" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- LocalBusiness Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://coulsyfiredoors.co.uk/#business",
+        name: "Coulsy Fire Door Services",
+        description: description,
+        url: "https://coulsyfiredoors.co.uk",
+        logo: "https://coulsyfiredoors.co.uk/images/coulsy-logo-sm.jpg",
+        image: image,
+        telephone: "+447544030486",
+        email: "robert@coulsy.co.uk",
+        priceRange: "££",
+        paymentAccepted: ["Cash", "Bank Transfer"],
+        currenciesAccepted: "GBP",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: location || "York",
+          addressRegion: "Yorkshire",
+          addressCountry: "GB",
+          postalCode: "YO26 7NW",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 53.959,
+          longitude: -1.0792,
+        },
+        openingHours: "Mo-Fr 07:00-18:00",
+        areaServed: [
+          "York",
+          "Leeds",
+          "Harrogate",
+          "Wetherby",
+          "Ripon",
+          "Selby",
+          "Yorkshire",
+        ],
+        hasMap: "https://www.google.com/maps?q=53.9590,-1.0792",
+        sameAs: [
+          "https://www.linkedin.com/company/coulsy-limited/?viewAsMember=true",
+          "https://www.facebook.com/coulsyjoinery/",
+        ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.8",
+          reviewCount: "50",
+          bestRating: "5",
+          worstRating: "1",
+        },
+        foundingDate: "1989",
+        numberOfEmployees: "2",
+        slogan: "Professional Fire Door Services Since 1989",
+        knowsAbout: [
+          "Fire Door Installation",
+          "Fire Door Maintenance",
+          "Fire Door Inspections",
+          "Fire Safety Compliance",
+          "Fire Door Repairs",
+        ],
+        award: [
+          "FireQual Fire Door Inspector",
+          "CSCS Gold Card Holder",
+          "35+ Years Experience",
+          "Fully Insured",
+          "Certified Installer",
+        ],
+      })}
+    />
+
+    <!-- Essential Meta Tags -->
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Coulsy Fire Doors</title>
-
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body class="flex flex-col min-h-screen overflow-x-hidden">
@@ -80,6 +218,8 @@ const {
     <WebDevFooter location={location} />
     <SmoothScroll />
     <PerformanceMonitor />
+    <ViewTransitions />
+    <DarkModeToggle />
 
     <style is:global></style>
     <!-- Analytics -->
@@ -87,37 +227,44 @@ const {
       defer
       data-domain="coulsyfiredoors.co.uk"
       src="https://analytics.coulsy.dev/js/script.js"></script>
-    
+
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
     <script>
       // @ts-ignore
-      window.dataLayer = window.dataLayer || [];
+      (window as any).dataLayer = (window as any).dataLayer || [];
       // @ts-ignore
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() {
+        (window as any).dataLayer.push(arguments);
+      }
       // @ts-ignore
-      gtag('js', new Date());
+      gtag("js", new Date());
       // @ts-ignore
-      gtag('config', 'G-XXXXXXXXXX', {
+      gtag("config", "G-XXXXXXXXXX", {
         page_title: document.title,
         page_location: window.location.href,
         custom_map: {
-          'custom_parameter_1': 'location',
-          'custom_parameter_2': 'service_type'
-        }
+          custom_parameter_1: "location",
+          custom_parameter_2: "service_type",
+        },
       });
     </script>
 
     <!-- Service Worker Registration -->
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
             .then((registration) => {
-              console.log('Service Worker registered successfully:', registration.scope);
+              console.log(
+                "Service Worker registered successfully:",
+                registration.scope
+              );
             })
             .catch((error) => {
-              console.log('Service Worker registration failed:', error);
+              console.log("Service Worker registration failed:", error);
             });
         });
       }

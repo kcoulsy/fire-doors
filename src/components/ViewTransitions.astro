@@ -1,0 +1,167 @@
+---
+// View Transitions API component for smooth page transitions
+---
+
+<script>
+  // @ts-nocheck
+  class ViewTransitions {
+    constructor() {
+      this.init();
+    }
+
+    init() {
+      // Check if View Transitions API is supported
+      if (!document.startViewTransition) {
+        console.log("View Transitions API not supported");
+        return;
+      }
+
+      this.setupNavigationTransitions();
+      this.setupImageTransitions();
+      this.setupFormTransitions();
+    }
+
+    setupNavigationTransitions() {
+      // Intercept all internal navigation
+      document.addEventListener("click", (e) => {
+        const link = e.target.closest("a");
+        if (!link || !this.isInternalLink(link.href)) return;
+
+        e.preventDefault();
+        this.navigateWithTransition(link.href);
+      });
+    }
+
+    setupImageTransitions() {
+      // Add view transition names to images
+      const images = document.querySelectorAll("img[data-transition]");
+      images.forEach((img) => {
+        img.style.viewTransitionName = img.dataset.transition;
+      });
+    }
+
+    setupFormTransitions() {
+      // Smooth form transitions
+      const forms = document.querySelectorAll("form[data-transition]");
+      forms.forEach((form) => {
+        form.addEventListener("submit", (e) => {
+          if (!document.startViewTransition) return;
+
+          e.preventDefault();
+          this.submitWithTransition(form);
+        });
+      });
+    }
+
+    isInternalLink(href) {
+      try {
+        const url = new URL(href, window.location.origin);
+        return url.origin === window.location.origin;
+      } catch {
+        return false;
+      }
+    }
+
+    async navigateWithTransition(url) {
+      try {
+        const transition = document.startViewTransition(() => {
+          return new Promise((resolve) => {
+            // Add loading state
+            document.body.classList.add("transitioning");
+
+            // Navigate to new page
+            window.location.href = url;
+
+            // Resolve after a short delay to allow transition to start
+            setTimeout(resolve, 100);
+          });
+        });
+
+        // Wait for transition to complete
+        await transition.finished;
+      } catch (error) {
+        // Fallback to normal navigation
+        window.location.href = url;
+      }
+    }
+
+    async submitWithTransition(form) {
+      try {
+        const transition = document.startViewTransition(() => {
+          return new Promise((resolve) => {
+            // Add loading state
+            form.classList.add("submitting");
+
+            // Submit form
+            form.submit();
+
+            setTimeout(resolve, 100);
+          });
+        });
+
+        await transition.finished;
+      } catch (error) {
+        // Fallback to normal submission
+        form.submit();
+      }
+    }
+  }
+
+  // Initialize View Transitions
+  document.addEventListener("DOMContentLoaded", () => {
+    new ViewTransitions();
+  });
+</script>
+
+<style>
+  /* View Transition Styles */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.5s;
+  }
+
+  ::view-transition-old(root) {
+    animation: fade-out 0.5s ease-in-out;
+  }
+
+  ::view-transition-new(root) {
+    animation: fade-in 0.5s ease-in-out;
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Transition states */
+  .transitioning {
+    pointer-events: none;
+  }
+
+  .submitting {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  /* Image transitions */
+  img[data-transition] {
+    contain: paint;
+  }
+</style>

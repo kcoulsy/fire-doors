@@ -60,6 +60,9 @@ const finalDescription = enhancedDescription || defaultDescription;
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Fire Door Services", href: "/fire-door-services" },
+          ...(cleanLocationName
+            ? [{ label: cleanLocationName, current: true }]
+            : []),
         ]}
       />
     </div>

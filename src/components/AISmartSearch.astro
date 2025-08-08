@@ -9,7 +9,7 @@
       id="ai-search-input"
       type="text"
       placeholder="Search fire door services, locations, or ask a question..."
-      class="w-full px-4 py-3 pl-12 pr-16 text-lg border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-brand focus:border-transparent text-gray-900 dark:bg-gray-800 dark:border-gray-600 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+      class="w-full px-4 py-3 pl-12 pr-16 text-lg border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-brand focus:border-transparent text-gray-900 bg-white placeholder-gray-500"
       autocomplete="off"
     />
 
@@ -35,7 +35,7 @@
     <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
       <div class="flex items-center space-x-2">
         <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-        <span class="text-sm text-gray-500 dark:text-gray-400">AI</span>
+        <span class="text-sm text-gray-500">AI</span>
       </div>
     </div>
   </div>
@@ -43,12 +43,12 @@
   <!-- Search Results Dropdown -->
   <div
     id="search-results"
-    class="absolute w-full mt-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-xl max-h-96 overflow-y-auto hidden z-50"
+    class="absolute w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-xl max-h-96 overflow-y-auto hidden z-50"
   >
     <!-- Loading State -->
     <div
       id="search-loading"
-      class="p-4 text-center text-gray-500 dark:text-gray-400 hidden"
+      class="p-4 text-center text-gray-500 hidden"
     >
       <div class="flex items-center justify-center space-x-2">
         <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-brand">
@@ -60,7 +60,7 @@
     <!-- Results Container -->
     <div
       id="search-results-content"
-      class="divide-y divide-gray-200 dark:divide-gray-600"
+      class="divide-y divide-gray-200"
     >
       <!-- Results will be populated here -->
     </div>
@@ -68,7 +68,7 @@
     <!-- No Results -->
     <div
       id="no-results"
-      class="p-4 text-center text-gray-500 dark:text-gray-400 hidden"
+      class="p-4 text-center text-gray-500 hidden"
     >
       <p>No results found. Try different keywords or ask a question.</p>
     </div>
@@ -91,7 +91,6 @@
     init() {
       this.setupEventListeners();
       this.loadSearchIndex();
-      this.setupThemeListener();
     }
 
     setupEventListeners() {
@@ -118,37 +117,6 @@
       this.input?.addEventListener("keydown", (e) => {
         this.handleKeyboardNavigation(e);
       });
-    }
-
-    setupThemeListener() {
-      // Listen for theme changes
-      const observer = new MutationObserver(() => {
-        this.updateInputStyling();
-      });
-
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
-      });
-
-      // Initial styling
-      this.updateInputStyling();
-    }
-
-    updateInputStyling() {
-      if (!this.input) return;
-
-      const isDarkMode = document.documentElement.classList.contains("dark");
-
-      if (isDarkMode) {
-        this.input.style.color = "#f9fafb"; // Dark mode text color
-        this.input.style.backgroundColor = "#1f2937"; // Dark mode background
-        this.input.style.borderColor = "#374151"; // Dark mode border
-      } else {
-        this.input.style.color = "#111827"; // Light mode text color
-        this.input.style.backgroundColor = "#ffffff"; // Light mode background
-        this.input.style.borderColor = "#d1d5db"; // Light mode border
-      }
     }
 
     async loadSearchIndex() {
@@ -299,7 +267,7 @@
       this.content.innerHTML = results
         .map(
           (result) => `
-        <a href="${result.url}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+        <a href="${result.url}" class="block p-4 hover:bg-gray-50 transition-colors">
           <div class="flex items-start space-x-3">
             <div class="flex-shrink-0">
               <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center">
@@ -309,10 +277,10 @@
               </div>
             </div>
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-medium text-gray-900 dark:text-white truncate">
+              <p class="text-sm font-medium text-gray-900 truncate">
                 ${result.title}
               </p>
-              <p class="text-sm text-gray-500 dark:text-gray-400 truncate">
+              <p class="text-sm text-gray-500 truncate">
                 ${result.content}
               </p>
             </div>
@@ -414,20 +382,13 @@
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
   }
 
-  /* Base styles - will be overridden by JavaScript for theme switching */
+  /* Base styles */
   #ai-search-input {
-    transition:
-      color 0.3s ease,
-      background-color 0.3s ease,
-      border-color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
   }
 
   /* Placeholder colors */
   #ai-search-input::placeholder {
     color: #6b7280;
-  }
-
-  .dark #ai-search-input::placeholder {
-    color: #9ca3af;
   }
 </style>

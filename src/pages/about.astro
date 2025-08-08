@@ -1,27 +1,30 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import complianceImage from "../assets/images/compliance.jpeg";
-import sustainabilityImage from "../assets/images/sustainability_logo.svg";
 import robertProfileImage from "../assets/images/team/robert-profile-image.jpg";
 import teamOnSiteImage from "../assets/images/team/Rob-and-Debbie-on-site.jpg";
+import debbieProfileImage from "../assets/images/team/debbie-profile-image.jpg";
+import timberJoineryImage from "../assets/images/timber20joinery.jpg";
+import doorHangingImage from "../assets/images/door-hanging-1.jpeg";
+import benchPlaneImage from "../assets/images/bench-plane-frog.jpg";
 import Reviews from "../components/Reviews.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 
 // Modern SEO optimization with personal voice preserved
 const seoData = {
   title:
-    "About Coulsy Fire Door Services - Robert Coulson | Fire Safety Expert Since 1989",
+    "About Robert Coulson - Coulsy Ltd Joinery & Fire Door Specialist Since 1989",
   description:
-    "Meet Robert Coulson of Coulsy Fire Door Services. Fire safety specialist in Yorkshire with 35+ years experience since 1989. Qualified fire door inspector, installer and maintenance expert.",
+    "Meet Robert Coulson - runs Coulsy Ltd for joinery and small build works, now specializing in fire doors after passing FireQual exams in December 2024. 35+ years of excellence in joinery and fire safety.",
   keywords:
-    "Robert Coulson fire doors, Coulsy Fire Door Services about, fire door inspector Yorkshire, qualified fire safety 1989",
+    "Robert Coulson Coulsy Ltd, joinery specialist Yorkshire, fire door specialist 2024, FireQual certified, Coulsy joinery, fire safety expert",
   canonical: "https://coulsyfiredoors.co.uk/about",
   structuredData: {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "About Coulsy Fire Door Services",
-    description: "Fire safety specialist with 35+ years experience since 1989",
+    name: "About Robert Coulson - Coulsy Ltd Joinery & Fire Door Specialist",
+    description:
+      "Runs Coulsy Ltd for joinery and small build works, now specializing in fire doors after passing FireQual exams in December 2024",
     url: "https://coulsyfiredoors.co.uk/about",
     mainEntity: {
       "@type": "Organization",
@@ -29,22 +32,23 @@ const seoData = {
       founder: {
         "@type": "Person",
         name: "Robert Coulson",
-        jobTitle: "Fire Door Specialist",
+        jobTitle: "Joiner & Fire Door Specialist",
         description:
-          "Qualified since 1989 with 35+ years of fire safety experience",
+          "Runs Coulsy Ltd for joinery and small build works, now specializing in fire doors after passing FireQual exams in December 2024",
         url: "https://www.linkedin.com/in/robert-coulson-20a60915/",
       },
       employee: [
         {
           "@type": "Person",
           name: "Robert Coulson",
-          jobTitle: "Fire Door Specialist & Owner",
-          description: "Qualified since 1989 with 35+ years experience",
+          jobTitle: "Joiner & Fire Door Specialist",
+          description:
+            "Runs Coulsy Ltd for joinery and small build works, now specializing in fire doors after passing FireQual exams in December 2024",
         },
       ],
       foundingDate: "1989",
       description:
-        "Fire door inspection, installation and maintenance specialist based in Yorkshire",
+        "Coulsy Ltd for joinery and small build works, now specializing in fire doors with FireQual certification",
     },
   },
 };
@@ -55,148 +59,653 @@ const seoData = {
     <section class="w-full container mx-auto px-4 sm:px-6 py-8">
       <Breadcrumb crumbs={[{ label: "About", current: true }]} />
 
-      <!-- Header Section -->
+      <!-- Header Section with Enhanced Animation -->
       <div class="text-center mb-16">
         <h1
-          class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6 text-balance"
+          class="text-4xl lg:text-6xl font-bold text-brand-900 mb-6 text-balance about-title"
         >
-          About Us
+          About Our Fire Door Services
         </h1>
         <p
-          class="text-xl text-brand-600 max-w-4xl mx-auto text-balance leading-relaxed"
+          class="text-xl text-brand-600 max-w-4xl mx-auto text-balance leading-relaxed about-subtitle"
         >
-          I'm Robert, and I run Coulsy Fire Door Services — a specialist fire
-          safety business based in Yorkshire. I've been working in joinery and
-          fire safety since the late '80s, and I've built my expertise in fire
-          door compliance through decades of hands-on experience. We've built
-          our reputation by focusing on safety and compliance, not cutting
-          corners.
+          Professional fire door services backed by over three decades of
+          joinery and building experience. We specialize in fire door
+          installation, maintenance, inspections, and ensuring full compliance
+          with fire safety regulations across Yorkshire.
         </p>
       </div>
 
-      <!-- Main Content -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 items-start gap-12 lg:gap-16">
-        <!-- Text Content -->
-        <div class="space-y-8">
-          <!-- Introduction -->
-          <div
-            class="bg-brand-50 border border-brand-200 rounded-xl p-8 shadow-sm"
-          >
-            <h2 class="text-2xl font-semibold text-brand-900 mb-4">
-              Our Story
-            </h2>
-            <p class="text-brand-700 leading-relaxed">
-              I started in joinery in 1989, and over the years, I've seen how
-              fire safety regulations have evolved and become more stringent.
-              This experience has given me a deep understanding of what it takes
-              to ensure fire doors are not just compliant, but truly effective
-              in protecting lives and property.
-            </p>
-          </div>
+      <!-- What We Do For Clients Section -->
+      <div class="mb-20">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center services-title"
+        >
+          What We Can Do For You
+        </h2>
 
-          <!-- Experience Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Fire Door Installation -->
           <div
-            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+            class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
-            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
-              35+ Years of Experience
-            </h2>
-            <p class="text-brand-600 leading-relaxed mb-4">
-              With over three decades in the trade, I've worked on everything
-              from small residential projects to large commercial buildings.
-              This breadth of experience means I understand the unique
-              challenges that different types of buildings present when it comes
-              to fire safety.
-            </p>
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={doorHangingImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Professional fire door installation services"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Fire Door Installation
+            </h3>
             <p class="text-brand-600 leading-relaxed">
-              Every fire door inspection, installation, or maintenance job is
-              approached with the same level of care and attention to detail —
-              because when it comes to fire safety, there's no room for
-              shortcuts.
+              Complete fire door installation service with thousands of doors
+              fitted over the years. We ensure proper fitting, compliance, and
+              long-term performance for your fire safety systems.
             </p>
           </div>
 
-          <!-- Approach Section -->
+          <!-- Fire Door Inspections -->
           <div
-            class="bg-white rounded-xl p-8 shadow-lg border border-brand-100"
+            class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
-            <h2 class="text-2xl font-semibold text-brand-900 mb-6">
-              Our Approach
-            </h2>
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={benchPlaneImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Professional fire door inspection services"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Fire Door Inspections
+            </h3>
             <p class="text-brand-600 leading-relaxed">
-              We're not a big company, and we don't pretend to be. It's my
-              experience and hands-on approach that allows us to go that one
-              step further — making sure things are done properly, with care and
-              attention that's often missing from larger outfits.
+              FireQual certified inspections to identify compliance issues and
+              ensure your fire safety systems are effective. We provide detailed
+              reports and recommendations for improvement.
             </p>
           </div>
-        </div>
 
-        <!-- Image Section -->
-        <div class="flex items-start justify-center">
+          <!-- Fire Door Maintenance -->
           <div
-            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+            class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
-            <Image
-              src={complianceImage}
-              width={526}
-              height={405}
-              class="object-cover rounded-lg max-w-full h-auto"
-              alt="Robert Coulson - Fire door specialist with 35+ years experience in fire safety and compliance"
-              loading="eager"
-              decoding="async"
-              format="webp"
-              quality={80}
-            />
-            <p class="text-sm text-brand-600 text-center mt-4">
-              Robert Coulson - Fire Door Specialist
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={timberJoineryImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Professional fire door maintenance services"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Fire Door Maintenance
+            </h3>
+            <p class="text-brand-600 leading-relaxed">
+              Regular maintenance services to keep your fire doors in optimal
+              condition. We ensure doors continue to function properly and
+              maintain their fire resistance rating.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Lead Team Section -->
-      <div class="mb-16">
+      <!-- Why Choose Us Section -->
+      <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center"
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center why-choose-title"
+        >
+          Why Choose Our Fire Door Services
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div
+            class="why-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500"
+          >
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mr-4"
+              >
+                <svg
+                  class="w-6 h-6 text-brand-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-brand-900">
+                FireQual Certified
+              </h3>
+            </div>
+            <p class="text-brand-600 leading-relaxed">
+              Passed all FireQual exams in December 2024, ensuring you receive
+              services from a properly qualified and certified fire door
+              specialist.
+            </p>
+          </div>
+
+          <div
+            class="why-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500"
+          >
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mr-4"
+              >
+                <svg
+                  class="w-6 h-6 text-brand-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-brand-900">
+                35+ Years Experience
+              </h3>
+            </div>
+            <p class="text-brand-600 leading-relaxed">
+              Over three decades in joinery and building, with thousands of fire
+              doors fitted over the years. Extensive hands-on experience you can
+              trust.
+            </p>
+          </div>
+
+          <div
+            class="why-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500"
+          >
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mr-4"
+              >
+                <svg
+                  class="w-6 h-6 text-brand-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-brand-900">Full Compliance</h3>
+            </div>
+            <p class="text-brand-600 leading-relaxed">
+              Ensuring your fire doors meet all current fire safety regulations
+              and building standards. We don't cut corners when it comes to
+              safety.
+            </p>
+          </div>
+
+          <div
+            class="why-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500"
+          >
+            <div class="flex items-center mb-4">
+              <div
+                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mr-4"
+              >
+                <svg
+                  class="w-6 h-6 text-brand-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-brand-900">Personal Service</h3>
+            </div>
+            <p class="text-brand-600 leading-relaxed">
+              Direct, personal service from an experienced professional. No
+              large company bureaucracy - just quality workmanship and attention
+              to detail.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Robert Section -->
+      <div class="mb-20">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center about-robert-title"
+        >
+          About Robert Coulson
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+          <!-- Profile Image -->
+          <div class="lg:col-span-1">
+            <div
+              class="profile-card bg-white rounded-2xl p-6 shadow-xl border border-brand-100 overflow-hidden"
+            >
+              <div class="relative overflow-hidden rounded-xl">
+                <Image
+                  src={robertProfileImage}
+                  width={400}
+                  height={500}
+                  class="w-full h-auto object-cover transition-transform duration-700 hover:scale-110"
+                  alt="Robert Coulson - Joiner and fire door specialist since 1989"
+                  loading="eager"
+                  decoding="async"
+                  format="webp"
+                  quality={90}
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+              </div>
+              <div class="mt-6 text-center">
+                <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                  Robert Coulson
+                </h3>
+                <p class="text-brand-600 font-medium">
+                  Joiner & Fire Door Specialist
+                </p>
+                <p class="text-sm text-brand-500 mt-1">Since 1989</p>
+                <p class="text-xs text-brand-400 mt-1">
+                  FireQual Certified - Dec 2024
+                </p>
+                <p class="text-xs text-brand-400 mt-1">
+                  Clerk of Works - In Progress
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="lg:col-span-2">
+            <div class="timeline-container space-y-8">
+              <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                    1989 - The Beginning
+                  </h3>
+                  <p class="text-brand-600 leading-relaxed">
+                    Started my journey in joinery and building, developing
+                    exceptional craftsmanship skills and attention to detail
+                    that would become the foundation of everything I do.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                    1990s - Building Excellence
+                  </h3>
+                  <p class="text-brand-600 leading-relaxed">
+                    Established Coulsy Ltd, working on high-end residential and
+                    commercial projects, perfecting traditional joinery
+                    techniques and modern construction methods.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                    2000s - Fire Door Experience
+                  </h3>
+                  <p class="text-brand-600 leading-relaxed">
+                    Fitted thousands of fire doors over the years as part of
+                    general joinery work, gaining extensive hands-on experience
+                    with fire safety requirements.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                    December 2024 - FireQual Certification
+                  </h3>
+                  <p class="text-brand-600 leading-relaxed">
+                    After seeing appalling workmanship in the fire door
+                    industry, I decided to specialize. Passed all FireQual exams
+                    and now operate as a certified fire door specialist
+                    alongside Coulsy Ltd.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                    2025 - Clerk of Works Qualification
+                  </h3>
+                  <p class="text-brand-600 leading-relaxed">
+                    Currently taking exams to become a qualified Clerk of Works,
+                    further enhancing my ability to ensure quality standards and
+                    compliance across construction projects.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Joinery Services Section -->
+      <div class="mb-20">
+        <div
+          class="bg-gradient-to-br from-brand-50 to-brand-100 rounded-2xl p-8 md:p-12"
+        >
+          <div class="text-center mb-8">
+            <h2 class="text-3xl lg:text-4xl font-bold text-brand-900 mb-4">
+              Need Broader Joinery Services?
+            </h2>
+            <p class="text-xl text-brand-600 max-w-3xl mx-auto">
+              While we specialize in fire doors here, I also run Coulsy Ltd for
+              comprehensive joinery and small build works. From traditional
+              joinery to architectural projects, we handle it all.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+          >
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div
+                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-6 h-6 text-brand-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-brand-900 mb-2">
+                Traditional Joinery
+              </h3>
+              <p class="text-brand-600 text-sm">
+                Hand-cut dovetails, complex architectural joinery, and bespoke
+                woodwork
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div
+                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-6 h-6 text-brand-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 5a2 2 0 012-2h4a2 2 0 012 2v6H8V5z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-brand-900 mb-2">
+                Small Build Works
+              </h3>
+              <p class="text-brand-600 text-sm">
+                Extensions, renovations, and construction projects of all sizes
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+              <div
+                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-6 h-6 text-brand-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-brand-900 mb-2">
+                Quality Assurance
+              </h3>
+              <p class="text-brand-600 text-sm">
+                35+ years of experience ensuring the highest standards of
+                craftsmanship
+              </p>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <a
+              href="https://coulsyjoinery.co.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-8 py-4 bg-brand text-white font-semibold rounded-xl hover:bg-brand-light transition-all duration-300 hover:scale-105 hover:shadow-lg transform"
+            >
+              <svg
+                class="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                ></path>
+              </svg>
+              Visit Coulsy Joinery
+              <span class="ml-2 text-sm opacity-75">coulsyjoinery.co.uk</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expertise Grid -->
+      <div class="mb-20">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center expertise-title"
+        >
+          Areas of Expertise
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Traditional Joinery -->
+          <div
+            class="expertise-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
+          >
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={benchPlaneImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Traditional joinery work with hand tools"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Traditional Joinery
+            </h3>
+            <p class="text-brand-600 leading-relaxed">
+              35+ years of traditional joinery experience through Coulsy Ltd,
+              from hand-cut dovetails to complex architectural joinery and small
+              build works.
+            </p>
+          </div>
+
+          <!-- Fire Door Specialization -->
+          <div
+            class="expertise-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
+          >
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={doorHangingImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Professional fire door installation and hanging"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Fire Door Specialization
+            </h3>
+            <p class="text-brand-600 leading-relaxed">
+              FireQual certified since December 2024. Fitted thousands of fire
+              doors over the years, now specializing in installation,
+              maintenance, and inspections with formal certification.
+            </p>
+          </div>
+
+          <!-- Workmanship Consultancy -->
+          <div
+            class="expertise-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
+          >
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={timberJoineryImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Quality workmanship and timber joinery"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Small Build Works
+            </h3>
+            <p class="text-brand-600 leading-relaxed">
+              Through Coulsy Ltd, providing comprehensive small build works,
+              quality assurance, and ensuring projects meet the highest
+              standards of craftsmanship.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Section Enhanced -->
+      <div class="mb-20">
+        <h2
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center team-title"
         >
           Our Team
         </h2>
 
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto">
-          <!-- Robert Card -->
+          <!-- Robert Card Enhanced -->
           <div
-            class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+            class="team-card group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
           >
             <div class="relative overflow-hidden">
               <Image
                 src={robertProfileImage}
-                alt="Robert Coulson - Fire Door Specialist"
+                alt="Robert Coulson - Distinguished joiner and fire door specialist"
                 loading="eager"
                 width={400}
                 height={300}
-                class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 decoding="async"
                 format="webp"
-                quality={80}
+                quality={90}
               />
               <div
-                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               >
-                <h3 class="text-xl font-bold text-white">Robert</h3>
-                <p class="text-sm text-gray-200">
-                  Fire Door Specialist & Owner
+              </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
+              >
+                <h3 class="text-xl font-bold text-white mb-1">
+                  Robert Coulson
+                </h3>
+                <p class="text-sm text-gray-200 mb-2">
+                  Distinguished Joiner & Fire Door Specialist
                 </p>
+                <p class="text-xs text-gray-300">Since 1989</p>
               </div>
             </div>
-            <div class="p-4">
+            <div class="p-6">
+              <p class="text-brand-600 mb-4 leading-relaxed">
+                Joiner with 35+ years of experience. Runs Coulsy Ltd for joinery
+                and small build works, now FireQual certified fire door
+                specialist since December 2024.
+              </p>
               <a
                 target="_blank"
                 href="https://www.linkedin.com/in/robert-coulson-20a60915/"
-                class="inline-flex items-center text-brand-600 hover:text-brand-700 transition-colors duration-200"
+                class="inline-flex items-center text-brand-600 hover:text-brand-700 transition-all duration-300 hover:scale-105"
               >
                 <svg
-                  class="h-5 w-5 mr-2"
+                  class="h-5 w-5 mr-2 transition-transform duration-300 group-hover:translate-x-1"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -211,28 +720,44 @@ const seoData = {
             </div>
           </div>
 
-          <!-- Team Card -->
+          <!-- Team Working Card Enhanced -->
           <div
-            class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+            class="team-card group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
           >
             <div class="relative overflow-hidden">
               <Image
                 src={teamOnSiteImage}
-                alt="Robert and team working on fire door installation"
+                alt="Robert and team working on fire door installation and joinery projects"
                 loading="eager"
                 width={400}
                 height={300}
-                class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 decoding="async"
                 format="webp"
-                quality={80}
+                quality={90}
               />
               <div
-                class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4"
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               >
-                <h3 class="text-xl font-bold text-white">Our Team</h3>
-                <p class="text-sm text-gray-200">Trusted Fire Safety Experts</p>
               </div>
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
+              >
+                <h3 class="text-xl font-bold text-white mb-1">Our Team</h3>
+                <p class="text-sm text-gray-200 mb-2">
+                  Trusted Fire Safety & Joinery Experts
+                </p>
+                <p class="text-xs text-gray-300">
+                  Quality & Compliance Focused
+                </p>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-brand-600 mb-4 leading-relaxed">
+                Our dedicated team combines traditional joinery skills with
+                modern fire safety expertise, ensuring every project meets the
+                highest standards of quality and compliance.
+              </p>
             </div>
           </div>
         </div>
@@ -240,38 +765,38 @@ const seoData = {
 
       <hr class="h-px my-16 bg-brand-200 border-0" />
 
-      <!-- Trust Section -->
-      <div class="mb-16">
+      <!-- Trust Section Enhanced -->
+      <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center"
+          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center trust-title"
         >
-          Trust & Compliance
+          Trust & Excellence
         </h2>
 
         <div
-          class="max-w-4xl mx-auto space-y-6 text-brand-600 leading-relaxed mb-12"
+          class="max-w-4xl mx-auto space-y-6 text-brand-600 leading-relaxed mb-12 trust-content"
         >
           <p>
-            At Coulsy Fire Door Services, we recognise the critical importance
-            of fire safety compliance and regulations.
+            With over three decades in joinery and fire safety, I've built my
+            reputation on exceptional craftsmanship, attention to detail, and
+            unwavering commitment to quality through Coulsy Ltd.
           </p>
           <p>
-            These guidelines exist to protect lives and property, ensuring the
-            highest standards of fire safety are maintained. We are committed to
-            going the extra mile, not only in delivering quality fire door
-            services but also in building a safer future for everyone.
+            After seeing appalling workmanship in the fire door industry, I
+            decided to specialize and become FireQual certified in December
+            2024, bringing my extensive experience to the fire door sector.
           </p>
         </div>
 
         <div class="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto">
           <div
-            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100 text-center"
+            class="trust-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 text-center hover:shadow-xl transition-all duration-500"
           >
             <div
-              class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="trust-icon w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-8 h-8 text-brand-600"
+                class="w-10 h-10 text-brand-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -283,20 +808,23 @@ const seoData = {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-brand-900 mb-2">Qualified</h3>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              Experienced
+            </h3>
             <p class="text-brand-600">
-              Fully qualified fire door specialist with 35+ years experience
+              35+ years of joinery experience through Coulsy Ltd, with thousands
+              of fire doors fitted over the years
             </p>
           </div>
 
           <div
-            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100 text-center"
+            class="trust-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 text-center hover:shadow-xl transition-all duration-500"
           >
             <div
-              class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="trust-icon w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-8 h-8 text-brand-600"
+                class="w-10 h-10 text-brand-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -309,20 +837,21 @@ const seoData = {
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-brand-900 mb-2">Insured</h3>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">Insured</h3>
             <p class="text-brand-600">
-              Fully insured with £10M public liability coverage
+              Fully insured with £10M public liability coverage for peace of
+              mind
             </p>
           </div>
 
           <div
-            class="bg-white rounded-xl p-6 shadow-lg border border-brand-100 text-center"
+            class="trust-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 text-center hover:shadow-xl transition-all duration-500"
           >
             <div
-              class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              class="trust-icon w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-8 h-8 text-brand-600"
+                class="w-10 h-10 text-brand-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -335,9 +864,12 @@ const seoData = {
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold text-brand-900 mb-2">Compliant</h3>
+            <h3 class="text-xl font-semibold text-brand-900 mb-3">
+              FireQual Certified
+            </h3>
             <p class="text-brand-600">
-              Full compliance with all fire safety regulations
+              Passed all FireQual exams in December 2024, now operating as a
+              certified fire door specialist
             </p>
           </div>
         </div>
@@ -350,6 +882,309 @@ const seoData = {
     </section>
   </main>
 </Layout>
+
+<!-- Enhanced Micro-Animations CSS -->
+<style>
+  /* Header Animations */
+  .about-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.2s forwards;
+  }
+
+  .about-subtitle {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+  }
+
+  /* Profile Card Animations */
+  .profile-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation: fadeInUpScale 1s ease-out 0.6s forwards;
+  }
+
+  /* Timeline Animations */
+  .timeline-container {
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.8s forwards;
+  }
+
+  .timeline-item {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+
+  .timeline-item:nth-child(1) {
+    animation-delay: 1s;
+  }
+  .timeline-item:nth-child(2) {
+    animation-delay: 1.2s;
+  }
+  .timeline-item:nth-child(3) {
+    animation-delay: 1.4s;
+  }
+  .timeline-item:nth-child(4) {
+    animation-delay: 1.6s;
+  }
+
+  .timeline-marker {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #1e2a38, #1e3a8a);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+
+  .timeline-marker::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, #1e2a38, transparent);
+  }
+
+  .timeline-item:last-child .timeline-marker::before {
+    display: none;
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  /* Services Section */
+  .services-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.8s forwards;
+  }
+
+  .service-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .service-card:nth-child(1) {
+    animation-delay: 1s;
+  }
+  .service-card:nth-child(2) {
+    animation-delay: 1.2s;
+  }
+  .service-card:nth-child(3) {
+    animation-delay: 1.4s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  /* Why Choose Us Section */
+  .why-choose-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1.6s forwards;
+  }
+
+  .why-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .why-card:nth-child(1) {
+    animation-delay: 1.8s;
+  }
+  .why-card:nth-child(2) {
+    animation-delay: 2s;
+  }
+  .why-card:nth-child(3) {
+    animation-delay: 2.2s;
+  }
+  .why-card:nth-child(4) {
+    animation-delay: 2.4s;
+  }
+
+  .why-card:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  /* About Robert Section */
+  .about-robert-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 2.6s forwards;
+  }
+
+  /* Expertise Cards */
+  .expertise-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1.8s forwards;
+  }
+
+  .expertise-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .expertise-card:nth-child(1) {
+    animation-delay: 2s;
+  }
+  .expertise-card:nth-child(2) {
+    animation-delay: 2.2s;
+  }
+  .expertise-card:nth-child(3) {
+    animation-delay: 2.4s;
+  }
+
+  .expertise-card:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  /* Team Cards */
+  .team-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 2.6s forwards;
+  }
+
+  .team-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .team-card:nth-child(1) {
+    animation-delay: 2.8s;
+  }
+  .team-card:nth-child(2) {
+    animation-delay: 3s;
+  }
+
+  .team-card:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  /* Trust Section */
+  .trust-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 3.2s forwards;
+  }
+
+  .trust-content {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 3.4s forwards;
+  }
+
+  .trust-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .trust-card:nth-child(1) {
+    animation-delay: 3.6s;
+  }
+  .trust-card:nth-child(2) {
+    animation-delay: 3.8s;
+  }
+  .trust-card:nth-child(3) {
+    animation-delay: 4s;
+  }
+
+  .trust-card:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  .trust-card:hover .trust-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .trust-icon {
+    transition: all 0.3s ease;
+  }
+
+  /* Keyframe Animations */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUpScale {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Timeline Layout */
+  .timeline-container {
+    position: relative;
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .timeline-item {
+      flex-direction: column;
+    }
+
+    .timeline-marker {
+      margin-bottom: 1rem;
+    }
+
+    .timeline-content {
+      padding-left: 0;
+    }
+  }
+
+  /* Hover Effects */
+  .profile-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  .expertise-card img,
+  .team-card img {
+    transition: transform 0.5s ease;
+  }
+
+  .expertise-card:hover img,
+  .team-card:hover img {
+    transform: scale(1.1);
+  }
+</style>
 
 <!-- Modern Structured Data -->
 <script

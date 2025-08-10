@@ -29,9 +29,8 @@
     </div>
     <button
       type="button"
-      class="absolute inset-y-0 right-0 pr-3 flex items-center"
+      class="absolute inset-y-0 right-0 pr-3 flex items-center hidden"
       id="clear-search"
-      style="display: none;"
     >
       <svg
         class="h-5 w-5 text-gray-400 hover:text-gray-600"
@@ -50,9 +49,8 @@
 
   <!-- Search Results Dropdown -->
   <div
-    class="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg max-h-96 overflow-y-auto"
+    class="absolute z-50 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg max-h-96 overflow-y-auto hidden"
     id="search-results"
-    style="display: none;"
   >
     <div class="p-4">
       <div id="search-results-content">
@@ -177,7 +175,7 @@
       const trimmedQuery = query.trim();
 
       // Show/hide clear button
-      this.clearButton.style.display = trimmedQuery ? "flex" : "none";
+      this.clearButton.classList.toggle("hidden", !trimmedQuery);
 
       // Clear previous timeout
       if (this.searchTimeout) {
@@ -306,13 +304,13 @@
 
     showResults() {
       if (this.searchResults) {
-        this.searchResults.style.display = "block";
+        this.searchResults.classList.remove("hidden");
       }
     }
 
     hideResults() {
       if (this.searchResults) {
-        this.searchResults.style.display = "none";
+        this.searchResults.classList.add("hidden");
       }
     }
 
@@ -321,7 +319,7 @@
         this.searchInput.value = "";
         this.hideResults();
         if (this.clearButton) {
-          this.clearButton.style.display = "none";
+          this.clearButton.classList.add("hidden");
         }
         this.searchInput.focus();
       }

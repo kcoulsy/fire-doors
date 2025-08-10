@@ -2,8 +2,10 @@
 // Component script
 import { Image } from "astro:assets";
 import LinkedInIcon from "../icons/LinkedInIcon.astro";
+import YouTubeIcon from "../icons/YouTubeIcon.astro";
 import Dropdown from "./Dropdown.astro";
 import AISmartSearch from "./AISmartSearch.astro";
+import { DETAILS } from "../constants/details";
 
 import coulsyLogo from "../assets/images/coulsy-logo-sm.jpg";
 
@@ -44,8 +46,13 @@ const menuitems = [
 const socialLinks = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/company/coulsy-limited/?viewAsMember=true",
+    href: DETAILS.SOCIALS.LINKEDIN,
     icon: LinkedInIcon,
+  },
+  {
+    label: "YouTube",
+    href: DETAILS.SOCIALS.YOUTUBE,
+    icon: YouTubeIcon,
   },
 ];
 ---
@@ -120,10 +127,10 @@ const socialLinks = [
             clip-rule="evenodd"></path>
         </svg>
         <a
-          href="tel:07544 030486"
+          href={`tel:${DETAILS.COMPANY.PHONE}`}
           class="text-[#c0c0c0] hover:text-white transition-colors duration-200"
         >
-          07544 030486
+          {DETAILS.COMPANY.PHONE}
         </a>
       </div>
 
@@ -238,10 +245,10 @@ const socialLinks = [
             ></path>
           </svg>
           <a
-            href="mailto:robert@coulsy.co.uk"
+            href={`mailto:${DETAILS.COMPANY.EMAIL}`}
             class="text-white hover:text-[#e0e0e0] transition-colors duration-200 touch-manipulation"
           >
-            robert@coulsy.co.uk
+            {DETAILS.COMPANY.EMAIL}
           </a>
         </div>
         <div class="flex items-center gap-2">
@@ -257,10 +264,10 @@ const socialLinks = [
               clip-rule="evenodd"></path>
           </svg>
           <a
-            href="tel:07544 030486"
+            href={`tel:${DETAILS.COMPANY.PHONE}`}
             class="text-white hover:text-[#e0e0e0] transition-colors duration-200 touch-manipulation"
           >
-            07544 030486
+            {DETAILS.COMPANY.PHONE}
           </a>
         </div>
       </div>

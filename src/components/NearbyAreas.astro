@@ -1,5 +1,5 @@
 ---
-import { capitalizeFirstLetter } from "../utils/capitalizeFirstLetter";
+import { capitalizeFirstLetter, formatLocationDisplay } from "../utils/capitalizeFirstLetter";
 import { getNearbyLocations } from "../utils/getNearbyLocations";
 
 interface Props {
@@ -44,7 +44,7 @@ const nearbyLocations = getNearbyLocations(location, serviceType);
               href={`/${slug}-${serviceType}`}
             >
               <div class="text-base font-medium text-gray-800 group-hover:text-blue-700">
-                {capitalizeFirstLetter(slug)}
+                {formatLocationDisplay(slug)}
               </div>
             </a>
           ))

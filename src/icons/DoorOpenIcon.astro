@@ -12,7 +12,7 @@ const { className } = Astro.props;
   fill="currentColor"
   height="32"
   width="32"
-  class="w-8 h-8"
+  class={className || "w-8 h-8"}
 >
   <g fill="currentColor">
     <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1s.5.448.5 1s-.224 1-.5 1"

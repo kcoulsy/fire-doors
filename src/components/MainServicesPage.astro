@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Carousel from "./Carousel.astro";
-import OurServices from "./OurServices.astro";
 import WhyFireDoors from "./WhyFireDoors.astro";
 import CommonFaults from "./CommonFaults.astro";
 import MainServices from "./MainServices.astro";
@@ -14,9 +13,6 @@ const { location, type } = Astro.params;
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-const typeFormated = type
-  ? type.split("-").map(capitalizeFirstLetter).join(" ")
-  : "Fire Door Services";
 const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
 
 // Modern SEO optimization with personal voice preserved
@@ -32,7 +28,7 @@ const seoData = {
     description: `Professional fire door services in ${locationFormated} including inspections, installation, maintenance and compliance.`,
     url: `https://coulsyfiredoors.co.uk/${location}-${type}`,
     telephone: "+44 1904 123456",
-          email: "robert@coulsy.co.uk",
+    email: "robert@coulsy.co.uk",
     address: {
       "@type": "PostalAddress",
       addressLocality: locationFormated,

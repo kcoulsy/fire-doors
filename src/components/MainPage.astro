@@ -1,22 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Carousel from "../components/Carousel.astro";
-import OurServices from "./OurServices.astro";
 import WhyFireDoors from "./WhyFireDoors.astro";
 import CommonFaults from "./CommonFaults.astro";
 import MainServices from "./MainServices.astro";
 import FireStats from "./FireStats.astro";
 import Reviews from "./Reviews.astro";
 
-const { location, type } = Astro.params;
-
-function capitalizeFirstLetter(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-const typeFormated = type
-  ? type.split("-").map(capitalizeFirstLetter).join(" ")
-  : "Fire Door Services";
-const locationFormated = location ? capitalizeFirstLetter(location) : "COULSY";
+const { location } = Astro.params;
 
 // Modern SEO optimization with personal voice preserved
 const seoData = {
@@ -35,7 +26,7 @@ const seoData = {
       "Professional fire door services in Yorkshire including inspections, installation, maintenance and compliance.",
     url: "https://coulsyfiredoors.co.uk",
     telephone: "+44 1904 123456",
-          email: "robert@coulsy.co.uk",
+    email: "robert@coulsy.co.uk",
     address: {
       "@type": "PostalAddress",
       addressLocality: "York",

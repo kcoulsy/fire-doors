@@ -1,20 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  <!-- Background circle -->
-  <circle cx="64" cy="64" r="60" fill="#1e2a38" stroke="#c0c0c0" stroke-width="2"/>
+  <!-- Background rectangle matching navbar logo -->
+  <rect x="4" y="4" width="120" height="120" rx="8" fill="#1e2a38"/>
   
-  <!-- Coulsy text -->
-  <text x="64" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">COULSY</text>
+  <!-- Fleur-de-lis symbol at the top -->
+  <path d="M 64 20 L 58 35 L 64 30 L 70 35 L 64 20 Z" fill="white"/>
+  <path d="M 64 30 L 58 45 L 64 40 L 70 45 L 64 30 Z" fill="white"/>
+  <path d="M 64 40 L 58 55 L 64 50 L 70 55 L 64 40 Z" fill="white"/>
   
-  <!-- Fire door icon representation -->
-  <rect x="45" y="55" width="38" height="25" rx="2" fill="#c0c0c0" stroke="white" stroke-width="1"/>
-  <rect x="47" y="57" width="34" height="21" rx="1" fill="#1e2a38"/>
+  <!-- COULSY text - main company name -->
+  <text x="64" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">COULSY</text>
   
-  <!-- Door handle -->
-  <circle cx="70" cy="67" r="2" fill="#c0c0c0"/>
-  
-  <!-- Fire safety indicator -->
-  <path d="M 58 75 L 62 71 L 66 75 L 70 71 L 74 75" stroke="#ff6b35" stroke-width="2" fill="none" stroke-linecap="round"/>
-  
-  <!-- Services text -->
-  <text x="64" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#c0c0c0">FIRE DOORS</text>
+  <!-- Fire Doors text - smaller, below main name -->
+  <text x="64" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white">FIRE DOORS</text>
 </svg>

@@ -15,23 +15,11 @@
 <link rel="dns-prefetch" href="//plausible.io" />
 
 <!-- Preload critical resources -->
-<link
-  rel="preload"
-  href="/fonts/inter-var.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin
-/>
-<link rel="preload" href="/images/coulsy-logo-sm.jpg" as="image" />
+<!-- Note: Font preload removed to prevent 404 errors - Astro will handle font loading -->
+<!-- Note: Preload removed to prevent 404 errors - Astro will handle asset loading -->
 
 <!-- Preload critical CSS -->
-<link
-  rel="preload"
-  href="/styles.css"
-  as="style"
-  onload="this.onload=null;this.rel='stylesheet'"
-/>
-<noscript><link rel="stylesheet" href="/styles.css" /></noscript>
+<!-- Note: CSS preload removed to prevent 404 errors - Astro will handle CSS loading -->
 
 <!-- Performance monitoring script -->
 <script>

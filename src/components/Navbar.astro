@@ -58,14 +58,15 @@ const socialLinks = [
 ---
 
 <header
-  class={`${transparent ? "bg-transparent" : "bg-[#1e2a38]"} text-white relative z-50`}
+  class={`${transparent ? "bg-transparent" : "bg-[#1e2a38]"} text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-lg body-font`}
+  id="navbar"
 >
   <div
-    class="container mx-auto flex lg:flex-row items-center justify-between px-4 py-2 lg:py-4 h-[70px] lg:h-[80px]"
+    class="container mx-auto flex items-center justify-between px-4 py-2 lg:py-3 h-[70px] lg:h-[80px]"
   >
-    <!-- Logo - Fixed overflow issues -->
+    <!-- Logo -->
     <div class="relative z-10 flex-shrink-0">
-      <a href="/">
+      <a href="/" class="block">
         <Image
           src={coulsyLogo}
           width="100"
@@ -77,7 +78,7 @@ const socialLinks = [
       </a>
     </div>
 
-    <!-- Desktop Navigation - Restructured for better space management -->
+    <!-- Desktop Navigation -->
     <nav
       class="hidden lg:flex items-center space-x-6 ml-4 flex-1 justify-center"
       aria-label="Main navigation"
@@ -106,14 +107,14 @@ const socialLinks = [
       </ul>
     </nav>
 
-    <!-- Desktop Right Section - Clean, organized layout -->
+    <!-- Desktop Right Section -->
     <div class="hidden lg:flex items-center gap-4 flex-shrink-0">
-      <!-- AI Search -->
+      <!-- AI Smart Search -->
       <div class="w-64">
         <AISmartSearch />
       </div>
 
-      <!-- Phone Only - Email removed from desktop navbar to save space -->
+      <!-- Contact Info - Phone Only (Email removed for space) -->
       <div class="flex items-center gap-2 ml-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +129,7 @@ const socialLinks = [
         </svg>
         <a
           href={`tel:${DETAILS.COMPANY.PHONE}`}
-          class="text-[#c0c0c0] hover:text-white transition-colors duration-200"
+          class="text-[#c0c0c0] hover:text-white transition-colors duration-200 whitespace-nowrap"
         >
           {DETAILS.COMPANY.PHONE}
         </a>
@@ -146,7 +147,7 @@ const socialLinks = [
               class="group text-[#c0c0c0] hover:text-white transition-colors duration-200"
             >
               <social.icon
-                className="h-8 w-8 transition-colors duration-200 group-hover:fill-white fill-[#c0c0c0]"
+                className="h-7 w-7 transition-colors duration-200 group-hover:fill-white fill-[#c0c0c0]"
                 aria-hidden="true"
               />
             </a>
@@ -155,7 +156,7 @@ const socialLinks = [
       </div>
     </div>
 
-    <!-- Mobile Nav Toggle - Enhanced with touch-optimized interactions -->
+    <!-- Mobile Nav Toggle -->
     <button
       id="mobile-nav-toggle"
       class="block lg:hidden ml-auto p-2 touch-manipulation"
@@ -170,30 +171,30 @@ const socialLinks = [
         aria-hidden="true"
       >
         <path
-          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
         ></path>
       </svg>
     </button>
   </div>
 
-  <!-- Mobile Menu Overlay - Enhanced with backdrop blur -->
+  <!-- Mobile Menu Overlay -->
   <div
     id="mobile-nav-overlay"
-    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none"
+    class="fixed inset-0 bg-black/50 z-[55] opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none"
     aria-hidden="true"
   >
   </div>
 
-  <!-- Mobile Menu - Improved tablet responsiveness -->
+  <!-- Mobile Menu -->
   <nav
     id="mobile-nav-menu"
-    class="fixed top-0 right-0 w-full sm:max-w-[400px] max-h-screen bg-[#1e2a38] transform translate-x-full transition-transform duration-300 ease-in-out z-[60] overflow-y-auto shadow-2xl"
+    class="fixed top-0 left-0 w-full max-h-screen bg-[#1e2a38] transform -translate-y-full transition-transform duration-300 ease-in-out z-[60] overflow-y-auto body-font"
     aria-label="Mobile navigation"
     aria-hidden="true"
   >
     <!-- Mobile Menu Header -->
     <div
-      class="flex items-center justify-between px-6 py-4 border-b border-[#1e3a8a] bg-[#1e3a8a]/20 sticky top-0 bg-[#1e2a38] z-10"
+      class="flex items-center justify-between px-6 py-4 border-b border-[#1e3a8a] sticky top-0 bg-[#1e2a38] z-10"
     >
       <a href="/" class="flex items-center text-[#c0c0c0]">
         <Image
@@ -227,15 +228,38 @@ const socialLinks = [
       </button>
     </div>
 
-    <!-- Mobile Contact Info Section - Added where space isn't constrained -->
+    <!-- Mobile Contact Info -->
     <div class="px-6 py-4 border-b border-[#1e3a8a] bg-[#1e3a8a]/20">
       <div class="flex flex-col gap-3">
-        <div class="flex items-center gap-2">
+        <!-- Phone -->
+        <a
+          href={`tel:${DETAILS.COMPANY.PHONE}`}
+          class="flex items-center gap-3 text-white hover:text-[#e0e0e0] transition-colors duration-200 touch-manipulation"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            class="w-5 h-5 text-white"
+            class="w-5 h-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <span class="text-lg">{DETAILS.COMPANY.PHONE}</span>
+        </a>
+
+        <!-- Email -->
+        <a
+          href={`mailto:${DETAILS.COMPANY.EMAIL}`}
+          class="flex items-center gap-3 text-white hover:text-[#e0e0e0] transition-colors duration-200 touch-manipulation"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-5 h-5"
           >
             <path
               d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"
@@ -244,35 +268,12 @@ const socialLinks = [
               d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"
             ></path>
           </svg>
-          <a
-            href={`mailto:${DETAILS.COMPANY.EMAIL}`}
-            class="text-white hover:text-[#e0e0e0] transition-colors duration-200 touch-manipulation"
-          >
-            {DETAILS.COMPANY.EMAIL}
-          </a>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="w-5 h-5 text-white"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
-              clip-rule="evenodd"></path>
-          </svg>
-          <a
-            href={`tel:${DETAILS.COMPANY.PHONE}`}
-            class="text-white hover:text-[#e0e0e0] transition-colors duration-200 touch-manipulation"
-          >
-            {DETAILS.COMPANY.PHONE}
-          </a>
-        </div>
+          <span class="text-lg break-all">{DETAILS.COMPANY.EMAIL}</span>
+        </a>
       </div>
     </div>
 
+    <!-- Mobile Navigation -->
     <ul class="flex flex-col w-full">
       {
         menuitems.map((item) => (
@@ -291,7 +292,7 @@ const socialLinks = [
                     viewBox="0 0 24 24"
                     stroke-width="3"
                     stroke="currentColor"
-                    class="w-3 h-3 transition-transform duration-200 group-[.is-open]:rotate-180"
+                    class="w-4 h-4 transition-transform duration-200 group-[.is-open]:rotate-180"
                     aria-hidden="true"
                   >
                     <path
@@ -331,6 +332,7 @@ const socialLinks = [
           </li>
         ))
       }
+
       <!-- Social Icons in Mobile Menu -->
       <li
         class="flex items-center justify-center gap-6 px-6 py-6 border-b border-[#1e3a8a]"
@@ -357,12 +359,56 @@ const socialLinks = [
   </nav>
 </header>
 
+<!-- Spacer to prevent content from being hidden behind fixed navbar -->
+<div class="h-[70px] lg:h-[80px]"></div>
+
 <script>
   const toggle = document.getElementById("mobile-nav-toggle");
   const closeButton = document.getElementById("mobile-nav-close");
   const menu = document.getElementById("mobile-nav-menu");
   const overlay = document.getElementById("mobile-nav-overlay");
   const dropdowns = menu?.querySelectorAll("button");
+  const navbar = document.getElementById("navbar");
+
+  // Handle scroll effects for navbar
+  let ticking = false;
+
+  const updateNavbar = () => {
+    const currentScrollY = window.scrollY;
+
+    if (navbar) {
+      // Add shadow and background when scrolled
+      if (currentScrollY > 10) {
+        navbar.classList.add(
+          "shadow-xl",
+          "bg-[#1e2a38]/95",
+          "backdrop-blur-sm"
+        );
+        navbar.classList.remove("bg-[#1e2a38]");
+      } else {
+        navbar.classList.remove(
+          "shadow-xl",
+          "bg-[#1e2a38]/95",
+          "backdrop-blur-sm"
+        );
+        navbar.classList.add("bg-[#1e2a38]");
+      }
+    }
+
+    ticking = false;
+  };
+
+  const requestTick = () => {
+    if (!ticking) {
+      requestAnimationFrame(updateNavbar);
+      ticking = true;
+    }
+  };
+
+  // Only add scroll listener if navbar exists
+  if (navbar) {
+    window.addEventListener("scroll", requestTick, { passive: true });
+  }
 
   // Handle keyboard navigation for desktop dropdowns
   document
@@ -401,8 +447,8 @@ const socialLinks = [
 
   // Handle keyboard navigation for mobile menu
   const toggleMenu = () => {
-    const isOpen = menu?.classList.contains("translate-x-full");
-    menu?.classList.toggle("translate-x-full");
+    const isOpen = menu?.classList.contains("-translate-y-full");
+    menu?.classList.toggle("-translate-y-full");
     overlay?.classList.toggle("opacity-0");
     overlay?.classList.toggle("pointer-events-none");
     document.body.classList.toggle("overflow-hidden");
@@ -515,3 +561,51 @@ const socialLinks = [
     });
   });
 </script>
+
+<style>
+  /* Ensure smooth transitions for navbar */
+  #navbar {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Add backdrop blur effect when scrolled */
+  #navbar.shadow-xl {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Ensure dropdowns appear above other content */
+  nav.lg\\:flex li.group ul {
+    z-index: 60;
+  }
+
+  /* Mobile menu adjustments for fixed navbar */
+  #mobile-nav-menu {
+    top: 0;
+    height: 100vh;
+    padding-top: 0;
+  }
+
+  /* Ensure content doesn't overlap with fixed navbar */
+  body {
+    padding-top: 0;
+  }
+
+  /* Touch-friendly mobile interactions */
+  @media (max-width: 1023px) {
+    button,
+    a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Tablet-specific optimizations */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #mobile-nav-menu {
+      max-width: 400px;
+      right: 0;
+      left: auto;
+    }
+  }
+</style>

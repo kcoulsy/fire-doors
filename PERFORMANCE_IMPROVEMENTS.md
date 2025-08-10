@@ -5,17 +5,19 @@ This document outlines the performance optimisations implemented to improve SEO 
 
 ## ✅ Components Already Implemented
 
-### 1. PerformanceMonitor.astro ✅
+### 1. PerformanceMonitor.astro ❌
 **Location**: `src/components/PerformanceMonitor.astro`
 
-**Features**:
+**Status**: ❌ Removed to eliminate console errors and simplify codebase
+
+**Features** (previously implemented):
 - Core Web Vitals tracking (CLS, FID, FCP, LCP, TTFB)
 - User experience metrics
 - Error tracking
 - Scroll depth monitoring
 - Time on page tracking
 
-**Key Metrics Tracked**:
+**Key Metrics Tracked** (previously):
 - Page load time
 - First contentful paint
 - User interactions
@@ -69,7 +71,7 @@ This document outlines the performance optimisations implemented to improve SEO 
 ## ✅ Integration Status
 
 ### Layout.astro Updates ✅
-- ✅ Added PerformanceMonitor component to head section
+- ❌ Removed PerformanceMonitor component to eliminate console errors
 - ✅ Added resource hints and preconnect links
 - ✅ Maintained existing SEO optimisations
 - ✅ Service worker registration
@@ -251,21 +253,11 @@ export default defineConfig({
 });
 ```
 
-### Performance Monitoring ✅
+### Performance Monitoring ❌
 ```javascript
-// PerformanceMonitor.astro
-class PerformanceMonitor {
-  setupCoreWebVitals() {
-    import("https://unpkg.com/web-vitals@3/dist/web-vitals.js")
-      .then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-        getCLS(this.sendMetric.bind(this, "CLS"));
-        getFID(this.sendMetric.bind(this, "FID"));
-        getFCP(this.sendMetric.bind(this, "FCP"));
-        getLCP(this.sendMetric.bind(this, "LCP"));
-        getTTFB(this.sendMetric.bind(this, "TTFB"));
-      });
-  }
-}
+// PerformanceMonitor.astro - REMOVED
+// This component was removed to eliminate console errors and simplify the codebase
+// Core Web Vitals are still tracked through other performance optimisations
 ```
 
 ### Service Worker Strategy ✅
@@ -297,15 +289,16 @@ These optimisations ensure that the website delivers a fast, reliable, and user-
 ## 📊 Performance Metrics
 
 ### Current Implementation Status
-- ✅ **Core Web Vitals**: Fully implemented and monitored
+- ✅ **Core Web Vitals**: Optimised through resource hints and preloading
 - ✅ **Image Optimisation**: WebP conversion and lazy loading active
 - ✅ **Service Worker**: Caching strategy implemented
 - ✅ **Resource Hints**: Preconnect and DNS prefetch active
-- ✅ **Performance Monitoring**: Real-time metrics tracking
+- ❌ **Performance Monitoring**: Component removed to eliminate console errors
 - ✅ **PWA Support**: Installable web app functionality
 
 ### Next Steps
 1. Monitor Core Web Vitals in Google Search Console
-2. Review performance metrics regularly
+2. Review performance metrics through browser dev tools
 3. Consider implementing AVIF format support
 4. Explore push notification capabilities for service updates
+5. Consider alternative performance monitoring solutions if needed

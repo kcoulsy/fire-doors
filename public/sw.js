@@ -12,7 +12,6 @@ const STATIC_FILES = [
   '/fire-door-maintenance',
   '/contact',
   '/about',
-  '/styles.css',
   '/favicon.ico',
   '/apple-touch-icon.png',
   '/android-chrome-192x192.png',

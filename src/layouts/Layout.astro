@@ -6,7 +6,7 @@ import Footer from "../components/Footer.astro";
 import WebDevFooter from "../components/WebDevFooter.astro";
 
 import SmoothScroll from "../components/SmoothScroll.astro";
-import PerformanceMonitor from "../components/PerformanceMonitor.astro";
+
 import ViewTransitions from "../components/ViewTransitions.astro";
 import PWAInstaller from "../components/PWAInstaller.astro";
 import PWAStatus from "../components/PWAStatus.astro";
@@ -80,23 +80,10 @@ const {
     <link rel="dns-prefetch" href="//plausible.io" />
 
     <!-- Preload critical resources -->
-    <link
-      rel="preload"
-      href="/fonts/inter-var.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin=""
-    />
-    <link rel="preload" href="/images/coulsy-logo-sm.jpg" as="image" />
+    <!-- Note: Preloads removed to prevent 404 errors - Astro will handle asset loading -->
 
     <!-- Preload critical CSS -->
-    <link
-      rel="preload"
-      href="/styles.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript><link rel="stylesheet" href="/styles.css" /></noscript>
+    <!-- Note: CSS preload removed to prevent 404 errors - Astro will handle CSS loading -->
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content={type} />
@@ -148,7 +135,6 @@ const {
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -237,7 +223,6 @@ const {
     <Footer />
     <WebDevFooter location={location} />
     <SmoothScroll />
-    <PerformanceMonitor />
     <ViewTransitions />
     <PWAInstaller />
     <PWAStatus />

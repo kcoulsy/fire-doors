@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import FAQSchema from "../components/FAQSchema.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
 
 const faqData = [
   {
@@ -170,6 +171,18 @@ const seoData = {
   description={seoData.description}
   classes="mt-8 mb-16"
 >
+  <!-- Breadcrumb -->
+  <section class="bg-gray-50 py-4">
+    <div class="container mx-auto px-4">
+      <Breadcrumb
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "FAQ", current: true },
+        ]}
+      />
+    </div>
+  </section>
+
   <!-- FAQ Schema -->
   <FAQSchema
     faqs={allFaqs}

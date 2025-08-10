@@ -53,21 +53,22 @@ const {
 
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://plausible.io" />
 
     <!-- PWA Service Worker Registration -->
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
             .then((registration) => {
-              console.log('SW registered: ', registration);
+              console.log("SW registered: ", registration);
             })
             .catch((registrationError) => {
-              console.log('SW registration failed: ', registrationError);
+              console.log("SW registration failed: ", registrationError);
             });
         });
       }
@@ -84,7 +85,7 @@ const {
       href="/fonts/inter-var.woff2"
       as="font"
       type="font/woff2"
-      crossorigin
+      crossorigin=""
     />
     <link rel="preload" href="/images/coulsy-logo-sm.jpg" as="image" />
 
@@ -154,6 +155,7 @@ const {
     <!-- LocalBusiness Structured Data -->
     <script
       type="application/ld+json"
+      is:inline
       set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
@@ -245,21 +247,20 @@ const {
     <script
       defer
       data-domain="coulsyfiredoors.co.uk"
-      src="https://analytics.coulsy.dev/js/script.js"></script>
+      src="https://analytics.coulsy.dev/js/script.js"
+      is:inline></script>
 
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-    ></script>
-    <script>
-      // @ts-ignore
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      // @ts-ignore
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
       function gtag() {
-        (window as any).dataLayer.push(arguments);
+        window.dataLayer.push(arguments);
       }
-      // @ts-ignore
       gtag("js", new Date());
-      // @ts-ignore
       gtag("config", "G-XXXXXXXXXX", {
         page_title: document.title,
         page_location: window.location.href,
@@ -271,7 +272,7 @@ const {
     </script>
 
     <!-- Service Worker Registration -->
-    <script>
+    <script is:inline>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker

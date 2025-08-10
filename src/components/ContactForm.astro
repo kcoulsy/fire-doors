@@ -6,6 +6,7 @@ interface Props {
   className?: string;
   location?: string;
   serviceType?: string;
+  uniqueId?: string;
 }
 
 const {
@@ -15,7 +16,23 @@ const {
   className = "",
   location,
   serviceType,
+  uniqueId = "",
 } = Astro.props;
+
+// Generate unique IDs for form elements
+const formId = uniqueId
+  ? `modern-contact-form-${uniqueId}`
+  : "modern-contact-form";
+const submitButtonId = uniqueId ? `submit-button-${uniqueId}` : "submit-button";
+const sendIconId = uniqueId ? `send-icon-${uniqueId}` : "send-icon";
+const buttonTextId = uniqueId ? `button-text-${uniqueId}` : "button-text";
+const loadingSpinnerId = uniqueId
+  ? `loading-spinner-${uniqueId}`
+  : "loading-spinner";
+const successMessageId = uniqueId
+  ? `success-message-${uniqueId}`
+  : "success-message";
+const errorMessageId = uniqueId ? `error-message-${uniqueId}` : "error-message";
 ---
 
 <div
@@ -27,7 +44,7 @@ const {
   </div>
 
   <form
-    id="modern-contact-form"
+    id={formId}
     name="contact"
     method="post"
     data-netlify="true"
@@ -112,12 +129,12 @@ const {
     <!-- Submit Button -->
     <button
       type="submit"
-      id="submit-button"
+      id={submitButtonId}
       class="w-full bg-[#1e2a38] hover:bg-[#1e3a8a] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#1e3a8a] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] transform"
     >
-      <span class="flex items-center justify-center">
+      <div class="flex items-center justify-center">
         <svg
-          id="send-icon"
+          id={sendIconId}
           class="w-5 h-5 mr-2 transition-transform duration-300"
           fill="none"
           stroke="currentColor"
@@ -129,15 +146,19 @@ const {
             stroke-width="2"
             d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
         </svg>
-        <span id="button-text">Send Message</span>
-        <div id="loading-spinner" class="hidden w-5 h-5 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-      </span>
+        <span id={buttonTextId}>Send Message</span>
+        <div
+          id={loadingSpinnerId}
+          class="hidden w-5 h-5 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"
+        >
+        </div>
+      </div>
     </button>
   </form>
 
   <!-- Success Message (shown by Netlify after successful submission) -->
   <div
-    id="success-message"
+    id={successMessageId}
     class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-lg"
   >
     <div class="flex items-center">
@@ -159,7 +180,7 @@ const {
 
   <!-- Error Message (shown by Netlify if there's an error) -->
   <div
-    id="error-message"
+    id={errorMessageId}
     class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg"
   >
     <div class="flex items-center">
@@ -193,51 +214,63 @@ const {
   </div>
 </div>
 
-<script define:vars={{ location, serviceType }}>
+<script
+  define:vars={{
+    location,
+    serviceType,
+    formId,
+    submitButtonId,
+    sendIconId,
+    buttonTextId,
+    loadingSpinnerId,
+    successMessageId,
+    errorMessageId,
+  }}
+>
   // Enhanced contact form with micro-interactions
   document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const successMessage = document.getElementById("success-message");
-    const errorMessage = document.getElementById("error-message");
-    const submitButton = document.getElementById("submit-button");
-    const sendIcon = document.getElementById("send-icon");
-    const buttonText = document.getElementById("button-text");
-    const loadingSpinner = document.getElementById("loading-spinner");
+    const successMessage = document.getElementById(successMessageId);
+    const errorMessage = document.getElementById(errorMessageId);
+    const submitButton = document.getElementById(submitButtonId);
+    const sendIcon = document.getElementById(sendIconId);
+    const buttonText = document.getElementById(buttonTextId);
+    const loadingSpinner = document.getElementById(loadingSpinnerId);
 
     // Button micro-interactions
     if (submitButton) {
       // Hover effect - icon moves slightly
-      submitButton.addEventListener('mouseenter', function() {
+      submitButton.addEventListener("mouseenter", function () {
         if (sendIcon) {
-          sendIcon.style.transform = 'translateX(2px) rotate(12deg)';
+          sendIcon.style.transform = "translateX(2px) rotate(12deg)";
         }
       });
 
-      submitButton.addEventListener('mouseleave', function() {
+      submitButton.addEventListener("mouseleave", function () {
         if (sendIcon) {
-          sendIcon.style.transform = 'translateX(0) rotate(0deg)';
+          sendIcon.style.transform = "translateX(0) rotate(0deg)";
         }
       });
 
       // Click effect - button scales down
-      submitButton.addEventListener('mousedown', function() {
-        this.style.transform = 'scale(0.98)';
+      submitButton.addEventListener("mousedown", function () {
+        this.style.transform = "scale(0.98)";
       });
 
-      submitButton.addEventListener('mouseup', function() {
-        this.style.transform = 'scale(1.02)';
+      submitButton.addEventListener("mouseup", function () {
+        this.style.transform = "scale(1.02)";
       });
 
       // Form submission loading state
-      const form = document.getElementById("modern-contact-form");
+      const form = document.getElementById(formId);
       if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener("submit", function (e) {
           // Show loading state
           if (submitButton && sendIcon && buttonText && loadingSpinner) {
             submitButton.disabled = true;
-            sendIcon.classList.add('hidden');
-            buttonText.textContent = 'Sending...';
-            loadingSpinner.classList.remove('hidden');
+            sendIcon.classList.add("hidden");
+            buttonText.textContent = "Sending...";
+            loadingSpinner.classList.remove("hidden");
           }
         });
       }
@@ -269,11 +302,11 @@ const {
     }
 
     // Add location information to form submission
-    const form = document.getElementById("modern-contact-form");
+    const form = document.getElementById(formId);
     const messageField = document.getElementById("message");
-    
+
     if (form && messageField && location && serviceType) {
-      form.addEventListener("submit", function(e) {
+      form.addEventListener("submit", function (e) {
         const currentMessage = messageField.value || "";
         const locationInfo = `\n\n---\nInquiry from: ${location} (${serviceType})`;
         messageField.value = currentMessage + locationInfo;
@@ -307,11 +340,11 @@ const {
   }
 
   /* Enhanced button hover effects */
-  #submit-button:hover {
+  button[type="submit"]:hover {
     box-shadow: 0 10px 25px rgba(30, 42, 56, 0.3);
   }
 
-  #submit-button:active {
+  button[type="submit"]:active {
     transform: scale(0.98);
   }
 

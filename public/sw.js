@@ -1,4 +1,34 @@
 // Service Worker for Coulsy Fire Door Services PWA
+// Disabled in development - only caches in production
+const isDevelopment = self.location.hostname === 'localhost' || self.location.hostname === '127.0.0.1';
+
+if (isDevelopment) {
+  // In development, skip caching entirely
+  self.addEventListener('install', () => {
+    self.skipWaiting();
+  });
+  
+  self.addEventListener('activate', () => {
+    // Clear all caches in development
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          return caches.delete(cacheName);
+        })
+      );
+    });
+    return self.clients.claim();
+  });
+  
+  self.addEventListener('fetch', (event) => {
+    // Always fetch from network in development
+    event.respondWith(fetch(event.request));
+  });
+  
+  return; // Exit early in development
+}
+
+// Production service worker code below
 const CACHE_NAME = 'coulsy-fire-doors-v1';
 const STATIC_CACHE = 'static-v1';
 const DYNAMIC_CACHE = 'dynamic-v1';

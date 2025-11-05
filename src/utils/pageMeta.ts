@@ -48,7 +48,7 @@ export function getFormattedPageData(location?: string, type?: string): {
       name: "Coulsy Fire Door Services",
       description: defaultDescription,
       url: `https://coulsyfiredoors.co.uk/${location ? `${location}-${baseType}` : baseType}`,
-      image: "https://coulsyfiredoors.co.uk/images/coulsy-logo-sm.jpg",
+      image: "https://coulsyfiredoors.co.uk/images/coulsy-logo-sm.png",
       email: "robert@coulsy.co.uk",
       telephone: "+44 7544 030486",
       priceRange: "££",

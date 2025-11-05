@@ -1,22 +1,100 @@
 ---
 interface Review {
   author: string;
-  authorPhoto: string;
   rating: number;
   text: string;
-  relativeTime: string;
-  publishTime: string;
+  location?: string;
+  service?: string;
 }
 
-interface ReviewsData {
-  placeName: string;
-  rating: number;
-  totalReviews: number;
-  reviews: Review[];
-}
+// Real customer reviews from Google (Coulsy Joinery & Small Build)
+const testimonials: Review[] = [
+  {
+    author: "Sally Gerrand-Jones",
+    rating: 5,
+    text: "I contacted Robert to survey the fire door of my York apartment. As a result of the survey, a new fire door was fitted. Professional service and excellent workmanship.",
+    location: "York",
+    service: "Fire Door Survey & Installation",
+  },
+  {
+    author: "Chris (Sales UK)",
+    rating: 5,
+    text: "You read so many bad reviews about builders but I am delighted to say Coulsy Joinery is not one of them. From the outset, professional, reliable, and delivered excellent results.",
+    location: "Yorkshire",
+    service: "Joinery Services",
+  },
+  {
+    author: "Martin S",
+    rating: 5,
+    text: "Mr Coulson gave careful and precise work professionally and was personally very easy to deal with. I would certainly employ him again for any future joinery needs.",
+    location: "Yorkshire",
+    service: "Joinery & Compliance Works",
+  },
+  {
+    author: "Kim Hosking",
+    rating: 5,
+    text: "Had a fire survey done on my apartment door by a previous company and no one could make head nor tail of it. I hired in Robert who provided clarity and excellent service. Fire door surveys can be confusing, but he made it simple and clear.",
+    location: "Yorkshire",
+    service: "Fire Door Survey",
+  },
+  {
+    author: "Donna Cresdee",
+    rating: 5,
+    text: "We have been extremely pleased with the professionalism shown by Robert, and the quality of our new fire door. A very quick response and delivery, would highly recommend.",
+    location: "Yorkshire",
+    service: "Fire Door Installation",
+  },
+  {
+    author: "Luisa D",
+    rating: 5,
+    text: "We would strongly recommend Coulsy Ltd for anyone looking for good-quality joinery work. We used Robert and Debbie for our project and were very impressed with their professionalism and craftsmanship.",
+    location: "Yorkshire",
+    service: "Joinery Work",
+  },
+  {
+    author: "Sophie Vohra",
+    rating: 5,
+    text: "I contracted Debbie and Robert to carry out fire safety repairs on my apartment door, following a request by the management company. Professional service, excellent work, and great communication throughout.",
+    location: "Yorkshire",
+    service: "Fire Safety Repairs",
+  },
+  {
+    author: "Richard Hand",
+    rating: 5,
+    text: "Amazing quality and attention to detail. No challenge too great.",
+    location: "Yorkshire",
+    service: "Joinery Services",
+  },
+  {
+    author: "Graeme Ian Kynman",
+    rating: 5,
+    text: "I can testify that the joinery work Rob produced for me was of an extremely high quality and would highly recommend him. Excellent craftsmanship and attention to detail.",
+    location: "Yorkshire",
+    service: "Joinery Work",
+  },
+  {
+    author: "Edris Mahmud",
+    rating: 5,
+    text: "Carried out a fire door installation for us. Very fast and great installation done. Strongly recommend.",
+    location: "Yorkshire",
+    service: "Fire Door Installation",
+  },
+  {
+    author: "Jean Putwain",
+    rating: 5,
+    text: "Dementia Care Home - replacement of Joists and Floor. Highly recommend Coulsy Joinery, excellent workmanship and professional company, cleaned up all debris. Would definitely use again.",
+    location: "Yorkshire",
+    service: "Structural Joinery",
+  },
+];
+
+// Calculate average rating
+const averageRating =
+  testimonials.reduce((sum, review) => sum + review.rating, 0) /
+  testimonials.length;
 ---
 
-<section class="py-12">
+<section class="py-12 bg-gray-50">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
@@ -28,142 +106,100 @@ interface ReviewsData {
         Here's what they have to say about working with Coulsy Fire Door
         Services.
       </p>
+
+      <div class="mt-6 flex items-center justify-center gap-2">
+        <div class="flex text-yellow-500 text-2xl">
+          {"★".repeat(Math.round(averageRating))}
+        </div>
+        <span class="text-gray-700 font-semibold text-lg">
+          {averageRating.toFixed(1)} out of 5
+        </span>
+        <span class="text-gray-500 text-sm">
+          ({testimonials.length} {testimonials.length === 1 ? "review" : "reviews"})
+        </span>
+      </div>
+
+      <div class="mt-4">
+        <a
+          href="https://www.google.com/search?q=Coulsy+Joinery+%26+Small+Build&stick=H4sIAAAAAAAA_-NgU1I1qDCxME9KtTAzTkwySjQ0NDS1MqhItkhLsTA3SEmxAMqYGJotYpVxzi_NKa5U8MrPzEstqlRQUwjOTczJUXAqzcxJAQA2eubnSAAAAA&hl=en-GB#reviews"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-brand hover:text-brand-dark font-medium"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M21.35 11.1h-9.18v2.96h5.48c-.24 1.48-1.55 4.34-5.48 4.34-3.29 0-6-2.7-6-6s2.71-6 6-6c1.87 0 3.12.8 3.84 1.5l2.63-2.54C17.73 3.51 15.09 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.33 0 9.75-3.89 9.75-9.7 0-.65-.07-1.14-.16-1.6z" />
+          </svg>
+          Read all 11 reviews on Google
+        </a>
+      </div>
     </div>
 
-    <div
-      id="reviews-container"
-      class="text-center text-gray-500 p-4 bg-gray-50 rounded-lg max-w-2xl mx-auto"
-    >
-      Loading reviews...
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      {testimonials.map((review, index) => {
+        const reviewId = `review-${index}`;
+        const isLongReview = review.text.length > 200;
+        const truncatedText = isLongReview
+          ? review.text.slice(0, 200) + "..."
+          : review.text;
+
+        return (
+          <div
+            class="p-6 border border-gray-200 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow h-full flex flex-col"
+          >
+            <div class="mb-4">
+              <div class="font-semibold text-lg text-gray-900 mb-1">
+                {review.author}
+              </div>
+              {review.location && (
+                <div class="text-sm text-gray-500 mb-2">{review.location}</div>
+              )}
+              <div class="flex items-center gap-2">
+                <div class="text-yellow-500 flex gap-0.5">
+                  {"★".repeat(review.rating)}
+                </div>
+                {review.service && (
+                  <span class="text-xs text-gray-400">{review.service}</span>
+                )}
+              </div>
+            </div>
+            <div class="flex-grow flex flex-col">
+              <p
+                id={reviewId}
+                data-expanded="false"
+                class="text-gray-700 leading-relaxed flex-grow"
+              >
+                {truncatedText}
+              </p>
+              {isLongReview && (
+                <button
+                  class="mt-3 px-3 py-1 text-sm font-semibold text-brand bg-brand/10 rounded hover:bg-brand/20 transition text-left"
+                  onclick={`toggleReview('${reviewId}', \`${review.text.replace(
+                    /`/g,
+                    "\\`"
+                  )}\`, \`${truncatedText.replace(/"/g, '\\"')}\`, this)`}
+                >
+                  Read more
+                </button>
+              )}
+            </div>
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <script>
-  interface Review {
-    author: string;
-    authorPhoto: string;
-    rating: number;
-    text: string;
-    relativeTime: string;
-    publishTime: string;
-  }
-
-  async function loadReviews() {
-    const container = document.getElementById("reviews-container");
-    if (!container) return;
-
-    try {
-      const response = await fetch("/api/reviews");
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      // Check if the API returned an error
-      if (data.error) {
-        throw new Error(data.message);
-      }
-
-      const reviews = data.reviews?.slice(0, 7) || [];
-
-      if (reviews.length === 0) {
-        container.innerHTML =
-          '<div class="text-center text-gray-500 p-4 bg-gray-50 rounded-lg max-w-2xl mx-auto">No reviews available at this time.</div>';
-        return;
-      }
-
-      const reviewsHTML = reviews
-        .map((review: Review) => {
-          const isLongReview = review.text.length > 150;
-          const truncatedText = isLongReview
-            ? review.text.slice(0, 150) + "..."
-            : review.text;
-          const reviewId = `review-${review.author.replace(/\s+/g, "-").toLowerCase()}`;
-
-          return `
-          <div class="p-6 border border-gray-200 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow h-full flex flex-col">
-            <div class="flex items-center gap-4 mb-4">
-              <div>
-                <div class="font-semibold text-lg">${review.author}</div>
-                <div class="text-yellow-500 flex gap-1 items-center">
-                  ${"★".repeat(review.rating)}
-                  <span class="text-gray-500 text-sm ml-2">
-                    ${review.relativeTime}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="flex-grow flex flex-col">
-              <p id="${reviewId}" data-expanded="false" class="text-gray-700">
-                ${truncatedText}
-              </p>
-              <div class="flex-grow"></div>
-              ${
-                isLongReview
-                  ? `
-                <button
-                  class="mt-2 px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-50 rounded hover:bg-blue-100 transition"
-                  onclick="toggleReview('${reviewId}', \`${review.text.replace(/`/g, "\\`")}\`, \`${truncatedText.replace(/"/g, '\\"')}\`, this)"
-                >
-                  Read more
-                </button>
-              `
-                  : ""
-              }
-              <a
-                href="https://search.google.com/local/reviews?placeid=14482880470234072086"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-xs text-gray-400 hover:text-gray-600 block mt-3 text-right self-end flex items-center justify-end gap-1"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M21.35 11.1h-9.18v2.96h5.48c-.24 1.48-1.55 4.34-5.48 4.34-3.29 0-6-2.7-6-6s2.71-6 6-6c1.87 0 3.12.8 3.84 1.5l2.63-2.54C17.73 3.51 15.09 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.33 0 9.75-3.89 9.75-9.7 0-.65-.07-1.14-.16-1.6z" />
-                </svg>
-                Google
-              </a>
-            </div>
-          </div>
-        `;
-        })
-        .join("");
-
-      container.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5 gap-6">${reviewsHTML}</div>`;
-    } catch (e) {
-      const error = e instanceof Error ? e.message : "Failed to fetch reviews";
-      console.error("Error fetching reviews:", error);
-
-      // Check if it's an API key issue - be more specific
-      if (
-        error.includes("API key") ||
-        error.includes("REQUEST_DENIED") ||
-        error.includes("expired")
-      ) {
-        container.innerHTML = `
-          <div class="text-center p-4 bg-yellow-50 rounded-lg max-w-2xl mx-auto">
-            <div class="text-yellow-800 font-semibold mb-2">Google Reviews Temporarily Unavailable</div>
-            <div class="text-yellow-700 text-sm mb-4">Our Google Reviews integration is being updated. Please check our <a href="https://www.google.com/search?q=Coulsy+Fire+Door+Services+reviews" target="_blank" rel="noopener" class="underline font-semibold">Google Reviews directly</a> for the latest customer feedback.</div>
-            <div class="text-xs text-yellow-600">We're working to restore this feature as soon as possible.</div>
-          </div>
-        `;
-      } else {
-        container.innerHTML =
-          '<div class="text-center text-red-500 p-4 bg-red-50 rounded-lg max-w-2xl mx-auto">Unable to load reviews at this time. Please try again later.</div>';
-      }
-    }
-  }
-
   function toggleReview(
     reviewId: string,
     fullText: string,
     shortText: string,
-    button: HTMLButtonElement
+    button: HTMLElement
   ) {
     const el = document.getElementById(reviewId);
     if (!el) return;
@@ -171,14 +207,14 @@ interface ReviewsData {
     if (el.dataset.expanded === "true") {
       el.textContent = shortText;
       el.dataset.expanded = "false";
-      button.textContent = "Read more";
+      if (button) button.textContent = "Read more";
     } else {
       el.textContent = fullText;
       el.dataset.expanded = "true";
-      button.textContent = "Show less";
+      if (button) button.textContent = "Show less";
     }
   }
 
-  // Load reviews when the page loads
-  document.addEventListener("DOMContentLoaded", loadReviews);
+  // Make toggleReview available globally
+  (window as any).toggleReview = toggleReview;
 </script>

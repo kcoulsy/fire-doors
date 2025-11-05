@@ -11,6 +11,28 @@ interface Props {
 }
 
 const { crumbs } = Astro.props;
+
+// Generate structured data for breadcrumbs (Context7/Astro best practice)
+const breadcrumbStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: Astro.site?.href || "https://coulsyfiredoors.co.uk",
+    },
+    ...crumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 2,
+      name: crumb.label,
+      item: crumb.href
+        ? `${Astro.site?.href || "https://coulsyfiredoors.co.uk"}${crumb.href}`
+        : Astro.url.href,
+    })),
+  ],
+};
 ---
 
 <nav class="text-sm sm:text-base pb-6 min-h-[2.5rem]" aria-label="Breadcrumb">
@@ -68,3 +90,10 @@ const { crumbs } = Astro.props;
     }
   });
 </script>
+
+<!-- Breadcrumb Structured Data (Context7/Astro SEO best practice) -->
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(breadcrumbStructuredData)}
+/>

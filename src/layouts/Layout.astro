@@ -8,8 +8,6 @@ import WebDevFooter from "../components/WebDevFooter.astro";
 import SmoothScroll from "../components/SmoothScroll.astro";
 
 import ViewTransitions from "../components/ViewTransitions.astro";
-import PWAInstaller from "../components/PWAInstaller.astro";
-import PWAStatus from "../components/PWAStatus.astro";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -57,17 +55,14 @@ const {
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://plausible.io" />
 
-    <!-- PWA Service Worker Registration -->
+    <!-- Service Worker for caching (performance only, no PWA UI) -->
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker
             .register("/sw.js")
-            .then((registration) => {
-              console.log("SW registered: ", registration);
-            })
-            .catch((registrationError) => {
-              console.log("SW registration failed: ", registrationError);
+            .catch(() => {
+              // Silently fail - service worker is optional for performance only
             });
         });
       }
@@ -219,8 +214,6 @@ const {
     <WebDevFooter location={location} />
     <SmoothScroll />
     <ViewTransitions />
-    <PWAInstaller />
-    <PWAStatus />
 
     <style is:global></style>
     <!-- Analytics -->
@@ -251,21 +244,13 @@ const {
       });
     </script>
 
-    <!-- Service Worker Registration -->
+    <!-- Service Worker for caching (performance only, silent) -->
     <script is:inline>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("/sw.js")
-            .then((registration) => {
-              console.log(
-                "Service Worker registered successfully:",
-                registration.scope
-              );
-            })
-            .catch((error) => {
-              console.log("Service Worker registration failed:", error);
-            });
+          navigator.serviceWorker.register("/sw.js").catch(() => {
+            // Silently fail - service worker is optional for performance only
+          });
         });
       }
     </script>

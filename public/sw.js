@@ -42,10 +42,10 @@ const STATIC_FILES = [
   '/fire-door-maintenance',
   '/contact',
   '/about',
-  '/favicon.ico',
-  '/apple-touch-icon.png',
-  '/android-chrome-192x192.png',
-  '/android-chrome-512x512.png'
+  '/coulsy-fire-doors-favicon.ico',
+  '/coulsy-fire-doors-apple-touch-icon.png',
+  '/coulsy-fire-doors-android-chrome-192x192.png',
+  '/coulsy-fire-doors-android-chrome-512x512.png'
 ];
 
 // Install event - cache static files
@@ -253,8 +253,8 @@ self.addEventListener('push', (event) => {
   
   const options = {
     body: event.data ? event.data.text() : 'New fire door service update',
-    icon: '/android-chrome-192x192.png',
-    badge: '/android-chrome-192x192.png',
+    icon: '/coulsy-fire-doors-android-chrome-192x192.png',
+    badge: '/coulsy-fire-doors-android-chrome-192x192.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -264,12 +264,12 @@ self.addEventListener('push', (event) => {
       {
         action: 'explore',
         title: 'View Services',
-        icon: '/android-chrome-192x192.png'
+        icon: '/coulsy-fire-doors-android-chrome-192x192.png'
       },
       {
         action: 'close',
         title: 'Close',
-        icon: '/android-chrome-192x192.png'
+        icon: '/coulsy-fire-doors-android-chrome-192x192.png'
       }
     ]
   };

@@ -19,6 +19,7 @@ interface Props {
   location?: string;
   image?: string;
   type?: string;
+  robots?: string;
 }
 
 const {
@@ -29,6 +30,7 @@ const {
   location,
   image = "https://coulsyfiredoors.co.uk/og-image.jpg",
   type = "website",
+  robots = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
 } = Astro.props;
 ---
 
@@ -41,10 +43,28 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicons and App Icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/coulsy-fire-doors-favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/coulsy-fire-doors-apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/coulsy-fire-doors-favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/coulsy-fire-doors-favicon-16x16.png"
+    />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalURL.href} />
 
@@ -59,11 +79,9 @@ const {
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("/sw.js")
-            .catch(() => {
-              // Silently fail - service worker is optional for performance only
-            });
+          navigator.serviceWorker.register("/sw.js").catch(() => {
+            // Silently fail - service worker is optional for performance only
+          });
         });
       }
     </script>
@@ -105,10 +123,7 @@ const {
     />
 
     <!-- Additional SEO Meta Tags -->
-    <meta
-      name="robots"
-      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    />
+    <meta name="robots" content={robots} />
     <meta name="author" content="Robert Coulson" />
 
     <!-- Geo-targeting -->

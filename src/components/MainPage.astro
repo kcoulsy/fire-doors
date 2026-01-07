@@ -25,7 +25,7 @@ const seoData = {
     description:
       "Professional fire door services in Yorkshire including inspections, installation, maintenance and compliance.",
     url: "https://coulsyfiredoors.co.uk",
-    telephone: "+44 1904 123456",
+    telephone: "+44 7544 030486",
     email: "robert@coulsy.co.uk",
     address: {
       "@type": "PostalAddress",
@@ -128,6 +128,16 @@ const seoData = {
     <Carousel />
   </section>
 
+  <!-- Main Heading for SEO -->
+  <section class="container mx-auto px-4 py-8 text-center">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-900 mb-4">
+      Professional Fire Door Services in Yorkshire
+    </h1>
+    <p class="text-xl md:text-2xl text-brand-600 max-w-3xl mx-auto">
+      FireQual certified inspections, installation, and maintenance. 35+ years' experience since 1989.
+    </p>
+  </section>
+
   <!-- Why Fire Doors Section -->
   <section class="relative z-10 mx-auto">
     <WhyFireDoors />
@@ -154,8 +164,4 @@ const seoData = {
   </section>
 </Layout>
 
-<!-- Modern Structured Data -->
-<script
-  type="application/ld+json"
-  set:html={JSON.stringify(seoData.structuredData)}
-/>
+<!-- Note: Structured data (LocalBusiness schema) is handled in Layout.astro to avoid duplicates -->

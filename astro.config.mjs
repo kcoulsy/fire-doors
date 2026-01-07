@@ -7,7 +7,12 @@ export default defineConfig({
   site: 'https://coulsyfiredoors.co.uk',
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        // Exclude web-development page from sitemap (off-topic, hurts SEO)
+        return !page.includes('/web-development');
+      },
+    }),
   ],
   image: {
     // Enable image optimization

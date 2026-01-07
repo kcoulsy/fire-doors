@@ -10,79 +10,79 @@ interface Review {
 // Real customer reviews from Google (Coulsy Joinery & Small Build)
 const testimonials: Review[] = [
   {
+    author: "Kim Hosking",
+    rating: 5,
+    text: "Had a fire survey done on my apartment door by a previous company and no one could make head nor tail of it. I hired in Robert who provided clarity and excellent service. Fire door surveys can be confusing, but he made it simple and clear. He explained everything properly and didn't rush through it like the previous company had. Would definitely use again.",
+    location: "Yorkshire",
+    service: "Fire Door Survey",
+  },
+  {
     author: "Sally Gerrand-Jones",
     rating: 5,
-    text: "I contacted Robert to survey the fire door of my York apartment. As a result of the survey, a new fire door was fitted. Professional service and excellent workmanship.",
+    text: "I contacted Robert to survey the fire door of my York apartment. As a result of the survey, a new fire door was fitted. Professional service and excellent workmanship. He was punctual, explained everything clearly, and the door was fitted perfectly. Very pleased with the result.",
     location: "York",
     service: "Fire Door Survey & Installation",
   },
   {
+    author: "Donna Cresdee",
+    rating: 5,
+    text: "We have been extremely pleased with the professionalism shown by Robert, and the quality of our new fire door. A very quick response and delivery, would highly recommend. He came out quickly, assessed what was needed, and fitted the door properly. No mess, no fuss, just excellent work.",
+    location: "Yorkshire",
+    service: "Fire Door Installation",
+  },
+  {
+    author: "Sophie Vohra",
+    rating: 5,
+    text: "I contracted Debbie and Robert to carry out fire safety repairs on my apartment door, following a request by the management company. Professional service, excellent work, and great communication throughout. They kept me informed at every stage and completed the work to a high standard. Very satisfied.",
+    location: "Yorkshire",
+    service: "Fire Safety Repairs",
+  },
+  {
     author: "Chris (Sales UK)",
     rating: 5,
-    text: "You read so many bad reviews about builders but I am delighted to say Coulsy Joinery is not one of them. From the outset, professional, reliable, and delivered excellent results.",
+    text: "You read so many bad reviews about builders but I am delighted to say Coulsy Joinery is not one of them. From the outset, professional, reliable, and delivered excellent results. Robert was easy to deal with, turned up when he said he would, and did the work properly. Exactly what you want from a tradesman.",
     location: "Yorkshire",
     service: "Joinery Services",
   },
   {
     author: "Martin S",
     rating: 5,
-    text: "Mr Coulson gave careful and precise work professionally and was personally very easy to deal with. I would certainly employ him again for any future joinery needs.",
+    text: "Mr Coulson gave careful and precise work professionally and was personally very easy to deal with. I would certainly employ him again for any future joinery needs. He took time to understand what I wanted and delivered exactly that. Quality workmanship throughout.",
     location: "Yorkshire",
     service: "Joinery & Compliance Works",
   },
   {
-    author: "Kim Hosking",
-    rating: 5,
-    text: "Had a fire survey done on my apartment door by a previous company and no one could make head nor tail of it. I hired in Robert who provided clarity and excellent service. Fire door surveys can be confusing, but he made it simple and clear.",
-    location: "Yorkshire",
-    service: "Fire Door Survey",
-  },
-  {
-    author: "Donna Cresdee",
-    rating: 5,
-    text: "We have been extremely pleased with the professionalism shown by Robert, and the quality of our new fire door. A very quick response and delivery, would highly recommend.",
-    location: "Yorkshire",
-    service: "Fire Door Installation",
-  },
-  {
     author: "Luisa D",
     rating: 5,
-    text: "We would strongly recommend Coulsy Ltd for anyone looking for good-quality joinery work. We used Robert and Debbie for our project and were very impressed with their professionalism and craftsmanship.",
+    text: "We would strongly recommend Coulsy Ltd for anyone looking for good-quality joinery work. We used Robert and Debbie for our project and were very impressed with their professionalism and craftsmanship. They were reliable, clean, and the finished work was excellent. Would definitely use again.",
     location: "Yorkshire",
     service: "Joinery Work",
   },
   {
-    author: "Sophie Vohra",
-    rating: 5,
-    text: "I contracted Debbie and Robert to carry out fire safety repairs on my apartment door, following a request by the management company. Professional service, excellent work, and great communication throughout.",
-    location: "Yorkshire",
-    service: "Fire Safety Repairs",
-  },
-  {
-    author: "Richard Hand",
-    rating: 5,
-    text: "Amazing quality and attention to detail. No challenge too great.",
-    location: "Yorkshire",
-    service: "Joinery Services",
-  },
-  {
     author: "Graeme Ian Kynman",
     rating: 5,
-    text: "I can testify that the joinery work Rob produced for me was of an extremely high quality and would highly recommend him. Excellent craftsmanship and attention to detail.",
+    text: "I can testify that the joinery work Rob produced for me was of an extremely high quality and would highly recommend him. Excellent craftsmanship and attention to detail. He clearly knows his trade and takes pride in his work. Very professional.",
     location: "Yorkshire",
     service: "Joinery Work",
   },
   {
     author: "Edris Mahmud",
     rating: 5,
-    text: "Carried out a fire door installation for us. Very fast and great installation done. Strongly recommend.",
+    text: "Carried out a fire door installation for us. Very fast and great installation done. Strongly recommend. Robert was efficient, professional, and the door was fitted perfectly. No issues at all, very happy with the service.",
     location: "Yorkshire",
     service: "Fire Door Installation",
   },
   {
+    author: "Richard Hand",
+    rating: 5,
+    text: "Amazing quality and attention to detail. No challenge too great. Robert tackled a complex joinery job for us and delivered excellent results. He's clearly experienced and knows what he's doing. Highly recommended.",
+    location: "Yorkshire",
+    service: "Joinery Services",
+  },
+  {
     author: "Jean Putwain",
     rating: 5,
-    text: "Dementia Care Home - replacement of Joists and Floor. Highly recommend Coulsy Joinery, excellent workmanship and professional company, cleaned up all debris. Would definitely use again.",
+    text: "Dementia Care Home - replacement of Joists and Floor. Highly recommend Coulsy Joinery, excellent workmanship and professional company, cleaned up all debris. Would definitely use again. They were considerate of our residents, worked efficiently, and left everything clean and tidy.",
     location: "Yorkshire",
     service: "Structural Joinery",
   },
@@ -92,22 +92,56 @@ const testimonials: Review[] = [
 const averageRating =
   testimonials.reduce((sum, review) => sum + review.rating, 0) /
   testimonials.length;
+
+// Generate Review structured data for rich snippets
+const reviewStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://coulsyfiredoors.co.uk/#business",
+  name: "Coulsy Fire Door Services",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: averageRating.toFixed(1),
+    reviewCount: testimonials.length.toString(),
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: testimonials.map((review) => ({
+    "@type": "Review",
+    author: {
+      "@type": "Person",
+      name: review.author,
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: review.rating.toString(),
+      bestRating: "5",
+      worstRating: "1",
+    },
+    reviewBody: review.text,
+    ...(review.location && {
+      locationCreated: {
+        "@type": "Place",
+        name: review.location,
+      },
+    }),
+  })),
+};
 ---
 
 <section class="py-12 bg-gray-50">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
-        What Our Customers Say
+        What My Customers Say
       </h2>
 
       <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
-        We're proud to have earned the trust of our clients across Yorkshire.
-        Here's what they have to say about working with Coulsy Fire Door
-        Services.
+        I'm proud to have earned the trust of clients across Yorkshire.
+        Here's what they have to say about working with me.
       </p>
 
-      <div class="mt-6 flex items-center justify-center gap-2">
+      <div class="mt-6 flex items-center justify-center gap-2 flex-wrap">
         <div class="flex text-yellow-500 text-2xl">
           {"★".repeat(Math.round(averageRating))}
         </div>
@@ -117,24 +151,21 @@ const averageRating =
         <span class="text-gray-500 text-sm">
           ({testimonials.length} {testimonials.length === 1 ? "review" : "reviews"})
         </span>
-      </div>
-
-      <div class="mt-4">
         <a
           href="https://www.google.com/search?q=Coulsy+Joinery+%26+Small+Build&stick=H4sIAAAAAAAA_-NgU1I1qDCxME9KtTAzTkwySjQ0NDS1MqhItkhLsTA3SEmxAMqYGJotYpVxzi_NKa5U8MrPzEstqlRQUwjOTczJUXAqzcxJAQA2eubnSAAAAA&hl=en-GB#reviews"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-brand hover:text-brand-dark font-medium"
+          class="inline-flex items-center gap-1 text-gray-500 hover:text-brand text-xs font-normal ml-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5"
+            class="w-3 h-3"
             viewBox="0 0 24 24"
             fill="currentColor"
           >
             <path d="M21.35 11.1h-9.18v2.96h5.48c-.24 1.48-1.55 4.34-5.48 4.34-3.29 0-6-2.7-6-6s2.71-6 6-6c1.87 0 3.12.8 3.84 1.5l2.63-2.54C17.73 3.51 15.09 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10c5.33 0 9.75-3.89 9.75-9.7 0-.65-.07-1.14-.16-1.6z" />
           </svg>
-          Read all 11 reviews on Google
+          View on Google
         </a>
       </div>
     </div>
@@ -171,17 +202,17 @@ const averageRating =
               <p
                 id={reviewId}
                 data-expanded="false"
+                data-full-text={review.text}
+                data-short-text={truncatedText}
                 class="text-gray-700 leading-relaxed flex-grow"
               >
                 {truncatedText}
               </p>
               {isLongReview && (
                 <button
-                  class="mt-3 px-3 py-1 text-sm font-semibold text-brand bg-brand/10 rounded hover:bg-brand/20 transition text-left"
-                  onclick={`toggleReview('${reviewId}', \`${review.text.replace(
-                    /`/g,
-                    "\\`"
-                  )}\`, \`${truncatedText.replace(/"/g, '\\"')}\`, this)`}
+                  type="button"
+                  class="read-more-btn mt-3 px-3 py-1 text-sm font-semibold text-brand bg-brand/10 rounded hover:bg-brand/20 transition text-left"
+                  data-review-id={reviewId}
                 >
                   Read more
                 </button>
@@ -194,27 +225,38 @@ const averageRating =
   </div>
 </section>
 
-<script>
-  function toggleReview(
-    reviewId: string,
-    fullText: string,
-    shortText: string,
-    button: HTMLElement
-  ) {
-    const el = document.getElementById(reviewId);
-    if (!el) return;
-
-    if (el.dataset.expanded === "true") {
-      el.textContent = shortText;
-      el.dataset.expanded = "false";
-      if (button) button.textContent = "Read more";
-    } else {
-      el.textContent = fullText;
-      el.dataset.expanded = "true";
-      if (button) button.textContent = "Show less";
-    }
-  }
-
-  // Make toggleReview available globally
-  (window as any).toggleReview = toggleReview;
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    
+    readMoreButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const reviewId = this.getAttribute('data-review-id');
+        const reviewEl = document.getElementById(reviewId);
+        
+        if (!reviewEl) return;
+        
+        const fullText = reviewEl.getAttribute('data-full-text');
+        const shortText = reviewEl.getAttribute('data-short-text');
+        const isExpanded = reviewEl.getAttribute('data-expanded') === 'true';
+        
+        if (isExpanded) {
+          reviewEl.textContent = shortText;
+          reviewEl.setAttribute('data-expanded', 'false');
+          this.textContent = 'Read more';
+        } else {
+          reviewEl.textContent = fullText;
+          reviewEl.setAttribute('data-expanded', 'true');
+          this.textContent = 'Show less';
+        }
+      });
+    });
+  });
 </script>
+
+<!-- Review Structured Data for Rich Snippets -->
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(reviewStructuredData)}
+/>

@@ -7,6 +7,7 @@ import ServiceHero from "../components/ServiceHero.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import ProcessStep from "../components/ProcessStep.astro";
+import QualificationCard from "../components/QualificationCard.astro";
 import { getFormattedPageData } from "../utils/pageMeta";
 
 interface Props {
@@ -17,7 +18,6 @@ interface Props {
 const { location, type } = Astro.props;
 
 const {
-  formattedServiceName,
   locationInText,
   cleanLocationName,
   businessSchema,
@@ -29,10 +29,11 @@ const {
 } = getFormattedPageData(location, type);
 
 const finalDescription = enhancedDescription || defaultDescription;
+const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Maintenance & Repairs`}
+  title={`Fire Door Maintenance${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
   description={finalDescription}
   classes="mt-8 mb-16"
   location={location}
@@ -57,7 +58,7 @@ const finalDescription = enhancedDescription || defaultDescription;
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
   />
-  <!-- Breadcrumb -->
+
   <section class="bg-gray-50 py-4">
     <div class="container mx-auto px-4">
       <Breadcrumb
@@ -73,68 +74,73 @@ const finalDescription = enhancedDescription || defaultDescription;
   </section>
 
   <ServiceHero
-    title={`Fire Door Maintenance Services${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
-    description={`Professional fire door maintenance and repair services ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"} to ensure your fire doors remain compliant, functional, and safe. Regular servicing prevents costly failures and maintains fire safety standards ${cleanLocationName ? `for businesses and properties in ${cleanLocationName}` : "throughout the region"}.`}
-    primaryCta={{ text: "Get Maintenance Quote", link: "#contact" }}
+    title={`Fire Door Maintenance${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
+    description={`I'm Robert — a FireQual qualified fire door inspector covering ${place}. Most fire doors don't fail dramatically; they drift out of compliance — a seal comes off, a closer gets tired, a gap opens up. I'll come out, go door by door, and put it right before it becomes an enforcement issue.`}
+    primaryCta={{ text: "Get a Maintenance Quote", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
   />
 
-  <!-- Why Fire Door Maintenance Section -->
+  <!-- Why maintenance matters -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Why Regular Fire Door Maintenance is Essential {
-            cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"
-          }
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Why doors drift and why it matters
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Fire doors are mechanical — they get slammed, wedged open, hit
+          with trolleys, and the seals get painted over. Six months of
+          that and a door that passed its last inspection can be
+          technically non-compliant. That's what maintenance catches.
+        </p>
 
         <div class="grid md:grid-cols-2 gap-8 mb-12">
           <FeatureCard
-            title="Compliance Requirements"
-            description={`The Regulatory Reform (Fire Safety) Order 2005 requires regular fire door maintenance ${cleanLocationName ? `for all commercial properties in ${cleanLocationName}` : "across Yorkshire"}. Non-compliance can result in legal action and puts occupants at risk.`}
+            title="6-monthly is the baseline"
+            description="The Regulatory Reform (Fire Safety) Order expects fire doors to be checked at least every six months — more often for high-traffic commercial sites. Regular visits keep you compliant without the drama of a failed FRA."
           />
 
           <FeatureCard
-            title="Safety Assurance"
-            description={`Regular maintenance ensures fire doors function correctly during emergencies, providing crucial protection for building occupants and escape routes ${cleanLocationName ? `in ${cleanLocationName} properties` : "throughout Yorkshire"}.`}
+            title="Catch the small stuff early"
+            description="A £30 seal replacement is a lot cheaper than a failed inspection, an enforcement notice, or a full doorset swap. Most maintenance visits are small adjustments — the compounding kind that keeps doors out of trouble."
           />
 
           <FeatureCard
-            title="Cost Prevention"
-            description={`Preventative maintenance is far more cost-effective than emergency repairs or replacement of failed fire doors ${cleanLocationName ? `for ${cleanLocationName} businesses` : "across the region"}.`}
+            title="Insurer and RP paper trail"
+            description="Every visit gets a short written record — what was checked, what was done, photos where relevant. If your insurer or Responsible Person asks for evidence, you've got it."
           />
 
           <FeatureCard
-            title="Insurance Requirements"
-            description={`Many insurance policies require regular fire door maintenance ${cleanLocationName ? `for properties in ${cleanLocationName}` : "throughout Yorkshire"}. Failure to maintain can invalidate your coverage.`}
+            title={`Local to ${place}`}
+            description={`I cover ${location ? `${place} and ` : ""}Yorkshire daily, so scheduled visits are easy to keep. Emergency jobs — closer gone, door damaged, won't shut — get fitted in where capacity allows.`}
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Maintenance Services Section -->
+  <!-- What maintenance covers -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Fire Door Maintenance Services {
-            cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"
-          }
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          What a maintenance visit covers
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Real work on each door, not a tick-box exercise.
+        </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
             icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             iconColor="blue"
-            title="Regular Inspections"
-            description={`Comprehensive 6-monthly inspections ${cleanLocationName ? `for ${cleanLocationName} properties` : "across Yorkshire"} to identify wear, damage, and compliance issues before they become problems.`}
+            title="Condition check"
+            description="Every door on the contract looked at properly — leaf, frame, gaps, seals, hinges, closer, vision panel, ironmongery — against the same checklist used for a full inspection."
             features={[
-              "Door and frame condition assessment",
-              "Hardware functionality checks",
-              "Seal integrity verification",
-              "Compliance documentation",
+              "Door by door, not spot-check",
+              "Photos of anything borderline",
+              "Gap & closer measurements recorded",
+              "Written visit record",
             ]}
           />
 
@@ -144,65 +150,65 @@ const finalDescription = enhancedDescription || defaultDescription;
               "M15 12a3 3 0 11-6 0 3 3 0 016 0z",
             ]}
             iconColor="green"
-            title="Repairs & Replacements"
-            description={`Prompt repair and replacement of damaged components ${cleanLocationName ? `for ${cleanLocationName} businesses` : "throughout the region"} to restore fire door functionality and compliance.`}
+            title="Seals, hinges, closers"
+            description="The three things that fail most — intumescent and smoke seals, hinges, and door closers. I replace or adjust on the visit where I can, so most issues are resolved before I leave."
             features={[
-              "Door closer repairs",
-              "Seal replacement",
-              "Hardware repairs",
-              "Emergency callouts",
+              "Intumescent seal replacement",
+              "Smoke seal replacement",
+              "Closer adjustment or swap",
+              "Hinge tightening / replacement",
             ]}
           />
 
           <ServiceCard
             icon="M13 10V3L4 14h7v7l9-11h-7z"
             iconColor="purple"
-            title="Preventative Maintenance"
-            description={`Proactive maintenance programs ${cleanLocationName ? `for ${cleanLocationName} properties` : "across Yorkshire"} to extend fire door lifespan and prevent costly failures.`}
+            title="Gap adjustment & rehanging"
+            description="Gaps that have opened up past 3mm (head/jambs) or 8mm (threshold) lose the rating. I rehang, adjust or plane where needed so doors meet spec again."
             features={[
-              "Lubrication of moving parts",
-              "Adjustment of door closers",
-              "Cleaning and inspection",
-              "Performance testing",
+              "Head & jamb gap checks",
+              "Threshold gap adjustment",
+              "Rehanging dropped doors",
+              "Minor timber repairs",
             ]}
           />
 
           <ServiceCard
             icon="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
             iconColor="red"
-            title="Emergency Services"
-            description={`24/7 emergency callout service ${cleanLocationName ? `in ${cleanLocationName}` : "across Yorkshire"} for urgent fire door repairs that affect building safety.`}
+            title="Urgent repairs"
+            description="Closer sheared off, door damaged in a tenant incident, won't shut after a break-in — get in touch and I'll fit it in where I can. Make-safe same visit, full repair as soon as parts allow."
             features={[
-              "24/7 emergency callouts",
-              "Rapid response times",
-              "Temporary safety measures",
-              "Priority service",
+              "Priority callout",
+              "Temporary make-safe",
+              "Full repair visit scheduled",
+              "Parts sourced quickly",
             ]}
           />
 
           <ServiceCard
             icon="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
             iconColor="orange"
-            title="Maintenance Contracts"
-            description={`Flexible maintenance contracts ${cleanLocationName ? `for ${cleanLocationName} businesses` : "across Yorkshire"} tailored to your building's needs and compliance requirements.`}
+            title="Maintenance contracts"
+            description="Fixed-schedule 6- or 3-monthly contracts so you don't have to chase it. Works well for HMO portfolios, care homes, schools, and managed blocks."
             features={[
-              "Scheduled maintenance visits",
-              "Priority service",
-              "Compliance reporting",
-              "Cost-effective pricing",
+              "6-monthly or quarterly",
+              "Priced per door, transparently",
+              "Reminders before each visit",
+              "Same inspector every time",
             ]}
           />
 
           <ServiceCard
             icon="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
             iconColor="indigo"
-            title="Compliance Reporting"
-            description="Detailed reports documenting maintenance activities and compliance status for regulatory authorities."
+            title="Visit records for your RP"
+            description="After each visit you get a short written record — what I looked at, what I did, photos of anything I replaced. Goes straight into your building's fire safety file."
             features={[
-              "Detailed inspection reports",
-              "Compliance certificates",
-              "Digital record keeping",
-              "Regulatory documentation",
+              "Per-visit written record",
+              "Photos of changed items",
+              "Annotated action list",
+              "Emailed same day",
             ]}
           />
         </div>
@@ -210,55 +216,95 @@ const finalDescription = enhancedDescription || defaultDescription;
     </div>
   </section>
 
-  <!-- Maintenance Process Section -->
+  <!-- How maintenance runs -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Maintenance Process
+          How a maintenance contract runs
         </h2>
 
         <div class="space-y-8">
           <ProcessStep
             number={1}
-            title="Initial Assessment"
-            description="Comprehensive evaluation of your fire doors to identify current condition, compliance status, and maintenance requirements."
+            title="Baseline visit first"
+            description={`For a new contract I come to ${place}, log every door, and note its starting condition. You get that as a written baseline — useful if an insurer or enforcement officer ever asks what state the doors were in.`}
           />
 
           <ProcessStep
             number={2}
-            title="Maintenance Plan"
-            description="Development of a tailored maintenance schedule based on your building type, usage, and compliance requirements."
+            title="Agree the schedule"
+            description="6-monthly suits most buildings; 3-monthly for high-traffic commercial. I price per door, transparently, so you can see exactly what you're paying for. No surprise invoices at year-end."
           />
 
           <ProcessStep
             number={3}
-            title="Regular Servicing"
-            description="Scheduled maintenance visits including inspection, cleaning, adjustment, and minor repairs as needed."
+            title="Each visit"
+            description="I work through every door in a consistent order. Small stuff gets done on the visit — seals, closer adjustments, hinge tightening. Anything bigger gets quoted before I leave so you decide whether to proceed."
           />
 
           <ProcessStep
             number={4}
-            title="Reporting & Documentation"
-            description="Detailed reports of all maintenance activities, compliance status, and recommendations for ongoing fire safety."
+            title="Written record, same day"
+            description="You get an email summary of the visit — doors checked, items replaced, anything recommended, photos. Add it to your building's fire safety file and you've got your paper trail."
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Nearby Areas Section -->
+  <!-- Qualifications -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Qualifications and standards
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          The bits that matter when an insurer or RP asks who's
+          maintaining your doors.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <QualificationCard
+            title="My qualifications"
+            items={[
+              "FireQual Fire Door Inspector",
+              "CSCS Gold Card holder",
+              "City & Guilds qualified (since 1989)",
+              "Fully insured, VAT registered",
+            ]}
+          />
+
+          <QualificationCard
+            title="Standards I work to"
+            items={[
+              "Approved Document B (Building Regs)",
+              "Regulatory Reform (Fire Safety) Order 2005",
+              "BS 8214:2016 — fire door assemblies",
+              "BS 9999:2017 — fire safety in buildings",
+            ]}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="relative z-10 mx-auto">
     <NearbyAreas location={location} serviceType="fire-door-maintenance" />
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-gray-50">
+  <section id="contact" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Get Your Fire Door Maintenance Quote
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Get a quote
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Tell me the building type, roughly how many doors, and whether
+          you've had a recent inspection — I'll come back with a sensible
+          schedule and a per-door price.
+        </p>
         <ContactForm
           location={location}
           serviceType={type}

@@ -30,10 +30,11 @@ const {
 } = getFormattedPageData(location, type);
 
 const finalDescription = enhancedDescription || defaultDescription;
+const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Solutions`}
+  title={`Fire Door Services${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
   description={finalDescription}
   classes="mt-8 mb-16"
   location={location}
@@ -58,7 +59,7 @@ const finalDescription = enhancedDescription || defaultDescription;
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
   />
-  <!-- Breadcrumb -->
+
   <section class="bg-gray-50 py-4">
     <div class="container mx-auto px-4">
       <Breadcrumb
@@ -74,77 +75,87 @@ const finalDescription = enhancedDescription || defaultDescription;
   </section>
 
   <ServiceHero
-    title={`Comprehensive Fire Door Services${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
-    description="Professional fire door services covering inspection, installation, maintenance, and compliance. From initial assessment to ongoing support, we provide complete fire safety solutions."
-    primaryCta={{ text: "Get Services Quote", link: "#contact" }}
+    title={`Fire Door Services${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
+    description={`I'm Robert — a FireQual qualified fire door inspector covering ${place} and surrounding areas. Whether you need a single door inspected, a full HMO survey, or new doors fitted, I handle it personally. No sales team, no subcontracting — you deal with me from first call to final report.`}
+    primaryCta={{ text: "Get a Quote", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
   />
 
-  <!-- Why Choose Our Services Section -->
+  <!-- Meet Robert / what I do -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Why Choose Our Fire Door Services
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Fire door work, done properly
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          I've been on the tools since 1989 and picked up fire door work as
+          building safety rules tightened. These days most of my work is split
+          between landlords and letting agents needing compliance, and
+          builders or property managers needing new doors fitted to spec.
+        </p>
 
         <div class="grid md:grid-cols-2 gap-8 mb-12">
           <FeatureCard
-            title="Complete Service Range"
-            description="From initial inspection to installation and ongoing maintenance, we provide comprehensive fire door services to meet all your fire safety requirements."
+            title="One person on the job"
+            description={`When you call, you get me — not a call centre. When I turn up in ${place}, I'm the one doing the survey, the fit, and the paperwork. Nothing gets lost between sales and the tradesperson, because there isn't one.`}
           />
 
           <FeatureCard
-            title="Expert Knowledge"
-            description="35+ years of experience in fire safety, with qualified expertise in all aspects of fire door compliance and installation."
+            title="FireQual qualified inspector"
+            description="I hold the FireQual Fire Door Inspector qualification, CSCS Gold Card, and 35+ years on the tools. Reports are accepted by insurers, Responsible Persons and enforcement officers."
           />
 
           <FeatureCard
-            title="Regulatory Compliance"
-            description="All services comply with Building Regulations, RRO 2005, and British Standards to ensure your fire safety systems meet legal requirements."
+            title="Written compliance reports"
+            description="Every inspection comes with a written report — door leaf, frame, seals, gaps, hinges, closer, ironmongery — against BS 8214 / Approved Document B. Photos included. You can hand it straight to your insurer or RP."
           />
 
           <FeatureCard
-            title="Local Service"
-            description={`Serving ${cleanLocationName} and surrounding areas with prompt, reliable service and local knowledge of building requirements and regulations.`}
+            title={`Local to ${place}`}
+            description={`Most of my work is within ${location ? `${place} and ` : ""}the Yorkshire region, so I know the housing stock and can usually fit jobs in quickly. Emergency callouts available where capacity allows.`}
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Overview Section -->
+  <!-- What I cover -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Fire Door Services Overview
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          What I cover
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Everything fire-door related, from a single damaged door to a
+          full commercial survey.
+        </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
             icon="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
             iconColor="blue"
-            title="Fire Door Inspections"
-            description="Comprehensive fire door inspections to assess compliance and identify safety issues."
+            title="Inspections & reports"
+            description="Full condition and compliance survey of each door with a written report you can give to insurers or the Responsible Person."
             features={[
-              "Initial inspections",
-              "Regular 6-monthly checks",
-              "Compliance verification",
-              "Detailed reporting",
+              "BS 8214 / Approved Doc B checks",
+              "Door, frame, seals, closer, hinges",
+              "Photos with every item",
+              "6-monthly inspection contracts",
             ]}
           />
 
           <ServiceCard
             icon="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
             iconColor="green"
-            title="Fire Door Installation"
-            description="Professional installation of fire doors and hardware to meet regulatory standards."
+            title="New fire door installation"
+            description="Fit-out of new fire doors — flats, HMOs, care homes, schools, offices. Correct doorsets, correct ironmongery, correct certification."
             features={[
-              "New build installation",
-              "Retrofit projects",
-              "Hardware fitting",
-              "Certification",
+              "FD30 and FD60 doorsets",
+              "Self-closers, hinges, seals",
+              "New builds and retrofits",
+              "Certification paperwork supplied",
             ]}
           />
 
@@ -154,52 +165,52 @@ const finalDescription = enhancedDescription || defaultDescription;
               "M15 12a3 3 0 11-6 0 3 3 0 016 0z",
             ]}
             iconColor="purple"
-            title="Fire Door Maintenance"
-            description="Ongoing maintenance and repair services to keep fire doors compliant and functional."
+            title="Maintenance & repairs"
+            description="Fix the small stuff before it becomes a failed inspection — dropped hinges, damaged seals, worn closers, gaps that are too wide."
             features={[
-              "Regular servicing",
-              "Repairs & replacements",
-              "Emergency callouts",
-              "Maintenance contracts",
+              "Seal replacement (intumescent & smoke)",
+              "Hinge and closer replacement",
+              "Gap adjustment and rehanging",
+              "Ironmongery upgrades",
             ]}
           />
 
           <ServiceCard
             icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
             iconColor="orange"
-            title="Compliance Services"
-            description="Expert guidance and services to ensure fire safety compliance and certification."
+            title="Compliance help"
+            description="If you've had a fire risk assessment flagging doors, or you're a landlord trying to get on top of HMO requirements, I can walk you through what's actually needed."
             features={[
-              "Regulatory guidance",
-              "Certification support",
-              "Documentation",
-              "Training advice",
+              "RRO 2005 plain-English help",
+              "HMO compliance for landlords",
+              "Insurance and FRA follow-ups",
+              "Honest advice, not upsells",
             ]}
           />
 
           <ServiceCard
             icon="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
             iconColor="red"
-            title="Emergency Services"
-            description="24/7 emergency callout service for urgent fire door repairs and safety issues."
+            title="Urgent jobs"
+            description="Door won't shut, closer's gone, damaged after a break-in or a tenant incident? Get in touch — I'll fit you in if I can."
             features={[
-              "24/7 emergency callouts",
-              "Rapid response",
-              "Safety assessments",
-              "Temporary measures",
+              "Emergency repair visits",
+              "Temporary make-safe",
+              "Same-week return for full fix",
+              "Subject to capacity",
             ]}
           />
 
           <ServiceCard
             icon="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
             iconColor="indigo"
-            title="Consultancy"
-            description="Expert consultancy services for fire safety planning and project management."
+            title="Pre-purchase / tender help"
+            description="Buying a block, tendering an HMO refit, or pricing fire door work into a build? I can walk the site and give you a realistic scope and cost."
             features={[
-              "Project planning",
+              "Pre-purchase surveys",
+              "Scope of works for tenders",
               "Specification advice",
-              "Risk assessments",
-              "Technical support",
+              "Buildability sanity-check",
             ]}
           />
         </div>
@@ -207,69 +218,73 @@ const finalDescription = enhancedDescription || defaultDescription;
     </div>
   </section>
 
-  <!-- Service Process Section -->
+  <!-- How I work -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Service Process
+          How I work
         </h2>
 
         <div class="space-y-8">
           <ProcessStep
             number={1}
-            title="Initial Consultation"
-            description="We begin with a comprehensive consultation to understand your fire safety requirements and assess your current fire door situation."
+            title="A proper conversation first"
+            description={`Give me a call or drop a message. I'd rather spend ten minutes understanding what you actually need than send a generic form back. If it's a small repair, I might be able to quote over the phone.`}
           />
 
           <ProcessStep
             number={2}
-            title="Assessment & Planning"
-            description="Detailed assessment of your fire doors and development of a comprehensive service plan tailored to your specific needs."
+            title="Site visit and quote"
+            description={`For anything bigger than a single door I'll come and look. Visits in ${place} are usually free. You'll get a written quote with a clear scope — what I'm doing, what I'm not, and what it'll cost.`}
           />
 
           <ProcessStep
             number={3}
-            title="Service Delivery"
-            description="Professional delivery of the required services with attention to detail and compliance with all relevant regulations and standards."
+            title="The work itself"
+            description={`I turn up when I said I would. I clean up after myself. I tell you straight away if something surfaces that wasn't in the quote — I don't spring extras at the end.`}
           />
 
           <ProcessStep
             number={4}
-            title="Ongoing Support"
-            description="Continued support and maintenance to ensure your fire doors remain compliant and functional for the long term."
+            title="Paperwork and aftercare"
+            description={`Written report, photos, and certification where relevant — delivered by email so you've got something to hand your insurer or RP. If something goes wrong within the guarantee period, I come back.`}
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Qualifications Section -->
+  <!-- Qualifications -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Qualifications & Experience
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Qualifications and standards
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          The bits that matter when an insurer, RP, or enforcement officer
+          asks who did the work.
+        </p>
 
         <div class="grid md:grid-cols-2 gap-8">
           <QualificationCard
-            title="Professional Qualifications"
+            title="My qualifications"
             items={[
               "FireQual Fire Door Inspector",
-              "CSCS Gold Card Holder",
-              "35+ Years Experience",
-              "Fully Insured",
+              "CSCS Gold Card holder",
+              "City & Guilds qualified (since 1989)",
+              "Fully insured, VAT registered",
             ]}
           />
 
           <QualificationCard
-            title="Standards & Compliance"
+            title="Standards I work to"
             items={[
-              "Building Regulations Approved Document B",
-              "RRO 2005 Compliance",
-              "BS 9999:2017 Standards",
-              "BS 8214:2016 Fire Door Assemblies",
+              "Approved Document B (Building Regs)",
+              "Regulatory Reform (Fire Safety) Order 2005",
+              "BS 8214:2016 — fire door assemblies",
+              "BS 9999:2017 — fire safety in buildings",
             ]}
           />
         </div>
@@ -277,18 +292,21 @@ const finalDescription = enhancedDescription || defaultDescription;
     </div>
   </section>
 
-  <!-- Nearby Areas Section -->
   <section class="relative z-10 mx-auto">
     <NearbyAreas location={location} serviceType="fire-door-services" />
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Get Your Fire Door Services Quote
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Get in touch
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Tell me what you need — a single door looked at, a full HMO
+          survey, or a quote for new doorsets — and I'll come back with a
+          straight answer.
+        </p>
         <ContactForm
           location={location}
           serviceType={type}

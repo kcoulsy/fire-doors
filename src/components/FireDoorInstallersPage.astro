@@ -18,7 +18,6 @@ interface Props {
 const { location, type } = Astro.props;
 
 const {
-  formattedServiceName,
   locationInText,
   cleanLocationName,
   businessSchema,
@@ -30,10 +29,11 @@ const {
 } = getFormattedPageData(location, type);
 
 const finalDescription = enhancedDescription || defaultDescription;
+const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Installation`}
+  title={`Fire Door Installation${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
   description={finalDescription}
   classes="mt-8 mb-16"
   location={location}
@@ -58,13 +58,13 @@ const finalDescription = enhancedDescription || defaultDescription;
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
   />
-  <!-- Breadcrumb -->
+
   <section class="bg-gray-50 py-4">
     <div class="container mx-auto px-4">
       <Breadcrumb
         crumbs={[
           { label: "Home", href: "/" },
-          { label: "Fire Door Installers", href: "/fire-door-installers" },
+          { label: "Fire Door Installation", href: "/fire-door-installers" },
           ...(cleanLocationName
             ? [{ label: cleanLocationName, current: true }]
             : []),
@@ -74,77 +74,88 @@ const finalDescription = enhancedDescription || defaultDescription;
   </section>
 
   <ServiceHero
-    title={`Fire Door Installation Services${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
-    description="Qualified fire door installation services to ensure your fire doors are fitted correctly and meet all regulatory requirements. From supply to installation and certification, we handle every aspect of your fire door project."
-    primaryCta={{ text: "Get Installation Quote", link: "#contact" }}
+    title={`Fire Door Installation${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
+    description={`I'm Robert — City & Guilds qualified joiner since 1989 and a FireQual fire door inspector. I fit fire doors and doorsets across ${place}: flats, HMOs, care homes, schools, offices. Correct doors, correct ironmongery, proper paperwork at the end.`}
+    primaryCta={{ text: "Get an Installation Quote", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
   />
 
-  <!-- Why Professional Installation Section -->
+  <!-- Why get the install right / who I work for -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Why Professional Fire Door Installation is Critical
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          A fire door is only as good as the install
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          The certified 30-minute rating assumes the door, frame, seals and
+          ironmongery are installed exactly as tested. Get the gaps, hinges
+          or closer wrong and you've spent money on a door that won't
+          perform. I've been hung over 30 years of doors — I know where
+          these installs tend to fall down.
+        </p>
 
         <div class="grid md:grid-cols-2 gap-8 mb-12">
           <FeatureCard
-            title="Safety & Compliance"
-            description="Incorrect installation can compromise fire door performance and fail to meet Building Regulations and fire safety standards, putting occupants at risk."
+            title="Tested as a doorset"
+            description="I fit certified doorsets — door, frame, seals and ironmongery matched to the test evidence. That's what insurers and building control want to see, not a fire door dropped into a random frame."
           />
 
           <FeatureCard
-            title="Performance Assurance"
-            description="Professional installation ensures fire doors function correctly during emergencies, providing the intended fire resistance and smoke protection."
+            title="Gaps, seals, closers done right"
+            description="The install detail — 3mm gaps, proper intumescent and smoke seals, a correctly-adjusted closer, hinges rated for the door weight — is what makes the rating real. It's the bit a non-specialist trade tends to fudge."
           />
 
           <FeatureCard
-            title="Warranty Protection"
-            description="Manufacturer warranties often require professional installation. DIY or unqualified installation can void warranty coverage."
+            title="Certification paperwork"
+            description="You get the manufacturer's certificate, my install sign-off, and (for commercial jobs) a handover pack referencing BS 8214 / Approved Document B. Ready for building control, insurer or RP."
           />
 
           <FeatureCard
-            title="Long-term Reliability"
-            description="Proper installation extends fire door lifespan and reduces maintenance costs while ensuring continued compliance and safety."
+            title={`Local to ${place}`}
+            description={`I'm based in Yorkshire and cover ${location ? `${place} and ` : ""}the region daily. Small jobs can often be booked within a week or two; larger fit-outs I schedule properly so there's no stop-start.`}
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Installation Services Section -->
+  <!-- What I install -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Fire Door Installation Services
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          What I install
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Single-door swaps up to full building fit-outs. Not making the
+          doors — fitting them, to spec.
+        </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
             icon="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
             iconColor="blue"
-            title="Supply & Installation"
-            description="Complete supply and professional installation of fire doors and doorsets to meet your specifications."
+            title="FD30 / FD60 doorsets"
+            description="Certified doorsets for flats, corridors, escape routes and stairwells. Supplied and fitted as a matched unit."
             features={[
-              "Fire door supply",
-              "Professional installation",
-              "Hardware fitting",
-              "Quality assurance",
+              "FD30 — 30 minute rating",
+              "FD60 — 60 minute rating",
+              "Matched frame and ironmongery",
+              "Manufacturer certificate supplied",
             ]}
           />
 
           <ServiceCard
             icon="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
             iconColor="green"
-            title="New Build Installation"
-            description="Fire door installation for new buildings, ensuring compliance with current building regulations."
+            title="New build & refurb"
+            description="Working from architect's specs on new-build blocks, or fitting as part of an HMO / care home refurb. Happy to work alongside main contractors or directly for the client."
             features={[
-              "New construction projects",
-              "Building regulations compliance",
-              "Project coordination",
-              "Completion certification",
+              "New build projects",
+              "HMO and care home refits",
+              "School and office fit-outs",
+              "Coordinates with main contractor",
             ]}
           />
 
@@ -154,52 +165,52 @@ const finalDescription = enhancedDescription || defaultDescription;
               "M15 12a3 3 0 11-6 0 3 3 0 016 0z",
             ]}
             iconColor="purple"
-            title="Retrofit Installation"
-            description="Upgrading existing doors to fire door standards or replacing non-compliant fire doors."
+            title="Retrofit / replacement"
+            description="Taking out a non-compliant door and frame and fitting the right doorset. The usual job for older blocks failing a fire risk assessment."
             features={[
-              "Existing building upgrades",
-              "Door replacement",
-              "Frame modifications",
-              "Minimal disruption",
+              "Failed-FRA remediation",
+              "Old flat entrance upgrades",
+              "Frame replacement where needed",
+              "Tidy make-good of wall & finish",
             ]}
           />
 
           <ServiceCard
             icon="M13 10V3L4 14h7v7l9-11h-7z"
             iconColor="orange"
-            title="Specialist Installations"
-            description="Installation of specialist fire doors including acoustic, security, and accessibility features."
+            title="Single-door installs"
+            description="Sometimes it's just one door — a damaged flat entrance, a new office meeting room, a one-off replacement. Happy to take on the small jobs."
             features={[
-              "Acoustic fire doors",
-              "Security fire doors",
-              "Accessibility features",
-              "Custom specifications",
+              "One-off replacements",
+              "Post-damage make-safe",
+              "Landlord flat entrance upgrades",
+              "Fixed small-job pricing",
             ]}
           />
 
           <ServiceCard
             icon="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
             iconColor="red"
-            title="Hardware Installation"
-            description="Professional installation of fire-rated hardware including closers, locks, and seals."
+            title="Ironmongery & hardware"
+            description="Closers, hinges, locks, seals — the bits that have to be right for the rating to hold. Whether it's a full set or swapping out a dead closer."
             features={[
-              "Door closers",
-              "Fire-rated locks",
-              "Intumescent seals",
-              "Smoke seals",
+              "Fire-rated hinges & closers",
+              "Intumescent & smoke seals",
+              "Certified locks & handles",
+              "Correct for door weight & use",
             ]}
           />
 
           <ServiceCard
             icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
             iconColor="indigo"
-            title="Certification & Testing"
-            description="Post-installation testing and certification to ensure fire doors meet all performance requirements."
+            title="Handover & sign-off"
+            description="Post-install check, photos, and the paperwork an insurer, RP or building control will want. Clean handover, no chasing me for docs later."
             features={[
-              "Performance testing",
-              "Compliance verification",
-              "Certification documentation",
-              "Handover reports",
+              "Install sign-off document",
+              "Photos of each doorset",
+              "Manufacturer certificates",
+              "Gap and closer check record",
             ]}
           />
         </div>
@@ -207,69 +218,73 @@ const finalDescription = enhancedDescription || defaultDescription;
     </div>
   </section>
 
-  <!-- Installation Process Section -->
+  <!-- How a fit-out runs -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Installation Process
+          How a fit-out runs
         </h2>
 
         <div class="space-y-8">
           <ProcessStep
             number={1}
-            title="Site Survey & Planning"
-            description="Comprehensive site survey to assess requirements, measure openings, and plan the installation process."
+            title="Survey and spec"
+            description={`I come out to ${place}, measure each opening, and agree the spec — FD30 or FD60, ironmongery, finish, any fire-stopping round the frame. I'd rather spend an hour getting this right than turn up on day one and find the doors don't fit.`}
           />
 
           <ProcessStep
             number={2}
-            title="Specification & Supply"
-            description="Specification of appropriate fire doors and hardware, followed by supply of certified products."
+            title="Order and schedule"
+            description="Certified doorsets get ordered from the manufacturer with matched ironmongery. Lead time depends on the supplier — usually 2–4 weeks. I give you a realistic install date and stick to it."
           />
 
           <ProcessStep
             number={3}
-            title="Professional Installation"
-            description="Qualified installation by experienced technicians following manufacturer guidelines and regulations."
+            title="On-site install"
+            description="I fit each doorset properly — correct gaps, plumb, level, seals continuous, closer set for the door weight, hinges rated. Tenants or staff in the building? I work around them and I clean up after myself."
           />
 
           <ProcessStep
             number={4}
-            title="Testing & Certification"
-            description="Post-installation testing and certification to ensure fire doors meet all performance requirements."
+            title="Sign-off pack"
+            description="You get a handover pack — manufacturer certificate per doorset, my install sign-off, photos, and a gap/closer check record. Hand it to building control, the RP, or the insurer without chasing me for docs."
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Qualifications Section -->
+  <!-- Qualifications -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Qualifications & Experience
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Qualifications and standards
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          The bits that matter when building control or an insurer asks who
+          fitted your doors.
+        </p>
 
         <div class="grid md:grid-cols-2 gap-8">
           <QualificationCard
-            title="Professional Qualifications"
+            title="My qualifications"
             items={[
-              "CSCS Gold Card Holder",
+              "City & Guilds qualified joiner (since 1989)",
               "FireQual Fire Door Inspector",
-              "35+ Years Experience",
-              "Fully Insured",
+              "CSCS Gold Card holder",
+              "Fully insured, VAT registered",
             ]}
           />
 
           <QualificationCard
-            title="Standards & Compliance"
+            title="Standards I work to"
             items={[
-              "Building Regulations Approved Document B",
-              "BS 8214:2016 Fire Door Assemblies",
-              "Manufacturer Guidelines",
-              "Quality Assurance Procedures",
+              "Approved Document B (Building Regs)",
+              "Regulatory Reform (Fire Safety) Order 2005",
+              "BS 8214:2016 — fire door assemblies",
+              "BS 9999:2017 — fire safety in buildings",
             ]}
           />
         </div>
@@ -277,18 +292,21 @@ const finalDescription = enhancedDescription || defaultDescription;
     </div>
   </section>
 
-  <!-- Nearby Areas Section -->
   <section class="relative z-10 mx-auto">
     <NearbyAreas location={location} serviceType="fire-door-installers" />
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Get Your Fire Door Installation Quote
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Get a quote
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Tell me roughly how many doors, what kind of building, and
+          whether there's a spec already — I'll come back with a realistic
+          scope and price.
+        </p>
         <ContactForm
           location={location}
           serviceType={type}

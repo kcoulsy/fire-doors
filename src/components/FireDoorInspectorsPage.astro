@@ -18,7 +18,6 @@ interface Props {
 const { location, type } = Astro.props;
 
 const {
-  formattedServiceName,
   locationInText,
   cleanLocationName,
   businessSchema,
@@ -30,10 +29,11 @@ const {
 } = getFormattedPageData(location, type);
 
 const finalDescription = enhancedDescription || defaultDescription;
+const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`${formattedServiceName} ${cleanLocationName ? `in ${cleanLocationName}` : "in Yorkshire"} | Professional Fire Door Inspections`}
+  title={`Fire Door Inspections${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
   description={finalDescription}
   classes="mt-8 mb-16"
   location={location}
@@ -58,13 +58,13 @@ const finalDescription = enhancedDescription || defaultDescription;
     type="application/ld+json"
     set:html={JSON.stringify(faqSchema)}
   />
-  <!-- Breadcrumb -->
+
   <section class="bg-gray-50 py-4">
     <div class="container mx-auto px-4">
       <Breadcrumb
         crumbs={[
           { label: "Home", href: "/" },
-          { label: "Fire Door Inspectors", href: "/fire-door-inspectors" },
+          { label: "Fire Door Inspections", href: "/fire-door-inspectors" },
           ...(cleanLocationName
             ? [{ label: cleanLocationName, current: true }]
             : []),
@@ -74,90 +74,99 @@ const finalDescription = enhancedDescription || defaultDescription;
   </section>
 
   <ServiceHero
-    title={`Fire Door Inspection Services${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
-    description="Professional fire door inspection services to ensure your fire doors meet all regulatory requirements. Our qualified inspectors provide comprehensive assessments and detailed compliance reports."
-    primaryCta={{ text: "Book Inspection", link: "#contact" }}
+    title={`Fire Door Inspections${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
+    description={`I'm Robert — a FireQual qualified fire door inspector covering ${place}. I survey fire doors, write the report, and you get a document you can give straight to an insurer, Responsible Person, or enforcement officer. No shortcuts, no copy-paste.`}
+    primaryCta={{ text: "Book an Inspection", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
   />
 
-  <!-- Why Professional Inspections Section -->
+  <!-- Why inspections matter / who I'm for -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Why Professional Fire Door Inspections Matter
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Who an inspection is for
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          If you've had a fire risk assessment flagging doors, own an HMO,
+          manage a block of flats, or run a care home, school or office —
+          the Regulatory Reform Order sits on you. An inspection is the
+          evidence that you've done what's expected.
+        </p>
 
         <div class="grid md:grid-cols-2 gap-8 mb-12">
           <FeatureCard
-            title="Regulatory Compliance"
-            description="The Regulatory Reform (Fire Safety) Order 2005 requires regular fire door inspections. Professional inspections ensure compliance and avoid legal penalties."
+            title="Landlords and HMO owners"
+            description="HMO licensing and the Fire Safety Act have made fire doors a regular enforcement target. I inspect, report, and tell you exactly what (if anything) needs fixing — in plain English, without upselling."
           />
 
           <FeatureCard
-            title="Safety Assurance"
-            description="Qualified inspectors identify potential safety issues before they become problems, ensuring fire doors function correctly during emergencies."
+            title="Building managers and RPs"
+            description="If you're the Responsible Person for a block, office, or care home, the buck stops with you. A written 6-monthly inspection with photos gives you a defensible paper trail."
           />
 
           <FeatureCard
-            title="Detailed Reporting"
-            description="Comprehensive inspection reports provide clear documentation of compliance status and recommendations for any necessary repairs or improvements."
+            title="After a fire risk assessment"
+            description="FRAs often flag doors but don't always say what's actually wrong. I'll go door by door and give you a practical list — what's compliant, what's borderline, and what needs doing."
           />
 
           <FeatureCard
-            title="Expert Knowledge"
-            description="Qualified inspectors understand current regulations, standards, and best practices to provide accurate assessments and recommendations."
+            title={`Local to ${place}`}
+            description={`I'm based in Yorkshire and cover ${location ? `${place} and ` : ""}the surrounding area daily. Smaller jobs can often be turned round inside a week.`}
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Inspection Services Section -->
+  <!-- Types of inspection -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Fire Door Inspection Services
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Types of inspection I carry out
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          From a single flat entrance door to a full building survey.
+        </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
             icon="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
             iconColor="blue"
-            title="Initial Inspections"
-            description="Comprehensive baseline inspections to assess current fire door condition and compliance status."
+            title="First-time / baseline"
+            description="Never had a proper inspection before? I'll go door by door and give you a full baseline — condition, compliance, and a prioritised fix list."
             features={[
-              "Complete door assessment",
-              "Frame and hardware evaluation",
-              "Compliance verification",
-              "Detailed condition report",
+              "Every door surveyed individually",
+              "Photos of each item",
+              "Prioritised action list",
+              "Realistic cost estimate to remedy",
             ]}
           />
 
           <ServiceCard
             icon="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
             iconColor="green"
-            title="Regular Inspections"
-            description="Scheduled 6-monthly inspections to monitor fire door condition and maintain compliance."
+            title="Routine 6-monthly"
+            description="The regulations want fire doors checked at least every six months. I set up a recurring schedule so you don't have to chase it."
             features={[
-              "6-monthly inspection schedule",
-              "Wear and tear assessment",
-              "Performance testing",
-              "Compliance documentation",
+              "6-monthly inspection contracts",
+              "Wear & tear tracking over time",
+              "Quick turnaround on reports",
+              "Reminders before each visit",
             ]}
           />
 
           <ServiceCard
             icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             iconColor="purple"
-            title="Compliance Inspections"
-            description="Specialized inspections focused on regulatory compliance and certification requirements."
+            title="HMO compliance"
+            description="Specific inspection geared to HMO licensing — flat entrance doors, escape route doors, and anything the council might ask for."
             features={[
-              "RRO 2005 compliance",
-              "Building Regulations check",
-              "Certification verification",
-              "Regulatory reporting",
+              "HMO-specific check list",
+              "Compartmentation aware",
+              "Works with your licensing officer",
+              "Plain-English findings",
             ]}
           />
 
@@ -167,39 +176,39 @@ const finalDescription = enhancedDescription || defaultDescription;
               "M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z",
             ]}
             iconColor="orange"
-            title="Pre-Purchase Inspections"
-            description="Detailed inspections for property purchases to identify fire safety issues and compliance status."
+            title="Pre-purchase / due diligence"
+            description="Buying a block, care home, or HMO? I'll walk the building and tell you what it'd cost to bring the doors up to scratch before you commit."
             features={[
-              "Property purchase assessment",
-              "Fire safety evaluation",
-              "Cost estimation",
-              "Compliance recommendations",
+              "Pre-purchase surveys",
+              "Scope of works supplied",
+              "Rough remediation cost",
+              "Advice before exchange",
             ]}
           />
 
           <ServiceCard
             icon="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
             iconColor="red"
-            title="Emergency Inspections"
-            description="Urgent inspections for safety concerns or regulatory enforcement actions."
+            title="Enforcement-driven"
+            description="If you've had a notice from the fire service or environmental health, I can turn round a structured inspection report quickly to help you respond."
             features={[
-              "24/7 emergency callouts",
-              "Safety issue assessment",
-              "Immediate recommendations",
-              "Priority service",
+              "Priority scheduling",
+              "Report formatted for enforcement",
+              "Phone support drafting response",
+              "Follow-up re-inspection available",
             ]}
           />
 
           <ServiceCard
             icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
             iconColor="indigo"
-            title="Certification Inspections"
-            description="Specialized inspections for fire door certification and compliance documentation."
+            title="Single-door checks"
+            description="Sometimes you just need one door checked — a flat entrance door, a new install, a post-repair sign-off. Happy to do that too."
             features={[
-              "Certification verification",
-              "Standards compliance",
-              "Documentation preparation",
-              "Regulatory submission",
+              "Single-door visits",
+              "Post-repair sign-off",
+              "Short-form report",
+              "Fixed small-job price",
             ]}
           />
         </div>
@@ -207,69 +216,73 @@ const finalDescription = enhancedDescription || defaultDescription;
     </div>
   </section>
 
-  <!-- Inspection Process Section -->
+  <!-- How an inspection actually runs -->
   <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Inspection Process
+          What an inspection actually looks like
         </h2>
 
         <div class="space-y-8">
           <ProcessStep
             number={1}
-            title="Pre-Inspection Planning"
-            description="Review of building plans, previous inspection reports, and identification of all fire doors requiring inspection."
+            title="Quick call first"
+            description="We have a ten-minute chat about the building — how many doors, what they protect, and whether there's an FRA or previous report I should see. I price from there, not from a form."
           />
 
           <ProcessStep
             number={2}
-            title="Comprehensive Assessment"
-            description="Detailed inspection of each fire door including door leaf, frame, hardware, seals, and surrounding area."
+            title="On-site survey"
+            description={`I visit ${place}, go door by door, and check each one properly — door leaf, frame, gaps, seals, hinges, closer, handle, lock, vision panel. Each item is photographed. A typical block takes half a day to a day.`}
           />
 
           <ProcessStep
             number={3}
-            title="Compliance Verification"
-            description="Verification against current regulations, standards, and building-specific requirements."
+            title="Written report"
+            description="You get a document listing every door with its compliance status, photos of each item that's wrong, and a prioritised fix list. Insurers, RPs and enforcement officers accept it as evidence."
           />
 
           <ProcessStep
             number={4}
-            title="Detailed Reporting"
-            description="Comprehensive report with findings, compliance status, recommendations, and photographic evidence."
+            title="Follow-up if you want it"
+            description="If the fix list is fiddly I can quote to remedy it myself, or I can just hand the report over for your own contractor. No pressure to use me for both."
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Qualifications Section -->
+  <!-- Qualifications -->
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Our Qualifications & Experience
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Qualifications and standards
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          The bits that matter when an insurer or RP asks who surveyed your
+          doors.
+        </p>
 
         <div class="grid md:grid-cols-2 gap-8">
           <QualificationCard
-            title="Professional Qualifications"
+            title="My qualifications"
             items={[
               "FireQual Fire Door Inspector",
-              "CSCS Gold Card Holder",
-              "35+ Years Experience",
-              "Fully Insured",
+              "CSCS Gold Card holder",
+              "City & Guilds qualified (since 1989)",
+              "Fully insured, VAT registered",
             ]}
           />
 
           <QualificationCard
-            title="Standards & Regulations"
+            title="Standards I work to"
             items={[
-              "Building Regulations Approved Document B",
-              "RRO 2005 Compliance",
-              "BS 9999:2017 Standards",
-              "BS 8214:2016 Fire Door Assemblies",
+              "Approved Document B (Building Regs)",
+              "Regulatory Reform (Fire Safety) Order 2005",
+              "BS 8214:2016 — fire door assemblies",
+              "BS 9999:2017 — fire safety in buildings",
             ]}
           />
         </div>
@@ -277,18 +290,20 @@ const finalDescription = enhancedDescription || defaultDescription;
     </div>
   </section>
 
-  <!-- Nearby Areas Section -->
   <section class="relative z-10 mx-auto">
     <NearbyAreas location={location} serviceType="fire-door-inspectors" />
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
-          Book Your Fire Door Inspection
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Book an inspection
         </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Tell me roughly how many doors and where they are — I'll come
+          back with a straight quote and a sensible visit date.
+        </p>
         <ContactForm
           location={location}
           serviceType={type}

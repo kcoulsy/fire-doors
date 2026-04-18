@@ -7,9 +7,12 @@ import WebDevFooter from "../components/WebDevFooter.astro";
 
 import SmoothScroll from "../components/SmoothScroll.astro";
 
-import ViewTransitions from "../components/ViewTransitions.astro";
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Normalise trailing slashes on canonical URL — Google had both forms
+// (/york-fire-door-services and /york-fire-door-services/) indexed as
+// separate pages, splitting authority. Force the no-slash form regardless
+// of how the page was accessed so both URLs point at the same canonical.
+const normalisedPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const canonicalURL = new URL(normalisedPath, Astro.site);
 
 interface Props {
   title: string;
@@ -37,10 +40,10 @@ const {
 <!doctype html>
 <html lang="en">
   <head>
-    <slot name="head" />
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <slot name="head" />
+    <meta name="description" content={description} />
 
     <!-- Favicons and App Icons -->
     <link
@@ -71,31 +74,21 @@ const {
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="preconnect" href="https://plausible.io" />
+    <link rel="preconnect" href="https://analytics.coulsy.dev" />
 
-    <!-- Service Worker for caching (performance only, no PWA UI) -->
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").catch(() => {
-            // Silently fail - service worker is optional for performance only
-          });
-        });
-      }
-    </script>
-
-    <!-- DNS Prefetch for external resources -->
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
-    <link rel="dns-prefetch" href="//plausible.io" />
-
-    <!-- Preload critical resources -->
-    <!-- Note: Preloads removed to prevent 404 errors - Astro will handle asset loading -->
-
-    <!-- Preload critical CSS -->
-    <!-- Note: CSS preload removed to prevent 404 errors - Astro will handle CSS loading -->
+    <!-- Fonts: non-blocking via preload + onload swap, with noscript fallback -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content={type} />
@@ -228,9 +221,7 @@ const {
     <Footer />
     <WebDevFooter location={location} />
     <SmoothScroll />
-    <ViewTransitions />
 
-    <style is:global></style>
     <!-- Analytics -->
     <script
       defer
@@ -238,34 +229,13 @@ const {
       src="https://analytics.coulsy.dev/js/script.js"
       is:inline></script>
 
-    <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-      is:inline></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        window.dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-XXXXXXXXXX", {
-        page_title: document.title,
-        page_location: window.location.href,
-        custom_map: {
-          custom_parameter_1: "location",
-          custom_parameter_2: "service_type",
-        },
-      });
-    </script>
-
-    <!-- Service Worker for caching (performance only, silent) -->
+    <!-- Register self-unregistering SW so existing visitors evict their
+         cached worker + caches on next visit. Can be removed in a future
+         release once clients have hit this at least once. -->
     <script is:inline>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").catch(() => {
-            // Silently fail - service worker is optional for performance only
-          });
+          navigator.serviceWorker.register("/sw.js").catch(() => {});
         });
       }
     </script>

@@ -1,7 +1,12 @@
 import { LOCATIONS } from "../constants/locations";
+import { getNearbyLocations } from "./getNearbyLocations";
 
 export function capitalizeFirstLetter(str: string) {
   return str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+}
+
+function formatLocationName(slug: string): string {
+  return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 export function getFormattedPageData(location?: string, type?: string): {
@@ -18,7 +23,6 @@ export function getFormattedPageData(location?: string, type?: string): {
   lastmod: string;
 } {
   try {
-    // Use the parameters directly
     const baseType = type || "";
 
     const formattedServiceName = baseType
@@ -26,40 +30,118 @@ export function getFormattedPageData(location?: string, type?: string): {
       .map(capitalizeFirstLetter)
       .join(" ");
 
-    const locationFormated = location ? capitalizeFirstLetter(location) : "";
+    const locationFormated = location ? formatLocationName(location) : "";
     const locationInText = location ? ` in ${locationFormated}` : "";
+    const cleanLocationName = locationFormated;
 
-    const cleanLocationName = location
-      ? location.trim().replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase())
-      : "";
+    const fallbackLocation = {
+      slug: "york",
+      lat: 53.9655,
+      lng: -1.205,
+      postcode: "YO1",
+      type: "city" as const,
+      region: "North Yorkshire",
+    };
+    const locationData = LOCATIONS.find((l) => l.slug === location) ?? fallbackLocation;
+    const geo = { lat: locationData.lat, lng: locationData.lng };
+    const locationPostcode = locationData.postcode;
+    const locationRegion = locationData.region;
+    const locationType = locationData.type;
 
-    const fallbackGeo = { lat: 53.9655, lng: -1.205 };
-    const geo = location ? LOCATIONS.find((l) => l.slug === location) ?? fallbackGeo : fallbackGeo;
+    // Deterministic hash so the same slug+service always picks the same variant,
+    // stabilising output across builds (Google dislikes flapping content).
+    const variantKey = `${location ?? "base"}-${baseType}`;
+    let variantHash = 0;
+    for (let i = 0; i < variantKey.length; i++) {
+      variantHash = ((variantHash << 5) - variantHash + variantKey.charCodeAt(i)) | 0;
+    }
+    variantHash = Math.abs(variantHash);
 
-    const defaultDescription = `Professional ${formattedServiceName.toLowerCase()} ${locationInText} by qualified FireQual Fire Door Inspector with 35+ years experience. ${baseType.includes('maintenance') ? 'Fire door maintenance, repairs and compliance checks' : baseType.includes('inspection') ? 'Fire door inspections, certification and compliance reports' : baseType.includes('installers') ? 'Fire door installation, fitting and certification' : 'Fire door services, installation, maintenance and inspections'} ${locationInText}. Fully insured, certified and compliant with fire safety regulations. Call for quote.`;
+    const lowerService = formattedServiceName.toLowerCase() || "fire door services";
+    const locTypeWord =
+      locationType === "city" ? "city"
+      : locationType === "market-town" ? "market town"
+      : locationType === "town" ? "town"
+      : locationType === "suburb" ? "suburb"
+      : locationType === "village" ? "village"
+      : "area";
 
-    // Enhanced description with more local SEO keywords
-    const enhancedDescription = `${formattedServiceName} ${locationInText} - Expert fire door ${baseType.includes('maintenance') ? 'maintenance and repairs' : baseType.includes('inspection') ? 'inspections and certification' : baseType.includes('installers') ? 'installation and fitting' : 'services, installation and maintenance'} by qualified FireQual inspector. 35+ years experience in fire safety compliance. Serving ${locationFormated || 'York'} and surrounding areas. Competitive quotes, fully insured, certified work. Emergency callouts available.`;
+    // Non-overlapping "angle" text — deliberately does NOT repeat the word
+    // already in the service name (e.g. avoid "fire door maintenance, maintenance…").
+    const serviceAngle =
+      baseType.includes("maintenance") ? "repairs, seal replacement and compliance checks"
+      : baseType.includes("inspect") ? "certification and written compliance reports"
+      : baseType.includes("install") ? "fitting, ironmongery and certification"
+      : "installation, maintenance and inspections";
+
+    // Pool of 5 description variants picked deterministically per slug+service.
+    // Each opens differently and highlights a different angle to reduce
+    // near-duplicate signals across the location matrix.
+    const descriptionVariants = location
+      ? [
+          `FireQual qualified fire door inspector covering ${cleanLocationName} (${locationPostcode}) — ${lowerService} and fire door ${serviceAngle} across ${locationRegion}. 35+ years' experience, fully insured.`,
+          `${formattedServiceName} in ${cleanLocationName} and the wider ${locationRegion} area. FireQual certified inspector, 35+ years on the tools. Free no-obligation quotes and emergency callouts.`,
+          `${formattedServiceName} in ${cleanLocationName} ${locationPostcode}. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
+          `Professional ${lowerService} for properties in ${cleanLocationName} — a ${locTypeWord} I regularly work across. FireQual certified, 35+ years' experience in fire safety compliance.`,
+          `Trusted fire door specialist in ${cleanLocationName} (${locationPostcode}) — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured. Covering ${locationRegion}.`,
+        ]
+      : [
+          `FireQual qualified fire door inspector covering Yorkshire — ${lowerService} and fire door ${serviceAngle}. 35+ years' experience, fully insured.`,
+          `${formattedServiceName} across Yorkshire. FireQual certified inspector, 35+ years on the tools. Free no-obligation quotes and emergency callouts.`,
+          `${formattedServiceName} across Yorkshire. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
+          `Professional ${lowerService} for properties across Yorkshire. FireQual certified, 35+ years' experience in fire safety compliance.`,
+          `Trusted fire door specialist covering Yorkshire — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured.`,
+        ];
+
+    const defaultDescription = descriptionVariants[variantHash % descriptionVariants.length];
+    const enhancedDescription = defaultDescription;
+
+    // Nearby locations for enhanced areaServed
+    const nearbyRaw = location ? getNearbyLocations(location, baseType) : [];
+    const nearbyLocations = nearbyRaw
+      .map((loc) => {
+        const locData = LOCATIONS.find((l) => l.slug === loc.slug);
+        return locData ? formatLocationName(locData.slug) : null;
+      })
+      .filter(Boolean) as string[];
+
+    const enhancedAreaServed = [
+      cleanLocationName || "York",
+      "Leeds",
+      "Harrogate",
+      "Wetherby",
+      "Yorkshire",
+      ...nearbyLocations,
+    ].filter((value, index, self) => self.indexOf(value) === index);
+
+    const pageUrl = `https://coulsyfiredoors.co.uk/${location ? `${location}-${baseType}` : baseType}`;
 
     const businessSchema = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "@id": "https://coulsyfiredoors.co.uk/#business",
       name: "Coulsy Fire Door Services",
-      description: defaultDescription,
-      url: `https://coulsyfiredoors.co.uk/${location ? `${location}-${baseType}` : baseType}`,
+      description: enhancedDescription,
+      url: pageUrl,
       image: "https://coulsyfiredoors.co.uk/images/coulsy-logo-sm.png",
       email: "robert@coulsy.co.uk",
       telephone: "+44 7544 030486",
       priceRange: "££",
       paymentAccepted: ["Cash", "Bank Transfer"],
       currenciesAccepted: "GBP",
-      knowsAbout: ["Fire Door Installation", "Fire Door Maintenance", "Fire Door Inspections", "Fire Safety Compliance", "Fire Door Repairs"],
+      knowsAbout: [
+        "Fire Door Installation",
+        "Fire Door Maintenance",
+        "Fire Door Inspections",
+        "Fire Safety Compliance",
+        "Fire Door Repairs",
+      ],
       award: ["FireQual Fire Door Inspector", "CSCS Gold Card Holder", "35+ Years Experience"],
       address: {
         "@type": "PostalAddress",
-        addressLocality: locationFormated || "York",
-        postalCode: "YO26 7NW",
+        addressLocality: cleanLocationName || "York",
+        addressRegion: locationRegion,
+        postalCode: locationPostcode,
         addressCountry: "GB",
       },
       geo: {
@@ -68,190 +150,226 @@ export function getFormattedPageData(location?: string, type?: string): {
         longitude: geo.lng,
       },
       openingHours: "Mo-Fr 07:00-18:00",
-      areaServed: [
-        locationFormated || "York",
-        "Leeds",
-        "Harrogate",
-        "Wetherby",
-        "Yorkshire"
-      ],
+      areaServed: enhancedAreaServed.map((city) => ({
+        "@type": "City",
+        name: city,
+        containedIn: {
+          "@type": "State",
+          name: locationRegion,
+        },
+      })),
+      serviceArea: {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: String(geo.lat),
+          longitude: String(geo.lng),
+        },
+        geoRadius: {
+          "@type": "Distance",
+          name: "30 miles",
+        },
+      },
       hasMap: `https://www.google.com/maps?q=${geo.lat},${geo.lng}`,
       sameAs: [
         "https://www.linkedin.com/company/coulsy-limited/?viewAsMember=true",
-        "https://www.facebook.com/coulsyjoinery/"
+        "https://www.facebook.com/coulsyjoinery/",
       ],
       aggregateRating: {
         "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "50",
-        "bestRating": "5",
-        "worstRating": "1"
+        ratingValue: "4.8",
+        reviewCount: "50",
+        bestRating: "5",
+        worstRating: "1",
       },
-      "foundingDate": "1989",
-      "numberOfEmployees": "2",
-      "slogan": "Professional Fire Door Services Since 1989",
-      "hasCredential": [
+      foundingDate: "1989",
+      numberOfEmployees: "2",
+      slogan: "Professional Fire Door Services Since 1989",
+      hasCredential: [
         "FireQual Fire Door Inspector",
-        "CSCS Gold Card Holder", 
+        "CSCS Gold Card Holder",
         "35+ Years Experience",
         "Fully Insured",
-        "Certified Installer"
-      ]
+        "Certified Installer",
+      ],
     };
 
-    // Local business schema specifically for the location
     const localBusinessSchema = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": `Coulsy Fire Door Services - ${locationFormated || 'York'}`,
-      "description": enhancedDescription,
-      "url": `https://coulsyfiredoors.co.uk/${location ? `${location}-${baseType}` : baseType}`,
-      "telephone": "+447544030486",
-      "email": "robert@coulsy.co.uk",
-      "address": {
+      name: `Coulsy Fire Door Services - ${cleanLocationName || "York"}`,
+      description: enhancedDescription,
+      url: pageUrl,
+      telephone: "+447544030486",
+      email: "robert@coulsy.co.uk",
+      address: {
         "@type": "PostalAddress",
-        "addressLocality": locationFormated || "York",
-        "addressRegion": "Yorkshire",
-        "addressCountry": "GB"
+        addressLocality: cleanLocationName || "York",
+        addressRegion: locationRegion,
+        postalCode: locationPostcode,
+        addressCountry: "GB",
       },
-      "geo": {
+      geo: {
         "@type": "GeoCoordinates",
-        "latitude": geo.lat,
-        "longitude": geo.lng
+        latitude: geo.lat,
+        longitude: geo.lng,
       },
-      "openingHours": "Mo-Fr 07:00-18:00",
-      "priceRange": "££",
-      "currenciesAccepted": "GBP",
-      "paymentAccepted": ["Cash", "Bank Transfer"],
-      "areaServed": {
+      openingHours: "Mo-Fr 07:00-18:00",
+      priceRange: "££",
+      currenciesAccepted: "GBP",
+      paymentAccepted: ["Cash", "Bank Transfer"],
+      areaServed: {
         "@type": "City",
-        "name": locationFormated || "York"
+        name: cleanLocationName || "York",
       },
-      "serviceArea": {
+      serviceArea: {
         "@type": "GeoCircle",
-        "geoMidpoint": {
+        geoMidpoint: {
           "@type": "GeoCoordinates",
-          "latitude": geo.lat,
-          "longitude": geo.lng
+          latitude: geo.lat,
+          longitude: geo.lng,
         },
-        "geoRadius": "50000"
+        geoRadius: "50000",
       },
-      "hasOfferCatalog": {
+      hasOfferCatalog: {
         "@type": "OfferCatalog",
-        "name": `${formattedServiceName} ${locationInText}`,
-        "itemListElement": [
+        name: `${formattedServiceName} ${locationInText}`,
+        itemListElement: [
           {
             "@type": "Offer",
-            "itemOffered": {
+            itemOffered: {
               "@type": "Service",
-              "name": formattedServiceName
-            }
-          }
-        ]
-      }
+              name: formattedServiceName,
+            },
+          },
+        ],
+      },
     };
 
-    // Enhanced service schema with more detailed information
     const serviceSchema = {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": `${formattedServiceName} ${locationInText}`,
-      "description": enhancedDescription,
-      "provider": {
+      name: `${formattedServiceName} ${locationInText}`,
+      description: enhancedDescription,
+      provider: {
         "@type": "LocalBusiness",
         "@id": "https://coulsyfiredoors.co.uk/#business",
-        "name": "Coulsy Fire Door Services",
-        "telephone": "+447544030486",
-        "email": "robert@coulsy.co.uk",
-        "address": {
+        name: "Coulsy Fire Door Services",
+        telephone: "+447544030486",
+        email: "robert@coulsy.co.uk",
+        address: {
           "@type": "PostalAddress",
-          "addressLocality": "York",
-          "addressRegion": "Yorkshire",
-          "addressCountry": "GB"
-        }
+          addressLocality: "York",
+          addressRegion: "North Yorkshire",
+          addressCountry: "GB",
+        },
       },
-      "areaServed": {
-        "@type": "City",
-        "name": locationFormated || "York"
-      },
-      "serviceType": "Fire Door Services",
-      "category": "Fire Safety",
-      "url": `https://coulsyfiredoors.co.uk/${location ? `${location}-${baseType}` : baseType}`,
-      "hasOfferCatalog": {
+      areaServed: [
+        {
+          "@type": "City",
+          name: cleanLocationName || "York",
+          containedIn: {
+            "@type": "State",
+            name: locationRegion,
+          },
+        },
+        ...enhancedAreaServed.slice(0, 5).map((city) => ({
+          "@type": "City",
+          name: city,
+          containedIn: {
+            "@type": "State",
+            name: locationRegion,
+          },
+        })),
+      ],
+      serviceType: "Fire Door Services",
+      category: "Fire Safety",
+      url: pageUrl,
+      hasOfferCatalog: {
         "@type": "OfferCatalog",
-        "name": "Fire Door Services",
-        "itemListElement": [
+        name: "Fire Door Services",
+        itemListElement: [
           {
             "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Fire Door Installation"
-            }
+            itemOffered: { "@type": "Service", name: "Fire Door Installation" },
           },
           {
             "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Fire Door Maintenance"
-            }
+            itemOffered: { "@type": "Service", name: "Fire Door Maintenance" },
           },
           {
             "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Fire Door Inspections"
-            }
-          }
-        ]
-      }
+            itemOffered: { "@type": "Service", name: "Fire Door Inspections" },
+          },
+        ],
+      },
     };
 
-    // FAQ schema for rich snippets in search results
+    // FAQ pool: each page picks 4 deterministically by slug hash, breaking
+    // near-duplicate signals vs the previous single 5-Q template.
+    const faqPool: { name: string; text: string }[] = [];
+
+    if (location) {
+      faqPool.push({
+        name: `Do you cover ${cleanLocationName} for fire door work?`,
+        text: `Yes — I regularly carry out ${lowerService} and fire door ${serviceAngle} in ${cleanLocationName} and the wider ${locationRegion} area. ${locationPostcode} and surrounding postcodes are firmly within my service area.`,
+      });
+      faqPool.push({
+        name: `How much does ${lowerService} cost in ${cleanLocationName}?`,
+        text: `Costs depend on the property, scope and compliance requirements. I provide detailed no-obligation quotes for all fire door work in ${cleanLocationName} after assessing the doors and the site's fire safety obligations.`,
+      });
+      if (nearbyLocations.length > 0) {
+        faqPool.push({
+          name: `What areas near ${cleanLocationName} do you serve?`,
+          text: `I serve ${cleanLocationName} and surrounding areas — including ${nearbyLocations.slice(0, 5).join(", ")}${nearbyLocations.length > 5 ? ", and more" : ""}. Emergency callouts are available where capacity allows.`,
+        });
+      }
+      if (locationType === "city" || locationType === "market-town") {
+        faqPool.push({
+          name: `Do you work on commercial and HMO fire doors in ${cleanLocationName}?`,
+          text: `Yes. ${cleanLocationName} has significant commercial and multi-occupancy stock, and I handle fire door inspections, maintenance and installs for landlords, letting agents, care homes, schools and commercial premises with the required certification and reports.`,
+        });
+      }
+    }
+
+    faqPool.push({
+      name: `How often should fire doors be ${baseType.includes("maintenance") ? "maintained" : baseType.includes("inspect") ? "inspected" : "serviced"}${locationInText}?`,
+      text: `Fire doors should be checked at least every 6 months under current fire safety regulations, with more frequent checks for high-traffic commercial sites. Regular ${baseType.includes("maintenance") ? "maintenance" : baseType.includes("inspect") ? "inspections" : "servicing"} keeps doors compliant and documents your duty-of-care position.`,
+    });
+    faqPool.push({
+      name: `Are you qualified for fire door work${locationInText}?`,
+      text: "Yes — I'm a FireQual qualified fire door inspector with 35+ years' experience in fire safety, a CSCS Gold Card holder, fully insured and compliant with current fire door regulations.",
+    });
+    faqPool.push({
+      name: `Do you provide certification and compliance reports${locationInText}?`,
+      text: "Yes. Every inspection comes with a written report suitable for insurers, Responsible Persons and enforcement bodies, covering door leaf, frame, seals, gaps, hinges, closers and ironmongery against the relevant standard.",
+    });
+    faqPool.push({
+      name: "Do you work on both domestic and commercial properties?",
+      text: "Yes — I handle fire door work on private homes, HMOs, rental properties, care homes, schools, offices and commercial premises. The same standards apply: correct certification, correct installation, documented compliance.",
+    });
+
+    const faqCount = Math.min(4, faqPool.length);
+    const pickedFaqs: typeof faqPool = [];
+    const seen = new Set<number>();
+    for (let i = 0; i < faqPool.length && pickedFaqs.length < faqCount; i++) {
+      const idx = (variantHash + i * 3) % faqPool.length;
+      if (seen.has(idx)) continue;
+      seen.add(idx);
+      pickedFaqs.push(faqPool[idx]);
+    }
+
     const faqSchema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": `How much does ${formattedServiceName.toLowerCase()} cost ${locationInText}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Our ${formattedServiceName.toLowerCase()} costs vary depending on the project scope and requirements. I provide detailed quotes for all work ${locationInText} after assessing your specific fire door needs and compliance requirements.`
-          }
+      mainEntity: pickedFaqs.map((f) => ({
+        "@type": "Question",
+        name: f.name,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.text,
         },
-        {
-          "@type": "Question",
-          "name": `How often should fire doors be ${baseType.includes('maintenance') ? 'maintained' : baseType.includes('inspection') ? 'inspected' : 'serviced'}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Fire doors should be ${baseType.includes('maintenance') ? 'maintained' : baseType.includes('inspection') ? 'inspected' : 'serviced'} at least every 6 months according to fire safety regulations. Regular ${baseType.includes('maintenance') ? 'maintenance' : baseType.includes('inspection') ? 'inspections' : 'servicing'} ensures compliance and optimal performance.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `What fire door ${formattedServiceName.toLowerCase()} do you provide?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `I offer comprehensive fire door ${formattedServiceName.toLowerCase()} including installation, maintenance, inspections, repairs, and compliance certification. From new installations to existing door maintenance, I handle all aspects of fire door safety and compliance.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `Are you qualified for fire door ${formattedServiceName.toLowerCase()}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Yes, I'm a fully qualified FireQual Fire Door Inspector with over 35 years' experience in fire safety. I'm qualified to handle all aspects of fire door installation, maintenance, inspections, and compliance with current fire safety regulations.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `Do you work on both domestic and commercial fire door ${formattedServiceName.toLowerCase()}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `Yes, I work on both domestic and commercial properties. From residential fire door installations to commercial fire safety compliance, I provide the same high-quality service for all types of properties requiring fire door ${formattedServiceName.toLowerCase()}.`
-          }
-        }
-      ]
+      })),
     };
 
     const lastmod = new Date().toISOString();

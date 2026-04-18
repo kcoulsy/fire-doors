@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://coulsyfiredoors.co.uk',
+  trailingSlash: 'never',
   integrations: [
     tailwind(),
     sitemap(),

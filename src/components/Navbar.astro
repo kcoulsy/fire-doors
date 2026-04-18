@@ -4,7 +4,6 @@ import { Image } from "astro:assets";
 import LinkedInIcon from "../icons/LinkedInIcon.astro";
 import YouTubeIcon from "../icons/YouTubeIcon.astro";
 import Dropdown from "./Dropdown.astro";
-import AISmartSearch from "./AISmartSearch.astro";
 import { DETAILS } from "../constants/details";
 
 import coulsyLogo from "../assets/images/coulsy-logo-sm.png";
@@ -109,11 +108,6 @@ const socialLinks = [
 
     <!-- Desktop Right Section -->
     <div class="hidden lg:flex items-center gap-4 flex-shrink-0">
-      <!-- AI Smart Search -->
-      <div class="w-64">
-        <AISmartSearch />
-      </div>
-
       <!-- Contact Info - Phone Only (Email removed for space) -->
       <div class="flex items-center gap-2 ml-4">
         <svg
@@ -191,6 +185,7 @@ const socialLinks = [
     class="fixed top-0 left-0 w-full max-h-screen bg-[#1e2a38] transform -translate-y-full transition-transform duration-300 ease-in-out z-[60] overflow-y-auto body-font"
     aria-label="Mobile navigation"
     aria-hidden="true"
+    inert
   >
     <!-- Mobile Menu Header -->
     <div
@@ -458,6 +453,11 @@ const socialLinks = [
       toggle.setAttribute("aria-expanded", String(!isOpen));
       menu.setAttribute("aria-hidden", String(isOpen));
       overlay.setAttribute("aria-hidden", String(isOpen));
+      if (isOpen) {
+        menu.setAttribute("inert", "");
+      } else {
+        menu.removeAttribute("inert");
+      }
     }
 
     // Focus management

@@ -1,0 +1,6 @@
+# Coulsy Fire Doors — Netlify redirects
+#
+# Manchester page was never a real location but sits in Google's index
+# with ~1,500 impressions/yr. Send to the regional services page so any
+# residual clicks land somewhere relevant instead of 404.
+/manchester-fire-door-services  /yorkshire-fire-door-services  301!

@@ -435,10 +435,5 @@ const slides: Slide[] = [
 
     // Initialize
     startSlideshow();
-
-    // Cleanup on page unload
-    window.addEventListener("beforeunload", () => {
-      stopSlideshow();
-    });
   });
 </script>

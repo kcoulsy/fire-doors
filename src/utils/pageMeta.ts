@@ -82,14 +82,14 @@ export function getFormattedPageData(location?: string, type?: string): {
           `FireQual qualified fire door inspector covering ${cleanLocationName} (${locationPostcode}) — ${lowerService} and fire door ${serviceAngle} across ${locationRegion}. 35+ years' experience, fully insured.`,
           `${formattedServiceName} in ${cleanLocationName} and the wider ${locationRegion} area. FireQual certified inspector, 35+ years on the tools. Free no-obligation quotes and emergency callouts.`,
           `${formattedServiceName} in ${cleanLocationName} ${locationPostcode}. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
-          `Professional ${lowerService} for properties in ${cleanLocationName} — a ${locTypeWord} I regularly work across. FireQual certified, 35+ years' experience in fire safety compliance.`,
+          `Professional ${lowerService} for properties in ${cleanLocationName} — a ${locTypeWord} I regularly work across. FireQual certified fire door inspector, 35+ years on the tools as a City & Guilds joiner.`,
           `Trusted fire door specialist in ${cleanLocationName} (${locationPostcode}) — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured. Covering ${locationRegion}.`,
         ]
       : [
           `FireQual qualified fire door inspector covering Yorkshire — ${lowerService} and fire door ${serviceAngle}. 35+ years' experience, fully insured.`,
           `${formattedServiceName} across Yorkshire. FireQual certified inspector, 35+ years on the tools. Free no-obligation quotes and emergency callouts.`,
           `${formattedServiceName} across Yorkshire. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
-          `Professional ${lowerService} for properties across Yorkshire. FireQual certified, 35+ years' experience in fire safety compliance.`,
+          `Professional ${lowerService} for properties across Yorkshire. FireQual certified fire door inspector, 35+ years on the tools as a City & Guilds joiner.`,
           `Trusted fire door specialist covering Yorkshire — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured.`,
         ];
 
@@ -136,7 +136,12 @@ export function getFormattedPageData(location?: string, type?: string): {
         "Fire Safety Compliance",
         "Fire Door Repairs",
       ],
-      award: ["FireQual Fire Door Inspector", "CSCS Gold Card Holder", "35+ Years Experience"],
+      award: [
+        "FireQual Fire Door Inspector",
+        "CSCS Gold Card Holder",
+        "NVQ Level 7 in Construction Senior Management",
+        "Advanced City & Guilds in Carpentry & Joinery (Distinction)",
+      ],
       address: {
         "@type": "PostalAddress",
         addressLocality: cleanLocationName || "York",
@@ -184,13 +189,12 @@ export function getFormattedPageData(location?: string, type?: string): {
       },
       foundingDate: "1989",
       numberOfEmployees: "2",
-      slogan: "Professional Fire Door Services Since 1989",
+      slogan: "Fire doors, fitted and inspected properly",
       hasCredential: [
         "FireQual Fire Door Inspector",
         "CSCS Gold Card Holder",
-        "35+ Years Experience",
-        "Fully Insured",
-        "Certified Installer",
+        "NVQ Level 7 in Construction Senior Management",
+        "Advanced City & Guilds in Carpentry & Joinery (Distinction)",
       ],
     };
 
@@ -338,7 +342,7 @@ export function getFormattedPageData(location?: string, type?: string): {
     });
     faqPool.push({
       name: `Are you qualified for fire door work${locationInText}?`,
-      text: "Yes — I'm a FireQual qualified fire door inspector with 35+ years' experience in fire safety, a CSCS Gold Card holder, fully insured and compliant with current fire door regulations.",
+      text: "Yes — I'm a FireQual qualified fire door inspector, certified in December 2024, and a CSCS Gold Card holder, with 35+ years on the tools as a City & Guilds qualified joiner.",
     });
     faqPool.push({
       name: `Do you provide certification and compliance reports${locationInText}?`,

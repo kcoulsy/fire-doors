@@ -27,7 +27,10 @@ const seoData = {
       "Runs Coulsy Ltd for joinery and small build works, now specialising in fire doors after passing FireQual exams in December 2024",
     url: "https://coulsyfiredoors.co.uk/about",
     mainEntity: {
-      "@type": "Organisation",
+      // "Organization" — schema.org type names are US-spelled and are identifiers,
+      // not prose. A UK spelling pass had changed this to "Organisation", which is
+      // not a schema.org type, so the whole node was ignored. Site copy stays UK.
+      "@type": "Organization",
       name: "Coulsy Fire Door Services",
       founder: {
         "@type": "Person",
@@ -225,7 +228,7 @@ const seoData = {
               </h3>
             </div>
             <p class="text-brand-600 leading-relaxed">
-              I've been doing this for over three decades—thousands of fire doors fitted over the years. I've seen what works and what doesn't, so you can trust my experience.
+              I've been on the tools for over three decades—thousands of fire doors fitted over the years. I've seen what works and what doesn't, so you can trust my experience.
             </p>
           </div>
 
@@ -762,7 +765,7 @@ const seoData = {
           class="max-w-4xl mx-auto space-y-6 text-brand-600 leading-relaxed mb-12 trust-content"
         >
           <p>
-            With over three decades in joinery and fire safety, I've built my
+            With over three decades in joinery and building, I've built my
             reputation on exceptional craftsmanship, attention to detail, and
             unwavering commitment to quality through Coulsy Ltd.
           </p>

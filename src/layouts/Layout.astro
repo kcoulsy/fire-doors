@@ -181,13 +181,9 @@ const {
           "https://www.linkedin.com/company/coulsy-limited/?viewAsMember=true",
           "https://www.facebook.com/coulsyjoinery/",
         ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.8",
-          reviewCount: "50",
-          bestRating: "5",
-          worstRating: "1",
-        },
+        // No aggregateRating: Google does not support review rich results for a
+        // business reviewing itself, and the 4.8/50 that used to sit here was
+        // invented — the real reviews are 5.0 from 12, rendered by Reviews.astro.
         foundingDate: "1989",
         numberOfEmployees: "2",
         slogan: "Fire doors, fitted and inspected properly",

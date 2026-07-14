@@ -1,0 +1,78 @@
+---
+// A contextual hand-off to another Coulsy website, for the one point on a page
+// where the visitor's need exceeds what this site does.
+//
+// Deliberately SUBORDINATE to the fire door CTAs. This is a bordered card on a
+// neutral background with an outline link — not a gradient panel with a filled
+// primary button. The block it replaced had the same visual weight as our own
+// conversion buttons, which meant a warm fire door lead could be one click from
+// leaving. Help the visitor without competing with the reason they came.
+//
+// The new tab is intentional and is ANNOUNCED, both visibly and to assistive
+// technology. An unannounced new tab is the accessibility problem; an announced
+// one is the accepted pattern. It keeps Fire Doors open behind them.
+import type { SisterSite } from "../constants/sisterSites";
+
+interface Props {
+  site: SisterSite;
+  /** Heading for this placement. */
+  heading: string;
+  /** Why THIS visitor is being handed off. Placement-specific, so the component
+   *  stays reusable and the copy stays honest about the context. */
+  reason: string;
+  /** Link text. */
+  cta: string;
+}
+
+const { site, heading, reason, cta } = Astro.props;
+---
+
+<aside
+  class="max-w-3xl mx-auto rounded-xl border border-gray-200 bg-gray-50 p-6 md:p-8"
+  aria-labelledby="sister-site-heading"
+>
+  <p
+    class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2"
+  >
+    Another Coulsy specialist website
+  </p>
+
+  <h2
+    id="sister-site-heading"
+    class="text-xl md:text-2xl font-bold text-brand-900 mb-3"
+  >
+    {heading}
+  </h2>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    {reason}
+  </p>
+
+  <a
+    href={site.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${cta} — ${site.domain}, another Coulsy specialist website, opens in a new tab`}
+    class="inline-flex items-center gap-2 min-h-[48px] px-5 py-3 rounded-lg border-2 border-brand text-brand font-semibold hover:bg-brand hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 transition-colors duration-200"
+  >
+    {cta}
+    <svg
+      class="w-4 h-4"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+    </svg>
+  </a>
+
+  <p class="text-sm text-gray-500 mt-3">
+    {site.domain} — another Coulsy specialist website, opens in a new tab
+  </p>
+</aside>

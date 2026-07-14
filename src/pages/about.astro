@@ -9,6 +9,8 @@ import doorHangingImage from "../assets/images/door-hanging-1.jpeg";
 import benchPlaneImage from "../assets/images/bench-plane-frog.jpg";
 import Reviews from "../components/Reviews.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
+import SisterSiteCard from "../components/SisterSiteCard.astro";
+import { COULSY_JOINERY } from "../constants/sisterSites";
 
 // Modern SEO optimization with personal voice preserved
 const seoData = {
@@ -415,136 +417,15 @@ const seoData = {
         </div>
       </div>
 
-      <!-- Joinery Services Section -->
+      <!-- Contextual hand-off: this site owns fire doors; wider joinery is another
+           Coulsy website. Deliberately subordinate to the fire door CTAs. -->
       <div class="mb-20">
-        <div
-          class="bg-gradient-to-br from-brand-50 to-brand-100 rounded-2xl p-8 md:p-12"
-        >
-          <div class="text-center mb-8">
-            <h2 class="text-3xl lg:text-4xl font-bold text-brand-900 mb-4">
-              Need Broader Joinery Services?
-            </h2>
-            <p class="text-xl text-brand-600 max-w-3xl mx-auto">
-              While we specialise in fire doors here, I also run Coulsy Ltd for
-              comprehensive joinery and small build works. From traditional
-              joinery to architectural projects, we handle it all.
-            </p>
-          </div>
-
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
-          >
-            <div class="bg-white rounded-xl p-6 shadow-lg">
-              <div
-                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4"
-              >
-                <svg
-                  class="w-6 h-6 text-brand-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  ></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold text-brand-900 mb-2">
-                Traditional Joinery
-              </h3>
-              <p class="text-brand-600 text-sm">
-                Hand-cut dovetails, complex architectural joinery, and bespoke
-                woodwork
-              </p>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-lg">
-              <div
-                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4"
-              >
-                <svg
-                  class="w-6 h-6 text-brand-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 5a2 2 0 012-2h4a2 2 0 012 2v6H8V5z"></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold text-brand-900 mb-2">
-                Small Build Works
-              </h3>
-              <p class="text-brand-600 text-sm">
-                Extensions, renovations, and construction projects of all sizes
-              </p>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-lg">
-              <div
-                class="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4"
-              >
-                <svg
-                  class="w-6 h-6 text-brand-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  ></path>
-                </svg>
-              </div>
-              <h3 class="text-lg font-semibold text-brand-900 mb-2">
-                Quality Assurance
-              </h3>
-              <p class="text-brand-600 text-sm">
-                35+ years of experience ensuring the highest standards of
-                craftsmanship
-              </p>
-            </div>
-          </div>
-
-          <div class="text-center">
-            <a
-              href="https://coulsyjoinery.co.uk"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center px-8 py-4 bg-brand text-white font-semibold rounded-xl hover:bg-brand-light transition-all duration-300 hover:scale-105 hover:shadow-lg transform"
-            >
-              <svg
-                class="w-5 h-5 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                ></path>
-              </svg>
-              Visit Coulsy Joinery
-              <span class="ml-2 text-sm opacity-75">coulsyjoinery.co.uk</span>
-            </a>
-          </div>
-        </div>
+        <SisterSiteCard
+          site={COULSY_JOINERY}
+          heading="Need wider joinery or building work?"
+          reason="Fire doors are my specialist focus here — including inspection, compliance and remedial work. For wider joinery, refurbishment or small building projects, visit Coulsy Joinery & Small Build, our dedicated Coulsy website for that work."
+          cta="Visit Coulsy Joinery"
+        />
       </div>
 
       <!-- Expertise Grid -->

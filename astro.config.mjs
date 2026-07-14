@@ -8,7 +8,14 @@ export default defineConfig({
   trailingSlash: 'never',
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      // Never submit a page we tell robots not to index — a sitemap entry says
+      // "index this" and the meta tag says the opposite, which is a conflicting
+      // signal and wasted crawl budget. /compliance and /sustainability are
+      // noindex; /qualifications is deliberately indexable and stays in.
+      filter: (page) =>
+        !/\/(compliance|sustainability)$/.test(new URL(page).pathname),
+    }),
   ],
   image: {
     // Enable image optimization

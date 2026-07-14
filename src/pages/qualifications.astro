@@ -57,9 +57,14 @@ const seoData = {
     },
   },
 };
+
+// Indexable — no `robots` prop, so Layout's "index, follow" default applies.
+// This page carries the FireQual, NVQ, City & Guilds and CSCS evidence behind every
+// credential claim on the site, and it is what a Responsible Person checks. It was
+// noindexed while those claims were still wrong; they are correct now.
 ---
 
-<Layout title={seoData.title} description={seoData.description} robots="noindex, follow">
+<Layout title={seoData.title} description={seoData.description}>
   <main class="mx-auto md:mt-16 relative z-10">
     <section class="w-full container mx-auto px-4 sm:px-6 py-8">
       <Breadcrumb

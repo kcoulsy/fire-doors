@@ -5,6 +5,7 @@ import robertProfileImage from "../assets/images/team/robert-profile-image.jpg";
 import teamOnSiteImage from "../assets/images/team/Rob-and-Debbie-on-site.jpg";
 import debbieProfileImage from "../assets/images/team/debbie-profile-image.jpg";
 import timberJoineryImage from "../assets/images/timber20joinery.jpg";
+import complianceImage from "../assets/images/compliance.jpeg";
 import doorHangingImage from "../assets/images/door-hanging-1.jpeg";
 import benchPlaneImage from "../assets/images/bench-plane-frog.jpg";
 import Reviews from "../components/Reviews.astro";
@@ -437,7 +438,10 @@ const seoData = {
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Traditional Joinery -->
+          {/* A joiner first. This card is PROVENANCE, not a service offer: it is
+              why the fire door work can be trusted, not an invitation to book
+              joinery. Wider joinery is handed off to the joinery site above.
+              JSX comment, not <!-- -->: Astro renders HTML comments to production. */}
           <div
             class="expertise-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
@@ -447,7 +451,7 @@ const seoData = {
                 width={300}
                 height={200}
                 class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                alt="Traditional joinery work with hand tools"
+                alt="Hand tools on the bench — the joinery background behind the fire door work"
                 loading="lazy"
                 decoding="async"
                 format="webp"
@@ -455,12 +459,15 @@ const seoData = {
               />
             </div>
             <h3 class="text-xl font-bold text-brand-900 mb-4">
-              Traditional Joinery
+              A Joiner First
             </h3>
             <p class="text-brand-600 leading-relaxed">
-              35+ years of traditional joinery experience through Coulsy Ltd,
-              from hand-cut dovetails to complex architectural joinery and small
-              build works.
+              City &amp; Guilds qualified in carpentry and joinery — Craft with
+              Distinction, then Advanced with Distinction. I bring decades of
+              practical experience on the tools to every fire door inspection and
+              installation. Understanding how a door and frame are made is
+              fundamental to recognising why a fire door has failed, and what is
+              required to put it right.
             </p>
           </div>
 
@@ -491,17 +498,20 @@ const seoData = {
             </p>
           </div>
 
-          <!-- Workmanship Consultancy -->
+          {/* Was a small-build sales card — present-tense selling of building work
+              from a fire door site. Replaced with a real fire door expertise area.
+              Small build work belongs to the joinery site.
+              JSX comment, not <!-- -->: Astro renders HTML comments to production. */}
           <div
             class="expertise-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
             <div class="relative overflow-hidden rounded-lg mb-6">
               <Image
-                src={timberJoineryImage}
+                src={complianceImage}
                 width={300}
                 height={200}
                 class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                alt="Quality workmanship and timber joinery"
+                alt="Fire door compliance documentation and inspection records"
                 loading="lazy"
                 decoding="async"
                 format="webp"
@@ -509,12 +519,14 @@ const seoData = {
               />
             </div>
             <h3 class="text-xl font-bold text-brand-900 mb-4">
-              Small Build Works
+              Inspection &amp; Compliance
             </h3>
             <p class="text-brand-600 leading-relaxed">
-              Through Coulsy Ltd, providing comprehensive small build works,
-              quality assurance, and ensuring projects meet the highest
-              standards of craftsmanship.
+              I carry out detailed fire door inspections covering the door leaf,
+              frame, seals, gaps, hinges, closer and ironmongery. Findings are
+              recorded in a clear written report, with defects and recommended
+              remedial actions set out plainly for the client or Responsible
+              Person.
             </p>
           </div>
         </div>
@@ -596,7 +608,7 @@ const seoData = {
             <div class="relative overflow-hidden">
               <Image
                 src={teamOnSiteImage}
-                alt="Robert and team working on fire door installation and joinery projects"
+                alt="Robert and Debbie on site during fire door work"
                 loading="eager"
                 width={400}
                 height={300}
@@ -612,10 +624,10 @@ const seoData = {
               <div
                 class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
               >
-                <h3 class="text-xl font-bold text-white mb-1">Our Team</h3>
-                <p class="text-sm text-gray-200 mb-2">
-                  Trusted Fire Safety & Joinery Experts
-                </p>
+                <h3 class="text-xl font-bold text-white mb-1">
+                  Fire Door Inspection &amp; Compliance
+                </h3>
+                <p class="text-sm text-gray-200 mb-2">FireQual certified</p>
                 <p class="text-xs text-gray-300">
                   Quality & Compliance Focused
                 </p>
@@ -623,9 +635,10 @@ const seoData = {
             </div>
             <div class="p-6">
               <p class="text-brand-600 mb-4 leading-relaxed">
-                Our dedicated team combines traditional joinery skills with
-                modern fire safety expertise, ensuring every project meets the
-                highest standards of quality and compliance.
+                My background in carpentry and joinery underpins my FireQual fire
+                door inspection work. I understand how doors and frames are
+                constructed, how installation defects develop and what practical
+                remedial work is required.
               </p>
             </div>
           </div>
@@ -1084,13 +1097,16 @@ const seoData = {
         description: "Advanced City & Guilds in Carpentry & Joinery - Distinction",
       },
     ],
+    // knowsAbout declares this site's SUBJECT to search engines. It is fire doors.
+    // "Traditional Joinery" and "Small Build Works" were listed here and broadened
+    // the topical focus into the joinery site's territory. Robert's joinery history
+    // is still on the page as provenance — it just isn't what this site is about.
     knowsAbout: [
       "Fire Door Installation",
       "Fire Door Maintenance",
       "Fire Door Inspections",
+      "Fire Door Surveys",
       "Fire Safety Compliance",
-      "Traditional Joinery",
-      "Small Build Works",
     ],
     award: [
       "FireQual Fire Door Inspector",

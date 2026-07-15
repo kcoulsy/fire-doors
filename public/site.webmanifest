@@ -4,7 +4,7 @@
   "description": "Professional fire door services in Yorkshire including installation, maintenance, inspections and compliance. Qualified since 1989 with 35+ years experience.",
   "start_url": "/",
   "scope": "/",
-  "display": "standalone",
+  "display": "browser",
   "orientation": "portrait",
   "theme_color": "#1e2a38",
   "background_color": "#ffffff",

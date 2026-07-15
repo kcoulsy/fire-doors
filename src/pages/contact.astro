@@ -1,6 +1,5 @@
 ---
 import ContactForm from "../components/ContactForm.astro";
-import OfficeIcon from "../icons/OfficeIcon.astro";
 import CardChecklist from "../icons/CardChecklist.astro";
 import EnvelopeIcon from "../icons/EnvelopeIcon.astro";
 import PhoneIcon from "../icons/PhoneIcon.astro";
@@ -122,14 +121,14 @@ import Layout from "../layouts/Layout.astro";
         <div
           class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 p-6 shadow-2xl"
         >
-          <OfficeIcon className="h-4 w-4 inline-block" />
-          <h4 class="text-color-dark mb-1 pb-2">Office</h4>
+          <h4 class="text-color-dark mb-1 pb-2">Where I work</h4>
+          <p class="text-sm mb-3">
+            Serving York and communities across Yorkshire — I come to you.
+            Fire-door inspections, surveys and remedial work are carried out at
+            your property.
+          </p>
 
           <ul class="list list-icons mt-3 mb-3">
-            <li class="no-list-style">
-              Rose Cottage<br />1 Post Office Row<br />Bilton-in-Ainsty<br
-              />York<br />YO26 7NW
-            </li>
             <li class="no-list-style">
               <PhoneIcon className="h-4 w-4 inline-block" />
               <a href="tel:07544 030486" class="no-underline">07544 030486</a>
@@ -148,22 +147,21 @@ import Layout from "../layouts/Layout.astro";
 
           <ul class="list list-icons mt-3 mb-3">
             <li class="no-list-style">
-              <CardChecklist className="h-4 w-4 inline-block" /> Registered Company
-              : Coulsy Ltd
+              <CardChecklist className="h-4 w-4 inline-block" /> Registered company
+              : Coulsy Limited
             </li>
             <li class="no-list-style">
               <CardChecklist className="h-4 w-4 inline-block" /> Company number :
-              8575688
+              08575688
             </li>
             <li class="no-list-style">
-              <CardChecklist className="h-4 w-4 inline-block" /> Commenced trading
-              : July 2013
-            </li>
-            <li class="no-list-style">
-              <CardChecklist className="h-4 w-4 inline-block" /> VAT registered:
-              upon request
+              <CardChecklist className="h-4 w-4 inline-block" /> VAT registration
+              number : 168340989
             </li>
           </ul>
+          <p class="text-xs mt-1">
+            <a href="/company-information" class="no-underline">Company information</a>
+          </p>
         </div>
       </div>
     </div>

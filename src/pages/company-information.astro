@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const seoData = {
+  title: "Company Information | Coulsy Fire Doors",
+  description:
+    "Coulsy Fire Door Services is a trading activity of Coulsy Limited. Registered in England and Wales, company number 08575688, VAT number 168340989.",
+};
+---
+
+<Layout
+  title={seoData.title}
+  description={seoData.description}
+  classes="mt-8 mb-16"
+>
+  <main class="container mx-auto px-4 max-w-3xl py-8">
+    <h1 class="text-3xl lg:text-4xl font-bold text-brand-900 mb-6">
+      Company information
+    </h1>
+
+    <div class="text-brand-600 leading-relaxed space-y-4">
+      <p>Coulsy Fire Door Services is a trading activity of Coulsy Limited.</p>
+
+      <ul class="space-y-1">
+        <li>Registered in England and Wales</li>
+        <li>Company number: 08575688</li>
+        <li>VAT registration number: 168340989</li>
+        <li>
+          Registered office: 1 Post Office Row, Bilton-in-Ainsty, York, YO26 7NW
+        </li>
+      </ul>
+
+      <p>
+        This is the company's registered office for statutory correspondence
+        only. It is not a customer-facing premises and is not open to visitors.
+        Fire-door work is carried out at your property — <a
+          href="/contact"
+          class="text-brand font-semibold underline">get in touch</a
+        > to arrange a visit.
+      </p>
+    </div>
+  </main>
+</Layout>

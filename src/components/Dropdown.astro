@@ -33,7 +33,7 @@ const { items, label } = Astro.props;
     </svg>
   </button>
   <ul
-    class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 py-2 transform origin-top scale-y-0 transition-transform duration-200 ease-in-out group-hover:scale-y-100 z-50"
+    class="absolute left-0 mt-2 w-max min-w-[16rem] bg-white rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 py-2 transform origin-top scale-y-0 transition-transform duration-200 ease-in-out group-hover:scale-y-100 z-50"
     role="menu"
     aria-orientation="vertical"
   >
@@ -42,7 +42,7 @@ const { items, label } = Astro.props;
         <li role="none">
           <a
             href={item.link}
-            class="block px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+            class="block whitespace-nowrap px-4 py-3 text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
             role="menuitem"
           >
             {item.label}

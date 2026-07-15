@@ -1,194 +1,76 @@
 ---
-import CheckedBox from "../icons/CheckedBox.astro";
+import IconCard from "./IconCard.astro";
+import { CARD_LOOK } from "../config/cardLook";
+import InspectorIcon from "../icons/InspectorIcon.astro";
+import CardChecklist from "../icons/CardChecklist.astro";
+import WrenchIcon from "../icons/WrenchIcon.astro";
+import DoorOpenIcon from "../icons/DoorOpenIcon.astro";
+import ExitDoorIcon from "../icons/ExitDoorIcon.astro";
 
 const { location } = Astro.params;
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+const services = [
+  {
+    Icon: InspectorIcon,
+    title: "Fire Door Inspections",
+    body: "FireQual-certified inspections of FD30/FD60 doors—individual doors, HMOs, blocks of flats and commercial premises—as one-off checks or planned quarterly, six-monthly and annual programmes. Includes clear advice on repair, replacement and compliance.",
+  },
+  {
+    Icon: CardChecklist,
+    title: "Fire Door Surveys & Reports",
+    body: "Condition surveys, remedial and insurance reports, pre-purchase checks and specification reports—documented properly so you know exactly where you stand.",
+  },
+  {
+    Icon: WrenchIcon,
+    title: "Fire Door Repairs & Maintenance",
+    body: "Closers, seals, hinges, ironmongery, gap corrections and adjustments. Most faults are small and fixable—I put them right rather than condemning the door.",
+  },
+  {
+    Icon: DoorOpenIcon,
+    title: "Fire Door Installation",
+    body: "Certified installation of new timber fire doorsets—apartment entrance doors, internal fire doors and replacement doorsets, fitted to standard.",
+  },
+  {
+    Icon: ExitDoorIcon,
+    title: "Steel Fire Exit Doors",
+    body: "Steel personnel and fire exit doors, panic hardware and emergency exit furniture for industrial units, factories, warehouses and schools.",
+  },
+];
 ---
 
 <section class="bg-white py-16 md:py-24">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-3xl font-bold sm:text-4xl md:text-5xl text-brand mb-6">
+      <h2 class="text-2xl font-bold md:text-3xl text-brand mb-6">
         Fire Door Services I Provide
       </h2>
       <p class="mx-auto max-w-3xl text-gray-600 text-lg leading-relaxed">
         After 35 years in joinery and becoming FireQual certified, I specialise in fire door work {
           location ? `in ${capitalizeFirstLetter(location)}` : null
-        }. Whether you need an inspection, installation, or maintenance, I'll do it properly—no shortcuts, no guesswork. I've fitted thousands of doors over the years, so I know what works and what doesn't.
+        }. Whether you need an inspection, a survey and report, repairs, a new timber doorset or a steel fire exit door, I'll do it properly—no shortcuts, no guesswork. I've worked on thousands of doors over the years, so I know what works and what doesn't.
       </p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      <!-- Fire door maintenance and repairs -->
-      <div
-        class="service-card group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 group-hover:scale-110 transition-all duration-300 ease-out"
+      {
+        services.map((service) => {
+          const Icon = service.Icon;
+          return (
+            <IconCard
+              title={service.title}
+              body={service.body}
+              accent="navy"
+              look={CARD_LOOK}
             >
-              <CheckedBox className="h-6 w-6 text-blue-600 group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Fire Door Maintenance & Repairs
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              I'll check your doors properly—measuring gaps, testing closers, checking seals. Most issues are small and easy to fix if caught early. I'll tell you exactly what needs doing and why.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Surveys, assessments and checks -->
-      <div
-        class="service-card group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <CheckedBox className="h-6 w-6 text-green-600 group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Surveys, Assessments & Checks
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              I'll do a proper survey—not a quick look-over. I check everything systematically and give you a clear report of what's wrong and what needs fixing. No jargon, just straight talking.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6 monthly inspections -->
-      <div
-        class="service-card group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <CheckedBox className="h-6 w-6 text-purple-600 group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              6-Monthly RRO Inspections
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              I carry out regular inspections to RRO standards, keeping your documentation up to date. I'll spot problems before they become expensive, and you'll have proper records for compliance.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Supply and installation -->
-      <div
-        class="service-card group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <CheckedBox className="h-6 w-6 text-orange-600 group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Fire Door Supply & Installation
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              I'll supply the right door for your needs and fit it properly. After fitting thousands of doors, I know how to get it right first time—proper gaps, correct seals, everything done to standard.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fire door inspections -->
-      <div
-        class="service-card group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-red-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <CheckedBox className="h-6 w-6 text-red-600 group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Fire Door Inspections
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              As a FireQual certified inspector, I'll check everything properly—not rush through like some do. I'll tell you what's wrong, what's right, and what needs doing. No guesswork, just proper assessment.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fire door risk assessments -->
-      <div
-        class="service-card group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-indigo-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center group-hover:bg-indigo-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <CheckedBox className="h-6 w-6 text-indigo-600 group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Fire Door Risk Assessments
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              I'll assess the risks properly and tell you what needs fixing. I've seen what happens when things go wrong, so I know what to look for and how to fix it.
-            </p>
-          </div>
-        </div>
-      </div>
+              <Icon className="h-6 w-6" />
+            </IconCard>
+          );
+        })
+      }
     </div>
 
     <!-- Call to action -->
@@ -232,84 +114,3 @@ function capitalizeFirstLetter(string: string) {
     </div>
   </div>
 </section>
-
-<style>
-  /* Enhanced service card micro-interactions */
-  .service-card {
-    position: relative;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    border-radius: 0.75rem;
-    z-index: 0;
-  }
-
-  .service-card:hover::before {
-    opacity: 1;
-  }
-
-  /* Smooth icon rotation */
-  .service-card:hover .group-hover\:rotate-12 {
-    animation: gentleRotate 0.6s ease-out;
-  }
-
-  @keyframes gentleRotate {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(15deg); }
-    100% { transform: rotate(12deg); }
-  }
-
-  /* Enhanced shadow on hover */
-  .service-card:hover {
-    box-shadow: 
-      0 20px 40px rgba(30, 42, 56, 0.15),
-      0 8px 16px rgba(30, 42, 56, 0.1);
-  }
-
-  /* Smooth scale animation */
-  .service-card {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .service-card:hover {
-    transform: translateY(-8px) scale(1.02);
-  }
-
-  /* Icon scale animation */
-  .service-card .flex-shrink-0 > div {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .service-card:hover .flex-shrink-0 > div {
-    transform: scale(1.1);
-  }
-
-  /* Text color transition */
-  .service-card h3,
-  .service-card p {
-    transition: color 0.3s ease;
-  }
-
-  /* Background gradient animation */
-  .service-card > div:first-child {
-    transition: opacity 0.5s ease;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .service-card:hover {
-      transform: translateY(-4px) scale(1.01);
-    }
-  }
-</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Carousel from "../components/Carousel.astro";
+import ServiceHero from "../components/ServiceHero.astro";
+import heroImage from "../assets/images/robert-coulson-fire-door-specialist.png";
 import WhyFireDoors from "./WhyFireDoors.astro";
 import CommonFaults from "./CommonFaults.astro";
 import MainServices from "./MainServices.astro";
@@ -117,22 +118,18 @@ const seoData = {
 <Layout
   title={seoData.title}
   description={seoData.description}
-  classes="mt-8 mb-16"
+  classes="mb-16"
 >
-  <!-- Hero Section with modern carousel -->
-  <section class="relative z-10 mx-auto">
-    <Carousel />
-  </section>
-
-  <!-- Main Heading for SEO -->
-  <section class="container mx-auto px-4 py-8 text-center">
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-900 mb-4">
-      Professional Fire Door Services in Yorkshire
-    </h1>
-    <p class="text-xl md:text-2xl text-brand-600 max-w-3xl mx-auto">
-      FireQual certified inspections, installation, and maintenance. 35+ years on the tools since 1989.
-    </p>
-  </section>
+  {/* Hero — photo panel with Robert's portrait, consistent with the service pages */}
+  <ServiceHero
+    image={heroImage}
+    imageAlt="Robert Coulson, FireQual fire door inspector, Yorkshire"
+    title="Professional Fire Door Services in Yorkshire"
+    description="I'm Robert — a City & Guilds joiner with Distinction, FireQual fire door inspector and Clerk of Works. Fire door inspections, installation and maintenance across Yorkshire — no sales team, no subcontracting, you deal with me from first call to final report."
+    primaryCta={{ text: "Get a Quote", link: "/contact" }}
+    secondaryCta={{ text: "View all services", link: "/fire-door-services" }}
+    whatsAppMessage={`Hi Robert, I'd like to ask about fire door work. Happy to send photos or an existing report if that helps.\n\nEnquiry via the Coulsy Fire Doors website.\n\nPostcode:\nProperty type:\nWhat's involved:`}
+  />
 
   <!-- Why Fire Doors Section -->
   <section class="relative z-10 mx-auto">

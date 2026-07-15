@@ -5,6 +5,7 @@ interface Props {
   title: string;
   description: string;
   features?: string[];
+  href?: string; // when set, the whole card becomes a link to that page
 }
 
 const {
@@ -16,7 +17,16 @@ const {
   title,
   description,
   features = [],
+  href,
 } = Astro.props;
+
+// The card is a plain <div> normally; when an href is passed it becomes a link
+// so the page can route to a service page. Backward-compatible — existing
+// callers pass no href and render exactly as before.
+const CardTag = href ? "a" : "div";
+const linkClasses = href
+  ? "hover:border-brand-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 no-underline"
+  : "";
 
 // Normalize icon to array
 const iconPaths = Array.isArray(icon) ? icon : [icon];
@@ -56,8 +66,9 @@ const colorClasses = {
 const colors = colorClasses[iconColor];
 ---
 
-<div
-  class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow"
+<CardTag
+  href={href}
+  class={`block bg-white p-6 rounded-lg shadow-sm border border-transparent hover:shadow-lg transition-all duration-200 ${linkClasses}`}
 >
   <div
     class={`w-12 h-12 ${colors.bg} rounded-lg flex items-center justify-center mb-4`}
@@ -88,5 +99,5 @@ const colors = colorClasses[iconColor];
       ))}
     </ul>
   )}
-</div>
+</CardTag>
 

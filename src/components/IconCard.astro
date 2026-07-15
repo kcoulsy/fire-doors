@@ -1,0 +1,79 @@
+---
+import type { CardLook } from "../config/cardLook";
+
+type Accent = "navy" | "red";
+
+interface Props {
+  title: string;
+  body: string;
+  accent: Accent;
+  look: CardLook;
+}
+
+const { title, body, accent, look } = Astro.props;
+const isNavy = accent === "navy";
+
+// The icon tile: solid brand fill with a white glyph, or a soft tint with a
+// coloured glyph. The glyph itself inherits `currentColor` from this tile, so
+// every icon (fill- or stroke-based) picks up the right colour automatically.
+const tileClass =
+  look === "solid"
+    ? isNavy
+      ? "bg-brand text-white"
+      : "bg-red-600 text-white"
+    : isNavy
+      ? "bg-brand-50 text-brand"
+      : "bg-red-50 text-red-600";
+
+// The soft look adds a thin accent rule across the top of the card.
+const ruleClass =
+  look === "soft"
+    ? isNavy
+      ? "border-t-4 border-brand"
+      : "border-t-4 border-red-600"
+    : "";
+
+// Very subtle brand-tinted wash that fades in on hover.
+const washClass = isNavy ? "from-brand-50 to-brand-100" : "from-red-50 to-red-100";
+---
+
+<div
+  class:list={[
+    "group relative bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden",
+    ruleClass,
+  ]}
+>
+  <!-- Hover background wash -->
+  <div
+    class:list={[
+      "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+      washClass,
+    ]}
+  >
+  </div>
+
+  <div class="relative z-10 flex items-start space-x-4">
+    <div class="flex-shrink-0">
+      <div
+        class:list={[
+          "w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ease-out",
+          tileClass,
+        ]}
+      >
+        <slot />
+      </div>
+    </div>
+    <div class="flex-1">
+      <h3
+        class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
+      >
+        {title}
+      </h3>
+      <p
+        class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300"
+      >
+        {body}
+      </p>
+    </div>
+  </div>
+</div>

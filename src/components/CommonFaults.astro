@@ -1,5 +1,60 @@
 ---
-// Import icons for better visual appeal
+// Common fire door failures — a grouped defect taxonomy.
+// A full FD30/FD30S survey reports against ~60 granular failure types across the
+// whole doorset; these 12 grouped categories are the public-facing summary,
+// mapped to the BS 8214 / FDIS survey structure. Icon-free by design: for fatal
+// defects a wrong glyph reads worse than none, so each card carries only a red
+// severity rule.
+const faults = [
+  {
+    title: "Missing Certification & Labelling",
+    body: "With no label or plug on the door edge there's no evidence it's a certified fire door — or that the leaf and frame were tested together.",
+  },
+  {
+    title: "Door Leaf Damage & Warping",
+    body: "Splits, holes or a bowed, twisted leaf break the fire-resisting construction and stop the door sealing against the frame.",
+  },
+  {
+    title: "Frame & Fire-Stopping Defects",
+    body: "A loose or out-of-square frame, or an unsealed gap between frame and wall, lets fire bypass the doorset even when the door is sound.",
+  },
+  {
+    title: "Excessive or Uneven Gaps",
+    body: "Gaps around the leaf should sit at a consistent 2–4mm. Too wide lets smoke and fire through; too tight and the door binds and won't close.",
+  },
+  {
+    title: "Threshold Gap & Smoke Leakage",
+    body: "An oversized gap under the door, or a missing drop or threshold seal, lets cold smoke pass — usually the first thing to spread in a fire.",
+  },
+  {
+    title: "Missing or Damaged Seals",
+    body: "Intumescent and smoke seals that are missing, painted over or damaged can't expand to close the gaps — so the door never reaches its rating.",
+  },
+  {
+    title: "Hinge & Fixing Faults",
+    body: "Fewer than three hinges, the wrong hinge type, or missing and loose screws let the door drop and warp, breaking the seal against the frame.",
+  },
+  {
+    title: "Self-Closing Failure",
+    body: "A fire door must close fully and latch from any angle. A missing, damaged or under-powered closer leaves it standing open when it matters most.",
+  },
+  {
+    title: "Latching, Locks & Ironmongery",
+    body: "Non-fire-rated latches, locks or handles — or a latch that won't hold the door shut against the closer — stop the doorset performing.",
+  },
+  {
+    title: "Glazing & Vision Panels",
+    body: "Non-fire-rated glass, damaged beading, or a vision panel cut in on site can't hold back fire — and voids the door's certification.",
+  },
+  {
+    title: "Unauthorised Alterations & Obstructions",
+    body: "Letterplates, cat flaps, extra locks or spy holes added after certification — or a door wedged and propped open — void the rating.",
+  },
+  {
+    title: "Signage & Ongoing Maintenance",
+    body: "Missing 'Fire Door Keep Shut' signage, and a lack of routine maintenance, mean faults go unnoticed and unmanaged over time.",
+  },
+];
 ---
 
 <section class="container mx-auto bg-gray-50">
@@ -7,308 +62,31 @@
     class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
   >
     <div class="mx-auto max-w-3xl text-center">
-      <h2 class="text-3xl font-bold sm:text-4xl text-brand mb-4">
+      <h2 class="text-2xl font-bold md:text-3xl text-brand mb-4">
         Common Fire Door Failures
       </h2>
 
       <p class="mt-4 text-gray-600 text-lg leading-relaxed">
-        Fire doors are crucial for building safety, but they must be installed
-        and maintained correctly to be effective. Here are the most common fire
-        door failures we encounter during inspections.
+        A fire door only holds back fire as a complete assembly—leaf, frame,
+        seals, hinges, closer and glazing all have to be right. A full survey can
+        record up to 70 individual defects; the categories below group the ones
+        I find most often, and any single one can stop the door doing its job.
       </p>
     </div>
 
     <div
       class="mt-12 grid grid-cols-1 gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3"
     >
-      <!-- Incorrectly fitted or damaged doors -->
-      <div
-        class="fault-card group relative bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-red-50 to-red-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center group-hover:bg-red-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <svg
-                class="w-6 h-6 text-red-600 group-hover:rotate-12 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Incorrect Installation & Damage
+      {
+        faults.map((fault) => (
+          <div class="group bg-white rounded-xl border border-gray-200 border-l-4 border-l-red-600 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-out">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300">
+              {fault.title}
             </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              Doors that aren't properly fitted or have sustained damage can
-              compromise the entire fire safety system.
-            </p>
+            <p class="text-gray-600 text-sm leading-relaxed">{fault.body}</p>
           </div>
-        </div>
-      </div>
-
-      <!-- Wrong gap tolerances -->
-      <div
-        class="fault-card group relative bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <svg
-                class="w-6 h-6 text-orange-600 group-hover:rotate-12 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Incorrect Gap Tolerances
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              Gaps that are too large allow smoke and fire to pass through,
-              while gaps that are too small prevent proper door operation.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Doors not engaging rebate -->
-      <div
-        class="fault-card group relative bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-yellow-50 to-yellow-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center group-hover:bg-yellow-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <svg
-                class="w-6 h-6 text-yellow-600 group-hover:rotate-12 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Poor Rebate Engagement
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              When doors don't fully engage with the frame rebate, they can't
-              provide the necessary fire resistance.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Faulty door closers -->
-      <div
-        class="fault-card group relative bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <svg
-                class="w-6 h-6 text-blue-600 group-hover:rotate-12 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Faulty Door Closers
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              Door closers that don't function properly prevent doors from
-              closing automatically, which is essential during a fire.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Incorrect door furniture -->
-      <div
-        class="fault-card group relative bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <svg
-                class="w-6 h-6 text-purple-600 group-hover:rotate-12 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Incorrect Door Furniture
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              Hinges, handles, and other hardware must be fire-rated and
-              properly specified for the door type.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Failed fire door seals -->
-      <div
-        class="fault-card group relative bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <svg
-                class="w-6 h-6 text-green-600 group-hover:rotate-12 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Failed Fire Door Seals
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              Intumescent and smoke seals that are damaged or missing allow fire
-              and smoke to bypass the door.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Incorrect glazing -->
-      <div
-        class="fault-card group relative bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] overflow-hidden"
-      >
-        <!-- Hover background effect -->
-        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-indigo-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="relative z-10 flex items-start space-x-4">
-          <div class="flex-shrink-0">
-            <div
-              class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center group-hover:bg-indigo-200 group-hover:scale-110 transition-all duration-300 ease-out"
-            >
-              <svg
-                class="w-6 h-6 text-indigo-600 group-hover:rotate-12 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <h3
-              class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-brand transition-colors duration-300"
-            >
-              Incorrect Glazing Specification
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-              Fire-rated glazing must be properly certified and installed to
-              maintain the door's fire resistance rating.
-            </p>
-          </div>
-        </div>
-      </div>
+        ))
+      }
     </div>
 
     <!-- Call to action -->

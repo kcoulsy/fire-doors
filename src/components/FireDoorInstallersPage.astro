@@ -4,6 +4,7 @@ import ContactForm from "../components/ContactForm.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import NearbyAreas from "./NearbyAreas.astro";
 import ServiceHero from "../components/ServiceHero.astro";
+import heroImage from "../assets/images/door-hanging-1.jpeg";
 import ServiceCard from "../components/ServiceCard.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import ProcessStep from "../components/ProcessStep.astro";
@@ -42,7 +43,7 @@ const place = cleanLocationName || "Yorkshire";
 <Layout
   title={`Fire Door Installation${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
   description={finalDescription}
-  classes="mt-8 mb-16"
+  classes="mb-16"
   location={location}
 >
   <script
@@ -81,6 +82,8 @@ const place = cleanLocationName || "Yorkshire";
   </section>
 
   <ServiceHero
+        image={heroImage}
+        imageAlt="Fitting a fire door"
     title={`Fire Door Installation${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
     description={`I'm Robert — City & Guilds qualified joiner since 1989 and a FireQual fire door inspector. I fit fire doors and doorsets across ${place}: flats, HMOs, care homes, schools, offices. Correct doors, correct ironmongery, proper paperwork at the end.`}
     primaryCta={{ text: "Get an Installation Quote", link: "#contact" }}

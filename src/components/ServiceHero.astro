@@ -1,7 +1,12 @@
 ---
+import { Image } from "astro:assets";
+import WhatsAppButton from "./WhatsAppButton.astro";
+
 interface Props {
   title: string;
   description: string;
+  image?: ImageMetadata; // per-page photo; falls back to a navy panel if absent
+  imageAlt?: string;
   primaryCta?: {
     text: string;
     link: string;
@@ -10,69 +15,93 @@ interface Props {
     text: string;
     link: string;
   };
+  whatsAppMessage?: string; // when set, a WhatsApp button sits beside Call Now
 }
 
 const {
   title,
   description,
+  image,
+  imageAlt = "",
   primaryCta = { text: "Get Quote", link: "#contact" },
   secondaryCta = { text: "Contact Us", link: "/contact" },
+  whatsAppMessage,
 } = Astro.props;
 ---
 
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-brand-50 to-white py-10 lg:py-14">
-  <div class="container mx-auto px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6">
+<!-- Hero: a compact photo panel. Image sits behind; a navy gradient keeps the
+     left-hand text readable over any photo. Not a full-bleed banner — the height
+     is content-driven, so it stays inviting rather than a wall of image. -->
+<section class="relative overflow-hidden bg-brand-900">
+  {
+    image && (
+      <Image
+        src={image}
+        alt={imageAlt}
+        class="absolute inset-0 h-full w-full object-cover"
+        widths={[600, 900, 1200, 1600]}
+        sizes="100vw"
+        loading="eager"
+        quality={80}
+        format="webp"
+      />
+    )
+  }
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-brand-900/90 via-brand-900/70 to-brand-900/25"
+  >
+  </div>
+
+  <div class="relative container mx-auto px-4 py-14 lg:py-20">
+    <div class="max-w-xl">
+      <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4 text-balance">
         {title}
       </h1>
-      <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+      <div class="w-14 h-1 bg-red-600 rounded-full mb-5"></div>
+      <p class="text-lg text-gray-100 mb-5 leading-relaxed">
         {description}
       </p>
-
-      <p class="text-base text-brand-600 font-medium mb-6">
-        <span class="font-semibold">I come to you.</span> Fire-door inspections,
-        surveys and remedial work are carried out at your property across
-        Yorkshire.
+      <p class="text-sm text-gray-200 mb-6">
+        <span class="font-semibold text-white">I come to you.</span> Inspections,
+        surveys and remedial work carried out at your property across Yorkshire.
       </p>
 
-      <!-- Prominent Phone Number -->
-      <div class="mb-8">
-        <a
-          href="tel:07544030486"
-          class="inline-flex items-center justify-center px-6 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 transition-colors duration-200 text-lg shadow-md"
-        >
-          <svg
-            class="mr-2 w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+      <div class="mb-4">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="tel:07544030486"
+            class="inline-flex items-center justify-center whitespace-nowrap px-6 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 transition-colors duration-200 text-lg shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-900"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-            />
-          </svg>
-          Call Now: 07544 030486
-        </a>
-        <p class="text-sm text-gray-500 mt-2">Available for quotes and enquiries</p>
+            <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path>
+            </svg>
+            Call Now: 07544 030486
+          </a>
+          {
+            whatsAppMessage && (
+              <WhatsAppButton
+                message={whatsAppMessage}
+                label="WhatsApp"
+                class="whitespace-nowrap"
+              />
+            )
+          }
+        </div>
+        <p class="text-sm text-gray-300 mt-2">Available for quotes and enquiries</p>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex flex-col sm:flex-row gap-3">
         <a
           href={primaryCta.link}
-          class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white font-semibold rounded-lg hover:bg-brand-light transition-colors duration-200"
+          class="inline-flex items-center justify-center px-7 py-3 bg-white text-brand-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200"
         >
           {primaryCta.text}
-          <svg
-            class="ml-2 w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -82,7 +111,7 @@ const {
         </a>
         <a
           href={secondaryCta.link}
-          class="inline-flex items-center justify-center px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          class="inline-flex items-center justify-center px-7 py-3 border-2 border-white/60 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-200"
         >
           {secondaryCta.text}
         </a>
@@ -90,4 +119,3 @@ const {
     </div>
   </div>
 </section>
-

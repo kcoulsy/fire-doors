@@ -4,6 +4,9 @@ import ContactForm from "../components/ContactForm.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import NearbyAreas from "./NearbyAreas.astro";
 import ServiceHero from "../components/ServiceHero.astro";
+import heroImage from "../assets/images/inspection-survey.png";
+import { Image } from "astro:assets";
+import certifireImage from "../assets/images/certifire-fd30.png";
 import ServiceCard from "../components/ServiceCard.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import ProcessStep from "../components/ProcessStep.astro";
@@ -42,7 +45,7 @@ const place = cleanLocationName || "Yorkshire";
 <Layout
   title={`Fire Door Inspections${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
   description={finalDescription}
-  classes="mt-8 mb-16"
+  classes="mb-16"
   location={location}
 >
   <script
@@ -81,6 +84,8 @@ const place = cleanLocationName || "Yorkshire";
   </section>
 
   <ServiceHero
+        image={heroImage}
+        imageAlt="Robert checking a fire door gap during a survey"
     title={`Fire Door Inspections${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
     description={`I'm Robert — a FireQual qualified fire door inspector covering ${place}. I survey fire doors, write the report, and you get a document you can give straight to an insurer, Responsible Person, or enforcement officer. No shortcuts, no copy-paste.`}
     primaryCta={{ text: "Book an Inspection", link: "#contact" }}
@@ -270,6 +275,41 @@ const place = cleanLocationName || "Yorkshire";
             title="Follow-up if you want it"
             description="If the fix list is fiddly I can quote to remedy it myself, or I can just hand the report over for your own contractor. No pressure to use me for both."
           />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Proof: a real certified door — the Certifire label check. Robert to verify wording. */}
+  <section class="py-14 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <Image
+            src={certifireImage}
+            alt="Certifire FD30 certified fire door component label on a doorset"
+            widths={[400, 600, 800]}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            class="w-full h-auto"
+            loading="lazy"
+            quality={80}
+            format="webp"
+          />
+        </div>
+        <div>
+          <h2 class="text-2xl lg:text-3xl font-bold text-brand-900 mb-4">
+            I check the certification, not just the door
+          </h2>
+          <p class="text-gray-600 mb-3">
+            Every fire door should carry a certification label — a Certifire or
+            BM&nbsp;Trada mark showing the leaf is a tested FD30 or FD60 component.
+          </p>
+          <p class="text-gray-600">
+            On each inspection I find the label, check the reference is genuine and
+            matches the doorset, and record it with a photo in your report. A missing
+            label, or components that don't match the certificate, is a finding — and
+            it's exactly what fails an audit.
+          </p>
         </div>
       </div>
     </div>

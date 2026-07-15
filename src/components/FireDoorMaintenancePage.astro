@@ -4,6 +4,7 @@ import ContactForm from "../components/ContactForm.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import NearbyAreas from "./NearbyAreas.astro";
 import ServiceHero from "../components/ServiceHero.astro";
+import heroImage from "../assets/images/door-closer-open.jpeg";
 import ServiceCard from "../components/ServiceCard.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import ProcessStep from "../components/ProcessStep.astro";
@@ -42,7 +43,7 @@ const place = cleanLocationName || "Yorkshire";
 <Layout
   title={`Fire Door Maintenance${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
   description={finalDescription}
-  classes="mt-8 mb-16"
+  classes="mb-16"
   location={location}
 >
   <script
@@ -81,6 +82,8 @@ const place = cleanLocationName || "Yorkshire";
   </section>
 
   <ServiceHero
+        image={heroImage}
+        imageAlt="Adjusting a fire door closer"
     title={`Fire Door Maintenance${location ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
     description={`I'm Robert — a FireQual qualified fire door inspector covering ${place}. Most fire doors don't fail dramatically; they drift out of compliance — a seal comes off, a closer gets tired, a gap opens up. I'll come out, go door by door, and put it right before it becomes an enforcement issue.`}
     primaryCta={{ text: "Get a Maintenance Quote", link: "#contact" }}

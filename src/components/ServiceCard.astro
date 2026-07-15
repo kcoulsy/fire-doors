@@ -1,7 +1,7 @@
 ---
 interface Props {
   icon: string | string[]; // SVG path data (single path or array of paths)
-  iconColor?: "blue" | "green" | "purple" | "orange" | "red" | "indigo";
+  iconColor?: "brand" | "blue" | "green" | "purple" | "orange" | "red" | "indigo";
   title: string;
   description: string;
   features?: string[];
@@ -9,7 +9,10 @@ interface Props {
 
 const {
   icon,
-  iconColor = "blue",
+  // One consistent Fire Doors treatment. The old default was a per-card rainbow
+  // of bootstrap hues; the brand navy chip is now the default and the only
+  // value the service pages pass.
+  iconColor = "brand",
   title,
   description,
   features = [],
@@ -20,6 +23,10 @@ const iconPaths = Array.isArray(icon) ? icon : [icon];
 
 // Color mapping for icon backgrounds and text
 const colorClasses = {
+  brand: {
+    bg: "bg-brand-50",
+    text: "text-brand-700",
+  },
   blue: {
     bg: "bg-blue-100",
     text: "text-blue-600",

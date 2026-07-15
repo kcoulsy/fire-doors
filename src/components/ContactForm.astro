@@ -2,6 +2,7 @@
 interface Props {
   title?: string;
   subtitle?: string;
+  showHeader?: boolean;
   showPhone?: boolean;
   className?: string;
   location?: string;
@@ -12,6 +13,10 @@ interface Props {
 const {
   title = "Get Your Fire Door Quote",
   subtitle = "Ready to ensure your fire safety compliance? Get in touch for a professional inspection and quote.",
+  // When false, the form's own heading/subtitle are suppressed so a page that
+  // already has its own section heading does not render a second one. Defaults
+  // true, so every existing caller is unchanged.
+  showHeader = true,
   showPhone = true,
   className = "",
   location,
@@ -38,10 +43,12 @@ const errorMessageId = uniqueId ? `error-message-${uniqueId}` : "error-message";
 <div
   class={`bg-white rounded-xl shadow-lg border border-gray-200 p-6 ${className}`}
 >
-  <div class="text-center mb-6">
-    <h2 class="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
-    <p class="text-gray-600">{subtitle}</p>
-  </div>
+  {showHeader && (
+    <div class="text-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
+      <p class="text-gray-600">{subtitle}</p>
+    </div>
+  )}
 
   <form
     id={formId}

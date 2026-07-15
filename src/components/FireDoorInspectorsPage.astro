@@ -9,6 +9,9 @@ import FeatureCard from "../components/FeatureCard.astro";
 import ProcessStep from "../components/ProcessStep.astro";
 import QualificationCard from "../components/QualificationCard.astro";
 import { getFormattedPageData } from "../utils/pageMeta";
+import PhoneButton from "../components/PhoneButton.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ReviewSummary from "../components/ReviewSummary.astro";
 
 interface Props {
   location?: string;
@@ -27,6 +30,10 @@ const {
   defaultDescription,
   enhancedDescription,
 } = getFormattedPageData(location, type);
+
+const waMessage = cleanLocationName
+  ? `Hi Robert, I'd like to ask about fire door work in ${cleanLocationName}. Happy to send photos or an existing report if that helps.\n\nEnquiry via the Coulsy Fire Doors website.\n\nPostcode:\nProperty type:\nWhat's involved:`
+  : `Hi Robert, I'd like to ask about fire door work. Happy to send photos or an existing report if that helps.\n\nEnquiry via the Coulsy Fire Doors website.\n\nPostcode:\nProperty type:\nWhat's involved:`;
 
 const finalDescription = enhancedDescription || defaultDescription;
 const place = cleanLocationName || "Yorkshire";
@@ -133,7 +140,6 @@ const place = cleanLocationName || "Yorkshire";
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
             icon="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-            iconColor="blue"
             title="First-time / baseline"
             description="Never had a proper inspection before? I'll go door by door and give you a full baseline — condition, compliance, and a prioritised fix list."
             features={[
@@ -146,7 +152,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-            iconColor="green"
             title="Routine 6-monthly"
             description="The regulations want fire doors checked at least every six months. I set up a recurring schedule so you don't have to chase it."
             features={[
@@ -159,7 +164,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            iconColor="purple"
             title="HMO compliance"
             description="Specific inspection geared to HMO licensing — flat entrance doors, escape route doors, and anything the council might ask for."
             features={[
@@ -175,7 +179,6 @@ const place = cleanLocationName || "Yorkshire";
               "M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z",
               "M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z",
             ]}
-            iconColor="orange"
             title="Pre-purchase / due diligence"
             description="Buying a block, care home, or HMO? I'll walk the building and tell you what it'd cost to bring the doors up to scratch before you commit."
             features={[
@@ -188,7 +191,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
-            iconColor="red"
             title="Enforcement-driven"
             description="If you've had a notice from the fire service or environmental health, I can turn round a structured inspection report quickly to help you respond."
             features={[
@@ -201,7 +203,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-            iconColor="indigo"
             title="Single-door checks"
             description="Sometimes you just need one door checked — a flat entrance door, a new install, a post-repair sign-off. Happy to do that too."
             features={[
@@ -210,6 +211,27 @@ const place = cleanLocationName || "Yorkshire";
               "Short-form report",
               "Fixed small-job price",
             ]}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Mid-page CTA — one deliberate conversion point after the coverage grid; call primary, WhatsApp secondary */}
+  <section class="py-12 bg-brand-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-brand-900 mb-2">Not sure what you need?</h2>
+        <p class="text-gray-600 mb-6">
+          Tell me what you're dealing with and I'll give you a straight answer
+          — no obligation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <PhoneButton label="Call now" />
+          <WhatsAppButton
+            variant="outline"
+            label="Send details on WhatsApp"
+            message={waMessage}
           />
         </div>
       </div>
@@ -294,6 +316,8 @@ const place = cleanLocationName || "Yorkshire";
     <NearbyAreas location={location} serviceType="fire-door-inspectors" />
   </section>
 
+  <ReviewSummary />
+
   <section id="contact" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
@@ -305,6 +329,7 @@ const place = cleanLocationName || "Yorkshire";
           back with a straight quote and a sensible visit date.
         </p>
         <ContactForm
+          showHeader={false}
           location={location}
           serviceType={type}
           uniqueId={location}

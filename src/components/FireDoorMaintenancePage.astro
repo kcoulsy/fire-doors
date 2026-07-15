@@ -9,6 +9,9 @@ import FeatureCard from "../components/FeatureCard.astro";
 import ProcessStep from "../components/ProcessStep.astro";
 import QualificationCard from "../components/QualificationCard.astro";
 import { getFormattedPageData } from "../utils/pageMeta";
+import PhoneButton from "../components/PhoneButton.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ReviewSummary from "../components/ReviewSummary.astro";
 
 interface Props {
   location?: string;
@@ -27,6 +30,10 @@ const {
   defaultDescription,
   enhancedDescription,
 } = getFormattedPageData(location, type);
+
+const waMessage = cleanLocationName
+  ? `Hi Robert, I'd like to ask about fire door work in ${cleanLocationName}. Happy to send photos or an existing report if that helps.\n\nEnquiry via the Coulsy Fire Doors website.\n\nPostcode:\nProperty type:\nWhat's involved:`
+  : `Hi Robert, I'd like to ask about fire door work. Happy to send photos or an existing report if that helps.\n\nEnquiry via the Coulsy Fire Doors website.\n\nPostcode:\nProperty type:\nWhat's involved:`;
 
 const finalDescription = enhancedDescription || defaultDescription;
 const place = cleanLocationName || "Yorkshire";
@@ -133,7 +140,6 @@ const place = cleanLocationName || "Yorkshire";
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
             icon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            iconColor="blue"
             title="Condition check"
             description="Every door on the contract looked at properly — leaf, frame, gaps, seals, hinges, closer, vision panel, ironmongery — against the same checklist used for a full inspection."
             features={[
@@ -149,7 +155,6 @@ const place = cleanLocationName || "Yorkshire";
               "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
               "M15 12a3 3 0 11-6 0 3 3 0 016 0z",
             ]}
-            iconColor="green"
             title="Seals, hinges, closers"
             description="The three things that fail most — intumescent and smoke seals, hinges, and door closers. I replace or adjust on the visit where I can, so most issues are resolved before I leave."
             features={[
@@ -162,7 +167,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M13 10V3L4 14h7v7l9-11h-7z"
-            iconColor="purple"
             title="Gap adjustment & rehanging"
             description="Gaps that have opened up past 3mm (head/jambs) or 8mm (threshold) lose the rating. I rehang, adjust or plane where needed so doors meet spec again."
             features={[
@@ -175,7 +179,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
-            iconColor="red"
             title="Urgent repairs"
             description="Closer sheared off, door damaged in a tenant incident, won't shut after a break-in — get in touch and I'll fit it in where I can. Make-safe same visit, full repair as soon as parts allow."
             features={[
@@ -188,7 +191,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-            iconColor="orange"
             title="Maintenance contracts"
             description="Fixed-schedule 6- or 3-monthly contracts so you don't have to chase it. Works well for HMO portfolios, care homes, schools, and managed blocks."
             features={[
@@ -201,7 +203,6 @@ const place = cleanLocationName || "Yorkshire";
 
           <ServiceCard
             icon="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-            iconColor="indigo"
             title="Visit records for your RP"
             description="After each visit you get a short written record — what I looked at, what I did, photos of anything I replaced. Goes straight into your building's fire safety file."
             features={[
@@ -210,6 +211,27 @@ const place = cleanLocationName || "Yorkshire";
               "Annotated action list",
               "Emailed same day",
             ]}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Mid-page CTA — one deliberate conversion point after the coverage grid; call primary, WhatsApp secondary */}
+  <section class="py-12 bg-brand-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-brand-900 mb-2">Not sure what you need?</h2>
+        <p class="text-gray-600 mb-6">
+          Tell me what you're dealing with and I'll give you a straight answer
+          — no obligation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <PhoneButton label="Call now" />
+          <WhatsAppButton
+            variant="outline"
+            label="Send details on WhatsApp"
+            message={waMessage}
           />
         </div>
       </div>
@@ -294,6 +316,8 @@ const place = cleanLocationName || "Yorkshire";
     <NearbyAreas location={location} serviceType="fire-door-maintenance" />
   </section>
 
+  <ReviewSummary />
+
   <section id="contact" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
@@ -306,6 +330,7 @@ const place = cleanLocationName || "Yorkshire";
           schedule and a per-door price.
         </p>
         <ContactForm
+          showHeader={false}
           location={location}
           serviceType={type}
           uniqueId={location}

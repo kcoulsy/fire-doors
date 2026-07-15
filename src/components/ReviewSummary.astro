@@ -1,0 +1,61 @@
+---
+// Compact social proof for the service pages. The full 12-review grid lives on
+// the homepage, /about and /contact — this is a restrained summary so 220
+// service/location pages get proof without repeating the whole grid.
+//
+// Rating and count are DERIVED from the canonical dataset (single source of
+// truth), so the number shown can never disagree with the reviews. The two
+// quotes are selected by author and rendered VERBATIM from that same dataset.
+// No AggregateRating / Review JSON-LD is emitted here.
+import { REVIEWS, REVIEW_COUNT, AVERAGE_RATING } from "../constants/reviews";
+
+const FEATURED = ["Donna Cresdee", "edris mahmud"];
+const featured = FEATURED.map((name) =>
+  REVIEWS.find((r) => r.author === name)
+).filter((r): r is (typeof REVIEWS)[number] => Boolean(r));
+
+const stars = "★".repeat(5);
+---
+
+<section class="py-12 bg-white">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div
+      class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6"
+    >
+      <div class="flex items-center gap-3">
+        <span class="text-yellow-500 text-xl tracking-tight" aria-hidden="true"
+          >{stars}</span
+        >
+        <p class="text-brand-900">
+          <span class="font-bold">{AVERAGE_RATING} out of 5</span>
+          <span class="text-gray-500 text-sm">
+            · {REVIEW_COUNT} Google reviews</span
+          >
+        </p>
+      </div>
+      <a
+        href="/about"
+        class="text-sm font-semibold text-brand-600 hover:text-brand-700"
+        >Read all reviews →</a
+      >
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        featured.map((review) => (
+          <blockquote class="rounded-xl border border-gray-200 bg-white p-5">
+            <div class="text-yellow-500 text-sm mb-2" aria-hidden="true">
+              {stars}
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed mb-3">
+              “{review.text}”
+            </p>
+            <cite class="text-sm font-semibold text-brand-900 not-italic">
+              {review.author}
+            </cite>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>

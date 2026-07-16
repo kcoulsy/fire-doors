@@ -120,7 +120,7 @@ export function getFormattedPageData(location?: string, type?: string): {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "@id": "https://coulsyfiredoors.co.uk/#business",
-      name: "Coulsy Fire Door Services",
+      name: "Coulsy Fire Doors",
       description: enhancedDescription,
       url: pageUrl,
       image: "https://coulsyfiredoors.co.uk/images/coulsy-logo-sm.png",
@@ -130,11 +130,12 @@ export function getFormattedPageData(location?: string, type?: string): {
       paymentAccepted: ["Cash", "Bank Transfer"],
       currenciesAccepted: "GBP",
       knowsAbout: [
-        "Fire Door Installation",
-        "Fire Door Maintenance",
         "Fire Door Inspections",
+        "Fire Door Surveys",
+        "Fire Door Repairs & Maintenance",
+        "Fire Door Installation",
+        "Steel Fire Exit Doors",
         "Fire Safety Compliance",
-        "Fire Door Repairs",
       ],
       award: [
         "FireQual Fire Door Inspector",
@@ -142,18 +143,8 @@ export function getFormattedPageData(location?: string, type?: string): {
         "NVQ Level 7 in Construction Senior Management",
         "Advanced City & Guilds in Carpentry & Joinery (Distinction)",
       ],
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: cleanLocationName || "York",
-        addressRegion: locationRegion,
-        postalCode: locationPostcode,
-        addressCountry: "GB",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: geo.lat,
-        longitude: geo.lng,
-      },
+      // No address/geo/hasMap: service-area business; registered office is
+      // disclosed once on /company-information, never per-town. Coverage below.
       openingHours: "Mo-Fr 07:00-18:00",
       areaServed: enhancedAreaServed.map((city) => ({
         "@type": "City",
@@ -163,19 +154,6 @@ export function getFormattedPageData(location?: string, type?: string): {
           name: locationRegion,
         },
       })),
-      serviceArea: {
-        "@type": "GeoCircle",
-        geoMidpoint: {
-          "@type": "GeoCoordinates",
-          latitude: String(geo.lat),
-          longitude: String(geo.lng),
-        },
-        geoRadius: {
-          "@type": "Distance",
-          name: "30 miles",
-        },
-      },
-      hasMap: `https://www.google.com/maps?q=${geo.lat},${geo.lng}`,
       sameAs: [
         "https://www.linkedin.com/company/coulsy-limited/?viewAsMember=true",
         "https://www.facebook.com/coulsyjoinery/",
@@ -183,8 +161,7 @@ export function getFormattedPageData(location?: string, type?: string): {
       // No aggregateRating: Google does not support review rich results for a
       // business reviewing itself, and the 4.8/50 that used to sit here was
       // invented — the real reviews are 5.0 from 12, rendered by Reviews.astro.
-      foundingDate: "1989",
-      numberOfEmployees: "2",
+      foundingDate: "1988",
       slogan: "Fire doors, fitted and inspected properly",
       hasCredential: [
         "FireQual Fire Door Inspector",
@@ -197,23 +174,13 @@ export function getFormattedPageData(location?: string, type?: string): {
     const localBusinessSchema = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      name: `Coulsy Fire Door Services - ${cleanLocationName || "York"}`,
+      name: "Coulsy Fire Doors",
       description: enhancedDescription,
       url: pageUrl,
       telephone: "+447544030486",
       email: "robert@coulsy.co.uk",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: cleanLocationName || "York",
-        addressRegion: locationRegion,
-        postalCode: locationPostcode,
-        addressCountry: "GB",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: geo.lat,
-        longitude: geo.lng,
-      },
+      // No address/geo/serviceArea coordinates: service-area business, no
+      // per-town location. Coverage is areaServed below.
       openingHours: "Mo-Fr 07:00-18:00",
       priceRange: "££",
       currenciesAccepted: "GBP",
@@ -221,15 +188,6 @@ export function getFormattedPageData(location?: string, type?: string): {
       areaServed: {
         "@type": "City",
         name: cleanLocationName || "York",
-      },
-      serviceArea: {
-        "@type": "GeoCircle",
-        geoMidpoint: {
-          "@type": "GeoCoordinates",
-          latitude: geo.lat,
-          longitude: geo.lng,
-        },
-        geoRadius: "50000",
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -254,15 +212,9 @@ export function getFormattedPageData(location?: string, type?: string): {
       provider: {
         "@type": "LocalBusiness",
         "@id": "https://coulsyfiredoors.co.uk/#business",
-        name: "Coulsy Fire Door Services",
+        name: "Coulsy Fire Doors",
         telephone: "+447544030486",
         email: "robert@coulsy.co.uk",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "York",
-          addressRegion: "North Yorkshire",
-          addressCountry: "GB",
-        },
       },
       areaServed: [
         {
@@ -291,15 +243,23 @@ export function getFormattedPageData(location?: string, type?: string): {
         itemListElement: [
           {
             "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Fire Door Inspections" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Fire Door Surveys & Reports" },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: "Fire Door Repairs & Maintenance" },
+          },
+          {
+            "@type": "Offer",
             itemOffered: { "@type": "Service", name: "Fire Door Installation" },
           },
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Fire Door Maintenance" },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Fire Door Inspections" },
+            itemOffered: { "@type": "Service", name: "Steel Fire Exit Doors" },
           },
         ],
       },

@@ -7,8 +7,8 @@
 
 ## Content Should Include:
 - Coulsy Fire Doors logo
-- Business name: "Coulsy Fire Door Services"
-- Tagline: "Professional Fire Door Services Since 1989"
+- Business name: "Coulsy Fire Doors"
+- Tagline: "Professional Fire Door Services in Yorkshire"
 - Fire door imagery or professional background
 - Brand colours (from your palette)
 
@@ -24,5 +24,6 @@
 - Online OG image generators
 
 ## Current Status:
-⚠️ File missing - social shares will use default/no image
+✅ Interim `og-image.jpg` in place (generated from a fire-door photo). Replace
+with a branded version to this spec when ready.
 

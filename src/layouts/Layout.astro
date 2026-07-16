@@ -28,7 +28,7 @@ interface Props {
 const {
   title,
   classes,
-  description = "Professional fire door services in Yorkshire including inspections, installation, maintenance and compliance. FireQual certified fire door inspector, on the tools since 1989.",
+  description = "Professional fire door services in Yorkshire — inspections, surveys, repairs, installation and steel fire exit doors. FireQual certified fire door inspector, on the tools since 1988.",
   transparentHeader = false,
   location,
   image = "https://coulsyfiredoors.co.uk/og-image.jpg",
@@ -98,11 +98,11 @@ const {
     <meta property="og:image" content={image} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="Coulsy Fire Door Services" />
+    <meta property="og:site_name" content="Coulsy Fire Doors" />
     <meta property="og:locale" content="en_GB" />
     <meta
       property="og:image:alt"
-      content="Coulsy Fire Door Services - Professional Fire Door Specialist"
+      content="Coulsy Fire Doors - Professional Fire Door Specialist"
     />
 
     <!-- Twitter Card -->
@@ -112,7 +112,7 @@ const {
     <meta name="twitter:image" content={image} />
     <meta
       name="twitter:image:alt"
-      content="Coulsy Fire Door Services - Professional Fire Door Specialist"
+      content="Coulsy Fire Doors - Professional Fire Door Specialist"
     />
 
     <!-- Additional SEO Meta Tags -->
@@ -138,7 +138,7 @@ const {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "@id": "https://coulsyfiredoors.co.uk/#business",
-        name: "Coulsy Fire Door Services",
+        name: "Coulsy Fire Doors",
         description: description,
         url: "https://coulsyfiredoors.co.uk",
         logo: "https://coulsyfiredoors.co.uk/images/coulsy-logo-sm.png",
@@ -148,18 +148,6 @@ const {
         priceRange: "££",
         paymentAccepted: ["Cash", "Bank Transfer"],
         currenciesAccepted: "GBP",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: location || "York",
-          addressRegion: "Yorkshire",
-          addressCountry: "GB",
-          postalCode: "YO26 7NW",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 53.959,
-          longitude: -1.0792,
-        },
         openingHours: "Mo-Fr 07:00-18:00",
         areaServed: [
           "York",
@@ -170,7 +158,6 @@ const {
           "Selby",
           "Yorkshire",
         ],
-        hasMap: "https://www.google.com/maps?q=53.9590,-1.0792",
         sameAs: [
           "https://www.linkedin.com/company/coulsy-limited/?viewAsMember=true",
           "https://www.facebook.com/coulsyjoinery/",
@@ -178,15 +165,19 @@ const {
         // No aggregateRating: Google does not support review rich results for a
         // business reviewing itself, and the 4.8/50 that used to sit here was
         // invented — the real reviews are 5.0 from 12, rendered by Reviews.astro.
-        foundingDate: "1989",
-        numberOfEmployees: "2",
+        // No address/geo/hasMap: the registered office is Robert's home (a
+        // service-area business). It is disclosed once, plainly, on
+        // /company-information — never as a customer-facing location or map pin.
+        // Coverage is expressed by areaServed.
+        foundingDate: "1988",
         slogan: "Fire doors, fitted and inspected properly",
         knowsAbout: [
-          "Fire Door Installation",
-          "Fire Door Maintenance",
           "Fire Door Inspections",
+          "Fire Door Surveys",
+          "Fire Door Repairs & Maintenance",
+          "Fire Door Installation",
+          "Steel Fire Exit Doors",
           "Fire Safety Compliance",
-          "Fire Door Repairs",
         ],
         award: [
           "FireQual Fire Door Inspector",

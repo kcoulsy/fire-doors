@@ -1,13 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import robertProfileImage from "../assets/images/team/robert-profile-image.jpg";
+// Profile photo matches the home page (robert-coulson-fire-door-specialist.png),
+// replacing the older team/robert-profile-image.jpg.
+import robertProfileImage from "../assets/images/robert-coulson-fire-door-specialist.png";
 import teamOnSiteImage from "../assets/images/team/Rob-and-Debbie-on-site.jpg";
-import debbieProfileImage from "../assets/images/team/debbie-profile-image.jpg";
-import timberJoineryImage from "../assets/images/timber20joinery.jpg";
+import inspectionSurveyImage from "../assets/images/inspection-survey.png";
 import complianceImage from "../assets/images/compliance.jpeg";
+import doorCloserImage from "../assets/images/door-closer-open.jpeg";
 import doorHangingImage from "../assets/images/door-hanging-1.jpeg";
 import benchPlaneImage from "../assets/images/bench-plane-frog.jpg";
+import steelDoorImage from "../assets/images/Steel Exit Door Landscape York.png";
 import Reviews from "../components/Reviews.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import SisterSiteCard from "../components/SisterSiteCard.astro";
@@ -16,7 +19,7 @@ import { COULSY_JOINERY } from "../constants/sisterSites";
 // Modern SEO optimization with personal voice preserved
 const seoData = {
   title:
-    "About Robert Coulson - Coulsy Ltd | Joiner Since 1989, FireQual Fire Door Inspector",
+    "About Robert Coulson - Coulsy Ltd | Joiner Since 1988, FireQual Fire Door Inspector",
   description:
     "Meet Robert Coulson - runs Coulsy Ltd for joinery and small build works, now specialising in fire doors after passing FireQual exams in December 2024. 35+ years of joinery experience behind it.",
   keywords:
@@ -34,7 +37,7 @@ const seoData = {
       // not prose. A UK spelling pass had changed this to "Organisation", which is
       // not a schema.org type, so the whole node was ignored. Site copy stays UK.
       "@type": "Organization",
-      name: "Coulsy Fire Door Services",
+      name: "Coulsy Fire Doors",
       founder: {
         "@type": "Person",
         name: "Robert Coulson",
@@ -52,7 +55,7 @@ const seoData = {
             "Runs Coulsy Ltd for joinery and small build works, now specialising in fire doors after passing FireQual exams in December 2024",
         },
       ],
-      foundingDate: "1989",
+      foundingDate: "1988",
       description:
         "Coulsy Ltd for joinery and small build works, now specialising in fire doors with FireQual certification",
     },
@@ -68,65 +71,41 @@ const seoData = {
       <!-- Header Section with Enhanced Animation -->
       <div class="text-center mb-16">
         <h1
-          class="text-4xl lg:text-6xl font-bold text-brand-900 mb-6 text-balance about-title"
+          class="text-4xl lg:text-5xl font-bold text-brand-900 mb-6 text-balance about-title"
         >
-          About Our Fire Door Services
+          About My Fire Door Work
         </h1>
         <p
           class="text-xl text-brand-600 max-w-4xl mx-auto text-balance leading-relaxed about-subtitle"
         >
-          Professional fire door services backed by over three decades of
-          joinery and building experience. We specialise in fire door
-          installation, maintenance, inspections, and ensuring full compliance
-          with fire safety regulations across Yorkshire.
+          Professional fire door work backed by over three decades of joinery and
+          building experience. I specialise in fire door inspections, surveys and
+          reports, repairs and maintenance, installation and steel fire exit
+          doors—all done properly and in line with current fire safety
+          regulations across Yorkshire.
         </p>
       </div>
 
-      <!-- What We Do For Clients Section -->
+      <!-- What I Do For Clients Section — mirrors the 5 home-page services -->
       <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center services-title"
+          class="text-2xl lg:text-3xl font-bold text-brand-900 mb-12 text-center services-title"
         >
           What I Can Do For You
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Fire Door Installation -->
-          <div
-            class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
-          >
-            <div class="relative overflow-hidden rounded-lg mb-6">
-              <Image
-                src={doorHangingImage}
-                width={300}
-                height={200}
-                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                alt="Professional fire door installation services"
-                loading="lazy"
-                decoding="async"
-                format="webp"
-                quality={80}
-              />
-            </div>
-            <h3 class="text-xl font-bold text-brand-900 mb-4">
-              Fire Door Installation
-            </h3>
-            <p class="text-brand-600 leading-relaxed">
-              I've fitted thousands of fire doors over the years, so I know how to do it properly. I ensure proper fitting, compliance, and long-term performance—no shortcuts, everything done to standard.
-            </p>
-          </div>
-
           <!-- Fire Door Inspections -->
           <div
             class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
             <div class="relative overflow-hidden rounded-lg mb-6">
               <Image
-                src={benchPlaneImage}
+                src={inspectionSurveyImage}
                 width={300}
                 height={200}
                 class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                alt="Professional fire door inspection services"
+                alt="Fire door inspection and survey work"
                 loading="lazy"
                 decoding="async"
                 format="webp"
@@ -137,21 +116,24 @@ const seoData = {
               Fire Door Inspections
             </h3>
             <p class="text-brand-600 leading-relaxed">
-              As a FireQual certified inspector, I'll check everything properly and identify compliance issues. I provide detailed reports and recommendations—no jargon, just clear advice on what needs doing.
+              FireQual-certified inspections of FD30/FD60 doors—individual doors,
+              HMOs, blocks of flats and commercial premises—as one-off checks or
+              planned quarterly, six-monthly and annual programmes. Clear advice on
+              repair, replacement and compliance.
             </p>
           </div>
 
-          <!-- Fire Door Maintenance -->
+          <!-- Fire Door Surveys & Reports -->
           <div
             class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
             <div class="relative overflow-hidden rounded-lg mb-6">
               <Image
-                src={timberJoineryImage}
+                src={complianceImage}
                 width={300}
                 height={200}
                 class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                alt="Professional fire door maintenance services"
+                alt="Fire door survey and compliance reporting"
                 loading="lazy"
                 decoding="async"
                 format="webp"
@@ -159,21 +141,105 @@ const seoData = {
               />
             </div>
             <h3 class="text-xl font-bold text-brand-900 mb-4">
-              Fire Door Maintenance
+              Fire Door Surveys &amp; Reports
             </h3>
             <p class="text-brand-600 leading-relaxed">
-              I'll keep your fire doors in optimal condition with regular maintenance. I check everything properly—closers, seals, gaps—to ensure doors continue to function correctly and maintain their fire resistance rating.
+              Condition surveys, remedial and insurance reports, pre-purchase
+              checks and specification reports—documented properly so you know
+              exactly where you stand.
+            </p>
+          </div>
+
+          <!-- Fire Door Repairs & Maintenance -->
+          <div
+            class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
+          >
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={doorCloserImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Fire door closer and ironmongery repair"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Fire Door Repairs &amp; Maintenance
+            </h3>
+            <p class="text-brand-600 leading-relaxed">
+              Closers, seals, hinges, ironmongery, gap corrections and
+              adjustments. Most faults are small and fixable—I put them right
+              rather than condemning the door.
+            </p>
+          </div>
+
+          <!-- Fire Door Installation -->
+          <div
+            class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
+          >
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={doorHangingImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Fire door installation and hanging"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Fire Door Installation
+            </h3>
+            <p class="text-brand-600 leading-relaxed">
+              Installation of new timber fire doorsets—apartment entrance doors,
+              internal fire doors and replacement doorsets—fitted in accordance
+              with the manufacturer's instructions and the specified doorset
+              requirements.
+            </p>
+          </div>
+
+          <!-- Steel Fire Exit Doors -->
+          <div
+            class="service-card bg-white rounded-xl p-8 shadow-lg border border-brand-100 hover:shadow-xl transition-all duration-500 overflow-hidden"
+          >
+            <div class="relative overflow-hidden rounded-lg mb-6">
+              <Image
+                src={steelDoorImage}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                alt="Steel fire exit door with panic hardware, fitted in York"
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={80}
+              />
+            </div>
+            <h3 class="text-xl font-bold text-brand-900 mb-4">
+              Steel Fire Exit Doors
+            </h3>
+            <p class="text-brand-600 leading-relaxed">
+              Steel personnel and fire exit doors, panic hardware and emergency
+              exit furniture for industrial units, factories, warehouses and
+              schools.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Why Choose Us Section -->
+      <!-- Why Choose Me Section -->
       <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center why-choose-title"
+          class="text-2xl lg:text-3xl font-bold text-brand-900 mb-12 text-center why-choose-title"
         >
-          Why Choose Our Fire Door Services
+          Why Choose Me
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -296,7 +362,7 @@ const seoData = {
       <!-- About Robert Section -->
       <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center about-robert-title"
+          class="text-2xl lg:text-3xl font-bold text-brand-900 mb-12 text-center about-robert-title"
         >
           About Robert Coulson
         </h2>
@@ -313,7 +379,7 @@ const seoData = {
                   width={400}
                   height={500}
                   class="w-full h-auto object-cover transition-transform duration-700 hover:scale-110"
-                  alt="Robert Coulson - joiner since 1989, FireQual fire door inspector since 2024"
+                  alt="Robert Coulson - joiner since 1988, FireQual fire door inspector since 2024"
                   loading="eager"
                   decoding="async"
                   format="webp"
@@ -325,13 +391,13 @@ const seoData = {
                 </div>
               </div>
               <div class="mt-6 text-center">
-                <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                <h3 class="text-xl font-bold text-brand-900 mb-2">
                   Robert Coulson
                 </h3>
                 <p class="text-brand-600 font-medium">
                   Joiner & Fire Door Specialist
                 </p>
-                <p class="text-sm text-brand-500 mt-1">Joiner since 1989</p>
+                <p class="text-sm text-brand-500 mt-1">Joiner since 1988</p>
                 <p class="text-xs text-brand-400 mt-1">
                   FireQual Certified - Dec 2024
                 </p>
@@ -348,8 +414,8 @@ const seoData = {
               <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
-                    1989 - The Beginning
+                  <h3 class="text-xl font-bold text-brand-900 mb-2">
+                    1988 - The Beginning
                   </h3>
                   <p class="text-brand-600 leading-relaxed">
                     Started my journey in joinery and building, developing
@@ -362,7 +428,7 @@ const seoData = {
               <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                  <h3 class="text-xl font-bold text-brand-900 mb-2">
                     1990s - Building Excellence
                   </h3>
                   <p class="text-brand-600 leading-relaxed">
@@ -376,7 +442,7 @@ const seoData = {
               <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                  <h3 class="text-xl font-bold text-brand-900 mb-2">
                     2000s - Fire Door Experience
                   </h3>
                   <p class="text-brand-600 leading-relaxed">
@@ -390,7 +456,7 @@ const seoData = {
               <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                  <h3 class="text-xl font-bold text-brand-900 mb-2">
                     December 2024 - FireQual Certification
                   </h3>
                   <p class="text-brand-600 leading-relaxed">
@@ -403,7 +469,7 @@ const seoData = {
               <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                  <h3 class="text-2xl font-bold text-brand-900 mb-2">
+                  <h3 class="text-xl font-bold text-brand-900 mb-2">
                     Clerk of Works / Construction Inspection
                   </h3>
                   <p class="text-brand-600 leading-relaxed">
@@ -434,7 +500,7 @@ const seoData = {
       <!-- Expertise Grid -->
       <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center expertise-title"
+          class="text-2xl lg:text-3xl font-bold text-brand-900 mb-12 text-center expertise-title"
         >
           Areas of Expertise
         </h2>
@@ -534,52 +600,47 @@ const seoData = {
         </div>
       </div>
 
-      <!-- Team Section Enhanced -->
+      <!-- How I work on site. The two-person photo is the actual working method
+           for repair/installation (a buddy system), NOT a generic team claim and
+           NOT a second inspector. Surveys are done by Robert alone. -->
       <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center team-title"
+          class="text-2xl lg:text-3xl font-bold text-brand-900 mb-12 text-center team-title"
         >
-          Our Team
+          How I Work on Site
         </h2>
 
-        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto">
-          <!-- Robert Card Enhanced -->
+        <div class="max-w-3xl mx-auto">
           <div
-            class="team-card group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            class="team-card group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden md:flex"
           >
-            <div class="relative overflow-hidden">
+            <div class="relative overflow-hidden md:w-1/2">
               <Image
-                src={robertProfileImage}
-                alt="Robert Coulson - Distinguished joiner and fire door specialist"
-                loading="eager"
-                width={400}
-                height={300}
-                class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                src={teamOnSiteImage}
+                alt="Robert on site with a second person — the two-person buddy system used for fire-door repair and installation work"
+                loading="lazy"
+                width={500}
+                height={400}
+                class="w-full h-64 md:h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 decoding="async"
                 format="webp"
                 quality={90}
               />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              >
-              </div>
-              <div
-                class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-              >
-                <h3 class="text-xl font-bold text-white mb-1">
-                  Robert Coulson
-                </h3>
-                <p class="text-sm text-gray-200 mb-2">
-                  Distinguished Joiner & Fire Door Specialist
-                </p>
-                <p class="text-xs text-gray-300">Joiner since 1989</p>
-              </div>
             </div>
-            <div class="p-6">
+            <div class="p-8 md:w-1/2 flex flex-col justify-center">
+              <h3 class="text-xl font-bold text-brand-900 mb-1">
+                The two-person buddy system
+              </h3>
+              <p class="text-sm text-brand-500 mb-4">
+                Surveys solo · repairs and fitting as a pair
+              </p>
               <p class="text-brand-600 mb-4 leading-relaxed">
-                Joiner with 35+ years of experience. Runs Coulsy Ltd for joinery
-                and small build works, now FireQual certified fire door
-                specialist since December 2024.
+                Surveys are generally carried out by me personally. For repair and
+                installation work, I normally use a two-person buddy system.
+                Fire-door work can require an entrance or exit to remain open while
+                the doorset or hardware is being adjusted. This allows one person
+                to continue the work while the other monitors access, safeguards
+                the opening and ensures tools are never left unattended.
               </p>
               <a
                 target="_blank"
@@ -602,48 +663,6 @@ const seoData = {
               </a>
             </div>
           </div>
-
-          <!-- Team Working Card Enhanced -->
-          <div
-            class="team-card group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
-          >
-            <div class="relative overflow-hidden">
-              <Image
-                src={teamOnSiteImage}
-                alt="Robert and Debbie on site during fire door work"
-                loading="eager"
-                width={400}
-                height={300}
-                class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                decoding="async"
-                format="webp"
-                quality={90}
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              >
-              </div>
-              <div
-                class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-              >
-                <h3 class="text-xl font-bold text-white mb-1">
-                  Fire Door Inspection &amp; Compliance
-                </h3>
-                <p class="text-sm text-gray-200 mb-2">FireQual certified</p>
-                <p class="text-xs text-gray-300">
-                  Quality & Compliance Focused
-                </p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-brand-600 mb-4 leading-relaxed">
-                My background in carpentry and joinery underpins my FireQual fire
-                door inspection work. I understand how doors and frames are
-                constructed, how installation defects develop and what practical
-                remedial work is required.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -652,7 +671,7 @@ const seoData = {
       <!-- Trust Section Enhanced -->
       <div class="mb-20">
         <h2
-          class="text-3xl lg:text-4xl font-bold text-brand-900 mb-12 text-center trust-title"
+          class="text-2xl lg:text-3xl font-bold text-brand-900 mb-12 text-center trust-title"
         >
           Trust & Excellence
         </h2>
@@ -723,8 +742,7 @@ const seoData = {
             </div>
             <h3 class="text-xl font-semibold text-brand-900 mb-3">Insured</h3>
             <p class="text-brand-600">
-              Fully insured with £10M public liability coverage for peace of
-              mind
+              Fully insured for the work I undertake
             </p>
           </div>
 
@@ -866,12 +884,18 @@ const seoData = {
   .service-card:nth-child(3) {
     animation-delay: 1.4s;
   }
+  .service-card:nth-child(4) {
+    animation-delay: 1.6s;
+  }
+  .service-card:nth-child(5) {
+    animation-delay: 1.8s;
+  }
 
   .service-card:hover {
     transform: translateY(-10px) scale(1.02);
   }
 
-  /* Why Choose Us Section */
+  /* Why Choose Me Section */
   .why-choose-title {
     opacity: 0;
     transform: translateY(30px);
@@ -1082,7 +1106,9 @@ const seoData = {
     jobTitle: "Fire Door Specialist & Joiner",
     description: "35+ years of joinery experience; FireQual certified fire door inspector since December 2024.",
     url: "https://coulsyfiredoors.co.uk/about",
-    image: "https://coulsyfiredoors.co.uk/images/team/robert-profile-image.jpg",
+    // Stable public URL (public/images/…) rather than the build-hashed asset, so
+    // the structured-data image survives filename changes between deployments.
+    image: "https://coulsyfiredoors.co.uk/images/robert-coulson-fire-door-specialist.png",
     email: "robert@coulsy.co.uk",
     telephone: "+447544030486",
     address: {
@@ -1090,7 +1116,6 @@ const seoData = {
       addressLocality: "York",
       addressRegion: "Yorkshire",
       addressCountry: "GB",
-      postalCode: "YO26 7NW",
     },
     alumniOf: [
       {
@@ -1104,10 +1129,11 @@ const seoData = {
     // the topical focus into the joinery site's territory. Robert's joinery history
     // is still on the page as provenance — it just isn't what this site is about.
     knowsAbout: [
-      "Fire Door Installation",
-      "Fire Door Maintenance",
       "Fire Door Inspections",
       "Fire Door Surveys",
+      "Fire Door Maintenance",
+      "Fire Door Installation",
+      "Steel Fire Exit Doors",
       "Fire Safety Compliance",
     ],
     award: [
@@ -1118,7 +1144,7 @@ const seoData = {
     memberOf: {
       "@type": "Organization",
       name: "Coulsy Ltd",
-      foundingDate: "1989",
+      foundingDate: "1988",
     },
     sameAs: [
       "https://www.linkedin.com/in/robert-coulson-20a60915/",

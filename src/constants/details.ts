@@ -1,6 +1,6 @@
 export const DETAILS = {
   COMPANY: {
-    NAME: "Coulsy Fire Door Services",
+    NAME: "Coulsy Fire Doors",
     PHONE: "07544 030486",
     EMAIL: "robert@coulsy.co.uk",
   },

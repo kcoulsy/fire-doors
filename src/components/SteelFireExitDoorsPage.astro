@@ -1,0 +1,522 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import ProcessStep from "../components/ProcessStep.astro";
+import QualificationCard from "../components/QualificationCard.astro";
+import PhoneButton from "../components/PhoneButton.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ReviewSummary from "../components/ReviewSummary.astro";
+import ContactForm from "../components/ContactForm.astro";
+import ServiceHero from "../components/ServiceHero.astro";
+import NearbyAreas from "./NearbyAreas.astro";
+
+// Genuine Morley project photographs (downscaled derived exports — the only
+// authentic source pixels available in the repo; NOT AI-generated). The AI
+// composite (Hero.png) and the studio "York" doors are deliberately NOT used
+// as photographic evidence anywhere on this page.
+// heroImage is a straight 5:3 landscape crop of the genuine closed-door photo
+// (sharp extract, no AI, no upscale), framed on the door + fire-exit sign so
+// the established full-width ServiceHero overlay pattern reads correctly.
+import heroImage from "../assets/images/steel-exit-door-web-assets/steel-fire-exit-door-hero.jpg";
+import closedDoor from "../assets/images/steel-exit-door-web-assets/new-commercial-steel-exit-door-closed-morley-leeds-1500x2000.jpg";
+import greyBefore from "../assets/images/steel-exit-door-web-assets/commercial-steel-exit-door-before-replacement-grey-morley-leeds-1500x2000.jpg";
+import blueBefore from "../assets/images/steel-exit-door-web-assets/commercial-steel-exit-door-before-replacement-blue-morley-leeds-1500x2000.jpg";
+import openDoor from "../assets/images/steel-exit-door-web-assets/new-commercial-steel-exit-door-open-morley-leeds-1500x2000.jpg";
+import panicBar from "../assets/images/steel-exit-door-web-assets/new-commercial-steel-exit-door-panic-bar-morley-leeds-1500x2000.jpg";
+
+const pageUrl = "https://coulsyfiredoors.co.uk/steel-fire-exit-doors";
+
+const description =
+  "Steel fire exit and emergency escape door replacement across York and Yorkshire. Worn steel exit doors removed, new steel doorsets fitted, and panic (push-bar) hardware installed and adjusted — for commercial and industrial premises.";
+
+const waMessage = `Hi Robert, I'd like to ask about a steel fire exit door.\n\nEnquiry via the Coulsy Fire Doors website.\n\nPostcode:\nProperty type:\nWhat's involved:`;
+
+// Bespoke, honest schema — deliberately NOT the generic getFormattedPageData
+// output (which asserts a 6-monthly inspection cycle and timber FD framing that
+// don't belong here). No FD30/FD60, manufacturer, rating or certification claim.
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Steel Fire Exit Door Installation",
+  serviceType: "Steel fire exit and emergency escape door replacement",
+  description,
+  provider: {
+    "@type": "LocalBusiness",
+    "@id": "https://coulsyfiredoors.co.uk/#business",
+    name: "Coulsy Fire Doors",
+    telephone: "+447544030486",
+    email: "robert@coulsy.co.uk",
+  },
+  areaServed: [
+    { "@type": "City", name: "York" },
+    { "@type": "AdministrativeArea", name: "Yorkshire" },
+  ],
+  category: "Fire Safety",
+  url: pageUrl,
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is a steel fire exit door the same as a fire door?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Not necessarily. A steel final-exit or emergency-exit door is there to let people out safely, fitted with panic or emergency escape hardware. A tested fire-resisting doorset is a separate specification, rated to hold back fire and smoke for a set time. Some openings need one, some the other. I'll tell you honestly which yours needs.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What hardware goes on a steel exit door?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Panic hardware (a push bar) where the public use the exit, or emergency escape hardware (a pad or lever) where only trained staff do — plus the right closer, hinges and signage. It's fitted and adjusted so the door opens easily under load and latches properly when closed.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you remove the old door and make good the opening?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. I take out the worn or damaged door and frame, prepare the opening, fit the new steel doorset plumb and level, and make good around it so it's weathertight and tidy.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What kind of buildings do you fit steel exit doors for?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Commercial and industrial premises — units, factories, warehouses and similar — across York and the wider Yorkshire area.",
+      },
+    },
+  ],
+};
+---
+
+<Layout
+  title="Steel Fire Exit Doors in York & Yorkshire"
+  description={description}
+  classes="mb-16"
+  image="https://coulsyfiredoors.co.uk/og-steel-fire-exit-doors.jpg"
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(serviceSchema)}
+  />
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  />
+
+  <section class="bg-gray-50 pt-4">
+    <div class="container mx-auto px-4">
+      <Breadcrumb
+        crumbs={[
+          { label: "Fire Door Services", href: "/fire-door-services" },
+          { label: "Steel Fire Exit Doors", current: true },
+        ]}
+      />
+    </div>
+  </section>
+
+  {/* Established full-width service-page hero (same ServiceHero pattern as the
+      installation / inspection / maintenance pages): genuine completed-door
+      photo as the object-cover background, left-strong navy overlay, all copy
+      and buttons as live HTML over it. */}
+  <ServiceHero
+    image={heroImage}
+    imageAlt="Completed steel fire exit door fitted by Coulsy Fire Doors on a commercial unit, with a green 'Fire exit / Keep clear' sign"
+    title="Steel Fire Exit Doors"
+    description="I replace worn and damaged steel exit doors on commercial and industrial premises across York and Yorkshire — old door out, opening prepared, new steel doorset fitted, and the panic hardware installed and adjusted so the exit works when it matters."
+    primaryCta={{ text: "Get a quote", link: "#contact" }}
+    secondaryCta={{ text: "Contact Us", link: "/contact" }}
+    whatsAppMessage={waMessage}
+  />
+
+  {/* The honest distinction — this is the credibility of the page */}
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Not every steel exit door is a fire door
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          "Steel fire exit door" covers a few different things, and they're not
+          interchangeable. Getting the right one on the right opening is the
+          whole job — so here's the plain-English difference.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <FeatureCard
+            title="Final exit door"
+            description="The last door on an escape route, opening straight to a place of safety outside. Its job is to let people out quickly and reliably under load."
+          />
+          <FeatureCard
+            title="Emergency exit door"
+            description="An escape door on a route used in an emergency. Fitted with emergency escape hardware — a pad or lever — where only trained staff use it."
+          />
+          <FeatureCard
+            title="Steel personnel & security door"
+            description="A robust steel door for everyday access or security, which may or may not sit on an escape route. The hardware is chosen to match how it's used."
+          />
+          <FeatureCard
+            title="Tested fire-resisting doorset"
+            description="A doorset tested and classified to hold back fire and smoke for a set period. That's a separate specification — not every steel exit door is one, and I'll never imply otherwise."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* What I do */}
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          What I do with steel exit doors
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Supply and fit, not manufacture — the right steel doorset and the
+          right escape hardware, fitted properly and left working.
+        </p>
+
+        {/* Icons intentionally omitted — the generic UI glyphs did not
+            communicate these services and read as placeholders. Cards are
+            text-only (ServiceCard renders no icon tile when `icon` is absent).
+            A bespoke Coulsy icon set is a later, separate piece of work. */}
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ServiceCard
+            title="Replace worn exit doors"
+            description="Take out the old, damaged or seized steel exit door and frame, prepare the opening, and fit a new steel doorset in its place."
+            features={[
+              "Old door & frame removed",
+              "Opening prepared square and true",
+              "New steel doorset fitted",
+            ]}
+          />
+          <ServiceCard
+            title="Supply & fit steel doorsets"
+            description="Single and double-leaf steel exit doorsets for units, factories, warehouses and similar commercial premises."
+            features={[
+              "Single & double leaf",
+              "Commercial & industrial",
+              "Fitted plumb, level, fixed properly",
+              "Handles, locks and external access hardware fitted where specified",
+            ]}
+          />
+          <ServiceCard
+            title="Panic hardware (push bars)"
+            description="Push-bar panic hardware for exits the public use, fitted and adjusted so the door opens easily under load. The recognised standard for this is BS EN 1125."
+            features={[
+              "Push-bar (touch bar) devices",
+              "For public escape routes",
+              "Set to open easily under load",
+            ]}
+          />
+          <ServiceCard
+            title="Emergency escape hardware"
+            description="Pad or lever emergency exit hardware for escape doors used only by trained staff. The recognised standard for this is BS EN 179."
+            features={[
+              "Pad or lever devices",
+              "For staff-only escape routes",
+              "Correct device for the use",
+            ]}
+          />
+          <ServiceCard
+            title="Repairs & adjustment"
+            description="Closers, hinges, alignment and latching put right so an existing steel exit door opens and closes as it should."
+            features={[
+              "Closers & hinges",
+              "Alignment & latching",
+              "Hardware replacement",
+            ]}
+          />
+          <ServiceCard
+            title="Make-good & signage"
+            description="Sealed weathertight around the frame, the area left tidy, and the correct 'Fire exit / Keep clear' signage fitted."
+            features={[
+              "Weathertight make-good",
+              "Fire exit signage",
+              "Site left clean",
+            ]}
+          />
+          <ServiceCard
+            title="Door closers & restrictors"
+            description="Suitable closing and opening-control hardware — closers, restrictors and controlled hold-open — fitted and adjusted to help control the door, limit damaging over-travel and protect the doorset in exposed or heavily used locations. What's right depends on the door's size, exposure and whether self-closing is needed, so it's specified to the opening, not assumed."
+            features={[
+              "Overhead closers, set to the door",
+              "Restrictors / backcheck to limit over-travel",
+              "Controlled hold-open only where it's permitted",
+            ]}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Mid-page CTA */}
+  <section class="py-12 bg-brand-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-brand-900 mb-2">
+          Got a steel exit door that needs replacing?
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Send me a photo and your postcode and I'll give you a straight answer
+          — no obligation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <PhoneButton label="Call now" />
+          <WhatsAppButton
+            variant="outline"
+            label="Send details on WhatsApp"
+            message={waMessage}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured project — genuine photos, Before/After as live HTML */}
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          A recent commercial exit-door replacement
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Worn steel exit doors on a commercial unit, taken out and replaced
+          with new steel doorsets and panic hardware. Here's the before and
+          after.
+        </p>
+
+        {/* Pair 1 */}
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <figure class="flex flex-col items-center">
+            <div class="relative w-fit overflow-hidden rounded-xl shadow-sm">
+              <span
+                class="absolute top-3 left-3 z-10 inline-block bg-gray-800/90 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded"
+                >Before</span
+              >
+              <Image
+                src={greyBefore}
+                alt="Old galvanised steel exit door, damaged and past its life, before replacement"
+                widths={[400, 600, 800, 1000]}
+                sizes="(max-width: 768px) 90vw, 45vw"
+                loading="lazy"
+                format="webp"
+                quality={80}
+                class="block max-h-[440px] w-auto object-contain"
+              />
+            </div>
+            <figcaption class="mt-3 text-sm text-gray-600 text-center max-w-xs">
+              Old galvanised exit door — dented, corroding and past its working
+              life.
+            </figcaption>
+          </figure>
+
+          <figure class="flex flex-col items-center">
+            <div class="relative w-fit overflow-hidden rounded-xl shadow-sm">
+              <span
+                class="absolute top-3 left-3 z-10 inline-block bg-green-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded"
+                >After</span
+              >
+              <Image
+                src={closedDoor}
+                alt="New steel exit doorset fitted in its place, closed, with 'Fire exit / Keep clear' signage"
+                widths={[400, 600, 800, 1000]}
+                sizes="(max-width: 768px) 90vw, 45vw"
+                loading="lazy"
+                format="webp"
+                quality={80}
+                class="block max-h-[440px] w-auto object-contain"
+              />
+            </div>
+            <figcaption class="mt-3 text-sm text-gray-600 text-center max-w-xs">
+              New steel doorset fitted, closed and signed — clean, square and
+              weathertight.
+            </figcaption>
+          </figure>
+        </div>
+
+        {/* Pair 2 */}
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <figure class="flex flex-col items-center">
+            <div class="relative w-fit overflow-hidden rounded-xl shadow-sm">
+              <span
+                class="absolute top-3 left-3 z-10 inline-block bg-gray-800/90 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded"
+                >Before</span
+              >
+              <Image
+                src={blueBefore}
+                alt="Worn blue internal steel exit door before replacement"
+                widths={[400, 600, 800, 1000]}
+                sizes="(max-width: 768px) 90vw, 45vw"
+                loading="lazy"
+                format="webp"
+                quality={80}
+                class="block max-h-[440px] w-auto object-contain"
+              />
+            </div>
+            <figcaption class="mt-3 text-sm text-gray-600 text-center max-w-xs">
+              A worn exit door on the same site, due for replacement.
+            </figcaption>
+          </figure>
+
+          <figure class="flex flex-col items-center">
+            <div class="relative w-fit overflow-hidden rounded-xl shadow-sm">
+              <span
+                class="absolute top-3 left-3 z-10 inline-block bg-green-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded"
+                >After</span
+              >
+              <Image
+                src={openDoor}
+                alt="New steel exit door hung and operating, swung open to show the clear escape opening into the unit"
+                widths={[400, 600, 800, 1000]}
+                sizes="(max-width: 768px) 90vw, 45vw"
+                loading="lazy"
+                format="webp"
+                quality={80}
+                class="block max-h-[440px] w-auto object-contain"
+              />
+            </div>
+            <figcaption class="mt-3 text-sm text-gray-600 text-center max-w-xs">
+              New door hung and operating — swung open to show the clear escape
+              opening.
+            </figcaption>
+          </figure>
+        </div>
+
+        {/* Panic-bar highlight */}
+        <figure class="flex flex-col items-center">
+          <div class="relative w-fit overflow-hidden rounded-xl shadow-sm">
+            <span
+              class="absolute top-3 left-3 z-10 inline-block bg-green-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded"
+              >After — inside</span
+            >
+            <Image
+              src={panicBar}
+              alt="Inside view of the fitted steel exit door showing the push-bar panic hardware and 'Push bar to open' signage"
+              widths={[400, 600, 800, 1000]}
+              sizes="(max-width: 768px) 90vw, 60vw"
+              loading="lazy"
+              format="webp"
+              quality={80}
+              class="block max-h-[440px] w-auto object-contain"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-600 text-center max-w-xs">
+            Inside: the push-bar panic hardware, fitted and adjusted so the exit
+            opens easily under load.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  {/* How it runs */}
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-12">
+          How a steel exit-door replacement runs
+        </h2>
+        <div class="space-y-8">
+          <ProcessStep
+            number={1}
+            title="Survey and spec"
+            description="I look at the opening, how it's used and who uses the exit, and agree the right steel doorset and escape hardware for it — before anything is ordered."
+          />
+          <ProcessStep
+            number={2}
+            title="Remove and prepare"
+            description="Out with the worn door and frame. I prepare the opening so the new doorset fits square, plumb and true."
+          />
+          <ProcessStep
+            number={3}
+            title="Fit the steel doorset"
+            description="The new steel door and frame go in, fixed properly into the structure and made good so it's weathertight."
+          />
+          <ProcessStep
+            number={4}
+            title="Fit and adjust the hardware"
+            description="Panic or emergency escape hardware fitted and adjusted so the door opens easily under load and latches when closed, with the correct signage."
+          />
+          <ProcessStep
+            number={5}
+            title="Check and hand over"
+            description="A final operating check, the area left tidy, and I talk you through it before I leave."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Qualifications & standards */}
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Qualifications and standards
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Who's doing the work, and the standards the escape hardware and means
+          of escape are held to.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <QualificationCard
+            title="My qualifications"
+            items={[
+              "City & Guilds qualified joiner, on the tools since 1988",
+              "FireQual Fire Door Inspector",
+              "CSCS Gold Card holder",
+              "Fully insured, VAT registered",
+            ]}
+          />
+          <QualificationCard
+            title="What the work is held to"
+            items={[
+              "Panic exit devices — BS EN 1125",
+              "Emergency exit devices — BS EN 179",
+              "Approved Document B — means of escape",
+              "Regulatory Reform (Fire Safety) Order 2005",
+            ]}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Same Nearby Areas component and York/Yorkshire area data as the sibling
+      service pages. serviceType is deliberately "fire-door-services" (not
+      "steel-fire-exit-doors") so the town links point at EXISTING location pages
+      — there are no steel-specific town pages and none should be created. */}
+  <section class="relative z-10 mx-auto">
+    <NearbyAreas serviceType="fire-door-services" />
+  </section>
+
+  <ReviewSummary />
+
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-brand-900 mb-4">
+          Get a quote
+        </h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Tell me what you've got — how many doors, what kind of premises, and
+          whether it's a straight replacement — and I'll come back with a
+          realistic scope and price.
+        </p>
+        <ContactForm showHeader={false} serviceType="steel-fire-exit-doors" uniqueId="steel" />
+      </div>
+    </div>
+  </section>
+</Layout>

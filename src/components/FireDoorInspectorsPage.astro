@@ -43,7 +43,7 @@ const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`Fire Door Inspections${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
+  title={`Fire Door Inspections${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
   description={finalDescription}
   classes="mb-16"
   location={location}
@@ -90,6 +90,7 @@ const place = cleanLocationName || "Yorkshire";
     description={`I'm Robert — a FireQual qualified fire door inspector covering ${place}. I survey fire doors, write the report, and you get a document you can give straight to an insurer, Responsible Person, or enforcement officer. No shortcuts, no copy-paste.`}
     primaryCta={{ text: "Book an Inspection", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
+    whatsAppMessage={waMessage}
   />
 
   <!-- Why inspections matter / who I'm for -->

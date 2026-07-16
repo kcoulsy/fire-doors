@@ -42,7 +42,7 @@ const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`Fire Door Services${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
+  title={`Fire Door Services${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
   description={finalDescription}
   classes="mb-16"
   location={location}
@@ -88,6 +88,7 @@ const place = cleanLocationName || "Yorkshire";
     description={`I'm Robert — a FireQual qualified fire door inspector covering ${place} and surrounding areas. Whether you need a single door inspected, a full HMO survey, or new doors fitted, I handle it personally. No sales team, no subcontracting — you deal with me from first call to final report.`}
     primaryCta={{ text: "Get a Quote", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
+    whatsAppMessage={waMessage}
   />
 
   <!-- Meet Robert / what I do -->

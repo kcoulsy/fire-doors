@@ -41,7 +41,7 @@ const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`Fire Door Maintenance${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
+  title={`Fire Door Maintenance${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
   description={finalDescription}
   classes="mb-16"
   location={location}
@@ -88,6 +88,7 @@ const place = cleanLocationName || "Yorkshire";
     description={`I'm Robert — a FireQual qualified fire door inspector covering ${place}. Most fire doors don't fail dramatically; they drift out of compliance — a seal comes off, a closer gets tired, a gap opens up. I'll come out, go door by door, and put it right before it becomes an enforcement issue.`}
     primaryCta={{ text: "Get a Maintenance Quote", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
+    whatsAppMessage={waMessage}
   />
 
   <!-- Why maintenance matters -->

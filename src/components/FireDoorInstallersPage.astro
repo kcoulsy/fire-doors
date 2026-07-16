@@ -41,7 +41,7 @@ const place = cleanLocationName || "Yorkshire";
 ---
 
 <Layout
-  title={`Fire Door Installation${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"} | Coulsy Fire Doors`}
+  title={`Fire Door Installation${cleanLocationName ? ` in ${cleanLocationName}` : " in Yorkshire"}`}
   description={finalDescription}
   classes="mb-16"
   location={location}
@@ -88,6 +88,7 @@ const place = cleanLocationName || "Yorkshire";
     description={`I'm Robert — a City & Guilds qualified joiner, on the tools since 1988, and a FireQual fire door inspector. I fit fire doors and doorsets across ${place}: flats, HMOs, care homes, schools, offices. Correct doors, correct ironmongery, proper paperwork at the end.`}
     primaryCta={{ text: "Get an Installation Quote", link: "#contact" }}
     secondaryCta={{ text: "Contact Us", link: "/contact" }}
+    whatsAppMessage={waMessage}
   />
 
   <!-- Why get the install right / who I work for -->

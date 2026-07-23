@@ -1,3 +1,21 @@
+> # ⚠️ SUPERSEDED — DO NOT USE
+>
+> Archived 23 July 2026. **The authoritative pricing policy is [`PRICING_POLICY.md`](../../PRICING_POLICY.md).**
+>
+> This document contradicts current policy and contains factual errors:
+>
+> - it recommends *"include travel in base price within service radius"* — the
+>   **direct opposite** of the adopted policy, under which travel and mobilisation
+>   are quoted as a separate line;
+> - it counts the site as 224 pages / 56 locations (actually 216 location pages
+>   from 54 locations);
+> - it states that no pricing is displayed anywhere, which ceased to be true once
+>   the £50 survey fee was published.
+>
+> Retained for history only.
+
+---
+
 # Forensic Pricing Strategy Analysis - Fire Door Services
 
 ## Executive Summary

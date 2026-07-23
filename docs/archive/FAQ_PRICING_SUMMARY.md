@@ -1,3 +1,16 @@
+> # ⚠️ SUPERSEDED — DO NOT USE
+>
+> Archived 23 July 2026. **The authoritative pricing policy is [`PRICING_POLICY.md`](../../PRICING_POLICY.md).**
+>
+> This was a scratch file prepared for an external review. It quotes FAQ wording
+> that is no longer on the site and states the survey fee as a flat "£50 plus VAT"
+> with no travel qualification. The current policy is "**start from** £50 + VAT for
+> one door", with travel and mobilisation quoted as a separate line.
+>
+> Retained for history only.
+
+---
+
 # FAQ Pricing Questions & Answers Summary
 
 ## For ChatGPT Review

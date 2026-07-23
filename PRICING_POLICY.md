@@ -130,8 +130,14 @@ publish:
 - a minimum mobilisation charge;
 - a half-day or full-day **rate** (the minimum-attendance *principle* is
   publishable for remedial works — the number is not);
+- **any per-door rate or commercial inspection band** — withdrawn 23 July 2026,
+  see below;
 - any automatic fee calculation;
 - a definition of "normal local operating area".
+
+**The only price this website publishes is "surveys start from £50 + VAT for one
+door."** Everything else is quoted individually. If you are about to add a
+second number to this site, stop and check with Robert first.
 
 Neither system may create automatic minimum-attendance, radius or mileage rules
 as a side effect of website wording work.
@@ -193,18 +199,19 @@ qualification at the point the fee is stated.
 
 ---
 
-## Superseded documents
+## Superseded documents — ARCHIVED
 
-These predate this policy, contradict it, and must not be used as reference:
+Both were moved to `docs/archive/` on 23 July 2026 with superseded banners, so
+this file is the only canonical pricing document in the repository. `README.md`
+points here.
 
-- `PRICING_STRATEGY_ANALYSIS.md` — recommends *"include travel in base price
-  within service radius"*, the direct opposite of §4. Also miscounts the site as
-  224 pages / 56 locations (actually 216 location pages / 54 locations) and
-  claims no pricing is displayed, which stopped being true when the £50 shipped.
-- `FAQ_PRICING_SUMMARY.md` — a ChatGPT-review scratch file quoting wording no
-  longer on the site and stating £50 flatly.
-
-Both are pending correction or archival.
+- `docs/archive/PRICING_STRATEGY_ANALYSIS.md` — recommended *"include travel in
+  base price within service radius"*, the direct opposite of §4. Also miscounted
+  the site as 224 pages / 56 locations (actually 216 location pages / 54
+  locations) and claimed no pricing was displayed, which stopped being true when
+  the £50 shipped.
+- `docs/archive/FAQ_PRICING_SUMMARY.md` — an external-review scratch file quoting
+  wording no longer on the site and stating £50 flatly.
 
 ## Open commercial questions
 
@@ -218,24 +225,49 @@ Both are pending correction or archival.
 
 Audited and agreed, not yet implemented:
 
-- qualify the commercial survey bands (`from £180 + VAT`, `£15–£25 per door`) for
-  travel and mobilisation — `faq.astro` (see the §7 caution about this band);
-- remove ambiguous "Free, no-obligation" from `contact.astro`;
-- remove duplicate FAQ question names (installation cost, maintenance cost and
-  emergency callout each appear twice in one `FAQPage` — degrades rich-result
-  eligibility);
-- align the FAQ to the site's I/my voice;
-- correct or archive the superseded documents above;
-- **`faq.astro` pricing intro, paragraph 3** — *"you'll know exactly what to
-  expect before we begin"* is the same class of absolute promise as the banned
-  wording in §4.3 and sits two lines below copy that was corrected. Left in place
-  only because it was outside the agreed scope of that pass. Highest-priority
-  remaining item.
+The bounded audit of 23 July 2026 is **complete**. All twelve checks pass; see
+the Completed list below.
 
-### Completed
+Resolved 23 July 2026:
+
+- **The commercial bands are withdrawn from publication.** `from £180 + VAT` and
+  `£15–£25 per door` are **no longer approved public pricing** and must not be
+  reinstated. Commercial and multi-door work is quoted individually against
+  scope, number and type of doors, defects, access, travel/mobilisation and any
+  minimum attendance. The reason is commercial, not cosmetic: jobs are priced
+  individually, so a visible rate misrepresents how the work is actually
+  costed — and invites customers to hold a published figure against a quotation
+  that legitimately differs.
+- **No pricing radius is published.** The coverage answer no longer says "within
+  approximately 20 miles of York". Coverage and pricing are stated as separate
+  things, so a list of towns cannot be read as a uniform-price area or as
+  included travel.
+
+### Completed — 23 July 2026
+
+Wording:
 
 - ~~"I don't spring extras at the end"~~ — `FireDoorServicesPage.astro`
 - ~~"No surprise invoices at year-end"~~ — `FireDoorMaintenancePage.astro`
 - ~~"hidden costs"~~ — `faq.astro`
 - ~~"Fixed small-job price/pricing"~~ — `FireDoorInspectorsPage.astro`,
   `FireDoorInstallersPage.astro`
+- ~~"you'll know exactly what to expect before we begin"~~ — `faq.astro`;
+  replaced with quoted-scope-and-prior-confirmation wording that does not
+  guarantee unforeseen conditions can never alter scope or cost
+- ~~"Free, no-obligation"~~ — `contact.astro`
+- ~~commercial bands silent on travel~~ — `faq.astro`; scope and travel
+  treatment now stated without inventing a rate structure
+
+Structure:
+
+- ~~duplicate FAQ question names~~ — the two duplicated cost questions were
+  renamed to "What affects the cost of…" in their service categories, leaving
+  the detailed "How much does…" answers unique to the Pricing category
+- ~~inconsistent I/my voice~~ — all 32 FAQ answers plus the page markup
+  converted from we/our to I/my
+
+Documentation:
+
+- ~~two competing canonical pricing documents~~ — archived (above)
+- ~~`README.md` was the unmodified Astro starter~~ — rewritten, points here

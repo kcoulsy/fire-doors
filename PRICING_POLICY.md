@@ -43,13 +43,47 @@ quantity, location and scope. Never publish a per-door multiplier.
 
 ## 4. Travel and mobilisation
 
-Where a property is outside the normal local operating area, a separate
-**commercial travel and mobilisation charge** may apply. It reflects travelling
-time, vehicle use and operating cost, lost productive time, scheduling impact,
-and the cost of mobilising the business to a more distant location.
+Where a property is outside the normal local operating area, travel and
+mobilisation is **added as a separate quoted line**. It reflects travelling time,
+vehicle use and operating cost, lost productive time, scheduling impact, and the
+cost of mobilising the business to a more distant location.
 
 > ⚠️ **It must never be described, calculated or presented as HMRC mileage
-> reimbursement.** See §8 — there is a live cross-system conflict here.
+> reimbursement.** See §4.2 and §8.
+
+### 4.1 The two charging mechanisms are separate — never merge them
+
+| | Customer-facing mechanism |
+|---|---|
+| **Domestic survey** | £50 + VAT starting price for one door, **plus a separately quoted travel/mobilisation line** where applicable. |
+| **Remedial works** | May be subject to a **quoted minimum half-day or full-day attendance**. |
+
+**A distant survey is never automatically converted into a half-day attendance.**
+The survey keeps its own £50-plus-travel structure regardless of distance. The
+minimum-attendance concept belongs to remedial works only.
+
+Approved remedial-works wording:
+
+> "Remedial works may be subject to a minimum half-day or full-day attendance,
+> depending on the location, scope and resources required. Any minimum
+> attendance and associated travel or site-specific charges will be clearly
+> stated in the quotation before work is booked."
+
+No half-day or full-day **rate** may be published (see §7).
+
+### 4.2 Internal costing is not the customer-facing explanation
+
+Mileage, fuel and vehicle-cost calculations **may inform pricing internally** —
+that is what Laravel's `TravelCalculatorService` is for. They are **not** the
+charging explanation given to the customer. The customer sees a quoted travel and
+mobilisation line, not a distance sum they can recompute and dispute.
+
+### 4.3 Prohibited wording
+
+Do not use subjective or promissory phrasing for charges. It sets a standard that
+has to be defended and does not tell the customer which mechanism applies.
+Specifically banned: *"whichever is fairer for the job"*, *"no surprises"*, and
+any equivalent. State **which** charge applies and **when** it is confirmed.
 
 ## 5. Confirmation before attendance
 
@@ -75,8 +109,18 @@ publish:
 - mileage bands or rates;
 - a radius threshold or zone boundary;
 - a minimum mobilisation charge;
+- a half-day or full-day **rate** (the minimum-attendance *principle* is
+  publishable for remedial works — the number is not);
 - any automatic fee calculation;
 - a definition of "normal local operating area".
+
+Neither system may create automatic minimum-attendance, radius or mileage rules
+as a side effect of website wording work.
+
+> **The "£180 for under 10 doors" band is not evidence of a half-day rate.**
+> It is an existing published commercial *survey* band requiring separate
+> review. Do not cite it as proof of a general minimum-attendance rate, and do
+> not derive a day rate from it, unless Robert explicitly confirms that policy.
 
 The website establishes the **principle** that travel may be additional. The SaaS
 owns the **mechanism**. The website must never invent pricing logic the SaaS

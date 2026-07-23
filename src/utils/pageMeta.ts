@@ -80,14 +80,14 @@ export function getFormattedPageData(location?: string, type?: string): {
     const descriptionVariants = location
       ? [
           `FireQual qualified fire door inspector covering ${cleanLocationName} (${locationPostcode}) — ${lowerService} and fire door ${serviceAngle} across ${locationRegion}. 35+ years' experience, fully insured.`,
-          `${formattedServiceName} in ${cleanLocationName} and the wider ${locationRegion} area. FireQual certified inspector, 35+ years on the tools. Free no-obligation quotes and emergency callouts.`,
+          `${formattedServiceName} in ${cleanLocationName} and the wider ${locationRegion} area. FireQual certified inspector, 35+ years on the tools. No-obligation quotes and emergency callouts.`,
           `${formattedServiceName} in ${cleanLocationName} ${locationPostcode}. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
           `Professional ${lowerService} for properties in ${cleanLocationName} — a ${locTypeWord} I regularly work across. FireQual certified fire door inspector, 35+ years on the tools as a City & Guilds joiner.`,
           `Trusted fire door specialist in ${cleanLocationName} (${locationPostcode}) — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured. Covering ${locationRegion}.`,
         ]
       : [
           `FireQual qualified fire door inspector covering Yorkshire — ${lowerService} and fire door ${serviceAngle}. 35+ years' experience, fully insured.`,
-          `${formattedServiceName} across Yorkshire. FireQual certified inspector, 35+ years on the tools. Free no-obligation quotes and emergency callouts.`,
+          `${formattedServiceName} across Yorkshire. FireQual certified inspector, 35+ years on the tools. No-obligation quotes and emergency callouts.`,
           `${formattedServiceName} across Yorkshire. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
           `Professional ${lowerService} for properties across Yorkshire. FireQual certified fire door inspector, 35+ years on the tools as a City & Guilds joiner.`,
           `Trusted fire door specialist covering Yorkshire — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured.`,

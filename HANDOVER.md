@@ -8,11 +8,17 @@
 | --- | --- |
 | **HEAD** | `3de0211` |
 | **Branch** | `main`, synchronised with `origin/main` (0 ahead, 0 behind) |
-| **Working tree** | clean (`seo-data/` is untracked by design — do not commit it) |
+| **Working tree** | clean (`seo-data/` was a Search Console export; it was moved out of the repository in July 2026 and should not be reintroduced) |
 | **Production** | deployed and **verified by content and behaviour**, not by a deploy marker |
 
-Deployment is Netlify auto-build on push to `origin/main`. There is no `netlify.toml`; build config
+Netlify builds `origin/main` and publishes to production; there is no `netlify.toml`, so build config
 lives in the Netlify dashboard. **Do not trust a deploy marker — poll for actual content.**
+
+> **Process note (superseded since July 2026).** This section describes a
+> direct-push-to-`main` model. Changes now go via a branch and a pull request so
+> a Deploy Preview can be reviewed before anything reaches production. See
+> **"How changes reach production"** in [`README.md`](README.md), which is the
+> current operating model.
 
 ---
 

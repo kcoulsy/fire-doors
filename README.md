@@ -3,7 +3,41 @@
 Marketing site for **Coulsy Fire Doors** — a trading activity of Coulsy Limited.
 Live at [coulsyfiredoors.co.uk](https://coulsyfiredoors.co.uk).
 
-Astro static site, built and deployed from `main`.
+Astro static site. Netlify builds `main` and publishes to production; pull
+requests get a Deploy Preview.
+
+---
+
+## How changes reach production
+
+Work on a branch and merge via pull request. Do not commit directly to `main` —
+a push to `main` deploys straight to the live site with no preview and no review
+step.
+
+1. **Branch** from `main`.
+2. **Keep housekeeping separate from functional change.** Asset removals, CI
+   changes and tidy-ups belong in their own branch and their own PR, so a content
+   diff stays reviewable.
+3. **`npm run build`** before pushing. This runs `astro check` first; it must
+   report 0 errors.
+4. **Open a PR.** Netlify posts a Deploy Preview at
+   `deploy-preview-<n>--coulsyfiredoors.netlify.app`.
+5. **Review the preview**, not just the diff — particularly for copy, structured
+   data and anything on the location matrix.
+6. **Merge** once approved.
+7. **Verify production by content**, not by a deploy notification. Fetch the
+   affected pages and assert the new wording is present and the old wording is
+   gone. A "deploy succeeded" email only tells you Netlify finished — and a
+   Deploy Preview email is *not* a production deploy.
+
+There are **no GitHub Actions workflows** in this repository. The only CI is
+Netlify's build and its preview/redirect/header checks. A red check therefore
+means something is genuinely wrong. (An obsolete Astro Studio workflow was
+removed in July 2026: it required `@astrojs/db`, which this project has never
+used, and reported false green for 54 runs.)
+
+Deployment configuration lives in the Netlify dashboard — there is no
+`netlify.toml` in the repository.
 
 ---
 
@@ -61,6 +95,10 @@ radius before editing either.
 
 ## Other documentation
 
-The remaining root-level markdown files are point-in-time working notes and
-audits. They are **not** authoritative. `PRICING_POLICY.md` is the exception: it
-is current, binding policy.
+| Document | Status |
+|---|---|
+| `PRICING_POLICY.md` | **Current, binding policy.** Read before touching pricing copy. |
+| This README | **Current.** The operating model above is how the repo is maintained. |
+| `HANDOVER.md` | Dated snapshot of a past release. Useful history, not current process. |
+| Other root `*.md` | Point-in-time working notes and audits. **Not authoritative.** |
+| `docs/archive/` | Superseded. Do not use. |

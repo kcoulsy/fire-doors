@@ -80,10 +80,29 @@ mobilisation line, not a distance sum they can recompute and dispute.
 
 ### 4.3 Prohibited wording
 
-Do not use subjective or promissory phrasing for charges. It sets a standard that
-has to be defended and does not tell the customer which mechanism applies.
-Specifically banned: *"whichever is fairer for the job"*, *"no surprises"*, and
-any equivalent. State **which** charge applies and **when** it is confirmed.
+Do not use subjective, absolute or promissory phrasing for charges. It sets a
+standard that has to be defended and does not tell the customer which mechanism
+applies. State **which** charge applies and **when** it is confirmed.
+
+Specifically banned, with the approved replacements:
+
+| Banned | Why | Use instead |
+|---|---|---|
+| "whichever is fairer for the job" | Subjective; doesn't say which mechanism applies | Name the mechanism explicitly |
+| "no surprises" / "no surprise invoices" | Absolute promise, defeated by any legitimate variation | "quoted separately and agreed before it's incurred, wherever reasonably possible" |
+| "I don't spring extras at the end" | Reads as a guarantee of no additional charges | "if something surfaces that wasn't in the original scope, I identify it and agree it with you before the cost is incurred" |
+| "hidden costs" | Invites the claim that a later charge was hidden | State that travel/mobilisation/parking/access are quoted separately where they apply |
+| "fixed" price / pricing | Contradicts the "start from" model | **"clear"** price / pricing |
+
+### 4.4 The three approved commercial statements
+
+Any new copy about charges must reduce to one of these:
+
+1. Charges not included in the original scope are identified and agreed **before
+   they are incurred**, wherever reasonably possible.
+2. Travel, mobilisation, parking, access and other site-specific charges are
+   **quoted separately** where applicable.
+3. Pricing is described as **clear**, never **fixed**.
 
 ## 5. Confirmation before attendance
 
@@ -200,12 +219,23 @@ Both are pending correction or archival.
 Audited and agreed, not yet implemented:
 
 - qualify the commercial survey bands (`from £180 + VAT`, `£15–£25 per door`) for
-  travel and mobilisation — `faq.astro`;
-- replace "Fixed small-job price/pricing" with "Clear small-job price/pricing" —
-  `FireDoorInspectorsPage.astro`, `FireDoorInstallersPage.astro`;
+  travel and mobilisation — `faq.astro` (see the §7 caution about this band);
 - remove ambiguous "Free, no-obligation" from `contact.astro`;
 - remove duplicate FAQ question names (installation cost, maintenance cost and
   emergency callout each appear twice in one `FAQPage` — degrades rich-result
   eligibility);
 - align the FAQ to the site's I/my voice;
-- correct or archive the superseded documents above.
+- correct or archive the superseded documents above;
+- **`faq.astro` pricing intro, paragraph 3** — *"you'll know exactly what to
+  expect before we begin"* is the same class of absolute promise as the banned
+  wording in §4.3 and sits two lines below copy that was corrected. Left in place
+  only because it was outside the agreed scope of that pass. Highest-priority
+  remaining item.
+
+### Completed
+
+- ~~"I don't spring extras at the end"~~ — `FireDoorServicesPage.astro`
+- ~~"No surprise invoices at year-end"~~ — `FireDoorMaintenancePage.astro`
+- ~~"hidden costs"~~ — `faq.astro`
+- ~~"Fixed small-job price/pricing"~~ — `FireDoorInspectorsPage.astro`,
+  `FireDoorInstallersPage.astro`

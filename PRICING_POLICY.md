@@ -130,8 +130,14 @@ publish:
 - a minimum mobilisation charge;
 - a half-day or full-day **rate** (the minimum-attendance *principle* is
   publishable for remedial works — the number is not);
+- **any per-door rate or commercial inspection band** — withdrawn 23 July 2026,
+  see below;
 - any automatic fee calculation;
 - a definition of "normal local operating area".
+
+**The only price this website publishes is "surveys start from £50 + VAT for one
+door."** Everything else is quoted individually. If you are about to add a
+second number to this site, stop and check with Robert first.
 
 Neither system may create automatic minimum-attendance, radius or mileage rules
 as a side effect of website wording work.
@@ -222,18 +228,20 @@ Audited and agreed, not yet implemented:
 The bounded audit of 23 July 2026 is **complete**. All twelve checks pass; see
 the Completed list below.
 
-Deferred by decision, not oversight:
+Resolved 23 July 2026:
 
-- **The commercial survey bands themselves** (`from £180 + VAT`, `£15–£25 per
-  door`) remain published. Their scope and travel treatment are now stated, but
-  whether the bands should be published at all is an open commercial question —
-  Robert's position is that a rate should not generally be visible because jobs
-  are priced individually. Revisit as a separate decision. See the §7 caution:
-  no day rate may be derived from £180.
-- **A definition of "normal local operating area"** — deliberately unpublished
-  (§7). The FAQ still describes coverage as "within approximately 20 miles of
-  York", which is a coverage statement, not a pricing boundary. Consider
-  softening so it cannot be mistaken for one.
+- **The commercial bands are withdrawn from publication.** `from £180 + VAT` and
+  `£15–£25 per door` are **no longer approved public pricing** and must not be
+  reinstated. Commercial and multi-door work is quoted individually against
+  scope, number and type of doors, defects, access, travel/mobilisation and any
+  minimum attendance. The reason is commercial, not cosmetic: jobs are priced
+  individually, so a visible rate misrepresents how the work is actually
+  costed — and invites customers to hold a published figure against a quotation
+  that legitimately differs.
+- **No pricing radius is published.** The coverage answer no longer says "within
+  approximately 20 miles of York". Coverage and pricing are stated as separate
+  things, so a list of towns cannot be read as a uniform-price area or as
+  included travel.
 
 ### Completed — 23 July 2026
 

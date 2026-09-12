@@ -1,0 +1,50 @@
+# Coulsy Fire Doors — Netlify response headers
+#
+# File-based config, matching public/_redirects. Deliberately NOT netlify.toml:
+# build configuration for this site lives in the Netlify dashboard (see README),
+# and adding a toml would take that over. A _headers file only sets response
+# headers, so it cannot conflict with the dashboard build settings.
+#
+# Netlify merges matching rules and the more specific path wins for a given
+# header, so Cache-Control is set ONLY under /_astro/* and never under /*.
+
+/*
+  # Stop browsers MIME-sniffing a response into something executable. This was
+  # previously attempted with <meta http-equiv="X-Content-Type-Options">, which
+  # browsers ignore — it is only honoured as a real response header.
+  X-Content-Type-Options: nosniff
+
+  # Clickjacking. Nothing on this site is framed anywhere (0 <iframe> elements
+  # across all 230 pages), so DENY is safe and stronger than SAMEORIGIN.
+  X-Frame-Options: DENY
+
+  # Also set by a spec-valid <meta name="referrer"> in Layout.astro. That meta
+  # genuinely works, but only for the document; as a header it covers every
+  # response, so both are kept.
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # The site uses none of these APIs (verified: no navigator.geolocation, no
+  # getUserMedia). Denying them costs nothing and limits what injected or
+  # embedded content could ask for.
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+  # NOTE: no X-XSS-Protection. It is obsolete — the auditor it enabled has been
+  # removed from modern browsers and could itself introduce vulnerabilities.
+  # The ineffective <meta http-equiv> version was removed rather than promoted.
+  #
+  # NOTE: no Content-Security-Policy yet, deliberately. See the PR for evidence:
+  # the font <link> carries an inline onload= handler, which no nonce or hash
+  # can authorise, so any script-src would need 'unsafe-inline' and would buy
+  # nothing. A real CSP needs that pattern refactored and the five inline
+  # scripts noncing or hashing. That is Astro-level work, not a header change.
+
+/_astro/*
+  # Astro writes content-hashed filenames here (e.g. _slug_.Bwa2m-Nr.css), so
+  # the bytes behind a URL can never change: a change produces a new filename.
+  # That makes a one-year immutable cache safe, and it replaces Netlify's
+  # default "public,max-age=0,must-revalidate", which forced a revalidation
+  # round-trip for every asset on every repeat visit.
+  #
+  # Scoped to /_astro/* on purpose. HTML documents and the stable-named files in
+  # public/ (e.g. /images/*, /sw.js) are mutable and must keep revalidating.
+  Cache-Control: public, max-age=31536000, immutable

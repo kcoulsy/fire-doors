@@ -125,9 +125,14 @@ const {
     <meta name="geo.position" content="53.9590;-1.0792" />
     <meta name="ICBM" content="53.9590, -1.0792" />
 
-    <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    {/* X-Content-Type-Options and X-XSS-Protection used to be declared here as
+        <meta http-equiv>. Browsers ignore both in that form — they are only
+        honoured as real response headers — so the site looked hardened and was
+        not. nosniff is now a genuine header in public/_headers, and
+        X-XSS-Protection is gone rather than moved: it is obsolete.
+        <meta name="referrer"> below is a different case. It is spec-valid and
+        does work, so it stays, with the header as belt and braces.
+        HTML comments render into the output, so this is a JSX comment. */}
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <!-- LocalBusiness Structured Data -->

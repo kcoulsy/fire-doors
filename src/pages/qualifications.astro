@@ -25,9 +25,17 @@ const seoData = {
     mainEntity: {
       "@type": "Person",
       name: "Robert Coulson",
-      jobTitle: "Fire Door Specialist",
+      honorificSuffix: "MICWCI",
+      jobTitle: "Fire Door Inspector and Joiner",
       description:
         "City & Guilds qualified joiner, on the tools since 1988; FireQual certified fire door inspector since December 2024",
+      // ICWCI is a professional membership grade, not a qualification and not a
+      // licence, so it belongs in memberOf and must never enter hasCredential.
+      memberOf: {
+        "@type": "Organization",
+        name: "Institute of Clerks of Works and Construction Inspectorate",
+        alternateName: "ICWCI",
+      },
       hasCredential: [
         {
           "@type": "EducationalOccupationalCredential",
@@ -280,6 +288,29 @@ const seoData = {
           </div>
 
           <div class="space-y-6">
+            {/* Deliberately outside the "My Fire Door Qualifications" column.
+                MICWCI is a membership grade, not a qualification and not a
+                licence, and listing it as one would misstate it. */}
+            <div
+              class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
+            >
+              <h3 class="text-xl font-semibold text-brand-900 mb-4">
+                Professional Membership
+              </h3>
+              <p class="text-brand-600 mb-4">
+                I was elected to Member grade of the Institute of Clerks of
+                Works and Construction Inspectorate (ICWCI) on 28 August 2026,
+                and use the post-nominal MICWCI.
+              </p>
+              <p class="text-brand-600">
+                ICWCI membership is a professional membership grade — not a
+                qualification and not a licence. It recognises assessed
+                experience in independent inspection, quality assurance and
+                evidence-based reporting, which is the same discipline I apply
+                to fire door inspection.
+              </p>
+            </div>
+
             <div
               class="bg-white rounded-xl p-6 shadow-lg border border-brand-100"
             >

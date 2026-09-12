@@ -72,6 +72,34 @@ Two older pricing documents contradict this and are archived under
 | `npm run build` | `astro check` + production build to `./dist/` |
 | `npm run preview` | Preview the production build locally |
 
+## Browser and visual testing
+
+Most changes need no browser automation — `npm run build` and a read of the Deploy
+Preview is enough. Where a change genuinely needs it (layout, navigation,
+accessibility — anything `astro check` cannot see), **use Playwright**, and give it
+an isolated, disposable browser context.
+
+- **Isolated profile only.** A throwaway context or a `userDataDir` under a
+  temporary directory. Never point a test at your own Chrome/Chromium profile.
+- **No personal browser state.** A test must not depend on — or ask for — saved
+  logins, cookies, session tokens or anything in the macOS Keychain. Needing a
+  signed-in session is a reason to reconsider the test, not to borrow your own.
+- **Minimum access.** A viewport, a URL and the assertions. Nothing else.
+- **Stop on a credential prompt.** If browser automation raises an unexpected
+  Keychain, credential or profile-authorisation dialogue — for example *"…wants to
+  use your confidential information stored in 'Chromium Safe Storage'"* — stop the
+  test and find out why. **Do not approve it**, and do not change Keychain or other
+  macOS security settings to silence it.
+
+Driving a Chromium binary directly is the usual cause of that dialogue. Playwright
+passes `--password-store=basic` and `--use-mock-keychain` by default, so its
+Chromium never reaches for the login keychain; a hand-rolled launch omits them and
+Chromium initialises encrypted storage against the real keychain instead.
+
+Playwright is **not** a dependency of this site and should not become one — it is a
+local verification tool. Use an installation already on the machine, or
+`npx playwright`.
+
 ## Structure
 
 ```text

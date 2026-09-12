@@ -78,6 +78,13 @@
         const target = e.target as HTMLElement;
         const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
         if (link) {
+          // The skip link is deliberately exempt. This handler only scrolls the
+          // viewport; it never moves focus. That is fine for an ordinary in-page
+          // link, but for a bypass link it is the whole bug: focus would stay on
+          // the link, so the next Tab walks back into the navigation the user
+          // just asked to skip. Let the browser handle it natively instead —
+          // it sets the hash and moves focus to #main-content.
+          if (link.classList.contains("skip-link")) return;
           e.preventDefault();
           const targetId = link.getAttribute("href")?.substring(1);
           if (targetId) {
@@ -173,28 +180,8 @@
     outline-offset: 2px;
   }
 
-  /* Skip link for accessibility */
-  .skip-link {
-    position: absolute !important;
-    top: -40px !important;
-    left: 6px !important;
-    background: #1e2a38 !important;
-    color: white !important;
-    padding: 8px !important;
-    text-decoration: none !important;
-    border-radius: 4px !important;
-    z-index: 1000 !important;
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-
-  .skip-link:focus {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    top: 6px !important;
-  }
+  /* The .skip-link rules that used to sit here were moved to src/styles.scss.
+     They could never work from this component: Astro scopes a <style> block to
+     the component that declares it, and this component renders after the
+     footer, so the rules never matched a bypass link at the top of <body>. */
 </style>

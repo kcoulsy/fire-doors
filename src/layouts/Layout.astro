@@ -194,8 +194,11 @@ const {
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body class="flex flex-col min-h-screen overflow-x-hidden">
+    {/* First focusable element on every page, so a keyboard user can jump the
+        navigation instead of tabbing it on all 230 pages. Styles: styles.scss. */}
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Navbar transparent={transparentHeader} />
-    <main id="main-content" class={`flex-1 ${classes}`}>
+    <main id="main-content" tabindex="-1" class={`flex-1 ${classes}`}>
       <slot />
     </main>
     <Footer />

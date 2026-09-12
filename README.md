@@ -146,7 +146,26 @@ radius before editing either.
 | Document | Status |
 |---|---|
 | `PRICING_POLICY.md` | **Current, binding policy.** Read before touching pricing copy. |
+| `BACKLOG.md` | **Current.** The to-do list — what is done, what is open, and what is deliberately blocked. Start here before proposing work. |
+| `docs/ANALYTICS.md` | **Current.** What the analytics actually are, who owns the infrastructure, and how to check whether it is working. |
 | This README | **Current.** The operating model above is how the repo is maintained. |
 | `HANDOVER.md` | Dated snapshot of a past release. Useful history, not current process. |
 | Other root `*.md` | Point-in-time working notes and audits. **Not authoritative.** |
 | `docs/archive/` | Superseded. Do not use. |
+
+Keep this table honest. A document that has silently gone stale is worse than no
+document, because it is still believed.
+
+## Backups
+
+Source protection for this repository is **discharged by push and merge to
+`origin`** — that is the policy, per `BACKUP_CONVENTION.md` §13.1 in the SaaS repo,
+which is the estate-wide owner of *when* a backup is required. The site holds no
+database, no uploads and no sealed artefacts, so there is no operational-data
+obligation to discharge.
+
+A second, off-GitHub copy is kept as a `git bundle --all` under
+`archives/fire-doors/` on the Coulsy Primary / Secondary / Offsite A media, with a
+`README.md` there explaining how to verify and restore one. It is a belt-and-braces
+copy of committed history, **not** the primary protection — and a bundle carries no
+uncommitted work.

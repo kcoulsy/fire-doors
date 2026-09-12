@@ -36,8 +36,28 @@ means something is genuinely wrong. (An obsolete Astro Studio workflow was
 removed in July 2026: it required `@astrojs/db`, which this project has never
 used, and reported false green for 54 runs.)
 
-Deployment configuration lives in the Netlify dashboard — there is no
-`netlify.toml` in the repository.
+### Where Netlify configuration lives
+
+Split between the dashboard and the repository, so check both before changing
+either:
+
+| Setting | Where |
+|---|---|
+| Build command, publish directory, environment, domains | **Netlify dashboard** |
+| Redirects | **`public/_redirects`** |
+| Response headers (security, caching) | **`public/_headers`** |
+
+There is deliberately **no `netlify.toml`**. Adding one would take over the build
+configuration that currently lives in the dashboard, which is a much larger
+change than it looks. `public/` is copied verbatim into `dist/`, so a file-based
+rule only needs a commit — and it cannot conflict with the dashboard the way a
+toml can.
+
+`_headers` sets `Cache-Control: public, max-age=31536000, immutable` on
+`/_astro/*` only. Those filenames carry a content hash, so the bytes behind a URL
+can never change. **Do not widen that rule.** HTML and the stable-named files in
+`public/` (`/images/*`, `/sw.js`) are mutable and must keep revalidating — giving
+them a one-year cache would strand visitors on a stale site.
 
 ---
 

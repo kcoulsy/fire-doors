@@ -41,7 +41,8 @@ const seoData = {
       founder: {
         "@type": "Person",
         name: "Robert Coulson",
-        jobTitle: "Joiner & Fire Door Specialist",
+        honorificSuffix: "MICWCI",
+        jobTitle: "Fire Door Inspector and Joiner",
         description:
           "Runs Coulsy Ltd for joinery and small build works, now specialising in fire doors after passing FireQual exams in December 2024",
         url: "https://www.linkedin.com/in/robert-coulson-20a60915/",
@@ -50,7 +51,8 @@ const seoData = {
         {
           "@type": "Person",
           name: "Robert Coulson",
-          jobTitle: "Joiner & Fire Door Specialist",
+          honorificSuffix: "MICWCI",
+          jobTitle: "Fire Door Inspector and Joiner",
           description:
             "Runs Coulsy Ltd for joinery and small build works, now specialising in fire doors after passing FireQual exams in December 2024",
         },
@@ -392,7 +394,7 @@ const seoData = {
               </div>
               <div class="mt-6 text-center">
                 <h3 class="text-xl font-bold text-brand-900 mb-2">
-                  Robert Coulson
+                  Robert Coulson, MICWCI
                 </h3>
                 <p class="text-brand-600 font-medium">
                   Joiner & Fire Door Specialist
@@ -402,7 +404,7 @@ const seoData = {
                   FireQual Certified - Dec 2024
                 </p>
                 <p class="text-xs text-brand-400 mt-1">
-                  ICWCI membership assessment — passed
+                  MICWCI — ICWCI Member, Aug 2026
                 </p>
               </div>
             </div>
@@ -470,11 +472,12 @@ const seoData = {
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
                   <h3 class="text-xl font-bold text-brand-900 mb-2">
-                    Clerk of Works / Construction Inspection
+                    August 2026 - Elected Member of the ICWCI
                   </h3>
                   <p class="text-brand-600 leading-relaxed">
-                    I have passed the ICWCI membership assessment for Clerk of
-                    Works. Membership remains subject to election. The discipline
+                    I was elected to Member grade of the Institute of Clerks of
+                    Works and Construction Inspectorate (ICWCI) on 28 August
+                    2026, and use the post-nominal MICWCI. The discipline
                     centres on independent inspection, quality assurance and
                     evidence-based reporting across construction projects. Those
                     same principles underpin my fire-door inspection work.
@@ -1103,7 +1106,8 @@ const seoData = {
     "@type": "Person",
     "@id": "https://coulsyfiredoors.co.uk/about#robert-coulson",
     name: "Robert Coulson",
-    jobTitle: "Fire Door Specialist & Joiner",
+    honorificSuffix: "MICWCI",
+    jobTitle: "Fire Door Inspector and Joiner",
     description: "35+ years of joinery experience; FireQual certified fire door inspector since December 2024.",
     url: "https://coulsyfiredoors.co.uk/about",
     // Stable public URL (public/images/…) rather than the build-hashed asset, so
@@ -1141,11 +1145,21 @@ const seoData = {
       "CSCS Gold Card Holder",
       "NVQ Level 7 in Construction Senior Management",
     ],
-    memberOf: {
-      "@type": "Organization",
-      name: "Coulsy Ltd",
-      foundingDate: "1988",
-    },
+    // Two distinct relationships, so memberOf is an array. ICWCI is a
+    // professional membership grade — not a qualification and not a licence —
+    // which is why it lives here and never in a credential list.
+    memberOf: [
+      {
+        "@type": "Organization",
+        name: "Coulsy Ltd",
+        foundingDate: "1988",
+      },
+      {
+        "@type": "Organization",
+        name: "Institute of Clerks of Works and Construction Inspectorate",
+        alternateName: "ICWCI",
+      },
+    ],
     sameAs: [
       "https://www.linkedin.com/in/robert-coulson-20a60915/",
       "https://coulsyjoinery.co.uk",

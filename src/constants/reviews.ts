@@ -26,7 +26,7 @@
  *    LocalBusiness earns nothing. These reviews are for humans. That is the point.
  *
  * Mirrors coulsy-joinery/src/constants/reviews.ts, reconciled against the profile
- * on 13 July 2026 — 12 reviews, all five stars.
+ * on 12 September 2026 — 13 reviews, all five stars.
  */
 
 export interface Review {
@@ -39,6 +39,11 @@ export interface Review {
 
 /** Newest first, matching the order Google presents them. */
 export const REVIEWS: Review[] = [
+  {
+    author: "Tom Waller",
+    rating: 5,
+    text: "A flawless experience. Rob is someone with a real passion for his work, who was able to immediately identify and explain all issues with my fire door. He then did very thorough remedial work dealing with every deficiency in a timely and professional manner. If you want the job done properly, come to Rob.",
+  },
   {
     author: "Barbara",
     rating: 5,

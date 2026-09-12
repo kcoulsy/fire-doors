@@ -1,3 +1,43 @@
+/* Skip link — keyboard bypass for the navigation (WCAG 2.4.1 Bypass Blocks).
+ *
+ * Global on purpose: the link lives in Layout.astro, so a component-scoped
+ * block cannot style it. It is moved off-screen rather than hidden with
+ * `display: none` or `visibility: hidden` — both of those take an element out
+ * of the tab order, which is the one thing a bypass link must stay in, and are
+ * why the previous version of these rules could never fire.
+ */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 6px;
+  z-index: 1000;
+  padding: 8px 12px;
+  background: #1e2a38;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: top 0.15s ease-in-out;
+}
+
+.skip-link:focus {
+  top: 6px;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
+/* tabindex="-1" lets the skip link move focus here. It is not reachable by Tab,
+   so suppressing the ring costs no keyboard affordance and avoids outlining the
+   entire page region. */
+#main-content:focus {
+  outline: none;
+}
+
 /* Custom styles for micro-interactions */
 
 /* Service card hover effects */

@@ -86,6 +86,43 @@ Robert has explicitly deferred further action on this until another day.
 
 ---
 
+### Some real contact-form submissions reportedly not received — unconfirmed, needs re-checking
+
+**Recorded 5 November 2026, inconclusive.** Robert tested the live contact form
+through Chrome multiple times. On at least one occasion a message containing
+backtick/code-fence-style characters (`` ``` `` `) apparently did not produce a
+notification email, while a later attempt with plain English text did — in
+every case the on-page banner said the message had sent.
+
+**What was investigated:** the initial hypothesis was that Netlify Forms'
+built-in spam filtering was silently discarding the notification for
+backtick-containing content while still returning a normal success response
+to the browser (Netlify deliberately gives spammers no signal when a
+submission is filtered, so the client genuinely cannot detect this from the
+HTTP response alone — confirmed separately: two diagnostic test submissions,
+one reproducing the backtick pattern and one plain-text control, returned
+byte-identical HTTP responses, status 200, same content-length).
+
+**This hypothesis was tested directly and did not hold up.** Both diagnostic
+submissions (one with backticks, one plain text) arrived promptly in the main
+inbox — no spam folder, no apparent delay. If backtick content were being
+filtered, the backtick test should have been the one that went missing; it
+wasn't. **No cause has been confirmed.**
+
+Possible explanations not yet ruled out: the earlier "missing" attempts may
+simply not have been searched for thoroughly (inbox/junk, by date rather than
+by scrolling recent messages); they may have been made against a stale
+cached page, or during the PR #13 deploy window; or they may have arrived
+later than expected. **Robert will recheck his own original attempts next
+week** before any further action is taken.
+
+Do not assume the spam-filtering theory above is the cause — it was tested
+and contradicted by the evidence. Do not re-investigate without first
+confirming, by inbox search, whether the originally "missing" submissions
+genuinely never arrived.
+
+---
+
 ## Open — evidence-backed technical work
 
 ### 1. Consolidate the structured-data graph

@@ -26,6 +26,10 @@ Last reviewed: **12 September 2026** (`main` at `a9868e0`).
 | Real HTTP security headers (`nosniff`, `DENY`, Referrer-Policy, Permissions-Policy) | `93c8d05` (#7) | response headers |
 | Immutable caching for `/_astro/*` only | `93c8d05` (#7) | `max-age=31536000, immutable` |
 | Netlify configuration documented | `a9868e0` (#8) | README |
+| Fire-door inspection service withdrawn; £60 + VAT site-visit pricing; qualifications verified against original certificates (see `FIRE_DOOR_LIABILITY_WORDING_REVIEW.md`) | `25eb4cf` (#10) | `/qualifications`, `/compliance`, `/faq`, `/fire-door-inspectors` → 301 |
+| Contact form kept customers on-site after submission (first attempt — superseded by #12 below) | `a00c6e8` (#11) | `/contact` |
+| Contact-form post-submission 404 fixed — root cause was a shared Netlify Forms `name="contact"` registering only one `action` sitewide; fixed by submitting via `fetch()` instead | `5ea4b88` (#12) | `/contact` (real-browser test by Robert, 5 Nov 2026: submission, on-site confirmation and email notification all confirmed working) |
+| Contact-form confirmation banner could disappear almost immediately and wasn't scrolled into view — defect pattern identified by the Coulsy Joinery agent (`contact-form-confirmation-fix-2026-11-05`, commit `3de3395`) and found to apply here too. Cause: `showBanner()` scheduled an unconditional 8-second `setTimeout` per call with nothing to cancel a still-pending one from an earlier call, so a second banner (e.g. after a retry) could be hidden almost immediately by a stale timer from the first. Fix: removed the auto-hide timer entirely (banners now stay until dismissed or the visitor leaves); moved both banners above the form; added `scrollIntoView()` + `.focus()` on show; added accessible dismiss buttons; added `role="status"`/`aria-live="polite"` (success) and `role="alert"`/`aria-live="assertive"` (error); added an explicit duplicate-submission guard. Netlify Forms, the honeypot and the fetch-based submission from #12 are unchanged. Verified by `npm run build` (0 errors, 175 pages), the link-check script (0 broken links), and by extracting and executing the actual compiled script against 4 scenarios (success, dismiss-then-retry, duplicate-submission guard) — not by a live browser test, since none was required to verify this. | `8e82dd5` (#13) | `/contact` (confirmed live: banners render above the form with the expected ARIA roles and dismiss buttons; ✗ a real browser/screen-reader pass has not been done) |
 
 ---
 
@@ -43,6 +47,42 @@ Full evidence, localisation and the verification procedure:
 
 This blocks nothing else technically, but every day it stays broken is a day of
 traffic data that cannot be recovered.
+
+---
+
+### Contact-form notification emails scored as spam — non-urgent, deferred
+
+**Recorded 5 November 2026.** The contact form itself is fully working — Robert
+personally verified on 5 Nov 2026 that submission, staying on-site, the green
+confirmation and the Netlify notification email all function correctly (see the
+`ContactForm.astro` fixes in PRs #11/#12). This entry is about what happens to
+that notification *after* Netlify sends it: the receiving mail server flagged it
+as spam.
+
+**Findings:**
+
+- Sender: `formresponses@netlify.com`, via Amazon SES, sending IP `54.240.9.98`.
+- Receiving server: `mda.extendcp.co.uk` (the `@coulsy.co.uk` mailbox).
+- SPF and DKIM both **passed** — this is not an authentication failure.
+- SpamAssassin scored the message **3.5**, against a spam threshold of **3.5**
+  (i.e. right on the boundary).
+- Principal contributing factors: the sending IP's presence on two reputation
+  lists, **Invaluement** and **0spam**.
+- This is the same underlying class of issue as the earlier investigation
+  (same sender/path, authenticated and SPF/DKIM-clean, scored 4.1 against the
+  same 3.5 threshold on that occasion) — recurring, not new.
+
+**This is an email-deliverability issue on the receiving mail infrastructure,
+not a website or contact-form defect.** Nothing in this repository is wrong.
+
+**Blocker / proposed future action:** investigate a narrowly scoped server-side
+spam-filter exception for authenticated Netlify form notifications specifically
+(matching sender + SPF/DKIM-pass), on `mda.extendcp.co.uk`. **Do not** disable
+spam protection generally or whitelist Amazon SES's broader sending ranges —
+that would accept spam from every other SES-sending customer too, not just
+Netlify's form notifications.
+
+Robert has explicitly deferred further action on this until another day.
 
 ---
 

@@ -39,13 +39,16 @@ const successMessageId = uniqueId
   : "success-message";
 const errorMessageId = uniqueId ? `error-message-${uniqueId}` : "error-message";
 
-// Without this, Netlify's default post-submit behaviour (no custom action)
-// takes visitors to Netlify's own generic thank-you page instead of back to
-// this page with the on-page success message below. #form-success-target
-// also drives the no-JS CSS :target fallback further down this file — the
-// script below gates the JS-driven version against sessionStorage so the
-// banner only appears after a genuine submit, not from visiting this URL.
-const successAction = `${Astro.url.pathname}?success=true#form-success-target`;
+// Fixed and IDENTICAL on every page — never derived from Astro.url or any
+// other per-page value. This form's `name="contact"` is shared across all
+// ~175 pages that embed it, and Netlify's deploy-time scanner registers only
+// ONE action for a shared form name sitewide (whichever instance it parses
+// last) — see the 5 Nov 2026 incident this is fixing. A per-page action
+// therefore sent some genuine submissions to a redirect target belonging to
+// a different page, which 404'd. /contact always exists, so this fallback
+// action is only ever used if JavaScript fails to load (see script below,
+// which submits via fetch() for everyone else and never hits this at all).
+const successAction = "/contact?success=true#form-success-target";
 ---
 
 <div
@@ -258,19 +261,6 @@ const successAction = `${Astro.url.pathname}?success=true#form-success-target`;
 >
   // Enhanced contact form with micro-interactions
   document.addEventListener("DOMContentLoaded", function () {
-    // One-time flag, set only by a genuine submit (below) immediately before
-    // the browser's native POST navigates away. Reading it here and clearing
-    // it straight after is what stops the banner showing just because someone
-    // loaded a URL containing ?success=true — e.g. a shared link, a bookmark,
-    // or browser back/forward — rather than having actually just submitted.
-    const SUBMITTED_FLAG = "coulsyContactFormSubmitted";
-    const justSubmitted = sessionStorage.getItem(SUBMITTED_FLAG) === "true";
-    sessionStorage.removeItem(SUBMITTED_FLAG);
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const hasSuccessParam = urlParams.get("success") === "true";
-    const hasErrorParam = urlParams.get("error") === "true";
-
     const successMessage = document.getElementById(successMessageId);
     const errorMessage = document.getElementById(errorMessageId);
     const submitButton = document.getElementById(submitButtonId);
@@ -279,6 +269,25 @@ const successAction = `${Astro.url.pathname}?success=true#form-success-target`;
     const loadingSpinner = document.getElementById(loadingSpinnerId);
     const form = document.getElementById(formId);
     const messageField = document.getElementById("message");
+
+    function showBanner(el) {
+      if (!el) return;
+      el.classList.remove("hidden");
+      el.style.animation = "slideInUp 0.5s ease-out";
+      setTimeout(() => {
+        el.style.animation = "slideOutDown 0.5s ease-out";
+        setTimeout(() => el.classList.add("hidden"), 500);
+      }, 8000);
+    }
+
+    function resetSubmitButton() {
+      if (submitButton && sendIcon && buttonText && loadingSpinner) {
+        submitButton.disabled = false;
+        sendIcon.classList.remove("hidden");
+        buttonText.textContent = "Send Message";
+        loadingSpinner.classList.add("hidden");
+      }
+    }
 
     // Button micro-interactions
     if (submitButton) {
@@ -305,13 +314,26 @@ const successAction = `${Astro.url.pathname}?success=true#form-success-target`;
       });
     }
 
-    // A single submit handler covering everything that must happen before the
-    // browser's native POST fires: none of this calls preventDefault, so
-    // Netlify Forms still receives and processes the submission exactly as a
-    // plain HTML form post — this only runs alongside that, not instead of it.
+    // Submit via fetch rather than relying on the browser's native POST
+    // navigation. This is deliberate, not cosmetic: this form's name="contact"
+    // is shared across ~175 pages, and Netlify's deploy-time scanner keeps
+    // only ONE action for a shared form name sitewide — a genuine submission
+    // from any page other than whichever one Netlify happened to register
+    // could be redirected to the wrong page's address and 404 (confirmed live,
+    // 5 Nov 2026). Submitting via fetch sidesteps that entirely: Netlify Forms
+    // still receives and records the POST exactly as it would a native one
+    // (same fields, same form-name, same honeypot), but this page never
+    // navigates anywhere, so there is no action/redirect to get wrong.
     if (form) {
-      form.addEventListener("submit", function () {
-        sessionStorage.setItem(SUBMITTED_FLAG, "true");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (messageField && location && serviceType && !messageField.dataset.locationAppended) {
+          const currentMessage = messageField.value || "";
+          const locationInfo = `\n\n---\nInquiry from: ${location} (${serviceType})`;
+          messageField.value = currentMessage + locationInfo;
+          messageField.dataset.locationAppended = "true";
+        }
 
         if (submitButton && sendIcon && buttonText && loadingSpinner) {
           submitButton.disabled = true;
@@ -320,47 +342,26 @@ const successAction = `${Astro.url.pathname}?success=true#form-success-target`;
           loadingSpinner.classList.remove("hidden");
         }
 
-        if (messageField && location && serviceType) {
-          const currentMessage = messageField.value || "";
-          const locationInfo = `\n\n---\nInquiry from: ${location} (${serviceType})`;
-          messageField.value = currentMessage + locationInfo;
-        }
+        const body = new URLSearchParams(new FormData(form));
+        fetch(window.location.pathname, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: body.toString(),
+        })
+          .then((response) => {
+            resetSubmitButton();
+            if (response.ok) {
+              showBanner(successMessage);
+              form.reset();
+            } else {
+              showBanner(errorMessage);
+            }
+          })
+          .catch(() => {
+            resetSubmitButton();
+            showBanner(errorMessage);
+          });
       });
-    }
-
-    if (hasSuccessParam || window.location.hash === "#form-success-target") {
-      // Once JS is running, it takes over from the CSS :target fallback
-      // entirely — strip the fragment/query param straight away so :target
-      // can't later re-force the banner visible (e.g. fighting the 8-second
-      // auto-hide below) or stay live if the visitor navigates back/forward.
-      const cleanUrl = new URL(window.location.href);
-      cleanUrl.searchParams.delete("success");
-      cleanUrl.hash = "";
-      history.replaceState(null, "", cleanUrl.toString());
-    }
-
-    if (hasSuccessParam && justSubmitted && successMessage) {
-      successMessage.classList.remove("hidden");
-      successMessage.style.animation = "slideInUp 0.5s ease-out";
-      // Auto-hide after 8 seconds
-      setTimeout(() => {
-        successMessage.style.animation = "slideOutDown 0.5s ease-out";
-        setTimeout(() => {
-          successMessage.classList.add("hidden");
-        }, 500);
-      }, 8000);
-    }
-
-    if (hasErrorParam && errorMessage) {
-      errorMessage.classList.remove("hidden");
-      errorMessage.style.animation = "slideInUp 0.5s ease-out";
-      // Auto-hide after 8 seconds
-      setTimeout(() => {
-        errorMessage.style.animation = "slideOutDown 0.5s ease-out";
-        setTimeout(() => {
-          errorMessage.classList.add("hidden");
-        }, 500);
-      }, 8000);
     }
   });
 </script>
@@ -412,13 +413,17 @@ const successAction = `${Astro.url.pathname}?success=true#form-success-target`;
     }
   }
 
-  /* No-JS fallback: the success action's URL fragment (#form-success-target)
-     only ever points here as the result of Netlify redirecting after a real
-     POST — a visitor without JavaScript can't be given the sessionStorage
-     check above, so this is a weaker guarantee for that case specifically
-     (someone could still reach it by following/guessing the exact link).
-     With JavaScript available, the script above actively strips the
-     fragment on any load that isn't a genuine submit, which overrides this. */
+  /* No-JS fallback only. With JavaScript available, the submit handler above
+     calls preventDefault() and this native action/redirect never fires at
+     all — every real submission goes through fetch() instead. This rule only
+     matters if JavaScript fails to load: the browser then falls back to a
+     native POST to the fixed action above, landing on /contact?success=true,
+     and this shows the banner based on the URL fragment alone. That's a
+     weaker guarantee than the fetch path (nothing can tell a genuine no-JS
+     submission apart from someone following/guessing the exact link without
+     JS to check it), and it always lands on /contact specifically rather
+     than the page the visitor was actually on — both accepted trade-offs for
+     a visitor without JavaScript, not a concern for anyone else. */
   #form-success-target:target ~ [id^="success-message"] {
     display: block !important;
   }

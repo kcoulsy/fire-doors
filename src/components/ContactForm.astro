@@ -61,6 +61,92 @@ const successAction = "/contact?success=true#form-success-target";
     </div>
   )}
 
+  <!-- Anchor the no-JS fallback's success redirect targets here, immediately
+       before the banners it needs to reveal via the :target ~ selector below
+       (general sibling selectors only match elements that come AFTER this
+       one in the DOM, so this must stay directly above the two banners). -->
+  <span id="form-success-target" aria-hidden="true" tabindex="-1"></span>
+
+  <!-- Success Message — shown above the form (not appended after it) so it's
+       prominent without requiring a scroll on a short viewport; scrollIntoView
+       in the script below handles the case where it still isn't in view. -->
+  <div
+    id={successMessageId}
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    tabindex="-1"
+    class="hidden mb-4 p-4 bg-green-50 border border-green-200 rounded-lg"
+  >
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-center">
+        <svg
+          class="w-5 h-5 text-green-500 mr-2 flex-shrink-0"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="text-green-800 font-medium"
+          >Message sent successfully! We'll get back to you soon.</span
+        >
+      </div>
+      <button
+        type="button"
+        data-dismiss-banner
+        aria-label="Dismiss confirmation"
+        class="flex-shrink-0 text-green-600 hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 rounded p-1"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Error Message — same prominent placement and dismiss pattern. role="alert"
+       is itself an implicit assertive live region; aria-live is kept explicit
+       too for broader screen-reader support. -->
+  <div
+    id={errorMessageId}
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    tabindex="-1"
+    class="hidden mb-4 p-4 bg-red-50 border border-red-200 rounded-lg"
+  >
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-center">
+        <svg
+          class="w-5 h-5 text-red-500 mr-2 flex-shrink-0"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <span class="text-red-800 font-medium"
+          >Something went wrong. Please try again or call us directly.</span
+        >
+      </div>
+      <button
+        type="button"
+        data-dismiss-banner
+        aria-label="Dismiss error message"
+        class="flex-shrink-0 text-red-600 hover:text-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 rounded p-1"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
   <form
     id={formId}
     name="contact"
@@ -184,54 +270,6 @@ const successAction = "/contact?success=true#form-success-target";
     </button>
   </form>
 
-  <!-- Anchor the success redirect targets. Purely a :target hook for the
-       no-JS CSS fallback below — carries no content, never focusable. -->
-  <span id="form-success-target" aria-hidden="true" tabindex="-1"></span>
-
-  <!-- Success Message (shown after a genuine submission; see script below) -->
-  <div
-    id={successMessageId}
-    class="hidden mt-4 p-4 bg-green-50 border border-green-200 rounded-lg"
-  >
-    <div class="flex items-center">
-      <svg
-        class="w-5 h-5 text-green-500 mr-2"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-          clip-rule="evenodd"></path>
-      </svg>
-      <span class="text-green-800 font-medium"
-        >Message sent successfully! We'll get back to you soon.</span
-      >
-    </div>
-  </div>
-
-  <!-- Error Message (shown by Netlify if there's an error) -->
-  <div
-    id={errorMessageId}
-    class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg"
-  >
-    <div class="flex items-center">
-      <svg
-        class="w-5 h-5 text-red-500 mr-2"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-          clip-rule="evenodd"></path>
-      </svg>
-      <span class="text-red-800 font-medium"
-        >Something went wrong. Please try again or call us directly.</span
-      >
-    </div>
-  </div>
-
   <!-- Contact Info -->
   <div class="mt-6 pt-6 border-t border-gray-200">
     <div class="text-center">
@@ -270,14 +308,28 @@ const successAction = "/contact?success=true#form-success-target";
     const form = document.getElementById(formId);
     const messageField = document.getElementById("message");
 
+    // Deliberately no auto-hide timer. The previous version scheduled one
+    // unconditional setTimeout(..., 8000) per call with nothing to cancel a
+    // still-pending one from an earlier call — a second banner (e.g. shown
+    // after a retry) could be hidden almost immediately by a stale timer
+    // left over from the first. Banners now stay until the visitor dismisses
+    // them (the button below) or leaves the page.
     function showBanner(el) {
       if (!el) return;
+      hideBanner(successMessage === el ? errorMessage : successMessage);
       el.classList.remove("hidden");
       el.style.animation = "slideInUp 0.5s ease-out";
-      setTimeout(() => {
-        el.style.animation = "slideOutDown 0.5s ease-out";
-        setTimeout(() => el.classList.add("hidden"), 500);
-      }, 8000);
+      // Bring it into view and move focus to it — required regardless of
+      // where on a long page the form happens to sit, not just on short
+      // viewports.
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.focus();
+    }
+
+    function hideBanner(el) {
+      if (!el) return;
+      el.classList.add("hidden");
+      el.style.animation = "";
     }
 
     function resetSubmitButton() {
@@ -288,6 +340,17 @@ const successAction = "/contact?success=true#form-success-target";
         loadingSpinner.classList.add("hidden");
       }
     }
+
+    // Dismiss buttons inside each banner (added to the markup above).
+    [successMessage, errorMessage].forEach(function (banner) {
+      if (!banner) return;
+      const dismissBtn = banner.querySelector("[data-dismiss-banner]");
+      if (dismissBtn) {
+        dismissBtn.addEventListener("click", function () {
+          hideBanner(banner);
+        });
+      }
+    });
 
     // Button micro-interactions
     if (submitButton) {
@@ -328,6 +391,16 @@ const successAction = "/contact?success=true#form-success-target";
       form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        // Guard against a duplicate in-flight submission — not just via the
+        // disabled submit button (which a fast double-click or an
+        // Enter-triggered implicit submission from another field can race),
+        // but as the authoritative check. Cleared once the fetch settles,
+        // either way, in the finally-equivalent below.
+        if (form.dataset.submitting === "true") {
+          return;
+        }
+        form.dataset.submitting = "true";
+
         if (messageField && location && serviceType && !messageField.dataset.locationAppended) {
           const currentMessage = messageField.value || "";
           const locationInfo = `\n\n---\nInquiry from: ${location} (${serviceType})`;
@@ -349,15 +422,21 @@ const successAction = "/contact?success=true#form-success-target";
           body: body.toString(),
         })
           .then((response) => {
+            form.dataset.submitting = "false";
             resetSubmitButton();
             if (response.ok) {
               showBanner(successMessage);
               form.reset();
+              // form.reset() clears the location-info flag along with the
+              // field's value, so a second genuine enquiry on the same page
+              // load still gets the location info appended once.
+              if (messageField) delete messageField.dataset.locationAppended;
             } else {
               showBanner(errorMessage);
             }
           })
           .catch(() => {
+            form.dataset.submitting = "false";
             resetSubmitButton();
             showBanner(errorMessage);
           });

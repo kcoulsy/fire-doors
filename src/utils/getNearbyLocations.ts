@@ -22,7 +22,6 @@ function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: numbe
 const SERVICE_RADIUS_LIMITS: Record<string, number> = {
   "fire-door-services": 20,      // Main services - 20 miles
   "fire-door-maintenance": 15,   // Maintenance - 15 miles (more frequent visits)
-  "fire-door-inspectors": 20,    // Inspections - 20 miles
   "fire-door-installers": 18,    // Installation - 18 miles
   "default": 30                  // Fallback radius
 };

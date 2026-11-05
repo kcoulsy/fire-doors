@@ -4,3 +4,67 @@
 # with ~1,500 impressions/yr. Send to the regional services page so any
 # residual clicks land somewhere relevant instead of 404.
 /manchester-fire-door-services  /yorkshire-fire-door-services  301!
+
+# /fire-door-inspectors retired 5 Nov 2026 — Coulsy no longer offers
+# independent fire-door inspections (see FIRE_DOOR_LIABILITY_WORDING_REVIEW.md).
+# The route and its 54 location variants are removed from the Astro build
+# entirely (no generated HTML at these paths); these are true edge 301s,
+# not a client-side redirect page. Each location sends to its existing
+# fire-door-services page for that same location, which already covers
+# installation, repairs, maintenance and remedial work — so no new
+# location pages were created just to replace these URLs.
+/fire-door-inspectors  /fire-door-services  301!
+/york-fire-door-inspectors  /york-fire-door-services  301!
+/selby-fire-door-inspectors  /selby-fire-door-services  301!
+/tadcaster-fire-door-inspectors  /tadcaster-fire-door-services  301!
+/pocklington-fire-door-inspectors  /pocklington-fire-door-services  301!
+/elvington-fire-door-inspectors  /elvington-fire-door-services  301!
+/welburn-fire-door-inspectors  /welburn-fire-door-services  301!
+/stamford-bridge-fire-door-inspectors  /stamford-bridge-fire-door-services  301!
+/towton-fire-door-inspectors  /towton-fire-door-services  301!
+/wetherby-fire-door-inspectors  /wetherby-fire-door-services  301!
+/harrogate-fire-door-inspectors  /harrogate-fire-door-services  301!
+/knaresborough-fire-door-inspectors  /knaresborough-fire-door-services  301!
+/ripley-fire-door-inspectors  /ripley-fire-door-services  301!
+/spofforth-fire-door-inspectors  /spofforth-fire-door-services  301!
+/follifoot-fire-door-inspectors  /follifoot-fire-door-services  301!
+/pannal-fire-door-inspectors  /pannal-fire-door-services  301!
+/beckwithshaw-fire-door-inspectors  /beckwithshaw-fire-door-services  301!
+/darely-fire-door-inspectors  /darely-fire-door-services  301!
+/starbeck-fire-door-inspectors  /starbeck-fire-door-services  301!
+/leeds-fire-door-inspectors  /leeds-fire-door-services  301!
+/garforth-fire-door-inspectors  /garforth-fire-door-services  301!
+/rothwell-fire-door-inspectors  /rothwell-fire-door-services  301!
+/horsforth-fire-door-inspectors  /horsforth-fire-door-services  301!
+/otley-fire-door-inspectors  /otley-fire-door-services  301!
+/ripon-fire-door-inspectors  /ripon-fire-door-services  301!
+/thirsk-fire-door-inspectors  /thirsk-fire-door-services  301!
+/masham-fire-door-inspectors  /masham-fire-door-services  301!
+/boroughbridge-fire-door-inspectors  /boroughbridge-fire-door-services  301!
+/easingwold-fire-door-inspectors  /easingwold-fire-door-services  301!
+/helmsley-fire-door-inspectors  /helmsley-fire-door-services  301!
+/pickering-fire-door-inspectors  /pickering-fire-door-services  301!
+/sherburn-in-elmet-fire-door-inspectors  /sherburn-in-elmet-fire-door-services  301!
+/cawood-fire-door-inspectors  /cawood-fire-door-services  301!
+/riccall-fire-door-inspectors  /riccall-fire-door-services  301!
+/bishopthorpe-fire-door-inspectors  /bishopthorpe-fire-door-services  301!
+/copmanthorpe-fire-door-inspectors  /copmanthorpe-fire-door-services  301!
+/haxby-fire-door-inspectors  /haxby-fire-door-services  301!
+/strensall-fire-door-inspectors  /strensall-fire-door-services  301!
+/huntington-fire-door-inspectors  /huntington-fire-door-services  301!
+/dunnington-fire-door-inspectors  /dunnington-fire-door-services  301!
+/wheldrake-fire-door-inspectors  /wheldrake-fire-door-services  301!
+/escrick-fire-door-inspectors  /escrick-fire-door-services  301!
+/deighton-fire-door-inspectors  /deighton-fire-door-services  301!
+/askham-bryan-fire-door-inspectors  /askham-bryan-fire-door-services  301!
+/askham-richard-fire-door-inspectors  /askham-richard-fire-door-services  301!
+/rufforth-fire-door-inspectors  /rufforth-fire-door-services  301!
+/acomb-fire-door-inspectors  /acomb-fire-door-services  301!
+/fulford-fire-door-inspectors  /fulford-fire-door-services  301!
+/heslington-fire-door-inspectors  /heslington-fire-door-services  301!
+/stockton-on-the-forest-fire-door-inspectors  /stockton-on-the-forest-fire-door-services  301!
+/holtby-fire-door-inspectors  /holtby-fire-door-services  301!
+/osbaldwick-fire-door-inspectors  /osbaldwick-fire-door-services  301!
+/heworth-fire-door-inspectors  /heworth-fire-door-services  301!
+/tang-hall-fire-door-inspectors  /tang-hall-fire-door-services  301!
+/yorkshire-fire-door-inspectors  /yorkshire-fire-door-services  301!

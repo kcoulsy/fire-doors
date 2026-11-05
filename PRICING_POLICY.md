@@ -10,25 +10,39 @@ Claude memory.
 
 ---
 
-## 1. The base survey fee
+## 1. The base site-visit fee
 
-> **Standard domestic fire-door surveys start from £50 + VAT for one door.**
+> **Standard domestic fire-door site visits start from £60 + VAT (£72 including
+> VAT) for one door.**
 
 Always "**start from**". Never "costs", "is", "fixed at", or "per door".
 
+This fee is for a site visit to examine the door(s), take measurements and
+prepare a written quotation for the work required — installation, repair,
+maintenance or remedial work. **It is not an independent fire-door inspection,
+compliance assessment or certification service**, and no inspection report or
+compliance certificate is issued as part of it.
+
+For remedial work to an existing fire door, the customer provides a
+third-party fire risk assessment (FRA) identifying the door(s) before the
+visit is booked. This requirement applies to existing-door remedial enquiries
+only — it does not extend to new installation enquiries or general/routine
+maintenance visits.
+
 The base fee covers:
 
-- attendance and inspection of one door and frame;
+- attendance at the property;
+- examining the door(s) and frame relevant to the enquiry;
 - relevant measurements and observations;
-- assessment of the likely repair-versus-replacement position;
-- written findings;
-- the information needed to price subsequent remedial work.
+- assessment of the likely repair-versus-replacement position, for pricing
+  purposes;
+- preparing the written quotation.
 
 ## 2. What the base fee does NOT cover
 
 **Travel is not included.** The base fee does not include unrestricted travel
 throughout Yorkshire. Any copy stating or implying that travel, mileage or
-attendance anywhere in the region is included in the £50 is a defect — this was
+attendance anywhere in the region is included in the £60 is a defect — this was
 the exact error corrected in `c4c4d32`.
 
 Also not included, and chargeable where applicable:
@@ -38,7 +52,7 @@ Also not included, and chargeable where applicable:
 
 ## 3. Additional doors
 
-Additional doors are **not** automatically £50 each. They are priced according to
+Additional doors are **not** automatically £60 each. They are priced according to
 quantity, location and scope. Never publish a per-door multiplier.
 
 ## 4. Travel and mobilisation
@@ -55,11 +69,11 @@ cost of mobilising the business to a more distant location.
 
 | | Customer-facing mechanism |
 |---|---|
-| **Domestic survey** | £50 + VAT starting price for one door, **plus a separately quoted travel/mobilisation line** where applicable. |
+| **Domestic site visit** | £60 + VAT starting price for one door, **plus a separately quoted travel/mobilisation line** where applicable. |
 | **Remedial works** | May be subject to a **quoted minimum half-day or full-day attendance**. |
 
-**A distant survey is never automatically converted into a half-day attendance.**
-The survey keeps its own £50-plus-travel structure regardless of distance. The
+**A distant site visit is never automatically converted into a half-day attendance.**
+The site visit keeps its own £60-plus-travel structure regardless of distance. The
 minimum-attendance concept belongs to remedial works only.
 
 Approved remedial-works wording:
@@ -114,8 +128,8 @@ reassurance that replaced "visits are usually free". It must not be dropped.
 
 The only permitted wording:
 
-> "Where expressly stated in the remedial quotation, the £50 survey fee may be
-> credited against subsequent remedial work. Travel, parking and other
+> "Where expressly stated in the remedial quotation, the £60 site-visit fee may
+> be credited against subsequent remedial work. Travel, parking and other
 > site-specific charges are not credited."
 
 Never promise the credit unconditionally.
@@ -135,9 +149,10 @@ publish:
 - any automatic fee calculation;
 - a definition of "normal local operating area".
 
-**The only price this website publishes is "surveys start from £50 + VAT for one
-door."** Everything else is quoted individually. If you are about to add a
-second number to this site, stop and check with Robert first.
+**The only price this website publishes is "site visits start from £60 + VAT
+(£72 including VAT) for one door."** Everything else is quoted individually.
+If you are about to add a second number to this site, stop and check with
+Robert first.
 
 Neither system may create automatic minimum-attendance, radius or mileage rules
 as a side effect of website wording work.
@@ -191,7 +206,9 @@ catalogue.
 ## 10. "Across Yorkshire"
 
 **Retained deliberately.** It describes *service availability*, not uniform
-pricing, and it is load-bearing for geographic SEO across 216 location pages.
+pricing, and it is load-bearing for geographic SEO across the location pages
+(162 as of the `/fire-door-inspectors` retirement — see `BACKLOG.md`/`README.md`
+for the historical 216 figure, now superseded).
 
 The risk is adjacency, not the phrase. Never place the fee and an unqualified
 "across Yorkshire" in the same section, and always attach the travel

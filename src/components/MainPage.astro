@@ -13,18 +13,18 @@ const { location } = Astro.params;
 // Modern SEO optimization with personal voice preserved
 const seoData = {
   title:
-    "Professional Fire Door Inspection & Installation in Yorkshire",
+    "Fire Door Installation, Repair & Remedial Work in Yorkshire",
   description:
-    "Fire door services in Yorkshire — inspections, surveys, repairs, installation and steel fire exit doors. On the tools since 1988, FireQual certified fire door inspector.",
+    "Fire door services in Yorkshire — installation, repairs, maintenance, remedial work and steel fire exit doors. On the tools since 1988, FireQual qualified fire-door specialist.",
   keywords:
-    "fire door services Yorkshire, fire door inspection, fire door installation, fire safety compliance, fire door maintenance, Robert Coulson fire doors",
+    "fire door services Yorkshire, fire door installation, fire door remedial work, fire safety compliance, fire door maintenance, Robert Coulson fire doors",
   canonical: "https://coulsyfiredoors.co.uk",
   structuredData: {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Coulsy Fire Doors",
     description:
-      "Professional fire door services in Yorkshire including inspections, installation, maintenance and compliance.",
+      "Professional fire door services in Yorkshire including installation, repairs, maintenance and remedial work.",
     url: "https://coulsyfiredoors.co.uk",
     telephone: "+44 7544 030486",
     email: "robert@coulsy.co.uk",
@@ -59,8 +59,8 @@ const seoData = {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Fire Door Inspection",
-            description: "Professional fire door compliance inspections",
+            name: "Fire Door Remedial Works",
+            description: "Remedial work to existing fire doors, including work identified by a third-party fire risk assessment",
           },
         },
         {
@@ -85,23 +85,25 @@ const seoData = {
     founder: {
       "@type": "Person",
       name: "Robert Coulson",
-      jobTitle: "Fire Door Specialist",
+      jobTitle: "Joiner, Builder and Fire Door Specialist",
       description:
-        "City & Guilds qualified joiner, on the tools since 1988; FireQual fire door inspector since 2024",
+        "City & Guilds qualified joiner, on the tools since 1988; FireQual qualified fire-door specialist since 2024",
     },
     employee: [
       {
         "@type": "Person",
         name: "Robert Coulson",
-        jobTitle: "Fire Door Specialist",
+        jobTitle: "Joiner, Builder and Fire Door Specialist",
         description:
-          "City & Guilds qualified joiner, on the tools since 1988; FireQual fire door inspector since 2024",
+          "City & Guilds qualified joiner, on the tools since 1988; FireQual qualified fire-door specialist since 2024",
       },
     ],
     // No aggregateRating: the 4.8/50 that used to sit here was invented, and a
     // business may not claim review stars about itself. See constants/reviews.ts.
     award: [
-      "FireQual Fire Door Inspector",
+      "FireQual Fire Door Inspection Course",
+      "FireQual Fire Door Installation Course",
+      "FireQual Fire Door Maintenance Course",
       "CSCS Gold Card Holder",
       "NVQ Level 7 in Construction Senior Management",
       "Advanced City & Guilds in Carpentry & Joinery (Distinction)",
@@ -123,9 +125,9 @@ const seoData = {
   {/* Hero — photo panel with Robert's portrait, consistent with the service pages */}
   <ServiceHero
     image={heroImage}
-    imageAlt="Robert Coulson, FireQual fire door inspector, Yorkshire"
+    imageAlt="Robert Coulson, FireQual qualified fire-door specialist, Yorkshire"
     title="Professional Fire Door Services in Yorkshire"
-    description="I'm Robert — a City & Guilds joiner with Distinction, FireQual fire door inspector and Clerk of Works. Fire door inspections, installation and maintenance across Yorkshire — no sales team, no subcontracting, you deal with me from first call to final report."
+    description="I'm Robert — a City & Guilds joiner with Distinction, FireQual qualified fire-door specialist and Clerk of Works. Fire door installation, repairs, maintenance and remedial work across Yorkshire — no sales team, no subcontracting, you deal with me from first call to final job."
     primaryCta={{ text: "Get a Quote", link: "/contact" }}
     secondaryCta={{ text: "View all services", link: "/fire-door-services" }}
     whatsAppMessage={`Hi Robert, I'd like to ask about fire door work. Happy to send photos or an existing report if that helps.\n\nEnquiry via the Coulsy Fire Doors website.\n\nPostcode:\nProperty type:\nWhat's involved:`}

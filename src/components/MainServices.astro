@@ -1,7 +1,6 @@
 ---
 import IconCard from "./IconCard.astro";
 import { CARD_LOOK } from "../config/cardLook";
-import InspectorIcon from "../icons/InspectorIcon.astro";
 import CardChecklist from "../icons/CardChecklist.astro";
 import WrenchIcon from "../icons/WrenchIcon.astro";
 import DoorOpenIcon from "../icons/DoorOpenIcon.astro";
@@ -15,14 +14,9 @@ function capitalizeFirstLetter(string: string) {
 
 const services = [
   {
-    Icon: InspectorIcon,
-    title: "Fire Door Inspections",
-    body: "FireQual-certified inspections of FD30/FD60 doors—individual doors, HMOs, blocks of flats and commercial premises—as one-off checks or planned quarterly, six-monthly and annual programmes. Includes clear advice on repair, replacement and compliance.",
-  },
-  {
     Icon: CardChecklist,
-    title: "Fire Door Surveys & Reports",
-    body: "Condition surveys, remedial and insurance reports, pre-purchase checks and specification reports—documented properly so you know exactly where you stand.",
+    title: "Fire Door Remedial Works",
+    body: "Repairs, replacement parts and remedial work to bring existing fire doors up to standard — including work identified in a third-party fire risk assessment. Clear advice on what's needed, no upselling.",
   },
   {
     Icon: WrenchIcon,
@@ -49,9 +43,9 @@ const services = [
         Fire Door Services I Provide
       </h2>
       <p class="mx-auto max-w-3xl text-gray-600 text-lg leading-relaxed">
-        After 35 years in joinery and becoming FireQual certified, I specialise in fire door work {
+        After 35 years in joinery and becoming FireQual qualified, I specialise in fire door work {
           location ? `in ${capitalizeFirstLetter(location)}` : null
-        }. Whether you need an inspection, a survey and report, repairs, a new timber doorset or a steel fire exit door, I'll do it properly—no shortcuts, no guesswork. I've worked on thousands of doors over the years, so I know what works and what doesn't.
+        }. Whether you need a new timber doorset, repairs and maintenance, remedial work against a fire risk assessment, or a steel fire exit door, I'll do it properly—no shortcuts, no guesswork. I've worked on thousands of doors over the years, so I know what works and what doesn't.
       </p>
     </div>
 

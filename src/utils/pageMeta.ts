@@ -70,27 +70,27 @@ export function getFormattedPageData(location?: string, type?: string): {
     // already in the service name (e.g. avoid "fire door maintenance, maintenance…").
     const serviceAngle =
       baseType.includes("maintenance") ? "repairs, seal replacement and compliance checks"
-      : baseType.includes("inspect") ? "certification and written compliance reports"
+      : baseType.includes("inspect") ? "remedial work against third-party fire risk assessment findings"
       : baseType.includes("install") ? "fitting, ironmongery and certification"
-      : "installation, maintenance and inspections";
+      : "installation, maintenance and remedial works";
 
     // Pool of 5 description variants picked deterministically per slug+service.
     // Each opens differently and highlights a different angle to reduce
     // near-duplicate signals across the location matrix.
     const descriptionVariants = location
       ? [
-          `FireQual qualified fire door inspector covering ${cleanLocationName} (${locationPostcode}) — ${lowerService} and fire door ${serviceAngle} across ${locationRegion}. 35+ years' experience, fully insured.`,
-          `${formattedServiceName} in ${cleanLocationName} and the wider ${locationRegion} area. FireQual certified inspector, 35+ years on the tools. No-obligation quotes and emergency callouts.`,
-          `${formattedServiceName} in ${cleanLocationName} ${locationPostcode}. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
-          `Professional ${lowerService} for properties in ${cleanLocationName} — a ${locTypeWord} I regularly work across. FireQual certified fire door inspector, 35+ years on the tools as a City & Guilds joiner.`,
-          `Trusted fire door specialist in ${cleanLocationName} (${locationPostcode}) — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured. Covering ${locationRegion}.`,
+          `FireQual qualified fire door specialist covering ${cleanLocationName} (${locationPostcode}) — ${lowerService} and fire door ${serviceAngle} across ${locationRegion}. 35+ years' experience.`,
+          `${formattedServiceName} in ${cleanLocationName} and the wider ${locationRegion} area. FireQual qualified joiner, 35+ years on the tools. No-obligation quotes and emergency callouts.`,
+          `${formattedServiceName} in ${cleanLocationName} ${locationPostcode}. Fire door ${serviceAngle} by a FireQual qualified specialist. CSCS Gold, working to current fire safety standards.`,
+          `Professional ${lowerService} for properties in ${cleanLocationName} — a ${locTypeWord} I regularly work across. FireQual qualified fire door specialist, 35+ years on the tools as a City & Guilds joiner.`,
+          `Trusted fire door specialist in ${cleanLocationName} (${locationPostcode}) — ${lowerService}, ${serviceAngle}. FireQual qualified. Covering ${locationRegion}.`,
         ]
       : [
-          `FireQual qualified fire door inspector covering Yorkshire — ${lowerService} and fire door ${serviceAngle}. 35+ years' experience, fully insured.`,
-          `${formattedServiceName} across Yorkshire. FireQual certified inspector, 35+ years on the tools. No-obligation quotes and emergency callouts.`,
-          `${formattedServiceName} across Yorkshire. Fire door ${serviceAngle} by a FireQual qualified inspector. CSCS Gold, fully insured, compliant with current fire safety regulations.`,
-          `Professional ${lowerService} for properties across Yorkshire. FireQual certified fire door inspector, 35+ years on the tools as a City & Guilds joiner.`,
-          `Trusted fire door specialist covering Yorkshire — ${lowerService}, ${serviceAngle}. FireQual qualified, fully insured.`,
+          `FireQual qualified fire door specialist covering Yorkshire — ${lowerService} and fire door ${serviceAngle}. 35+ years' experience.`,
+          `${formattedServiceName} across Yorkshire. FireQual qualified joiner, 35+ years on the tools. No-obligation quotes and emergency callouts.`,
+          `${formattedServiceName} across Yorkshire. Fire door ${serviceAngle} by a FireQual qualified specialist. CSCS Gold, working to current fire safety standards.`,
+          `Professional ${lowerService} for properties across Yorkshire. FireQual qualified fire door specialist, 35+ years on the tools as a City & Guilds joiner.`,
+          `Trusted fire door specialist covering Yorkshire — ${lowerService}, ${serviceAngle}. FireQual qualified.`,
         ];
 
     const defaultDescription = descriptionVariants[variantHash % descriptionVariants.length];
@@ -130,15 +130,16 @@ export function getFormattedPageData(location?: string, type?: string): {
       paymentAccepted: ["Cash", "Bank Transfer"],
       currenciesAccepted: "GBP",
       knowsAbout: [
-        "Fire Door Inspections",
-        "Fire Door Surveys",
+        "Fire Door Remedial Works",
         "Fire Door Repairs & Maintenance",
         "Fire Door Installation",
         "Steel Fire Exit Doors",
         "Fire Safety Compliance",
       ],
       award: [
-        "FireQual Fire Door Inspector",
+        "FireQual Fire Door Inspection Course",
+        "FireQual Fire Door Installation Course",
+        "FireQual Fire Door Maintenance Course",
         "CSCS Gold Card Holder",
         "NVQ Level 7 in Construction Senior Management",
         "Advanced City & Guilds in Carpentry & Joinery (Distinction)",
@@ -162,9 +163,11 @@ export function getFormattedPageData(location?: string, type?: string): {
       // business reviewing itself, and the 4.8/50 that used to sit here was
       // invented — the real reviews are 5.0 from 12, rendered by Reviews.astro.
       foundingDate: "1988",
-      slogan: "Fire doors, fitted and inspected properly",
+      slogan: "Fire doors, fitted properly",
       hasCredential: [
-        "FireQual Fire Door Inspector",
+        "FireQual Fire Door Inspection Course",
+        "FireQual Fire Door Installation Course",
+        "FireQual Fire Door Maintenance Course",
         "CSCS Gold Card Holder",
         "NVQ Level 7 in Construction Senior Management",
         "Advanced City & Guilds in Carpentry & Joinery (Distinction)",
@@ -243,11 +246,7 @@ export function getFormattedPageData(location?: string, type?: string): {
         itemListElement: [
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Fire Door Inspections" },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Fire Door Surveys & Reports" },
+            itemOffered: { "@type": "Service", name: "Fire Door Remedial Works" },
           },
           {
             "@type": "Offer",
@@ -287,26 +286,26 @@ export function getFormattedPageData(location?: string, type?: string): {
       if (locationType === "city" || locationType === "market-town") {
         faqPool.push({
           name: `Do you work on commercial and HMO fire doors in ${cleanLocationName}?`,
-          text: `Yes. ${cleanLocationName} has significant commercial and multi-occupancy stock, and I handle fire door inspections, maintenance and installs for landlords, letting agents, care homes, schools and commercial premises with the required certification and reports.`,
+          text: `Yes. ${cleanLocationName} has significant commercial and multi-occupancy stock, and I handle fire door installation, maintenance and remedial work for landlords, letting agents, care homes, schools and commercial premises, with manufacturer certification supplied for components fitted.`,
         });
       }
     }
 
     faqPool.push({
-      name: `How often should fire doors be ${baseType.includes("maintenance") ? "maintained" : baseType.includes("inspect") ? "inspected" : "serviced"}${locationInText}?`,
-      text: `Fire doors should be checked at least every 6 months under current fire safety regulations, with more frequent checks for high-traffic commercial sites. Regular ${baseType.includes("maintenance") ? "maintenance" : baseType.includes("inspect") ? "inspections" : "servicing"} keeps doors compliant and documents your duty-of-care position.`,
+      name: `How often should fire doors be ${baseType.includes("maintenance") ? "maintained" : baseType.includes("inspect") ? "checked" : "serviced"}${locationInText}?`,
+      text: `Fire doors should be checked at least every 6 months under current fire safety regulations, with more frequent checks for high-traffic commercial sites. That check is normally part of your building's fire risk assessment; I carry out any remedial work, repairs or ${baseType.includes("maintenance") ? "maintenance" : "servicing"} it identifies.`,
     });
     faqPool.push({
       name: `Are you qualified for fire door work${locationInText}?`,
-      text: "Yes — I'm a FireQual qualified fire door inspector, certified in December 2024, and a CSCS Gold Card holder, with 35+ years on the tools as a City & Guilds qualified joiner.",
+      text: "Yes — I'm a City & Guilds qualified joiner with 35+ years on the tools, I hold the FireQual Fire Door Inspection, Installation and Maintenance qualifications (gained December 2024) and a CSCS Gold Card, and I'm MICWCI (Member of the Institute of Clerks of Works and Construction Inspectorate).",
     });
     faqPool.push({
-      name: `Do you provide certification and compliance reports${locationInText}?`,
-      text: "Yes. Every inspection comes with a written report suitable for insurers, Responsible Persons and enforcement bodies, covering door leaf, frame, seals, gaps, hinges, closers and ironmongery against the relevant standard.",
+      name: `Do you provide records and certification${locationInText}?`,
+      text: "Yes. Every job gets a written record of the work carried out — door leaf, frame, seals, gaps, hinges, closers and ironmongery — plus manufacturer certification for any components fitted. This documents the work done; it isn't an independent fire-door inspection report or compliance certificate.",
     });
     faqPool.push({
       name: "Do you work on both domestic and commercial properties?",
-      text: "Yes — I handle fire door work on private homes, HMOs, rental properties, care homes, schools, offices and commercial premises. The same standards apply: correct certification, correct installation, documented compliance.",
+      text: "Yes — I handle fire door work on private homes, HMOs, rental properties, care homes, schools, offices and commercial premises. The same standards apply: correct installation, correct components, a documented record of the work done.",
     });
 
     const faqCount = Math.min(4, faqPool.length);

@@ -3,7 +3,6 @@ import type { GetStaticPaths, GetStaticPathsResult } from "astro";
 import { LOCATIONS } from "../constants/locations";
 import FireDoorServicesPage from "../components/FireDoorServicesPage.astro";
 import FireDoorMaintenancePage from "../components/FireDoorMaintenancePage.astro";
-import FireDoorInspectorsPage from "../components/FireDoorInspectorsPage.astro";
 import FireDoorInstallersPage from "../components/FireDoorInstallersPage.astro";
 
 export const getStaticPaths = (() => {
@@ -13,14 +12,6 @@ export const getStaticPaths = (() => {
     paths.push({
       params: {
         slug: `${slug}-fire-door-services`,
-      },
-    });
-  });
-
-  LOCATIONS.forEach(({ slug }) => {
-    paths.push({
-      params: {
-        slug: `${slug}-fire-door-inspectors`,
       },
     });
   });
@@ -51,7 +42,6 @@ const slugStr = typeof slug === "string" ? slug : "";
 const parts = slugStr.split("-");
 const serviceTypes = [
   "fire-door-services",
-  "fire-door-inspectors",
   "fire-door-installers",
   "fire-door-maintenance",
 ];
@@ -77,11 +67,6 @@ for (const serviceType of serviceTypes) {
 {
   type === "fire-door-maintenance" && (
     <FireDoorMaintenancePage location={location} type={type} />
-  )
-}
-{
-  type === "fire-door-inspectors" && (
-    <FireDoorInspectorsPage location={location} type={type} />
   )
 }
 {
